@@ -2,6 +2,29 @@
 {% load static %}
 
 {% block content %}
-<h1 class="display-4 text-success">It works!</h1>
+<div class="container h-100">
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto mx-auto">
+                <h1 class="display-4 logo-font text-black text-center">
+                    Salary Struggle
+                </h1>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="row h-100 text-center my-5">
+            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill">Characters</div>
+            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill">Profile</div>
+            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill">Contact</div>
+            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill">Logout</div>
+        </div>
+        {% else %}
+        <div class="row h-100">
+            <div class="my-5 mx-auto text-center">
+                <div class="col-6 my-2 display-5">Register</div>
+                <div class="col-6 my-2 display-5">Login</div>
+            </div>
+        </div>
+        {% endif %}
+</div>
 
 {% endblock %}
