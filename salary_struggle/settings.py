@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'premium',
     'codex',
     'profiles',
+    'grind',
 ]
 
 MIDDLEWARE = [

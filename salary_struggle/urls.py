@@ -22,4 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
+    path('codex/', include('codex.urls')),
+    path('grind/', include('grind.urls')),
+    path('interview/', include('interview.urls')),
+    path('leaderboard/', include('leaderboard.urls')),
+    path('premium/', include('premium.urls')),
+    path('profile/', include('profiles.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
