@@ -16,7 +16,7 @@ class Profile(models.Model):
         cur_user.active_char = False
         cur_user.save()
 
-
+# not migrated yet
 class ActiveCharacter(models.Model):
     user = models.OnetoOneField(User, on_delete=models.CASCADE)
     level = models.IntegerField(default=1)
