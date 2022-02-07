@@ -7,8 +7,9 @@ a {
 }
 
 body {
-    background: url('/media/test_background.png') no-repeat center center fixed;
-    background-size: cover;
+    /* background: url('/media/test_background.png') no-repeat center center fixed;
+    background-size: contain; */
+    background-color: rgb(50, 153, 194);
     color: #555;
     font-family: 'Lato';
 }

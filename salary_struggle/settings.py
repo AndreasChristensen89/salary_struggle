@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'interview',
+    'leaderboard',
+    'premium',
+    'codex',
+    'profiles',
 ]
 
 MIDDLEWARE = [
