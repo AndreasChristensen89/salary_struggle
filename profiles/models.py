@@ -2,8 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from codex.models import Item
 
+
 # not migrated yet
 class Profile(models.Model):
+    """
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     paid = models.BooleanField(default=False)
     active_char = models.BooleanField(default=False)
@@ -17,8 +20,10 @@ class Profile(models.Model):
         cur_user.active_char = False
         cur_user.save()
 
+
 # not migrated yet
 class ActiveCharacter(models.Model):
+    """ """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.IntegerField(default=1)
     char_intellect = models.IntegerField(default=1)
@@ -26,8 +31,8 @@ class ActiveCharacter(models.Model):
     char_coding = models.IntegerField(default=1)
     char_endurace = models.IntegerField(default=1)
     item_id = models.ForeignKey(Item, null=True, blank=True,
-                                     on_delete=models.CASCADE,
-                                     related_name="item")
+                                on_delete=models.CASCADE,
+                                related_name="item")
     item_intellect = models.IntegerField(null=True, blank=True)
     item_charm = models.IntegerField(null=True, blank=True)
     item_coding = models.IntegerField(null=True, blank=True)
