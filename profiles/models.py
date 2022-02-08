@@ -23,13 +23,16 @@ class Profile(models.Model):
 
 # not migrated yet
 class ActiveCharacter(models.Model):
-    """ """
+    """
+    """
+    
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.IntegerField(default=1)
     char_intellect = models.IntegerField(default=1)
     char_charm = models.IntegerField(default=1)
     char_coding = models.IntegerField(default=1)
     char_endurace = models.IntegerField(default=1)
+    has_job = models.BooleanField(default=False)
     item_id = models.ForeignKey(Item, null=True, blank=True,
                                 on_delete=models.CASCADE,
                                 related_name="item")
