@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def city(request):
+    """ A view to return the city page """
+
+    return render(request, 'grind/city.html')

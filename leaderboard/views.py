@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def leaderboard(request):
+    """ A view to return the leaderboard page """
+
+    return render(request, 'leaderboard/leaderboard.html')
