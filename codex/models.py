@@ -1,6 +1,6 @@
 from django.db import models
 
-# not migrated
+
 class Interviewer(models.Model):
     """
     """
@@ -24,7 +24,7 @@ class Interviewer(models.Model):
     def __str__(self):
         return self.friendly_name
 
-# not migrated
+
 class Item(models.Model):
     """
     """

@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from codex.models import Item
 
 
-# not migrated yet
 class Profile(models.Model):
     """
     """
@@ -13,7 +12,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-    
+
     @classmethod
     def remove_active_char(cls, user):
         cur_user = cls.objects.get(user=user)
@@ -21,11 +20,10 @@ class Profile(models.Model):
         cur_user.save()
 
 
-# not migrated yet
 class ActiveCharacter(models.Model):
     """
     """
-    
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.IntegerField(default=1)
     char_intellect = models.IntegerField(default=1)
