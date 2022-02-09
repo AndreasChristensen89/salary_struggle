@@ -20,3 +20,12 @@ cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* (/* mean t
 cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/
 
 Delete openid and tests
+
+
+
+So far item display is taken directly from the Boutique Ado walkthrough.
+
+Add to items model
+permanent = models.BooleanField(default=False)
+
+Will be checked when day finishes to see if effects should be removed, and if secondary effects should be applied
