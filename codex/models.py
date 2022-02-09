@@ -29,7 +29,8 @@ class Item(models.Model):
     """
     """
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, null=False, blank=False)
+    price = models.IntegerField(default=0, null=False, blank=False)
     intellect = models.IntegerField(default=0)
     charm = models.IntegerField(default=0)
     coding = models.IntegerField(default=0)
