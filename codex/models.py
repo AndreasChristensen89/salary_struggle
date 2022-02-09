@@ -33,6 +33,7 @@ class Item(models.Model):
     intellect = models.IntegerField(default=0)
     charm = models.IntegerField(default=0)
     intellect = models.IntegerField(default=0)
+    coding = models.IntegerField(default=0)
     endurance = models.IntegerField(default=0)
     image = models.ImageField(null=False, blank=False)
 
