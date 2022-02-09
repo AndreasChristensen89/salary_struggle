@@ -1,4 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
 
-div
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row my-5">
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {{ interviewers }}
+                {{ items }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

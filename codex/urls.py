@@ -1,9 +1,8 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
 
 app_name = 'codex'
 
 urlpatterns = [
-    path('', views.codex, name='codex'),
+    path('', views.full_codex, name='full_codex'),
 ]

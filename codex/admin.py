@@ -22,8 +22,8 @@ class ItemAdmin(admin.ModelAdmin):
         'name',
         'charm',
         'intellect',
-        'endurance',
         'coding',
+        'energy',
     )
 
 
