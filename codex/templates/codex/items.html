@@ -20,6 +20,18 @@
             <hr class="w-50 mb-1">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col text-center mt-3">
+            <p>Sorting</p>
+            <a href="{% url 'codex:items' %}?sort=intellect&direction=desc">By Intellect</a>
+            <a href="{% url 'codex:items' %}?sort=charm&direction=desc">By Charm</a>
+            <a href="{% url 'codex:items' %}?sort=coding&direction=desc">By Coding</a>
+            <a href="{% url 'codex:items' %}?sort=energy&direction=desc">By Energy</a>
+            <hr class="w-50 mb-1">
+        </div>
+    </div>
+
     <div class="row">
         <div class="product-container col-10 offset-1">
             <div class="row mt-1 mb-2"></div>

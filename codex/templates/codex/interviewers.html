@@ -20,6 +20,19 @@
             <hr class="w-50 mb-1">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col text-center mt-3">
+            <p>Sorting</p>
+            <a href="{% url 'codex:interviewers' %}?sort=level&direction=desc">By Level</a>
+            <a href="{% url 'codex:interviewers' %}?sort=intellect&direction=desc">By Intellect</a>
+            <a href="{% url 'codex:interviewers' %}?sort=coldness&direction=desc">By Coldness</a>
+            <a href="{% url 'codex:interviewers' %}?sort=coding&direction=desc">By Coding</a>
+            <a href="{% url 'codex:interviewers' %}?sort=impress_lvl&direction=desc">By Impress Level</a>
+            <hr class="w-50 mb-1">
+        </div>
+    </div>
+
     <div class="row">
         <div class="product-container col-10 offset-1">
             <div class="row mt-1 mb-2"></div>
