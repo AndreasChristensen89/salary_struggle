@@ -29,3 +29,7 @@ Add to items model
 permanent = models.BooleanField(default=False)
 
 Will be checked when day finishes to see if effects should be removed, and if secondary effects should be applied
+
+
+To do list:
+- Fix sorting method, so items with 0 in sorted effect will not show
