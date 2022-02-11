@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'codex',
     'profiles',
     'grind',
+    'shopping_bag',
 ]
 
 MIDDLEWARE = [
