@@ -30,6 +30,9 @@ permanent = models.BooleanField(default=False)
 
 Will be checked when day finishes to see if effects should be removed, and if secondary effects should be applied
 
+As per advice from mentor I installed pylint for django:
+pip3 install pylint-django
+
 
 To do list:
 - Fix sorting method, so items with 0 in sorted effect will not show

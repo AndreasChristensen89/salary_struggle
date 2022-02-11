@@ -5,16 +5,20 @@ from codex.models import Item
 
 class Profile(models.Model):
     """
+    Profile model
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     paid = models.BooleanField(default=False)
     active_char = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
     @classmethod
     def remove_active_char(cls, user):
+        """
+        Model class to remove a character
+        """
         cur_user = cls.objects.get(user=user)
         cur_user.active_char = False
         cur_user.save()
@@ -22,6 +26,7 @@ class Profile(models.Model):
 
 class ActiveCharacter(models.Model):
     """
+    Character model
     """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -46,6 +51,9 @@ class ActiveCharacter(models.Model):
 
     @classmethod
     def create_character(cls, user):
+        """
+        Model class to create a character
+        """
 
         new_character = {}
         new_character["user"] = user
