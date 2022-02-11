@@ -37,3 +37,18 @@ body {
 .btt-link {
     cursor: pointer;
 }
+
+/* From walkthrough project */
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    border: 1px solid black;
+}
+
+/* From walkthrough project */
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
+}

@@ -21,15 +21,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col text-center mt-3">
-            <p>Sorting</p>
-            <a href="{% url 'codex:interviewers' %}?sort=level&direction=desc">By Level</a>
-            <a href="{% url 'codex:interviewers' %}?sort=intellect&direction=desc">By Intellect</a>
-            <a href="{% url 'codex:interviewers' %}?sort=coldness&direction=desc">By Coldness</a>
-            <a href="{% url 'codex:interviewers' %}?sort=coding&direction=desc">By Coding</a>
-            <a href="{% url 'codex:interviewers' %}?sort=impress_lvl&direction=desc">By Impress Level</a>
-            <hr class="w-50 mb-1">
+    <div class="row mt-1 mb-2">
+        <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+            <div class="sort-select-wrapper w-50">
+                <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                    <option value="level_asc" {% if current_sorting == 'level_asc' %}selected{% endif %}>Level (low to high)</option>
+                    <option value="level_desc" {% if current_sorting == 'level_desc' %}selected{% endif %}>Level (high to low)</option>
+                    <option value="intellect_asc" {% if current_sorting == 'intellect_asc' %}selected{% endif %}>Intellect (low to high)</option>
+                    <option value="intellect_desc" {% if current_sorting == 'intellect_desc' %}selected{% endif %}>Intellect (high to low)</option>
+                    <option value="coldness_asc" {% if current_sorting == 'coldness_asc' %}selected{% endif %}>Coldness (low to high)</option>
+                    <option value="coldness_desc" {% if current_sorting == 'coldness_desc' %}selected{% endif %}>Coldness (high to low)</option>
+                    <option value="coding_asc" {% if current_sorting == 'coding_asc' %}selected{% endif %}>Coding (low to high)</option>
+                    <option value="coding_desc" {% if current_sorting == 'coding_desc' %}selected{% endif %}>Coding (high to low)</option>
+                    <option value="impress_lvl_asc" {% if current_sorting == 'impress_lvl_asc' %}selected{% endif %}>Impress Level (low to high)</option>
+                    <option value="impress_lvl_desc" {% if current_sorting == 'impress_lvl_desc' %}selected{% endif %}>Impress Level (high to low)</option>
+                </select>
+            </div>
         </div>
     </div>
 
