@@ -3,9 +3,11 @@ from django.db import models
 
 class Interviewer(models.Model):
     """
+    Model for the interviewers
     """
 
     class InterviewerLevel(models.IntegerChoices):
+        """ Model class to give level-options for interviewers """
         LOW = 1, 'HR'
         NORMAL = 2, 'Software Developer'
         HARD = 3, 'Senior Software Developer'
@@ -23,11 +25,12 @@ class Interviewer(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.friendly_name
+        return f'{self.name}'
 
 
 class Item(models.Model):
     """
+    Model for the items
     """
 
     name = models.CharField(max_length=100, null=False, blank=False)
@@ -40,4 +43,4 @@ class Item(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
