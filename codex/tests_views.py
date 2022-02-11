@@ -38,7 +38,7 @@ class TestViews(TestCase):
         """ Test interviewer details page """
         interviewer = Interviewer.objects.create(
             name='John',
-            friendly_name=4,
+            friendly_name='John',
             image=tempfile.NamedTemporaryFile(suffix=".jpg").name)
         response = self.client.get(f'/codex/interviewers/{interviewer.id}')
         self.assertEqual(response.status_code, 200)
