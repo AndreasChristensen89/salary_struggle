@@ -34,7 +34,7 @@ def items_index(request):
     return render(request, 'codex/items.html', context)
 
 
-def character_index(request):
+def interviewer_index(request):
     """ A view to return the character page """
 
     interviewers = Interviewer.objects.all()

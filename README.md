@@ -33,6 +33,8 @@ Will be checked when day finishes to see if effects should be removed, and if se
 As per advice from mentor I installed pylint for django:
 pip3 install pylint-django
 
+Shopping bag has been made following the walkthrough project from CI
+
 
 To do list:
 - Fix sorting method, so items with 0 in sorted effect will not show
