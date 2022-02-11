@@ -12,7 +12,7 @@ class Profile(models.Model):
     active_char = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username}'
 
     @classmethod
     def remove_active_char(cls, user):
