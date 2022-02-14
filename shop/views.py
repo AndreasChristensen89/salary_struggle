@@ -34,10 +34,10 @@ def all_products(request):
     return render(request, 'shop/products.html', context)
 
 
-def product_details(request, product_id):
+def product_details(request, item_id):
     """ A view to return the item details page """
 
-    product = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(Product, pk=item_id)
 
     context = {
         'product': product,

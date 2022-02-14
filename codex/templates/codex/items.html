@@ -48,7 +48,7 @@
                         <a href="{% url 'codex:item_details' item.id %}">
                         <div class="card h-100 border-0">
                             {% if item.image %}
-                                <img class="card-img-top img-fluid" src="{{ item.image }}" alt="{{ item.name }}">
+                                <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="{{ item.name }}">
                             {% else %}
                                 <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                             {% endif %}

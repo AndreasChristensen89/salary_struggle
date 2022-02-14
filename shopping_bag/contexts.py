@@ -12,14 +12,14 @@ def shopping_bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
-    for product_id, quantity in bag.items():
-        product = get_object_or_404(Product, pk=product_id)
-        total += quantity * product.price
+    for item_id, quantity in bag.items():
+        item = get_object_or_404(Product, pk=item_id)
+        total += quantity * item.price
         product_count += quantity
         bag_items.append({
-            'product_id': product.id,
+            'item_id': item.id,
             'quantity': quantity,
-            'product': product,
+            'item': item,
         })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
