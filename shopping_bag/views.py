@@ -48,7 +48,6 @@ def remove_from_bag(request, item_id):
         bag.pop(item_id)
 
         request.session['bag'] = bag
-        print(request.session['bag'])
         return HttpResponse(status=200)
 
     except Exception as e:
