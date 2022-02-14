@@ -17,10 +17,10 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-5">
-                    {% if interviewe.image %}
-                        <img class="card-img-top img-fluid" src="{{ interviewer.image }}" alt="{{ item.name }}">
+                    {% if interviewer.image %}
+                        <img class="card-img-top img-fluid" src="{{ interviewer.image }}" alt="{{ interviewer.name }}">
                     {% else %}
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewe.name }}">
                     {% endif %}
                 </div>
             </div>
