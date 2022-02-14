@@ -55,3 +55,17 @@ body {
     color: white !important;
 }
 
+.message-container {
+    position: fixed;
+    right: 15px;
+    z-index: 99999999;
+}
+
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
