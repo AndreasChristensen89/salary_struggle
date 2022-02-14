@@ -34,7 +34,9 @@ body {
     right: 10px;
 }
 /* From walkthrough project */
-.btt-link {
+.btt-link,
+.update-link,
+.remove-item {
     cursor: pointer;
 }
 
@@ -52,3 +54,4 @@ body {
     background: black;
     color: white !important;
 }
+
