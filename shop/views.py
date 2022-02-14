@@ -16,13 +16,13 @@ def all_products(request):
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
-                items = items.annotate(lower_name=Lower('name'))
+                product = products.annotate(lower_name=Lower('name'))
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-            items = items.order_by(sortkey)
+            products = products.order_by(sortkey)
 
     current_sorting = f'{sort}_{direction}'
 
