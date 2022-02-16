@@ -14,16 +14,37 @@ body {
     font-family: 'Lato';
 }
 
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: white;
-    z-index: -1;
+/* From walkthrough project */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
+/* From walkthrough project */
+.logo-font {
+    text-transform: uppercase;
+}
+
+/* From walkthrough project */
+.main-logo-link {
+    width: fit-content;
+}
+
+/* From walkthrough project */
+.shop-now-button {
+    background: black;
+    color: white;
+    min-width: 260px;
+}
+
+/* From walkthrough project */
+.btn-black {
+    background: black;
+    color: white;
+}
 
 /* From walkthrough project */
 .btt-button {
@@ -33,6 +54,7 @@ body {
     bottom: 10px;
     right: 10px;
 }
+
 /* From walkthrough project */
 .btt-link,
 .update-link,
@@ -53,6 +75,65 @@ body {
 .btn-outline-black:focus {
     background: black;
     color: white !important;
+}
+
+/* From walkthrough project */
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+/* From walkthrough project */
+.text-black {
+    color: #000 !important;
+}
+
+/* From walkthrough project */
+.border-black {
+    border: 1px solid black !important;
+}
+
+/* From walkthrough project */
+.bg-black {
+    background: #000 !important;
+}
+
+/* From walkthrough project */
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
+
+/* From walkthrough project */
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
+/* From walkthrough project */
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* From walkthrough project */
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
 }
 
 .message-container {

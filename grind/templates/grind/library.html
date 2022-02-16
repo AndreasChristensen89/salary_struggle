@@ -5,18 +5,26 @@
 {% if user.is_authenticated %}
 <div class="container h-100 mt-5">
     <div class="row py-5">
-            <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Study</h5>    
-                        <p class="card-text round">+2 Coding</p>
-                        <p class="card-text round">+2 intellect</p>
-                </div>
-                <ul class="list-group list-group-flush border">
+        
+        <a class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" href="{% url 'grind:city' %}"
+            style="width: 18rem;">
+            <div class="card-body rounded-top admin-confirmed">
+                <h5 class="card-title">Back to the city</h5>
+            </div>
+        </a>   
+        
+        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
+            <div class="card-body rounded-top admin-confirmed">
+                <h5 class="card-title">Study</h5>
+                <p class="card-text round">+2 Coding</p>
+                <p class="card-text round">+2 intellect</p>
+            </div>
+            <ul class="list-group list-group-flush border">
                 <li class="list-group-item">-60 energy</li>
                 <li class="list-group-item">Risk: run into friends and be distrated</li>
                 <li class="list-group-item">Winning odds: 2 to 1</li>
-                </ul>
-            </div>
+            </ul>
+        </div>
 
     </div>
 </div>
