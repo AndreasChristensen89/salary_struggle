@@ -47,7 +47,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'grind:house' %}">The Grind</a>
                     </li>
@@ -83,20 +82,12 @@
                             </div>
                         </a>
                     </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    {% endif %}
                 </ul>
             </div>
         </nav>
