@@ -52,6 +52,3 @@ To do list:
     - Different sorting method applied
 - "ValueError: Field 'id' expected a number but got 'noimage.png'". When adding product.id to shopping bag I am printing the bag, which should return a dictionary {'1': 2, '2': 4} which is the product.id and the quantity. Form is in product_detail.html
     - Fixed. Changed the picture get to {{ item.product.image.url }}
-- When testing form it complains about the URL not working:
-Der kan ikke oprettes forbindelse til dette websiteWebsiden på https://8000-andreaschristen-salaryst-tsrj7prqubx.ws-eu32.gitpod.io/premium/%7B%%20url%20'checkout'%20%] kan være midlertidigt nede, eller også er den permanent flyttet til en ny webadresse.
-Double check urls and test is one is wrong
