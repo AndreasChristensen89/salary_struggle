@@ -74,7 +74,7 @@
             </div>
             <div class="col-12 col-lg-6">
                 <p class="text-muted">Please fill out the form below to finalize your order</p>
-                <form action="{% url 'checkout' %]" method="POST" id="paymentform">
+                <form action="{% url 'premium:checkout' %]" method="POST" id="paymentform">
                     {% csrf_token%}
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
@@ -142,5 +142,5 @@
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    <script src="{% static 'premium/js/stripe_elements.js' %}"></script>
 {% endblock %}
