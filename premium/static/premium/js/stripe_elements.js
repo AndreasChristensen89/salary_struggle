@@ -46,33 +46,74 @@ card.addEventListener('change', function (event) {
 // Handle form submit
 var form = document.getElementById('payment-form');
 
-form.addEventListener('submit', function(ev) {
+form.addEventListener('submit', function(ev) {   // when the user clicks the submit button the default is prevented...
     ev.preventDefault();
-    card.update({ 'disabled': true});
+    card.update({ 'disabled': true});   // ... disables card element..
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
-    $('#loading-overlay').fadeToggle(100);
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
-        }
-    }).then(function(result) {
-        if (result.error) {
-            var errorDiv = document.getElementById('card-errors');
-            var html = `
-                <span class="icon" role="alert">
-                <i class="fas fa-times"></i>
-                </span>
-                <span>${result.error.message}</span>`;
-            $(errorDiv).html(html);
-            $('#payment-form').fadeToggle(100);
-            $('#loading-overlay').fadeToggle(100);
-            card.update({ 'disabled': false});
-            $('#submit-button').attr('disabled', false);
-        } else {
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
+    $('#loading-overlay').fadeToggle(100);  // an triggers loading overlay...
+
+    var saveInfo = Boolean($('#id-save-info').attr('checked')); // ... then we create four vars to capture the form data
+    // From using {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        'save_info': saveInfo,
+    };
+    var url = '/premium/cache_checkout_data/'; // we can't put these in the payment intent here...
+
+    // ... so instead we post it to the cache_checkout_data view...
+    $.post(url, postData).done(function () {    // ... done method used to wait for a response that payment intent was updated...
+        stripe.confirmCardPayment(clientSecret, {   // ... when we have 200 response then we call the confirmCardPayment()
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: $.trim(form.full_name.value),
+                    phone: $.trim(form.phone_number.value),
+                    email: $.trim(form.email.value),
+                    address:{
+                        line1: $.trim(form.street_address1.value),
+                        line2: $.trim(form.street_address2.value),
+                        city: $.trim(form.town_or_city.value),
+                        country: $.trim(form.country.value),
+                        state: $.trim(form.county.value),
+                    }
+                }
+            },
+            shipping: {
+                name: $.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
+                address: {
+                    line1: $.trim(form.street_address1.value),
+                    line2: $.trim(form.street_address2.value),
+                    city: $.trim(form.town_or_city.value),
+                    country: $.trim(form.country.value),
+                    postal_code: $.trim(form.postcode.value),
+                    state: $.trim(form.county.value),
+                }
+            },
+        }).then(function(result) {
+            if (result.error) { // if ther's an error...
+                var errorDiv = document.getElementById('card-errors');
+                var html = `
+                    <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                    </span>
+                    <span>${result.error.message}</span>`;
+                $(errorDiv).html(html); // ... then error displayed... 
+                $('#payment-form').fadeToggle(100);
+                $('#loading-overlay').fadeToggle(100); // ... overlay will be hidden...
+                card.update({ 'disabled': false}); // ... card element re-enabled...  
+                $('#submit-button').attr('disabled', false);
+            } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();  // if all is okay then we submit the form
+                }
             }
-        }
-    });
+        });
+    }).fail(function () {   // will be triggered if we get a 400 response
+        // just reload the page, the error will be in django messages
+        location.reload();
+    })
 });
