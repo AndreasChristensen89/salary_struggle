@@ -54,3 +54,5 @@ To do list:
     - Fixed. Changed the picture get to {{ item.product.image.url }}
 - Doesn't look like payment is passing through in Stripe. Payment intent is created: "A new payment pi_3KTkkuDGj8gZbV1S1xhHMzmZ for €11.00 was created..." but there is no message about payment success. I think it has to do with the addEventListener that doesn't work in the JS file
     - form's id was spelled wrong
+- Couldn't receive webhooks from Stripe, kept getting 401 errors
+    - Set the port to public: 8000 open (private) ==> 8000 open (public)
