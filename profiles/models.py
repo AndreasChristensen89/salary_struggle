@@ -42,7 +42,7 @@ def create_or_update_profile(sender, instance, created, **kwargs):
     """
     if created:
         Profile.objects.create(user=instance)
-    instance.userprofile.save()
+    instance.profile.save()
 
 
 class ActiveCharacter(models.Model):
