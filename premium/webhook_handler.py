@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from .models import Order, OrderItem
 from shop.models import Product
+from profiles.models import Profile
 
 import json
 import time
@@ -38,6 +39,21 @@ class StripeWHookHandler:
             if value == "":
                 shipping_details.address[field] = None  # Need Null in the DB
 
+        # Update profile information if save_info was checked
+        profile = None  # allows anonymous users to check out
+        username = intent.metadata.username
+        if username != 'AnonymousUser':     # -> know they're authenticated
+            profile = Profile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_country = shipping_details.address.country
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1 = shipping_details.address.line1
+                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_county = shipping_details.address.state
+                profile.save()
+        
         order_exists = False    # first we assume that order doesn't exist
         attempt = 1     # If the view is slow for some reason, we introduce some delay 
         while attempt <= 5:
@@ -70,6 +86,7 @@ class StripeWHookHandler:
             try:
                 order = Order.objects.create(   # we don't have a form to save, so we use order.create instead
                     full_name=shipping_details.name,
+                    user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     country=shipping_details.address.country,

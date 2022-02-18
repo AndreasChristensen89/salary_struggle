@@ -108,7 +108,7 @@ form.addEventListener('submit', function(ev) {   // when the user clicks the sub
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    form.submit();  // if all is okay then we submit the form
+                    form.submit();
                 }
             }
         });
