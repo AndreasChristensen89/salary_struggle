@@ -2,7 +2,7 @@ from django import forms
 from .models import Profile
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileDetailsForm(forms.ModelForm):
     """
     Order form for the Order Model
     """
