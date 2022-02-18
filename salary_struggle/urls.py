@@ -21,7 +21,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),
     path('codex/', include('codex.urls')),
     path('grind/', include('grind.urls')),
     path('interview/', include('interview.urls')),
@@ -30,4 +29,5 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('shopping_bag/', include('shopping_bag.urls')),
     path('shop/', include('shop.urls')),
+    path('', include('home.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
