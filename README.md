@@ -47,6 +47,10 @@ You do not need to implement this fix right now while you are doing the walkthro
 Video is: The shopping bag: the shopping bag
 
 
+
+Installed django-countries for the dropdown box in the form
+
+
 To do list:
 - Fix sorting method, so items with 0 in sorted effect will not show
     - Different sorting method applied
