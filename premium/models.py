@@ -7,6 +7,7 @@ from django.conf import settings
 from django_countries.fields import CountryField
 
 from shop.models import Product
+from profiles.models import Profile
 
 
 class Order(models.Model):
@@ -14,8 +15,10 @@ class Order(models.Model):
     Class for instances of orders
     Linked to OrderItem class, which handles totals
     """
-    
+
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(Profile, on_delete=models.SET_NULL, 
+                                     null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -68,11 +71,11 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    """ 
+    """
     Class that iterates through every item from an order instance,
     attaches it to the order, and updates the delivery costs and total
     """
-    
+
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='orderitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
@@ -80,7 +83,7 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Overrides save method to set the item_total, 
+        Overrides save method to set the item_total,
         and update the order_total in the Order class
         """
         self.item_total = self.product.price * self.quantity
