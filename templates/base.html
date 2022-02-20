@@ -47,6 +47,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'grind:house' %}">The Grind</a>
                     </li>
@@ -66,7 +67,13 @@
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'shop:add_product' %}">Add products</a>
                     </li>
                     <li class="nav-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'shopping_bag:shopping_bag' %}">
@@ -82,12 +89,14 @@
                             </div>
                         </a>
                     </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
