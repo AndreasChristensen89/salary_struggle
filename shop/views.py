@@ -36,10 +36,10 @@ def all_products(request):
     return render(request, 'shop/products.html', context)
 
 
-def product_details(request, item_id):
+def product_details(request, product_id):
     """ A view to return the item details page """
 
-    product = get_object_or_404(Product, pk=item_id)
+    product = get_object_or_404(Product, pk=product_id)
 
     context = {
         'product': product,
@@ -67,6 +67,32 @@ def add_product(request):
     template = 'shop/add_product.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    """ Edit a product to the store """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method=='POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Successfully update {product.name}')
+            return redirect(reverse('shop:product_details', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update the product. Please ensure that the form is valid.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    template = 'shop/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
     }
 
     return render(request, template, context)
