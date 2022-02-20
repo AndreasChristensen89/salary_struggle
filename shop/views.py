@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from .models import Product
 from .forms import ProductForm
@@ -48,11 +49,16 @@ def product_details(request, product_id):
     return render(request, 'shop/product_details.html', context)
 
 
+@login_required
 def add_product(request):
     """ Add a product to the store """
     
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the admin can do that')
+        return redirect(reverse('home:index'))
+
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES) # FILES to capture image of product
+        form = ProductForm(request.POST, request.FILES)     # FILES to capture image of product
 
         if form.is_valid():
             product = form.save()
@@ -72,8 +78,13 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_id):
     """ Edit a product to the store """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the admin can do that')
+        return redirect(reverse('home:index'))
 
     product = get_object_or_404(Product, pk=product_id)
 
@@ -98,8 +109,13 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the admin can do that')
+        return redirect(reverse('home:index'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()

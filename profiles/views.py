@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 from premium.models import Order
 from .forms import ProfileDetailsForm
 from .models import Profile
 
 
+@login_required
 def profile(request):
     """ A view to return the profile page """
     user_profile = get_object_or_404(Profile, user=request.user)
