@@ -1,0 +1,1 @@
+web: gunicorn salary_struggle.wsgi:application
