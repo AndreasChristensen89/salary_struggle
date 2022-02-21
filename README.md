@@ -62,3 +62,4 @@ To do list:
     - Set the port to public: 8000 open (private) ==> 8000 open (public)
 - When the walkthrough connected to Heroku he also loaded the product data (python3 manage.py loaddata products). I didn't do this, perhaps need to add products again after connecting.
 - set AWS bucket to list access for public - Amazon gives an error that says that they don't recommend this. Is this ok?
+    - Read in comments on Slack that mentor said it's ok
