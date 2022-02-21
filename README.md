@@ -63,3 +63,4 @@ To do list:
 - When the walkthrough connected to Heroku he also loaded the product data (python3 manage.py loaddata products). I didn't do this, perhaps need to add products again after connecting.
 - set AWS bucket to list access for public - Amazon gives an error that says that they don't recommend this. Is this ok?
     - Read in comments on Slack that mentor said it's ok
+- Remember to upload all media files to AWS: S3 ==> bukcet ==> media ==> upload ==> grant public read access to these objects ==> next, next, upload
