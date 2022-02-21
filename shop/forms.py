@@ -1,5 +1,6 @@
 from django import forms
 from .models import Product
+from .widgets import CustomClearableFileInput
 
 
 class ProductForm(forms.ModelForm):
@@ -10,3 +11,5 @@ class ProductForm(forms.ModelForm):
         """ Specify model and fields"""
         model = Product
         fields = '__all__'
+
+    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)

@@ -8,7 +8,7 @@ from .forms import ProductForm
 
 def all_products(request):
     """ A view to return the products page """
-    
+
     products = Product.objects.all()
     sort = None
     direction = None
@@ -52,7 +52,7 @@ def product_details(request, product_id):
 @login_required
 def add_product(request):
     """ Add a product to the store """
-    
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the admin can do that')
         return redirect(reverse('home:index'))
@@ -67,7 +67,7 @@ def add_product(request):
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
-    
+
         form = ProductForm()
 
     template = 'shop/add_product.html'
@@ -88,7 +88,7 @@ def edit_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
-    if request.method=='POST':
+    if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
