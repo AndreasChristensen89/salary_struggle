@@ -60,3 +60,4 @@ To do list:
     - form's id was spelled wrong
 - Couldn't receive webhooks from Stripe, kept getting 401 errors
     - Set the port to public: 8000 open (private) ==> 8000 open (public)
+- When the walkthrough connected to Heroku he also loaded the product data (python3 manage.py loaddata products). I didn't do this, perhaps need to add products again after connecting.
