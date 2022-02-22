@@ -1,11 +1,11 @@
 <script type="text/javascript">
     // Disable +/- buttons outside 1-99 range
     function handleEnableDisable(itemId) {
-        currentValue = ""
+        var currentValue = ""
         if ($(window).width() < 768) {
-            var currentValue = parseInt($(`.id_qty_mobile${itemId}`).val());
+            currentValue = parseInt($(`#id_qty_mobile${itemId}`).val());
         } else {
-            var currentValue = parseInt($(`.id_qty_${itemId}`).val());
+            currentValue = parseInt($(`#id_qty_${itemId}`).val());
         }
         var minusDisabled = currentValue < 2;
         var plusDisabled = currentValue > 98;
