@@ -29,6 +29,14 @@
             </div>
         </form>
 
+        <form method="post">
+            {% csrf_token %}
+            <div class="col-9 m-4 mx-auto">
+                {{ home_intellect_form|crispy }}
+                <button name="home_intellect" type="submit" class="btn btn-primary m-3">Update</button>
+            </div>
+        </form>
+
         <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
             <div class="card-body rounded-top admin-confirmed">
                 <h5 class="card-title">Sleep</h5>
@@ -50,7 +58,7 @@
 
         <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
             <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Work on Charisma</h5>
+                <h5 class="card-title">Work on Charm</h5>
                 <p class="card-text round">+1 charm</p>
             </div>
             <ul class="list-group list-group-flush border">

@@ -4,7 +4,7 @@ from profiles.models import ActiveCharacter
 
 class HomeCharmForm(forms.ModelForm):
     """
-    To update stats for a character
+    To update charm for a character
     """
     class Meta:
         """ Specify model and fields"""
@@ -14,9 +14,19 @@ class HomeCharmForm(forms.ModelForm):
 
 class SleepForm(forms.ModelForm):
     """
-    To update stats for a character
+    To recharge energy for a character
     """
     class Meta:
         """ Specify model and fields"""
         model = ActiveCharacter
         fields = ['energy']
+
+
+class HomeIntellectForm(forms.ModelForm):
+    """
+    To update coding for a character
+    """
+    class Meta:
+        """ Specify model and fields"""
+        model = ActiveCharacter
+        fields = ['intellect']

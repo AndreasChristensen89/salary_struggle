@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import Profile, ActiveCharacter
-from .forms import HomeCharmForm, SleepForm
+from .forms import HomeCharmForm, SleepForm, HomeIntellectForm
 
 
 @login_required
@@ -100,13 +100,27 @@ def house_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
     home_charm_form = HomeCharmForm(request.POST or None)
     sleep_form = SleepForm(request.POST or None)
-    
+    home_intellect_form = HomeIntellectForm(request.POST or None)
+
     if request.method == 'POST':
         if 'home_charm' in request.POST:
             form = HomeCharmForm(request.POST, instance=character)
             if form.is_valid():
-                form.save()
-                return redirect(reverse('grind:house'))
+                if character.energy >= 30:
+                    form.save()
+                    return redirect(reverse('grind:house'))
+                else:
+                    messages.error(request, 'Not enough energy')
+                    return redirect(reverse('grind:house'))
+        if 'home_intellect' in request.POST:
+            form = HomeIntellectForm(request.POST, instance=character)
+            if form.is_valid():
+                if character.energy >= 30:
+                    form.save()
+                    return redirect(reverse('grind:house'))
+                else:
+                    messages.error(request, 'Not enough energy')
+                    return redirect(reverse('grind:house'))
         elif 'sleep' in request.POST:
             form = SleepForm(request.POST, instance=character)
             if form.is_valid():
@@ -115,10 +129,12 @@ def house_page(request):
     else:
         home_charm_form = HomeCharmForm(instance=character)
         sleep_form = SleepForm(instance=character)
+        home_intellect_form = HomeIntellectForm(instance=character)
 
     context = {
         'home_charm_form': home_charm_form,
         'sleep_form': sleep_form,
+        'home_intellect_form': home_intellect_form,
     }
 
     return render(request, 'grind/house.html', context)
