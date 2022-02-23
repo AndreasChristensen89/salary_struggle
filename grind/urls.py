@@ -17,4 +17,11 @@ urlpatterns = [
     path('update-charm-home', views.update_charm_home, name='update_charm_home'),
     path('sleep', views.sleep, name='sleep'),
     path('study-home', views.study_home, name='study-home'),
+    path('bar-converse', views.bar_converse, name='bar-converse'),
+    path('bar-drink', views.bar_drink, name='bar-drink'),
+    path('library-study', views.library_study, name='library-study'),
+    path('agency-knowledge', views.agency_knowledge, name='agency-knowledge'),
+    path('agency-charm', views.agency_charm, name='agency-charm'),
+    path('agency-coding', views.agency_coding, name='agency-coding'),
+    path('agency-combine', views.agency_combine, name='agency-combine'),
 ]

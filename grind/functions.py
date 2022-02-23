@@ -1,5 +1,21 @@
 from random import randint
-from profiles.models import ActiveCharacter
+from django.shortcuts import redirect, reverse, get_object_or_404
+from django.contrib import messages
+from profiles.models import Profile, ActiveCharacter
+
+
+def validate_user(request):
+    """
+    Checks if user is logged and has a character
+    """
+    profile = get_object_or_404(Profile, user=request.user)
+    
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, you have to create a user to do that')
+        return redirect(reverse('home:index'))
+    elif not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
 
 def set_energy(user, consumed):

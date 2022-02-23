@@ -22,10 +22,18 @@
         </div>
         {% if user.is_authenticated %}
         <div class="row h-100 text-center my-5">
-            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill bg-white">Characters</div>
-            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill bg-white">Profile</div>
-            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill bg-white">Contact</div>
-            <div class="h2 col-6 my-2 display-5 border border-primary rounded-pill bg-white">Logout</div>
+            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'grind:enter' %}">
+                <div class="h2">Game</div>
+            </a>
+            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'profiles:profile' %}">
+                <div class="h2">Profile</div>
+            </a>
+            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'shop:all_products' %}">
+                <div class="h2">Shop</div>
+            </a>
+            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'account_logout' %}">
+                <div class="h2">Logout</div>
+            </a>
         </div>
         {% else %}
         <div class="row h-100">

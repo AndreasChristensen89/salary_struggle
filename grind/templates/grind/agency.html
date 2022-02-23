@@ -4,6 +4,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container h-100 mt-5">
+    {% if character.level == 1 %}
     <div class="row py-5 text-center">
         <div class="col">
             <h2>Ask recruiter for coding interview</h2>
@@ -19,34 +20,49 @@
         </a>  
 
             <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
+                <a href="{% url 'grind:agency-knowledge' %}">
                 <div class="card-body rounded-top admin-confirmed">
                     <h5 class="card-title">Blow hind mind with knowledge</h5>    
                         <p class="card-text round">Odds: Intellect to 20</p>
                 </div>
+                </a>
             </div>
 
             <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Charm him</h5>    
-                        <p class="card-text round">Odds: Charm to 20</p>
-                </div>
+                <a href="{% url 'grind:agency-charm' %}">
+                    <div class="card-body rounded-top admin-confirmed">
+                        <h5 class="card-title">Charm him</h5>    
+                            <p class="card-text round">Odds: Charm to 20</p>
+                    </div>
+                </a>
             </div>
 
             <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
+                <a href="{% url 'grind:agency-coding' %}">
                 <div class="card-body rounded-top admin-confirmed">
                     <h5 class="card-title">Code an impressive function in front of him</h5>    
                         <p class="card-text round">Odds: Coding to 20</p>
                 </div>
+                </a>
             </div>
 
             <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Combine your skills</h5>    
-                        <p class="card-text round">Odds: Intellect + Charisma + Coding to 60</p>
-                </div>
+                <a href="{% url 'grind:agency-combine' %}">
+                    <div class="card-body rounded-top admin-confirmed">
+                        <h5 class="card-title">Combine your skills</h5>    
+                            <p class="card-text round">Odds: Intellect + Charisma + Coding to 60</p>
+                    </div>
+                </a>
             </div>
 
     </div>
+    {% else %}
+    <div class="row py-5 text-center">
+        <div class="col">
+            <h2>Waiting for interview</h2>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}
