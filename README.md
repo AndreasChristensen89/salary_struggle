@@ -65,3 +65,4 @@ To do list:
     - Read in comments on Slack that mentor said it's ok
 - Remember to upload all media files to AWS: S3 ==> bukcet ==> media ==> upload ==> grant public read access to these objects ==> next, next, upload
 - Try to fix the increment error in product details
+    - Included a check to JS if url contained "bag", which would mean that it's on the shopping bag site. If not then no need to look for mobile form

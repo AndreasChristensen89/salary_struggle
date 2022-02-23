@@ -2,7 +2,7 @@
     // Disable +/- buttons outside 1-99 range
     function handleEnableDisable(itemId) {
         var currentValue = ""
-        if ($(window).width() < 768) {
+        if ($(window).width() < 768 && (window.location.href.indexOf("bag") > -1)) {
             currentValue = parseInt($(`#id_qty_mobile${itemId}`).val());
         } else {
             currentValue = parseInt($(`#id_qty_${itemId}`).val());
