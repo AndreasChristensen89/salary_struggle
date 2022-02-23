@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* To prevent scrolling */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}

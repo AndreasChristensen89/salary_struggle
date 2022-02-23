@@ -39,20 +39,12 @@
   </head>
   <body>
     <header class="container-fluid">
-            <!-- ======================== hamburger nav bar ======================   -->
-    <button class="hamburger" aria-label="Opens and closes the menu">
-        <span class="menuIcon material-icons" aria-hidden="true">
-          menu
-        </span>
-        <span class="xIcon material-icons" aria-hidden="true">
-          close
-        </span>
-      </button>
-      <ul class="menu">
-        <li><a class="menuLink" id="active" href="{% url 'profiles:profile' %}" aria-label="Go to Home page">Back to profile</a></li>
-        <li><a class="menuLink" href="#" aria-label="Go to Rules page">Rules</a></li>
-        <li><a class="menuLink" href="#" aria-label="Go to Contact page">Contact</a></li>
-      </ul>
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <a class="btn btn-outline-success mx-2" href="{% url 'profiles:profile' %}">Profile</a>
+          <a class="btn btn-sm btn-outline-secondary" href="#">Rules</a>
+        </form>
+      </nav>
     </header>
 
     {% if messages %}
@@ -80,7 +72,6 @@
     {% endblock%}
 
     {% block postloadjs %}
-    <script src="{% static 'js/hamburger-navigation.js' %}"></script>
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
