@@ -1,0 +1,90 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block meta %}
+        <meta http-equiv="X-UA-Compatible" contents="ie=edge">  <!-- allow support for older internet explorer versions, eliminate errors when validating HTML -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
+
+    {% block corecss %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/game_base.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@1,300&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e98ebe1726.js" crossorigin="anonymous"></script>
+        <!-- Stripe -->
+        <!-- <script src="https://js.stripe.com/v3/"></script> -->
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <title>Salary Struggle {% block extra_title %}{% endblock %}</title>
+  </head>
+  <body>
+    <header class="container-fluid">
+            <!-- ======================== hamburger nav bar ======================   -->
+    <button class="hamburger" aria-label="Opens and closes the menu">
+        <span class="menuIcon material-icons" aria-hidden="true">
+          menu
+        </span>
+        <span class="xIcon material-icons" aria-hidden="true">
+          close
+        </span>
+      </button>
+      <ul class="menu">
+        <li><a class="menuLink" id="active" href="{% url 'profiles:profile' %}" aria-label="Go to Home page">Back to profile</a></li>
+        <li><a class="menuLink" href="#" aria-label="Go to Rules page">Rules</a></li>
+        <li><a class="menuLink" href="#" aria-label="Go to Contact page">Contact</a></li>
+      </ul>
+    </header>
+
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock%}
+
+    {% block postloadjs %}
+    <script src="{% static 'js/hamburger-navigation.js' %}"></script>
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+    {% endblock %}
+
+  </body>
+</html>

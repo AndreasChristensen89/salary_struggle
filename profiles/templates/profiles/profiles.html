@@ -29,7 +29,7 @@
         <div class="row mb-4">
             <div class="col text-center">
                 <h3 class="display-5 mb-2">Profile status</h3>
-                {% if user.paid %}
+                {% if profile.paid %}
                     <div class="col-12">
                         <h4 class="h4 mb-4">Premium</h4>
                     </div>
@@ -40,6 +40,40 @@
                 {% endif %}
             </div>
         </div>
+
+        {% if profile.active_char %}
+        <div class="row mb-4">
+            <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
+                <h4 class="display-5 mb-2">Your Character</h4>
+                    <div class="col-12">
+                        <p>Level {{character.level }}</p>
+                    </div>
+                    <div class="col-12">
+                        <p>Day: {{character.day }}</p>
+                    </div>
+                    <div class="col-12">
+                        <p>Money: {{character.money }}</p>
+                    </div>
+                    <div class="col-12">
+                        <p>Intellect: {{character.intellect }}</p>
+                    </div>
+                    <div class="col-12">
+                        <p>Charm: {{character.charm }}</p>
+                    </div>
+                    <div class="col-12">
+                        <p>Coding: {{character.coding }}</p>
+                    </div>
+                    <div class="col-12">
+                        <p>Endurance: {{character.endurace }}</p>
+                    </div>
+                    {% if character.has_job %}
+                        <div class="col-12">
+                            <p>Has job: Yes</p>
+                        </div>
+                    {% endif %}
+            </div>
+        </div>
+        {% endif %}
         
         <div class="row">
             <div class="col-12 col-lg-6">

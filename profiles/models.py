@@ -59,13 +59,6 @@ class ActiveCharacter(models.Model):
     char_coding = models.IntegerField(default=1)
     char_endurace = models.IntegerField(default=1)
     has_job = models.BooleanField(default=False)
-    item_id = models.ForeignKey(Item, null=True, blank=True,
-                                on_delete=models.CASCADE,
-                                related_name="item")
-    item_intellect = models.IntegerField(null=True, blank=True)
-    item_charm = models.IntegerField(null=True, blank=True)
-    item_coding = models.IntegerField(null=True, blank=True)
-    item_endurance = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.user.username} - Level {self.level}"

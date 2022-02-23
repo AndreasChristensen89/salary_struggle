@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from premium.models import Order
 from .forms import ProfileDetailsForm
 from .models import Profile
+from .models import ActiveCharacter
 
 
 @login_required
@@ -21,12 +22,15 @@ def profile(request):
     else:
         form = ProfileDetailsForm(instance=user_profile)
     
+    character = get_object_or_404(ActiveCharacter, user=request.user)
     orders = user_profile.orders.all()
     template = 'profiles/profiles.html'
     context = {
         'form': form,
         'orders': orders,
         'on_profile_page': True,
+        'profile': user_profile,
+        'character': character,
     }
 
     return render(request, template, context)
