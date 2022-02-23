@@ -14,4 +14,7 @@ urlpatterns = [
     path('store/', views.store_page, name='store'),
     path('call-center/', views.call_center_page, name='call-center'),
     path('back-alley/', views.back_alley_page, name='back-alley'),
+    path('update-charm-home', views.update_charm_home, name='update_charm_home'),
+    path('sleep', views.sleep, name='sleep'),
+    path('study-home', views.study_home, name='study-home'),
 ]

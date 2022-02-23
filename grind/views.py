@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import Profile, ActiveCharacter
 from .forms import HomeCharmForm, SleepForm, HomeIntellectForm
+from .functions import set_energy
 
 
 @login_required
@@ -202,3 +203,72 @@ def back_alley_page(request):
         return redirect(reverse('profiles:profile'))
 
     return render(request, 'grind/back_alley.html')
+
+
+# Update views
+
+@login_required
+def update_charm_home(request):
+    """ Update view to add more charm """
+    profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user) 
+
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, you have to create a user to do that')
+        return redirect(reverse('home:index'))
+    elif not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
+    if character.energy >= 40:
+        curr_charm = ActiveCharacter.objects.get(user=request.user).charm
+        ActiveCharacter.objects.filter(user=request.user).update(charm=curr_charm+1)
+        set_energy(request.user, 40)
+    else:
+        messages.error(request, 'Not enough energy')
+
+    return redirect(reverse('grind:house'))
+
+
+@login_required
+def sleep(request):
+    """ Update view to add full energy """
+    profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user) 
+
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, you have to create a user to do that')
+        return redirect(reverse('home:index'))
+    elif not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+    
+    if character.energy < 100:
+        ActiveCharacter.objects.filter(user=request.user).update(energy=100)
+    else:
+        messages.error(request, 'Your energy is full. No need to sleep')
+    
+    return redirect(reverse('grind:house'))
+
+
+@login_required
+def study_home(request):
+    """ Update view to add more charm """
+    profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user) 
+
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, you have to create a user to do that')
+        return redirect(reverse('home:index'))
+    elif not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+    
+    if character.energy >= 40:
+        curr_coding = ActiveCharacter.objects.get(user=request.user).coding
+        ActiveCharacter.objects.filter(user=request.user).update(coding=curr_coding+1)
+        set_energy(request.user, 40)
+    else:
+        messages.error(request, 'Not enough energy')
+    
+    return redirect(reverse('grind:house'))
