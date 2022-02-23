@@ -50,6 +50,9 @@ Video is: The shopping bag: the shopping bag
 
 Installed django-countries for the dropdown box in the form
 
+For multiple forms on a page:
+http://www.nurettinabaci.org/2021/01/12/python/handling-multiple-forms-on-the-same-page-in-django/
+
 
 To do list:
 - Fix sorting method, so items with 0 in sorted effect will not show
