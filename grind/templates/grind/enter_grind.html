@@ -1,0 +1,16 @@
+{% extends "grind/game_base.html" %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="row my-4">
+    <a class="col-12 mt-5" href="{% url 'grind:house' %}">
+    <div class="col-10 mx-auto text-center">
+        <h1 class="display-3">Enter</h1>
+        <h1 class="display-4">the</h1>
+        <h1 class="display-3">Grind</h1>
+    </div>
+    </a>
+</div>
+{% endif %}
+{% endblock %}
