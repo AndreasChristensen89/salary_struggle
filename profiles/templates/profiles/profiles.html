@@ -55,16 +55,16 @@
                         <p>Money: {{ character.money }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Intellect: {{ character.char_intellect }}</p>
+                        <p>Intellect: {{ character.intellect }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Charm: {{ character.char_charm }}</p>
+                        <p>Charm: {{ character.charm }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Coding: {{ character.char_coding }}</p>
+                        <p>Coding: {{ character.coding }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Endurance: {{ character.char_endurance }}</p>
+                        <p>Endurance: {{ character.endurance }}</p>
                     </div>
                     {% if character.has_job %}
                         <div class="col-12">
@@ -72,6 +72,7 @@
                         </div>
                     {% endif %}
             </div>
+            <a href="{% url 'profiles:new_character' %}">Restart character</a>
         </div>
         {% endif %}
         

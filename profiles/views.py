@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from premium.models import Order
@@ -34,6 +34,14 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def create_new_character(request):
+    """ Delete a product from the store """
+
+    ActiveCharacter.create_new_character(request.user)
+    return redirect(reverse('profiles:profile'))
 
 
 def order_history(request, order_number):
