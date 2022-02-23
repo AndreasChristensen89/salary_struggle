@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -53,31 +54,36 @@ class ActiveCharacter(models.Model):
     level = models.IntegerField(default=1)
     day = models.IntegerField(default=1)
     money = models.IntegerField(default=20000)
-    char_intellect = models.IntegerField(default=1)
-    char_charm = models.IntegerField(default=1)
-    char_coding = models.IntegerField(default=1)
-    char_endurace = models.IntegerField(default=1)
+    intellect = models.IntegerField(default=1)
+    charm = models.IntegerField(default=1)
+    coding = models.IntegerField(default=1)
+    endurance = models.IntegerField(default=1)
+    energy = models.IntegerField(default=100)
     has_job = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.username} - Level {self.level}"
 
     @classmethod
-    def create_character(cls, user):
+    def create_new_character(cls, user):
         """
         Model class to create a character
         """
 
+        # Update character in case there is a character to replace
+        if ActiveCharacter.objects.filter(user=user).exists():
+            ActiveCharacter.objects.filter(user=user).delete()
+        
+        # Create ActiveCharacter object and save
         new_character = {}
         new_character["user"] = user
 
-        # Create ActiveCharacter object and save
         entry = cls(**new_character)
         entry.save()
-
-        # Update user profile to reflect new character
+        
+        # Update profile to set active character
         user_profile = Profile.objects.get(user=user)
         user_profile.active_char = True
         user_profile.save()
-
+        
         return entry

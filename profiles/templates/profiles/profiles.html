@@ -46,25 +46,25 @@
             <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
                 <h4 class="display-5 mb-2">Your Character</h4>
                     <div class="col-12">
-                        <p>Level {{character.level }}</p>
+                        <p>Level {{ character.level }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Day: {{character.day }}</p>
+                        <p>Day: {{ character.day }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Money: {{character.money }}</p>
+                        <p>Money: {{ character.money }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Intellect: {{character.intellect }}</p>
+                        <p>Intellect: {{ character.char_intellect }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Charm: {{character.charm }}</p>
+                        <p>Charm: {{ character.char_charm }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Coding: {{character.coding }}</p>
+                        <p>Coding: {{ character.char_coding }}</p>
                     </div>
                     <div class="col-12">
-                        <p>Endurance: {{character.endurace }}</p>
+                        <p>Endurance: {{ character.char_endurance }}</p>
                     </div>
                     {% if character.has_job %}
                         <div class="col-12">
