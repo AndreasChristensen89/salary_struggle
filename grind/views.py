@@ -110,11 +110,13 @@ def store_page(request):
     validate_user(request)
 
     items = Item.objects.all()
-    character = get_object_or_404(ActiveCharacter, user=request.user)    
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+    character_items = character.items.all()
 
     context = {
         'items': items,
         'character': character,
+        'character_items': character_items,
     }
 
     return render(request, 'grind/store.html', context)
@@ -126,7 +128,13 @@ def call_center_page(request):
 
     validate_user(request)
 
-    return render(request, 'grind/call_center.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/call_center.html', context)
 
 
 @login_required
@@ -345,6 +353,7 @@ def agency_combine(request):
     return redirect(reverse('grind:agency'))
 
 
+@login_required
 def add_item(request, item_id):
     """
     Updates the character to match
@@ -372,3 +381,43 @@ def add_item(request, item_id):
         messages.error(request, 'You cannot afford this')
 
     return redirect(reverse('grind:store'))
+
+
+@login_required
+def apply_job(request):
+    """
+    Updates characters job status to true if successfull outcome
+    """
+
+    validate_user(request)
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    if dice_roll(character.charm, 20):
+        ActiveCharacter.objects.filter(user=request.user).update(has_job=True)
+        messages.success(request, '"Get in the damn chair and start working" - You now have a part time job')
+    else:
+        messages.error(request, '"Get lost kid", says the manager')
+
+    return redirect(reverse('grind:call-center'))
+
+
+@login_required
+def work(request):
+    """ Update view to add more charm """
+
+    validate_user(request)
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    salary = character.charm * 500
+
+    if character.energy >= 60:
+        curr_money = ActiveCharacter.objects.get(user=request.user).money
+        ActiveCharacter.objects.filter(user=request.user).update(money=curr_money+salary)
+        messages.error(request, f'You made ¥{salary}')
+        set_energy(request.user, 60)
+    else:
+        messages.error(request, 'Not enough energy')
+
+    return redirect(reverse('grind:call-center'))

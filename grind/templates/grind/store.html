@@ -19,8 +19,8 @@
                 </div>
                 <ul class="list-group list-group-flush border"></ul>
                 {% for item in items %}
-                    {% if item.id in character.items %}
-                    <li class="list-group-item"><small>{{item.name}} - ¥{{item.price}}</small> Purchased</li>
+                    {% if item in character_items %}
+                    <li class="list-group-item">{{item.name}} - ¥{{item.price}} <strong>Purchased</strong></li>
                     {% else %}
                     <a href="{% url 'grind:add-item' item.id %}">
                         <li class="list-group-item">{{item.name}} - ¥{{item.price}}</li>
