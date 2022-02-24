@@ -13,24 +13,29 @@
         </a>
 
         <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
-            <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Fight</h5>
-                <p class="card-text round">+3 Endurance</p>
-            </div>
-            <ul class="list-group list-group-flush border">
-                <li class="list-group-item">Risk of losing fight</li>
-                <li class="list-group-item">No reward and -50 energy next day</li>
-            </ul>
+            <a href="{% url 'grind:fight' %}">
+                <div class="card-body rounded-top admin-confirmed">
+                    <h5 class="card-title">Fight</h5>
+                    <p class="card-text round">+3 Endurance</p>
+                </div>
+                <ul class="list-group list-group-flush border">
+                    <li class="list-group-item">Risk of losing fight:</li>
+                    <li class="list-group-item">Energy ==> 0 and -50 energy next day</li>
+                </ul>
+            </a>
         </div>
 
         <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
-            <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Gamble on horses</h5>
-                <p class="card-text round">Pays 2 to 1</p>
-            </div>
-            <ul class="list-group list-group-flush border">
-                <li class="list-group-item">Winning Odds: 1 to 2</li>
-            </ul>
+            <a href="{% url 'grind:gamble' %}">
+                <div class="card-body rounded-top admin-confirmed">
+                    <h5 class="card-title">Gamble on horses</h5>
+                    <p class="card-text round">Pays 2 to 1</p>
+                </div>
+                <ul class="list-group list-group-flush border">
+                    <li class="list-group-item">Bet ¥1000</li>
+                    <li class="list-group-item">Winning Odds: 1 to 2</li>
+                </ul>
+            </a>
         </div>
 
     </div>

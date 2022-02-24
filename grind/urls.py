@@ -27,4 +27,6 @@ urlpatterns = [
     path('add-item/<int:item_id>/', views.add_item, name='add-item'),
     path('apply-job/', views.apply_job, name='apply-job'),
     path('work/', views.work, name='work'),
+    path('fight/', views.fight, name='fight'),
+    path('gamble/', views.gamble, name='gamble'),
 ]

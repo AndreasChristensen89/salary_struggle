@@ -178,7 +178,7 @@ def sleep(request):
         ActiveCharacter.objects.filter(user=request.user).update(energy=100)
         curr_day = ActiveCharacter.objects.get(user=request.user).day
         ActiveCharacter.objects.filter(user=request.user).update(day=curr_day+1)
-        messages.error(request, f'Day {character.day} - take your time')
+        messages.error(request, f'Day {curr_day+1} - take your time')
     else:
         messages.error(request, 'Your energy is full. No need to sleep')
     
@@ -404,7 +404,9 @@ def apply_job(request):
 
 @login_required
 def work(request):
-    """ Update view to add more charm """
+    """
+    View to increase money, given enough energy
+    """
 
     validate_user(request)
 
@@ -421,3 +423,52 @@ def work(request):
         messages.error(request, 'Not enough energy')
 
     return redirect(reverse('grind:call-center'))
+
+
+@login_required
+def fight(request):
+    """
+    Updates endurance, given winning outcome
+    """
+
+    validate_user(request)
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    if character.energy >= 60:
+        if dice_roll(1, 2):
+            curr_endurance = ActiveCharacter.objects.get(user=request.user).endurance
+            ActiveCharacter.objects.filter(user=request.user).update(endurance=curr_endurance+3)
+            messages.success(request, 'Nicely done, the other guy looks pretty roughed up. Your endurance went up')
+        else:
+            ActiveCharacter.objects.filter(user=request.user).update(energy=0)
+            messages.error(request, 'Auch, you may need a trip to the hospital. No more energy for you today, and make sure to rest tomorrow')
+    else:
+        messages.error(request, 'Not enough energy')
+
+    return redirect(reverse('grind:back-alley'))
+
+
+@login_required
+def gamble(request):
+    """
+    Updates endurance, given winning outcome
+    """
+
+    validate_user(request)
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    if character.money >= 1000:
+        if dice_roll(1, 3):
+            curr_money = ActiveCharacter.objects.get(user=request.user).money
+            ActiveCharacter.objects.filter(user=request.user).update(money=curr_money+3000)
+            messages.success(request, 'Lucky you, you just pocketed ¥3000')
+        else:
+            curr_money = ActiveCharacter.objects.get(user=request.user).money
+            ActiveCharacter.objects.filter(user=request.user).update(money=curr_money-1000)
+            messages.error(request, 'Better luck next time. Try to win it back, or stay sensible.')
+    else:
+        messages.error(request, "In your current financial situation you probably shouldn't")
+
+    return redirect(reverse('grind:back-alley'))
