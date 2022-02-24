@@ -202,12 +202,20 @@ def sleep(request):
             coding=character.coding-character.coding_penalty,
             endurance=character.endurance-character.endurance_penalty,
             )
-        if (100-character.energy_penalty) < 0:
-            ActiveCharacter.objects.filter(user=request.user).update(energy=0)
+        ActiveCharacter.objects.filter(user=request.user).update(
+            energy_penalty=0,
+            intellect_penalty=0,
+            charm_penalty=0,
+            coding_penalty=0,
+            endurance_penalty=0,
+            )
 
         curr_day = ActiveCharacter.objects.get(user=request.user).day
         ActiveCharacter.objects.filter(user=request.user).update(day=curr_day+1)
-        messages.error(request, f'Day {curr_day+1} - take your time')
+        messages.info(request, f'Day {curr_day+1} - take your time')
+        if (100-character.energy_penalty) < 0:
+            ActiveCharacter.objects.filter(user=request.user).update(energy=0)
+            messages.info(request, f'No energy. Looks like you went too rough on yourself yesterday.')
     else:
         messages.error(request, 'Your energy is full. No need to sleep')
 
@@ -429,26 +437,27 @@ def add_item(request, item_id):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    item = get_object_or_404(Item, id=item_id)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    i = get_object_or_404(Item, id=item_id)
+    c = get_object_or_404(ActiveCharacter, user=request.user)
 
-    if character.money >= item.price:
-        if item not in character.items.all():
+    if c.money >= i.price:
+        if i not in c.items.all():
             ActiveCharacter.objects.filter(user=request.user).update(
-                intellect=character.intellect+item.intellect,
-                charm=character.charm+item.charm,
-                coding=character.coding+item.coding,
-                energy=character.energy+item.energy,
-                endurance=character.endurace+item.endurance,
-                intellect_penalty=character.intellect+item.intellect_penalty,
-                charm_penalty=character.charm+item.charm_penalty,
-                coding_penalty=character.coding+item.coding_penalty,
-                energy_penalty=character.energy+item.energy_penalty,
-                endurance_penalty=character.endurace+item.endurance_penalty,
-                money=character.money-item.price,
+                intellect=c.intellect+i.intellect,
+                charm=c.charm+i.charm,
+                coding=c.coding+i.coding,
+                energy=c.energy+i.energy,
+                endurance=c.endurance+i.endurance,
+                intellect_penalty=c.intellect_penalty+i.intellect_penalty,
+                charm_penalty=c.charm_penalty+i.charm_penalty,
+                coding_penalty=c.coding_penalty+i.coding_penalty,
+                energy_penalty=c.energy_penalty+i.energy_penalty,
+                endurance_penalty=c.endurance_penalty+i.endurance_penalty,
+                money=c.money-i.price
                 )
-            if item.permanent:
-                character.items.add(item)
+
+            if i.permanent:
+                c.items.add(i)
         else:
             messages.error(request, 'You already own this')
     else:
@@ -494,7 +503,7 @@ def work(request):
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
-    salary = character.charm * 500
+    salary = character.charm * 200
 
     if character.energy >= 60:
         curr_money = ActiveCharacter.objects.get(user=request.user).money
@@ -522,13 +531,14 @@ def fight(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if character.energy >= 60:
-        if dice_roll(1, 2):
-            curr_endurance = ActiveCharacter.objects.get(user=request.user).endurance
-            ActiveCharacter.objects.filter(user=request.user).update(endurance=curr_endurance+3)
+        if dice_roll(5, 10):
+            ActiveCharacter.objects.filter(user=request.user).update(endurance=character.endurance+3)
             messages.success(request, 'Nicely done, the other guy looks pretty roughed up. Your endurance went up')
+            set_energy(request.user, 60)
         else:
-            ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-            ActiveCharacter.objects.filter(user=request.user).update(energy_penalty=50)
+            ActiveCharacter.objects.filter(user=request.user).update(
+                energy=0,
+                energy_penalty=character.energy_penalty+50)
             messages.error(request, 'Auch, you may need a trip to the hospital. No more energy for you today, and make sure to rest tomorrow')
     else:
         messages.error(request, 'Not enough energy')
