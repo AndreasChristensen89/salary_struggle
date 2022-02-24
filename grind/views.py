@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import Profile, ActiveCharacter
+from codex.models import Item
 from .functions import set_energy, validate_user, dice_roll
 
 
@@ -108,7 +109,15 @@ def store_page(request):
 
     validate_user(request)
 
-    return render(request, 'grind/store.html')
+    items = Item.objects.all()
+    character = get_object_or_404(ActiveCharacter, user=request.user)    
+
+    context = {
+        'items': items,
+        'character': character,
+    }
+
+    return render(request, 'grind/store.html', context)
 
 
 @login_required
@@ -331,6 +340,32 @@ def agency_combine(request):
         messages.success(request, '"Wow"! he says enthusiastically. "Consider yourself on to the next stage". Your level went up and an HR interview is now available to you')
     else:
         ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-        messages.error(request, '"You probably need some experience before moving on", he says with a dry voice. Your morale is broken = energy drained')
+        messages.error(request, '"You probably need some experience before moving on", he says with a dry voice. manage.py Your morale is broken = energy drained')
 
     return redirect(reverse('grind:agency'))
+
+
+def add_item(request, item_id):
+    """
+    Updates the character to match
+    """
+
+    validate_user(request)
+
+    item = get_object_or_404(Item, id=item_id)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    if character.money >= item.price:
+        ActiveCharacter.objects.filter(user=request.user).update(
+            intellect=character.intellect+item.intellect,
+            charm=character.charm+item.charm,
+            coding=character.coding+item.coding,
+            energy=character.energy+item.energy,
+            money=character.money-item.price,
+            )
+        if item.permanent:
+            character.items.add(item)
+    else:
+        messages.error(request, 'You cannot afford this')
+
+    return redirect(reverse('grind:store'))

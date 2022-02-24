@@ -24,4 +24,5 @@ urlpatterns = [
     path('agency-charm', views.agency_charm, name='agency-charm'),
     path('agency-coding', views.agency_coding, name='agency-coding'),
     path('agency-combine', views.agency_combine, name='agency-combine'),
+    path('add-item/<int:item_id>', views.add_item, name='add-item'),
 ]

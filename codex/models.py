@@ -39,6 +39,7 @@ class Item(models.Model):
     charm = models.IntegerField(default=0)
     coding = models.IntegerField(default=0)
     energy = models.IntegerField(default=0)
+    permanent = models.BooleanField(default=False)
     image = models.ImageField(null=False, blank=False)
     description = models.TextField(null=True, blank=True)
 

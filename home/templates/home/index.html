@@ -38,8 +38,12 @@
         {% else %}
         <div class="row h-100">
             <div class="my-5 mx-auto text-center">
-                <div class="col-6 my-2 display-5">Register</div>
-                <div class="col-6 my-2 display-5">Login</div>
+                <a class="col-6 my-2 display-5" href="{% url 'account_signup' %}">
+                    <div class="col">Register</div>
+                </a>
+                <a class="col-6 my-2 display-5" href="{% url 'account_login' %}">
+                    <div class="col">Login</div>
+                </a>
             </div>
         </div>
         {% endif %}
