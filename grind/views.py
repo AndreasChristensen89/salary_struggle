@@ -356,15 +356,18 @@ def add_item(request, item_id):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if character.money >= item.price:
-        ActiveCharacter.objects.filter(user=request.user).update(
-            intellect=character.intellect+item.intellect,
-            charm=character.charm+item.charm,
-            coding=character.coding+item.coding,
-            energy=character.energy+item.energy,
-            money=character.money-item.price,
-            )
-        if item.permanent:
-            character.items.add(item)
+        if item not in character.items.all():
+            ActiveCharacter.objects.filter(user=request.user).update(
+                intellect=character.intellect+item.intellect,
+                charm=character.charm+item.charm,
+                coding=character.coding+item.coding,
+                energy=character.energy+item.energy,
+                money=character.money-item.price,
+                )
+            if item.permanent:
+                character.items.add(item)
+        else:
+            messages.error(request, 'You already own this')
     else:
         messages.error(request, 'You cannot afford this')
 
