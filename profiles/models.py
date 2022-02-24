@@ -60,6 +60,11 @@ class ActiveCharacter(models.Model):
     coding = models.IntegerField(default=1)
     endurance = models.IntegerField(default=1)
     energy = models.IntegerField(default=100)
+    intellect_penalty = models.IntegerField(default=0)
+    charm_penalty = models.IntegerField(default=0)
+    coding_penalty = models.IntegerField(default=0)
+    endurance_penalty = models.IntegerField(default=0)
+    energy_penalty = models.IntegerField(default=0)
     has_job = models.BooleanField(default=False)
     items = models.ManyToManyField(Item, related_name='character_items', blank=True)
 

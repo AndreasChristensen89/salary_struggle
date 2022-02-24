@@ -4,6 +4,12 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container h-100 mt-5">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="h1">Agency</h1>
+        </div>
+    </div>
+    
     {% if character.level == 1 %}
     <div class="row py-5 text-center">
         <div class="col">

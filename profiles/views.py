@@ -22,7 +22,10 @@ def profile(request):
     else:
         form = ProfileDetailsForm(instance=user_profile)
     
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    if user_profile.active_char:
+        character = get_object_or_404(ActiveCharacter, user=request.user)
+    else:
+        character = None
     orders = user_profile.orders.all()
     template = 'profiles/profiles.html'
     context = {

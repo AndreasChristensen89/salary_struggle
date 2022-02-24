@@ -10,7 +10,11 @@ from .functions import set_energy, validate_user, dice_roll
 def enter_game(request):
     """ Delete a product from the store """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     return render(request, 'grind/enter_grind.html')
 
@@ -21,10 +25,7 @@ def city(request):
 
     profile = get_object_or_404(Profile, user=request.user)
 
-    if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to create a user to do that')
-        return redirect(reverse('home:index'))
-    elif not profile.active_char:
+    if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
@@ -37,10 +38,7 @@ def bar_page(request):
 
     profile = get_object_or_404(Profile, user=request.user)
 
-    if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to create a user to do that')
-        return redirect(reverse('home:index'))
-    elif not profile.active_char:
+    if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
@@ -53,10 +51,7 @@ def library_page(request):
 
     profile = get_object_or_404(Profile, user=request.user)
 
-    if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to create a user to do that')
-        return redirect(reverse('home:index'))
-    elif not profile.active_char:
+    if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
@@ -69,10 +64,7 @@ def downtown_page(request):
 
     profile = get_object_or_404(Profile, user=request.user)
 
-    if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to create a user to do that')
-        return redirect(reverse('home:index'))
-    elif not profile.active_char:
+    if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
@@ -83,7 +75,11 @@ def downtown_page(request):
 def house_page(request):
     """ A view to return the home page """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     return render(request, 'grind/house.html')
 
@@ -92,7 +88,11 @@ def house_page(request):
 def agency_page(request):
     """ A view to return the agency page """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -107,7 +107,11 @@ def agency_page(request):
 def store_page(request):
     """ A view to return the store page """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     items = Item.objects.all()
     character = get_object_or_404(ActiveCharacter, user=request.user)
@@ -126,7 +130,11 @@ def store_page(request):
 def call_center_page(request):
     """ A view to return the call-center page """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -141,7 +149,11 @@ def call_center_page(request):
 def back_alley_page(request):
     """ A view to return the back alley page """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     return render(request, 'grind/back_alley.html')
 
@@ -152,7 +164,11 @@ def back_alley_page(request):
 def update_charm_home(request):
     """ Update view to add more charm """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -169,30 +185,47 @@ def update_charm_home(request):
 @login_required
 def sleep(request):
     """ Update view to add full energy """
-    
-    validate_user(request)
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
-    
+
     if character.energy < 100:
-        ActiveCharacter.objects.filter(user=request.user).update(energy=100)
+        ActiveCharacter.objects.filter(user=request.user).update(
+            energy=100-character.energy_penalty,
+            intellect=character.intellect-character.intellect_penalty,
+            charm=character.charm-character.charm_penalty,
+            coding=character.coding-character.coding_penalty,
+            endurance=character.endurance-character.endurance_penalty,
+            )
+        if (100-character.energy_penalty) < 0:
+            ActiveCharacter.objects.filter(user=request.user).update(energy=0)
+
         curr_day = ActiveCharacter.objects.get(user=request.user).day
         ActiveCharacter.objects.filter(user=request.user).update(day=curr_day+1)
         messages.error(request, f'Day {curr_day+1} - take your time')
     else:
         messages.error(request, 'Your energy is full. No need to sleep')
-    
+
     return redirect(reverse('grind:house'))
 
 
 @login_required
 def study_home(request):
     """ Update view to add more charm """
-    
-    validate_user(request)
-    
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
     character = get_object_or_404(ActiveCharacter, user=request.user)
- 
+
     if character.energy >= 40:
         curr_coding = ActiveCharacter.objects.get(user=request.user).coding
         ActiveCharacter.objects.filter(user=request.user).update(coding=curr_coding+1)
@@ -206,11 +239,15 @@ def study_home(request):
 @login_required
 def bar_converse(request):
     """ Update view to add more charm """
-    
-    validate_user(request)
-    
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
     character = get_object_or_404(ActiveCharacter, user=request.user)
- 
+
     if character.energy >= 40:
         if dice_roll(2, 3):
             curr_coding = ActiveCharacter.objects.get(user=request.user).coding
@@ -228,17 +265,23 @@ def bar_converse(request):
 @login_required
 def bar_drink(request):
     """ Update view to add more charm """
-    
-    validate_user(request)
-    
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
     character = get_object_or_404(ActiveCharacter, user=request.user)
- 
+
     if character.energy >= 40:
         if character.money > 1000:
             curr_charm = ActiveCharacter.objects.get(user=request.user).charm
             curr_money = ActiveCharacter.objects.get(user=request.user).money
-            ActiveCharacter.objects.filter(user=request.user).update(charm=curr_charm+1)
-            ActiveCharacter.objects.filter(user=request.user).update(money=curr_money-1000)
+            ActiveCharacter.objects.filter(user=request.user).update(
+                charm=curr_charm+1,
+                money=curr_money-1000,
+                energy_penalty=character.energy_penalty+20)
             set_energy(request.user, 40)
         else:
             messages.error(request, "Get a job, you're too broke to even buy a beer")
@@ -251,11 +294,15 @@ def bar_drink(request):
 @login_required
 def library_study(request):
     """ Update view to add more charm """
-    
-    validate_user(request)
-    
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
     character = get_object_or_404(ActiveCharacter, user=request.user)
- 
+
     if character.energy >= 60:
         curr_coding = ActiveCharacter.objects.get(user=request.user).coding
         curr_intellect = ActiveCharacter.objects.get(user=request.user).intellect
@@ -278,7 +325,11 @@ def library_study(request):
 def agency_knowledge(request):
     """ Update view to add more charm """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -297,7 +348,11 @@ def agency_knowledge(request):
 def agency_charm(request):
     """ Update view to add more charm """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -316,7 +371,11 @@ def agency_charm(request):
 def agency_coding(request):
     """ Update view to add more charm """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -335,7 +394,11 @@ def agency_coding(request):
 def agency_combine(request):
     """ Update view to add more charm """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -356,10 +419,15 @@ def agency_combine(request):
 @login_required
 def add_item(request, item_id):
     """
-    Updates the character to match
+    Updates the character's stats according to item stats
+    Attaches the item to character if permanent
     """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     item = get_object_or_404(Item, id=item_id)
     character = get_object_or_404(ActiveCharacter, user=request.user)
@@ -371,6 +439,12 @@ def add_item(request, item_id):
                 charm=character.charm+item.charm,
                 coding=character.coding+item.coding,
                 energy=character.energy+item.energy,
+                endurance=character.endurace+item.endurance,
+                intellect_penalty=character.intellect+item.intellect_penalty,
+                charm_penalty=character.charm+item.charm_penalty,
+                coding_penalty=character.coding+item.coding_penalty,
+                energy_penalty=character.energy+item.energy_penalty,
+                endurance_penalty=character.endurace+item.endurance_penalty,
                 money=character.money-item.price,
                 )
             if item.permanent:
@@ -389,7 +463,11 @@ def apply_job(request):
     Updates characters job status to true if successfull outcome
     """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -408,7 +486,11 @@ def work(request):
     View to increase money, given enough energy
     """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -431,7 +513,11 @@ def fight(request):
     Updates endurance, given winning outcome
     """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
@@ -442,6 +528,7 @@ def fight(request):
             messages.success(request, 'Nicely done, the other guy looks pretty roughed up. Your endurance went up')
         else:
             ActiveCharacter.objects.filter(user=request.user).update(energy=0)
+            ActiveCharacter.objects.filter(user=request.user).update(energy_penalty=50)
             messages.error(request, 'Auch, you may need a trip to the hospital. No more energy for you today, and make sure to rest tomorrow')
     else:
         messages.error(request, 'Not enough energy')
@@ -455,7 +542,11 @@ def gamble(request):
     Updates endurance, given winning outcome
     """
 
-    validate_user(request)
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
 
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
