@@ -173,8 +173,7 @@ def update_charm_home(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if character.energy >= 40:
-        curr_charm = ActiveCharacter.objects.get(user=request.user).charm
-        ActiveCharacter.objects.filter(user=request.user).update(charm=curr_charm+1)
+        ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+1)
         set_energy(request.user, 40)
     else:
         messages.error(request, 'Not enough energy')
@@ -195,13 +194,16 @@ def sleep(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if character.energy < 100:
+        # subtracts penalties from the day
         ActiveCharacter.objects.filter(user=request.user).update(
             energy=100-character.energy_penalty,
             intellect=character.intellect-character.intellect_penalty,
             charm=character.charm-character.charm_penalty,
             coding=character.coding-character.coding_penalty,
             endurance=character.endurance-character.endurance_penalty,
+            day=character.day+1
             )
+        # resets all penalties to 0 for new day
         ActiveCharacter.objects.filter(user=request.user).update(
             energy_penalty=0,
             intellect_penalty=0,
@@ -209,13 +211,10 @@ def sleep(request):
             coding_penalty=0,
             endurance_penalty=0,
             )
-
-        curr_day = ActiveCharacter.objects.get(user=request.user).day
-        ActiveCharacter.objects.filter(user=request.user).update(day=curr_day+1)
-        messages.info(request, f'Day {curr_day+1} - take your time')
+        messages.info(request, f'Day {character.day+1} - take your time')
         if (100-character.energy_penalty) < 0:
             ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-            messages.info(request, f'No energy. Looks like you went too rough on yourself yesterday.')
+            messages.info(request, 'No energy. Looks like you went too rough on yourself yesterday.')
     else:
         messages.error(request, 'Your energy is full. No need to sleep')
 
@@ -258,8 +257,7 @@ def bar_converse(request):
 
     if character.energy >= 40:
         if dice_roll(2, 3):
-            curr_coding = ActiveCharacter.objects.get(user=request.user).coding
-            ActiveCharacter.objects.filter(user=request.user).update(coding=curr_coding+1)
+            ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+2)
             set_energy(request.user, 40)
         else:
             set_energy(request.user, 40)
@@ -284,11 +282,9 @@ def bar_drink(request):
 
     if character.energy >= 40:
         if character.money > 1000:
-            curr_charm = ActiveCharacter.objects.get(user=request.user).charm
-            curr_money = ActiveCharacter.objects.get(user=request.user).money
             ActiveCharacter.objects.filter(user=request.user).update(
-                charm=curr_charm+1,
-                money=curr_money-1000,
+                charm=character.charm+2,
+                money=character.money-1000,
                 energy_penalty=character.energy_penalty+20)
             set_energy(request.user, 40)
         else:
@@ -312,15 +308,13 @@ def library_study(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if character.energy >= 60:
-        curr_coding = ActiveCharacter.objects.get(user=request.user).coding
-        curr_intellect = ActiveCharacter.objects.get(user=request.user).intellect
         if dice_roll(2, 3):
-            ActiveCharacter.objects.filter(user=request.user).update(coding=curr_coding+2)
-            ActiveCharacter.objects.filter(user=request.user).update(intellect=curr_intellect+2)
+            ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+2)
+            ActiveCharacter.objects.filter(user=request.user).update(intellect=character.intellect+2)
             set_energy(request.user, 60)
         else:
-            ActiveCharacter.objects.filter(user=request.user).update(coding=curr_coding+1)
-            ActiveCharacter.objects.filter(user=request.user).update(intellect=curr_intellect+1)
+            ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+1)
+            ActiveCharacter.objects.filter(user=request.user).update(intellect=character.intellect+1)
             set_energy(request.user, 60)
             messages.error(request, 'Your friends came along and distracted you. Half effort = half reward')
     else:
@@ -342,8 +336,7 @@ def agency_knowledge(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if dice_roll(character.intellect, 20):
-        curr_level = ActiveCharacter.objects.get(user=request.user).level
-        ActiveCharacter.objects.filter(user=request.user).update(level=curr_level+1)
+        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
         messages.success(request, 'Nicely done, he is completely floored. Your level went up and an HR interview is now available to you')
     else:
         ActiveCharacter.objects.filter(user=request.user).update(energy=0)
@@ -365,8 +358,7 @@ def agency_charm(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if dice_roll(character.charm, 20):
-        curr_level = ActiveCharacter.objects.get(user=request.user).level
-        ActiveCharacter.objects.filter(user=request.user).update(level=curr_level+1)
+        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
         messages.success(request, 'Awesome, you see stars in his eyes! Your level went up and an HR interview is now available to you')
     else:
         ActiveCharacter.objects.filter(user=request.user).update(energy=0)
@@ -388,8 +380,7 @@ def agency_coding(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if dice_roll(character.coding, 20):
-        curr_level = ActiveCharacter.objects.get(user=request.user).level
-        ActiveCharacter.objects.filter(user=request.user).update(level=curr_level+1)
+        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
         messages.success(request, 'His eyes are the size of dinner plates! Your level went up and an HR interview is now available to you')
     else:
         ActiveCharacter.objects.filter(user=request.user).update(energy=0)
@@ -411,11 +402,9 @@ def agency_combine(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     chances = character.coding + character.intellect + character.charm
-    print(chances)
 
     if dice_roll(chances, 60):
-        curr_level = ActiveCharacter.objects.get(user=request.user).level
-        ActiveCharacter.objects.filter(user=request.user).update(level=curr_level+1)
+        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
         messages.success(request, '"Wow"! he says enthusiastically. "Consider yourself on to the next stage". Your level went up and an HR interview is now available to you')
     else:
         ActiveCharacter.objects.filter(user=request.user).update(energy=0)
