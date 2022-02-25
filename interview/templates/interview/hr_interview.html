@@ -1,0 +1,29 @@
+{% extends "grind/game_base.html" %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated and character.level == 2 %}
+<div class="container h-100 mt-5">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="h1">HR Interview</h1>
+        </div>
+    </div>
+    
+    <div class="row py-5">
+        <a class="col-4 col-lg-3 float-left" href="{% url 'grind:city' %}"
+            style="width: 18rem;">
+            <div class="card-body rounded-top admin-confirmed">
+                <h5 class="card-title">Back to the city</h5>
+            </div>
+        </a> 
+    </div>
+
+    <div class="col-4 col-lg-3 card mx-auto p-4 text-center">
+        <div class="col">
+            <img class="img-fluid" src="{{ interviewer.image.url }}" alt="">
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

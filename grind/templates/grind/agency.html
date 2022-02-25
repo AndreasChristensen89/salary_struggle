@@ -62,10 +62,12 @@
             </div>
 
     </div>
-    {% else %}
+    {% elif character.level == 2 %}
     <div class="row py-5 text-center">
         <div class="col">
-            <h2>Waiting for interview</h2>
+            <a href="{% url 'interview:hr_interview' %}">
+                <h2>Enter your first HR interview</h2>
+            </a>
         </div>
     </div>
 
