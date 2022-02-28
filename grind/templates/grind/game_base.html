@@ -39,12 +39,31 @@
   </head>
   <body>
     <header class="container-fluid">
-      <nav class="navbar navbar-light bg-light">
-        <form class="form-inline">
-          <a class="btn btn-outline-success mx-2" href="{% url 'profiles:profile' %}">Profile</a>
-          <a class="btn btn-sm btn-outline-secondary" href="#">Rules</a>
-        </form>
-      </nav>
+
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <h4 class="text-white">Stats</h4>
+            <span class="text-muted">Energy <strong>{{character.energy}}</strong></span>
+            <span class="text-muted">Charm <strong>{{character.charm}}</strong></span>
+            <span class="text-muted">Intellect <strong>{{character.intellect}}</strong></span>
+            <span class="text-muted">Coding <strong>{{character.coding}}</strong></span>
+            <span class="text-muted">Endurance <strong>{{character.endurance}}</strong></span>
+            <span class="text-muted">Money <strong>{{character.money}}</strong></span>
+          </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <form class="form-inline">
+            <a class="btn btn-outline-primary mx-2" href="{% url 'profiles:profile' %}">Profile</a>
+          </form>
+          <p class="lead text-white">Day: {{character.day}}</p>
+        <p class="lead text-white">Level: {{character.level}}</p>
+        </nav>
+      </div>
+
     </header>
 
     {% if messages %}

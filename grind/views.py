@@ -29,7 +29,13 @@ def city(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/city.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/city.html', context)
 
 
 @login_required
@@ -42,7 +48,13 @@ def bar_page(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/bar.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/bar.html', context)
 
 
 @login_required
@@ -55,7 +67,13 @@ def library_page(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/library.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/library.html', context)
 
 
 @login_required
@@ -68,7 +86,13 @@ def downtown_page(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/downtown.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/downtown.html', context)
 
 
 @login_required
@@ -81,7 +105,13 @@ def house_page(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/house.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/house.html', context)
 
 
 @login_required
@@ -155,7 +185,13 @@ def back_alley_page(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/back_alley.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/back_alley.html', context)
 
 
 # Update views
