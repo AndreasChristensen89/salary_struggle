@@ -10,15 +10,33 @@
 
     <!-- Intro section -->
 
-    <div class="row">
+    <div class="row pt-3 intro">
         <div class="col-10 mx-auto text-center">
-             <h1 class="h3">Welcome to your first interview</h1>
+             <h1 class="display-3">Welcome to your first interview</h1>
         </div>
     </div>
 
-    <div class="row pt-2">
-      <div class="col-10 h-50">
-        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="">
+    <div class="row pt-3 intro">
+      <button class="btn mx-auto icon" id="next-comment">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="row pt-3 interviewer hide">
+      <div class="col-10 mx-auto text-center">
+           <h1 class="display-4">Here's your interviewer</h1>
+      </div>
+    </div>
+
+    <div class="row pt-2 interviewer hide">
+      <div class="col-10 text-center mx-auto">
+        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="hr-img">
+      </div>
+    </div>
+
+    <div class="row pt-3 interviewer hide">
+      <div class="col-10 mx-auto text-center">
+           <p class="lead">He doesn't look happy to see you... Maybe you should tread carefully</p>
       </div>
     </div>
 
@@ -40,3 +58,9 @@
 
 {% endif %}
 {% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'interview/js/interview.js' %}"></script>
+{% endblock %}
+
