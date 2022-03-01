@@ -13,25 +13,25 @@
 
 {% block content %}
 <div class="container h-100 mt-5">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto mx-auto">
-                <h1 class="display-4 logo-font text-black text-center">
+        <div class="row">
+            <div class="col-10 my-auto mx-auto">
+                <h1 class="display-4 text-center">
                     Salary Struggle
                 </h1>
             </div>
         </div>
         {% if user.is_authenticated %}
-        <div class="row h-100 text-center my-5">
-            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'grind:enter' %}">
+        <div class="row my-5">
+            <a class="col-5 mx-auto text-center my-2 border border-primary rounded-pill bg-white" href="{% url 'grind:enter' %}">
                 <div class="h2">Game</div>
             </a>
-            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'profiles:profile' %}">
+            <a class="col-5 mx-auto text-center my-2 border border-primary rounded-pill bg-white" href="{% url 'profiles:profile' %}">
                 <div class="h2">Profile</div>
             </a>
-            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'shop:all_products' %}">
+            <a class="col-5 mx-auto text-center my-2 border border-primary rounded-pill bg-white" href="{% url 'shop:all_products' %}">
                 <div class="h2">Shop</div>
             </a>
-            <a class="col-6 my-2 display-5 border border-primary rounded-pill bg-white" href="{% url 'account_logout' %}">
+            <a class="col-5 mx-auto text-center my-2 border border-primary rounded-pill bg-white" href="{% url 'account_logout' %}">
                 <div class="h2">Logout</div>
             </a>
         </div>
