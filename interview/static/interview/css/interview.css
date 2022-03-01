@@ -7,7 +7,15 @@
   font-size: 50pt;
 }
 
+#introduction {
+  height: 65%;
+}
+
 #hr-img {
-  height: 200px;
+  height: 170px;
   width: 100px;
+}
+
+.top-text-interview {
+  height: 100px;
 }

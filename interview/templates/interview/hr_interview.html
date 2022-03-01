@@ -9,52 +9,102 @@
 {% if user.is_authenticated and character.level == 2 %}
 
     <!-- Intro section -->
-
+  <section id="introduction">
     <div class="row pt-3 intro">
         <div class="col-10 mx-auto text-center">
              <h1 class="display-3">Welcome to your first interview</h1>
         </div>
     </div>
 
-    <div class="row pt-3 intro">
-      <button class="btn mx-auto icon" id="next-comment">
-        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </button>
-    </div>
-
-    <div class="row pt-3 interviewer hide">
-      <div class="col-10 mx-auto text-center">
+    <div class="row pt-3 intro-interviewer hide" id="head-intro">
+      <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">Here's your interviewer</h1>
       </div>
     </div>
 
-    <div class="row pt-2 interviewer hide">
+    <div class="row pt-3 interviewer-presentation hide">
+      <div class="col-10 mx-auto text-center top-text-interview">
+           <h1 class="display-4">{{interviewer.name}}</h1>
+      </div>
+    </div>
+
+    <div class="row pt-5 hide" id="interviewer">
       <div class="col-10 text-center mx-auto">
         <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="hr-img">
       </div>
     </div>
 
-    <div class="row pt-3 interviewer hide">
+    <div class="row pt-3 intro-interviewer hide">
       <div class="col-10 mx-auto text-center">
            <p class="lead">He doesn't look happy to see you... Maybe you should tread carefully</p>
       </div>
     </div>
 
+    <div class="row pt-3 hide interviewer-presentation">
+      <div class="col-10 mx-auto text-center">
+           <p class="lead">"*Sigh* I've had a bad day. Gimme something good or it'll be a short interview"</p>
+      </div>
+    </div>
+  </section>
+
+    <div class="row pt-3" id="next-button">
+      <button class="btn mx-auto icon" id="next-comment">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
     <!-- Question Section -->
     <section class="hide" id="question-game-area">
-      <div>
-        <h2 class="h2" id="question-text">This is the question</h2>
+
+      <div class="row">
+        <div class="col text-center mx-auto">
+          <ul class="list-inline">
+            <li class="list-inline-item lead">Question <strong id="question">1</strong></li>
+            <li class="list-inline-item lead">Impress Level <strong id="impress_lvl">{{interviewer.impress_lvl}}</strong></li>
+          </ul>
+        </div>
       </div>
-      <div class="answer-buttons">
-        <button aria-label="Answer Button 1" id="answer1-btn" class="btn col-3" value="A">Answer 1</button>
-        <button aria-label="Answer Button 2" id="answer2-btn" class="btn" value="B">Answer 2</button>
-        <button aria-label="Answer Button 3" id="answer3-btn" class="btn" value="C">Answer 3</button>
-        <button aria-label="Answer Button 4" id="answer4-btn" class="btn" value="D">Answer 4</button>
+
+      <div class="row">
+        <div class="col-10 mx-auto text-center mt-5">
+          <h2 class="h2" id="question-text">Question</h2>
+        </div>
       </div>
-      <div class="next-question">
+
+      <div class="row answer-buttons">
+        <div class="col-10 mx-auto text-center mt-5">
+          <button aria-label="Answer Button 1" id="answer1-btn" class="btn" value="A">Answer 1</button>
+          <button aria-label="Answer Button 2" id="answer2-btn" class="btn" value="B">Answer 2</button>
+          <button aria-label="Answer Button 3" id="answer3-btn" class="btn" value="C">Answer 3</button>
+          <button aria-label="Answer Button 4" id="answer4-btn" class="btn" value="D">Answer 4</button>
+        </div>
+      </div>
+      <div class="next-question hide">
         <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
       </div>
+
+      <div class="row mt-3">
+        <div class="col-10 text-center mx-auto">
+          <button aria-label="Charm Button" id="charm-btn" class="btn btn-danger m-2 col-10 chance-btn" value="charm">Charm him</button>
+          <button aria-label="Intellect Button" id="intellect-btn" class="btn btn-primary m-2 col-10 chance-btn" value="intellect">Show your intellect</button>
+          <button aria-label="Coding Button" id="coding-btn" class="btn btn-success m-2 col-10 chance-btn" value="coding">Display coding skills</button>
+        </div>
+      </div>
     </section>
+  
+    <div class="d-none">
+      <div id="char-charm">{{character.charm}}</div>
+      <div id="char-intellect">{{character.intellect}}</div>
+      <div id="char-coding">{{character.coding}}</div>
+    </div>
+
+    <div class="d-none">
+      <div id="interw-coldness">{{interviewer.coldness}}</div>
+      <div id="interw-intellect">{{interviewer.intellect}}</div>
+      <div id="interw-coding">{{interviewer.coding}}</div>
+    </div>
+
+
 
 {% endif %}
 {% endblock %}
