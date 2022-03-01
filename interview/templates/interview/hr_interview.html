@@ -1,29 +1,42 @@
 {% extends "grind/game_base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'interview/css/interview.css' %}">
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated and character.level == 2 %}
-<div class="container h-100 mt-5">
+
+    <!-- Intro section -->
+
     <div class="row">
-        <div class="col text-center">
-            <h1 class="h1">HR Interview</h1>
+        <div class="col-10 mx-auto text-center">
+             <h1 class="h3">Welcome to your first interview</h1>
         </div>
-    </div>
-    
-    <div class="row py-5">
-        <a class="col-4 col-lg-3 float-left" href="{% url 'grind:city' %}"
-            style="width: 18rem;">
-            <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Back to the city</h5>
-            </div>
-        </a> 
     </div>
 
-    <div class="col-4 col-lg-3 card mx-auto p-4 text-center">
-        <div class="col">
-            <img class="img-fluid" src="{{ interviewer.image.url }}" alt="">
-        </div>
+    <div class="row pt-2">
+      <div class="col-10 h-50">
+        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="">
+      </div>
     </div>
-</div>
+
+    <!-- Question Section -->
+    <section class="hide" id="question-game-area">
+      <div>
+        <h2 class="h2" id="question-text">This is the question</h2>
+      </div>
+      <div class="answer-buttons">
+        <button aria-label="Answer Button 1" id="answer1-btn" class="btn col-3" value="A">Answer 1</button>
+        <button aria-label="Answer Button 2" id="answer2-btn" class="btn" value="B">Answer 2</button>
+        <button aria-label="Answer Button 3" id="answer3-btn" class="btn" value="C">Answer 3</button>
+        <button aria-label="Answer Button 4" id="answer4-btn" class="btn" value="D">Answer 4</button>
+      </div>
+      <div class="next-question">
+        <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </section>
+
 {% endif %}
 {% endblock %}

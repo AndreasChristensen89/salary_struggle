@@ -16,7 +16,13 @@ def enter_game(request):
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
 
-    return render(request, 'grind/enter_grind.html')
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/enter_grind.html', context)
 
 
 @login_required

@@ -11,3 +11,11 @@ body {
     margin: 0;
     overflow: hidden;
 }
+
+.arrow {
+    height: 10px;
+    width: 10px;
+}
+
+.maintxt {position: relative;}
+.maintxt > img, .overlay-text {position: absolute;}

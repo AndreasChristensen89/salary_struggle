@@ -11,47 +11,38 @@
         </div>
     </div>
     
-    <div class="row py-5">
-
-        <a class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" href="{% url 'grind:city' %}"
-            style="width: 18rem;">
-            <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Head to the city</h5>
-            </div>
+    
+    <div class="row">
+        <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
+            <i class="fa-solid fa-circle-arrow-left">Back</i>
         </a>
+    </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
+    <div class="row py-5">
+        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
             <a href="{% url 'grind:sleep' %}">
-                <div class="card-body rounded-top admin-confirmed">
+                <div class="card-body rounded-top">
                     <h5 class="card-title">Sleep</h5>
-                    <p class="card-text round">Restores energy and proceeds to next day</p>
+                    <p class="card-text round">Proceed to next day</p>
                 </div>
             </a>
         </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
+        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
             <a href="{% url 'grind:study-home' %}">
-                <div class="card-body rounded-top admin-confirmed">
+                <div class="card-body rounded-top">
                     <h5 class="card-title">Study</h5>
                     <p class="card-text round">+1 coding</p>
                 </div>
-                <ul class="list-group list-group-flush border">
-                    <li class="list-group-item">-40 energy</li>
-                    <li class="list-group-item">No risk</li>
-                </ul>
             </a>
         </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" style="width: 18rem;">
+        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
             <a href="{% url 'grind:update_charm_home' %}">
-                <div class="card-body rounded-top admin-confirmed">
+                <div class="card-body rounded-top">
                     <h5 class="card-title">Work on Charm</h5>
-                    <p class="card-text round">+1 charm</p>
+                    <p class="card-text round">+1 coding</p>
                 </div>
-                <ul class="list-group list-group-flush border">
-                    <li class="list-group-item">-40 energy</li>
-                    <li class="list-group-item">No risk</li>
-                </ul>
             </a>
         </div>
 

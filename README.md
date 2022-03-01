@@ -54,7 +54,7 @@ For multiple forms on a page:
 http://www.nurettinabaci.org/2021/01/12/python/handling-multiple-forms-on-the-same-page-in-django/
 
 
-To do list:
+Bugs:
 - Fix sorting method, so items with 0 in sorted effect will not show
     - Different sorting method applied
 - "ValueError: Field 'id' expected a number but got 'noimage.png'". When adding product.id to shopping bag I am printing the bag, which should return a dictionary {'1': 2, '2': 4} which is the product.id and the quantity. Form is in product_detail.html
@@ -70,3 +70,7 @@ To do list:
 - Try to fix the increment error in product details
     - Included a check to JS if url contained "bag", which would mean that it's on the shopping bag site. If not then no need to look for mobile form - got it from this post: https://stackoverflow.com/questions/4597050/how-to-check-if-the-url-contains-a-given-string
 - Users without characters can still enter the Grind, they just get the message, but still have then enter button. They can even enter, which brings them to the house. Trying to increase stats brings 404. Clicking the link to the city redirects them.
+
+
+To do list:
+Include endurance in energy drawn

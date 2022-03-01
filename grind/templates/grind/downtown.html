@@ -9,40 +9,38 @@
             <h1 class="h1">Downtown</h1>
         </div>
     </div>
+
+    <div class="row">
+        <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
+            <i class="fa-solid fa-circle-arrow-left">Back</i>
+        </a>
+    </div>
     
     <div class="row py-5">
 
-        <a class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto p-4 text-center" href="{% url 'grind:city' %}"
-            style="width: 18rem;">
-            <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Back to the main city</h5>
-            </div>
-        </a>
-        
-        <div class="col-10 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center m-1" style="width: 18rem;">
+        <div class="col-10 card mx-auto text-center">
             <a href="{% url 'grind:store' %}">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Store</h5>
-                    <p class="card-text round">Some items might come in handy</p>
+                <div class="col rounded-top">
+                    <h5 class="display-5 pt-2">Store</h5>
+                    <p class="lead">Some items might come in handy</p>
                 </div>
             </a>
         </div>
 
-
-        <div class="col-10 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center m-1" style="width: 18rem;">
+        <div class="col-10 card mx-auto text-center">
             <a href="{% url 'grind:call-center' %}">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Call Center</h5>
-                    <p class="card-text round">Make some money on the side</p>
+                <div class="col rounded-top">
+                    <h5 class="display-5 pt-2">Call Center</h5>
+                    <p class="lead">Make some money on the side</p>
                 </div>
             </a>
         </div>
 
-        <div class="col-10 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center m-1" style="width: 18rem;">
+        <div class="col-10 card mx-auto text-center">
             <a href="{% url 'grind:back-alley' %}">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Back Alley</h5>
-                    <p class="card-text round">Get your hands dirty</p>
+                <div class="col rounded-top">
+                    <h5 class="display-5 pt-2">Back Alley</h5>
+                    <p class="lead">Get your hands dirty</p>
                 </div>
             </a>
         </div>
