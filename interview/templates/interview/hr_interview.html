@@ -59,8 +59,11 @@
       <div class="row">
         <div class="col text-center mx-auto">
           <ul class="list-inline">
-            <li class="list-inline-item lead">Question <strong id="question">1</strong></li>
-            <li class="list-inline-item lead">Impress Level <strong id="impress_lvl">{{interviewer.impress_lvl}}</strong></li>
+            <li class="list-inline-item lead">Question</li>
+            <li class="list-inline-item lead" id="question"><strong>1</strong></li>
+            <li class="list-inline-item lead">Impression:</li>
+            <li class="list-inline-item lead" id="impression"><strong>1</strong></li>
+            <li class="list-inline-item lead">/ 25</li>
           </ul>
         </div>
       </div>
@@ -99,7 +102,7 @@
     </div>
 
     <div class="d-none">
-      <div id="interw-coldness">{{interviewer.coldness}}</div>
+      <div id="interw-charm">{{interviewer.coldness}}</div>
       <div id="interw-intellect">{{interviewer.intellect}}</div>
       <div id="interw-coding">{{interviewer.coding}}</div>
     </div>

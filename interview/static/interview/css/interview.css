@@ -3,6 +3,18 @@
   display: none;
 }
 
+.intro {
+  opacity: 0;
+}
+
+.intro-interviewer {
+  opacity: 0;
+}
+
+#interviewer {
+  opacity: 0;
+}
+
 .icon {
   font-size: 50pt;
 }
