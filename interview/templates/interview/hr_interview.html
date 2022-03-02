@@ -60,32 +60,32 @@
         <div class="col text-center mx-auto">
           <ul class="list-inline">
             <li class="list-inline-item lead">Question</li>
-            <li class="list-inline-item lead" id="question"><strong>1</strong></li>
+            <li class="list-inline-item lead" id="question">1</li>
             <li class="list-inline-item lead">Impression:</li>
-            <li class="list-inline-item lead" id="impression"><strong>1</strong></li>
+            <li class="list-inline-item lead" id="impression">1</li>
             <li class="list-inline-item lead">/ 25</li>
           </ul>
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-10 mx-auto text-center mt-5">
           <h2 class="h2" id="timer"></h2>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
-        <div class="col-10 mx-auto text-center mt-5">
+        <div class="col-10 mx-auto text-center mt-1">
           <p class="lead" id="question-text">Question</h2>
         </div>
       </div>
 
       <div class="row answer-buttons">
-        <div class="col-10 mx-auto text-center mt-5">
-          <button aria-label="Answer Button 1" id="answer1-btn" class="btn" value="A">Answer 1</button>
-          <button aria-label="Answer Button 2" id="answer2-btn" class="btn" value="B">Answer 2</button>
-          <button aria-label="Answer Button 3" id="answer3-btn" class="btn" value="C">Answer 3</button>
-          <button aria-label="Answer Button 4" id="answer4-btn" class="btn" value="D">Answer 4</button>
+        <div class="col-10 mx-auto text-center mt-1">
+          <button aria-label="Answer Button 1" id="answer1-btn" class="btn btn-border" value="intellect">Answer 1</button>
+          <button aria-label="Answer Button 2" id="answer2-btn" class="btn" value="charm">Answer 2</button>
+          <button aria-label="Answer Button 3" id="answer3-btn" class="btn" value="coding">Answer 3</button>
+          <button aria-label="Answer Button 4" id="answer4-btn" class="btn" value="wild">Answer 4</button>
         </div>
       </div>
       <div class="next-question hide">
@@ -121,5 +121,6 @@
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'interview/js/interview.js' %}"></script>
+    <script type="text/javascript" src="{% static 'interview/js/questions.js' %}"></script>
 {% endblock %}
 

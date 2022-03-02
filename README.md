@@ -53,6 +53,12 @@ Installed django-countries for the dropdown box in the form
 For multiple forms on a page:
 http://www.nurettinabaci.org/2021/01/12/python/handling-multiple-forms-on-the-same-page-in-django/
 
+Current idea for interview questions:
+    - Question 1 is the intellectual answer
+    - Question 2 is the charming/humanizing answer
+    - Question 3 is the code-based answer
+    - Question 4 is wild, and is a risk. More payoff, higher risk.
+
 
 Bugs:
 - Fix sorting method, so items with 0 in sorted effect will not show
