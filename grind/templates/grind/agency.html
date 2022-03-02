@@ -64,13 +64,24 @@
     </div>
     {% elif character.level == 2 %}
     <div class="row py-5 text-center">
-        <div class="col">
+        <div class="col-10 mx-auto">
             <a href="{% url 'interview:hr_interview' %}">
-                <h2>Enter your first HR interview</h2>
+                <h3 class="h3 border">Start HR interview</h3>
             </a>
+        </div>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-10 float-right">
+            <button aria-label="Hint nutton" id="hint-btn" class="border btn">Psst</button>
         </div>
     </div>
     {% endif %}
 </div>
 {% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'grind/js/agency.js' %}"></script>
 {% endblock %}
