@@ -1,6 +1,10 @@
 {% extends "grind/game_base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'grind/css/grind.css' %}">
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container h-100 mt-5">
@@ -71,10 +75,24 @@
         </div>
     </div>
 
-    <div class="row py-5">
+
+    <div class="row pt-5" id="hint-row">
         <div class="col-10 float-right">
             <button aria-label="Hint nutton" id="hint-btn" class="border btn">Psst</button>
         </div>
+    </div>
+
+    <div class="row pt-2 text-center hide" id="hint-text">
+        <div class="col-10 mx-auto">
+            <p class="lead border hide hint">Oh yeah, I should probably give you a briefing of the interview you're about to join</p>
+            <p class="lead border hide hint">So, the company's name is Data Drifters and they specialize in database integrations.</p>
+            <p class="lead border hide hint">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
+            <p class="lead border hide hint">They can be quite selfish. You basically have to adapt to their personalities in order to be considered.</p>
+            <p class="lead border hide hint">You can always attempt your skills with them. They won't penalize you for that.</p>
+            <p class="lead border hide hint">See if you can reach the impress level needed.</p>
+        </div>
+
+        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
     </div>
     {% endif %}
 </div>

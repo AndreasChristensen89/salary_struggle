@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $("#next-comment").click(function(){
         if (!$(".intro").hasClass("hide")) {
-            $(".intro").animate({opacity: "0"}, "slow")
+            $(".intro").animate({opacity: "0"}, "slow");
             $(".intro").addClass("hide");
             $('.intro-interviewer').removeClass("hide");
             $(".intro-interviewer").animate({opacity: "1.0"}, "slow")
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#introduction").addClass("hide");
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
-            $(".chance-btn").click(attemptSkill)
+            $(".chance-btn").click(attemptSkill);
             $("#answer1-btn").click(checkAnswer);
             $("#answer2-btn").click(checkAnswer);
             $("#answer3-btn").click(checkAnswer);
