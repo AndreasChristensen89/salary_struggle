@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
             $(".intro-interviewer").animate({opacity: "1.0"}, "slow")
             $('#interviewer').removeClass("hide");
             $("#interviewer").animate({opacity: "1.0"}, "slow")
-
         }
         else if (!$(".intro-interviewer").hasClass("hide")) {
             $(".intro-interviewer").addClass("hide");
@@ -22,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
             $(".chance-btn").click(attemptSkill)
+            countdown()
         }
         });
 });
@@ -36,12 +36,31 @@ function attemptSkill(event) {
     if (randomNumber <= charSkill) {
         let impress = parseInt($("#impression").text());
         $("#impression").text(impress+3);
-        $("#impression").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
         $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium");
     }
 
     $(`#${skill}-btn`).prop("disabled",true);
 }
+
+var timeLeft = 2;
+var timerId = setInterval(countdown, 1000);
+var question = $("#question");
+
+function countdown() {
+    if (timeLeft == -1) {
+        clearTimeout(timerId);
+        doSomething();
+    } else {
+        $('#timer').html(timeLeft);
+        timeLeft--;
+    }
+}
+
+function doSomething() {
+    question.html( "<strong>" + (parseInt ( $("#question").text() ) + 1) + "</strong>" );
+}
+  
 
 
 
