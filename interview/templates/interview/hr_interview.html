@@ -63,7 +63,8 @@
             <li class="list-inline-item lead" id="question">1</li>
             <li class="list-inline-item lead">Impression:</li>
             <li class="list-inline-item lead" id="impression">1</li>
-            <li class="list-inline-item lead">/ 25</li>
+            <li class="list-inline-item lead">/</li>
+            <li class="list-inline-item lead" id="impress-level">{{interviewer.impress_lvl}}</li>
           </ul>
         </div>
       </div>
@@ -82,10 +83,10 @@
 
       <div class="row answer-buttons">
         <div class="col-10 mx-auto text-center mt-1">
-          <button aria-label="Answer Button 1" id="answer1-btn" class="btn btn-border" value="intellect">Answer 1</button>
-          <button aria-label="Answer Button 2" id="answer2-btn" class="btn" value="charm">Answer 2</button>
-          <button aria-label="Answer Button 3" id="answer3-btn" class="btn" value="coding">Answer 3</button>
-          <button aria-label="Answer Button 4" id="answer4-btn" class="btn" value="wild">Answer 4</button>
+          <button aria-label="Answer Button 1" id="answer1-btn" class="btn border col-12 answer-btn" value="intellect">Answer 1</button>
+          <button aria-label="Answer Button 2" id="answer2-btn" class="btn border col-12 answer-btn" value="charm">Answer 2</button>
+          <button aria-label="Answer Button 3" id="answer3-btn" class="btn border col-12 answer-btn" value="coding">Answer 3</button>
+          <button aria-label="Answer Button 4" id="answer4-btn" class="btn border col-12 answer-btn" value="wild">Answer 4</button>
         </div>
       </div>
       <div class="next-question hide">
@@ -112,6 +113,54 @@
       <div id="interw-intellect">{{interviewer.intellect}}</div>
       <div id="interw-coding">{{interviewer.coding}}</div>
     </div>
+
+    <!----------------- End section --------------------->
+
+    <section class="hide" id="ending-success">
+      <div class="row pt-3 ending-success">
+          <div class="col-10 mx-auto text-center">
+               <h1 class="display-4">Looks like you pulled it off. Well done!</h1>
+          </div>
+      </div>
+  
+      <div class="row pt-3 ending-success">
+        <div class="col-10 mx-auto text-center top-text-interview">
+             <p class="lead">Your level went up! Check out the agency for your next step</p>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-10 mx-auto text-center">
+          <a href="{% url 'interview:hr_success' %}">
+              <h3 class="h3">Continue</h3>
+          </a>
+        </div>
+      </div>
+      
+    </section>
+
+    <section class="hide" id="ending-fail">
+      <div class="row pt-3 ending-success">
+          <div class="col-10 mx-auto text-center">
+               <h1 class="display-4">Damn, this could have gone better.</h1>
+          </div>
+      </div>
+  
+      <div class="row pt-3 ending-fail">
+        <div class="col-10 mx-auto text-center top-text-interview">
+             <p class="lead">Don't worry, this won't be your last attempt. Head back to the agency and try again!</p>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-10 mx-auto text-center">
+          <a href="{% url 'grind:house' %}">
+              <h3 class="h3">Continue</h3>
+          </a>
+        </div>
+      </div>
+      
+    </section>
 
 
 

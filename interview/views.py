@@ -31,3 +31,20 @@ def hr_interview(request):
     }
 
     return render(request, 'interview/hr_interview.html', context)
+
+
+@login_required
+def succeed_hr_interview(request):
+    """ Update view to add more charm """
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
+
+    return redirect(reverse('grind:house'))
