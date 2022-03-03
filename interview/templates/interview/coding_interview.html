@@ -88,9 +88,6 @@
           <button aria-label="Answer Button 3" id="answer3-btn" class="btn border col-12 answer-btn" value="c">Answer 3</button>
         </div>
       </div>
-      <div class="next-question hide">
-        <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
-      </div>
 
       <div class="row mt-3">
         <div class="col-10 text-center mx-auto">
@@ -105,6 +102,9 @@
           <button aria-label="Coding Button" id="coding-btn" class="btn btn-success m-2 col-10 chance-btn" value="coding">Display coding skills</button>
           <div class="col-12 hide" id="alternative-coding">
             <p class="lead" id="coding-answer"></p>
+        </div>
+        <div class="next-question hide">
+          <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
         </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
     <section class="hide" id="ending-success">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Looks like you pulled it off. Well done!</h1>
+               <h1 class="display-4">Sweet, you pulled through!</h1>
           </div>
       </div>
   
@@ -139,7 +139,7 @@
 
       <div class="row pt-2">
         <div class="col-10 mx-auto text-center">
-          <a href="{% url 'interview:hr_success' %}">
+          <a href="{% url 'interview:interview_success' %}">
               <h3 class="h3">Level up and continue</h3>
           </a>
         </div>

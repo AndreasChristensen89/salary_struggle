@@ -28,62 +28,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
-// var timeLeft = 5;
-// var timerId = setInterval(countdown, 1000);
 var currentQuestion = 1;
 var questionCount = 0;
 var questionSet = {};
 
 function attemptSkill(event) {
     let skill = event.target.value;
+    let charSkill = parseInt($(`#char-${skill}`).html());
+    let intSkill = parseInt($(`#interw-${skill}`).html());
 
-    if (skill == "charm") {
-        $(`#${skill}-answer`).html(questionSet[questionCount].charm);
-    } else if (skill == "intellect") {
-        $(`#${skill}-answer`).html(questionSet[questionCount].intellect);
-    } else if (skill == "coding") {
-        $(`#${skill}-answer`).html(questionSet[questionCount].coding);
+    let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
+
+    if (randomNumber <= charSkill) {
+        setImpress("+", 3);
+    } else {
+        setImpress("-", 3);
     }
 
-    $(".chance-btn").animate({opacity: 0}, "slow");
-    setTimeout(() => { $(".chance-btn").addClass("hide"); }, 400);
-    setTimeout(() => { $(`#alternative-${skill}`).removeClass("hide"); }, 400);
-    // $(`${skill}-answer`).animate({opacity: 1}, "slow");
-
-    // let charSkill = parseInt($(`#char-${skill}`).html());
-    // let intSkill = parseInt($(`#interw-${skill}`).html());
-
-    // let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
-
-    // let impress = parseInt($("#impression").html());
-
-    // if (randomNumber <= charSkill) {
-    //     setImpress("+", 2);
-    // } else if (impress-2 > 0) {
-    //     setImpress("-", 2);
-    // } else {
-    //     $("#impression").html("0");
-    // }
-
-    // $(`#${skill}-btn`).prop("disabled",true);
+    buildQuestions();
 }
-
-// function countdown() {
-//     if (timeLeft == -1) {
-//         failContinue();
-//     } else {
-//         $('#timer').html(timeLeft);
-//         timeLeft--;
-//     }
-// }
-
-// function failContinue() {
-//     $("#question").html(currentQuestion+1);
-//     currentQuestion++;
-//     console.log($("#question").html())
-//     timeLeft = 5;
-//     countdown();
-// }
 
 function buildQuestions() {
     questionSet = codingQuestions;
@@ -92,53 +55,28 @@ function buildQuestions() {
         $("#answer1-btn").html(questionSet[questionCount].a);
         $("#answer2-btn").html(questionSet[questionCount].b);
         $("#answer3-btn").html(questionSet[questionCount].c);
-        $("#charm-btn").html(questionSet[questionCount].alt1);
-        $("#intellect-btn").html(questionSet[questionCount].alt2);
-        $("#coding-btn").html(questionSet[questionCount].alt3);
     }
 }
 
 function checkAnswer(event) {
     let answer = event.target.value;
+    let correctAnswer = questionSet[questionCount].answer;
+    console.log(answer);
+    console.log(correctAnswer);
     let impress = parseInt($("#impression").html());
 
-    if (questionSet[questionCount].answer.length != 0) {
-        let correctAnswer = questionSet[questionCount].answer;
-
-        if (correctAnswer == answer) {
-            setImpress("+", 3);
-        } else if (impress - 3 > 0) {
-                setImpress("-", 3);
-        } else {
-            $("#impression").text("0");
-        }
-    } else if (answer != "wild") {
-        let charSkill = parseInt($(`#char-${answer}`).html());
-        let intSkill = parseInt($(`#interw-${answer}`).html());
-
-        if (calculateOutcome(charSkill, intSkill)) {
-            setImpress("+", 3);
-        } else if (impress-3 > 0) {
-            setImpress("-", 3);
-        } else {
-            $("#impression").html("0");
-        }
+    if (correctAnswer == answer) {
+        setImpress("+", 3);
+    } else if (impress - 3 > 0) {
+        setImpress("-", 3);
     } else {
-        if (calculateOutcome(4, 10)) {
-            setImpress("+", 5);
-        } else if (impress-5 > 0) {
-            setImpress("-", 5);
-        } else {
-            $("#impression").html("0");
-        }
+        $("#impression").text("0");
     }
+
     if (questionCount == questionSet.length-1) {
         $(".answer-btn").prop("disabled",true);
         finishInterview();
     } else {
-        currentQuestion++;
-        questionCount++;
-        $("#question").html(currentQuestion);
         buildQuestions();
     }
 }
@@ -146,12 +84,17 @@ function checkAnswer(event) {
 function setImpress(plusMinus, integer) {
     let impress_nbr = parseInt($("#impression").html());
     if (plusMinus == "+") {
-        $("#impression").text(impress_nbr + integer);
+        $("#impression").html(impress_nbr + integer);
+    } else if (impress_nbr - integer >= 0) {
+        $("#impression").html(impress_nbr - integer);
     } else {
-        $("#impression").text(impress_nbr - integer);
+        $("#impression").html("0");
     }
     $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
     $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
+    questionCount++;
+    currentQuestion++;
+    $("#question").html(currentQuestion);
 }
   
 

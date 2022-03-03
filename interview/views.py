@@ -78,7 +78,7 @@ def coding_interview(request):
 
 
 @login_required
-def succeed_coding_interview(request):
+def success_interview(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
