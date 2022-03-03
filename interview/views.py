@@ -7,6 +7,23 @@ from codex.models import Interviewer
 
 
 @login_required
+def success_interview(request):
+    """ Update view to add more charm """
+
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
+
+    return redirect(reverse('grind:house'))
+
+
+@login_required
 def hr_interview(request):
     """ A view to return the agency page """
 
@@ -31,23 +48,6 @@ def hr_interview(request):
     }
 
     return render(request, 'interview/hr_interview.html', context)
-
-
-@login_required
-def succeed_hr_interview(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
-
-    return redirect(reverse('grind:house'))
 
 
 @login_required
@@ -78,17 +78,27 @@ def coding_interview(request):
 
 
 @login_required
-def success_interview(request):
-    """ Update view to add more charm """
+def coding_difficult_interview(request):
+    """ A view to return the agency page """
 
     profile = get_object_or_404(Profile, user=request.user)
+
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
+    elif not character.level == 3:
+        messages.error(request, "Your can only enter here when you're level 3")
+        return redirect(reverse('grind:city'))
 
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    interviewers = Interviewer.objects.filter(level=3)
+    rand_num = randint(0, interviewers.count()-1)
+    interviewer = interviewers[rand_num]
 
-    ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
+    context = {
+        'character': character,
+        'interviewer': interviewer
+    }
 
-    return redirect(reverse('grind:house'))
+    return render(request, 'interview/coding_difficult_interview.html', context)
