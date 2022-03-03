@@ -78,7 +78,7 @@
 
     <div class="row pt-5" id="hint-row">
         <div class="col-10 float-right">
-            <button aria-label="Hint nutton" id="hint-btn" class="border btn">Psst</button>
+            <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
         </div>
     </div>
 
@@ -90,6 +90,35 @@
             <p class="lead border hide hint">They can be quite selfish. You basically have to adapt to their personalities in order to be considered.</p>
             <p class="lead border hide hint">You can always attempt your skills with them. They won't penalize you for that.</p>
             <p class="lead border hide hint">See if you can reach the impress level needed.</p>
+        </div>
+
+        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
+    </div>
+    {% elif character.level == 3 %}
+    <div class="row py-5 text-center">
+        <div class="col-10 mx-auto">
+            <a href="{% url 'interview:coding_interview' %}">
+                <h3 class="h3 border">Start coding interview</h3>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="row pt-5" id="hint-row">
+        <div class="col-10 float-right">
+            <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
+        </div>
+    </div>
+
+    <div class="row pt-2 text-center hide" id="hint-text">
+        <div class="col-10 mx-auto">
+            <p class="lead border hide hint">Glad to hear the HR interview went well</p>
+            <p class="lead border hide hint">Next up is your coding interview. If you haven't studied for this one you might have some hardships.</p>
+            <p class="lead border hide hint">Don't worry too much. There's always a chance that you can bluff your way out a situation.</p>
+            <p class="lead border hide hint">Unfortunately for this one there's often only one correct answer, unless you're able to convince the interviewer otherwise</p>
+            <p class="lead border hide hint">Just like last time you can use your skills for potential extra points.</p>
+            <p class="lead border hide hint">Oh, by the way. I heard that the programming language will be Python. Better prepare a bit.</p>
+            <p class="lead border hide hint">Best of luck to you!</p>
         </div>
 
         <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>

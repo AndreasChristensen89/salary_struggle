@@ -22,6 +22,7 @@ class Interviewer(models.Model):
     image = models.ImageField(null=False, blank=False)
     paid = models.BooleanField(default=False)
     level = models.IntegerField(default=InterviewerLevel.LOW, choices=InterviewerLevel.choices)
+    intro = models.TextField(null=False, blank=False, default="")
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
