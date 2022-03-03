@@ -81,53 +81,59 @@ function buildQuestions() {
 }
 
 function checkAnswer(event) {
+    let answer = event.target.value;
+    let impress = parseInt($("#impression").html());
+
+    if (questionSet[questionCount].answer.length != 0) {
+        let correctAnswer = questionSet[questionCount].answer;
+
+        if (correctAnswer == answer) {
+            setImpress("+", 3);
+        } else if (impress - 3 > 0) {
+                setImpress("-", 3);
+        } else {
+            $("#impression").text("0");
+        }
+    } else if (answer != "wild") {
+        let charSkill = parseInt($(`#char-${answer}`).html());
+        let intSkill = parseInt($(`#interw-${answer}`).html());
+
+        if (calculateOutcome(charSkill, intSkill)) {
+            setImpress("+", 3);
+        } else if (impress-3 > 0) {
+            setImpress("-", 3);
+        } else {
+            $("#impression").html("0");
+        }
+    } else {
+        if (calculateOutcome(4, 10)) {
+            setImpress("+", 5);
+        } else if (impress-5 > 0) {
+            setImpress("-", 5);
+        } else {
+            $("#impression").html("0");
+        }
+    }
     if (questionCount == questionSet.length-1) {
         $(".answer-btn").prop("disabled",true);
         finishInterview();
     } else {
-        let answer = event.target.value;
-
-        if (answer != "wild") {
-            let charSkill = parseInt($(`#char-${answer}`).html());
-            let intSkill = parseInt($(`#interw-${answer}`).html());
-
-            if (calculateOutcome(charSkill, intSkill)) {
-                let impress = parseInt($("#impression").html()) + 3;
-                $("#impression").text(impress);
-                $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
-                $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-            } else if (parseInt($("#impression").html()-3) > 0) {
-                let impress = parseInt($("#impression").html()) - 5;
-                $("#impression").html(impress);
-                $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '#FF0000'}, "medium");
-                $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-            } else {
-                $("#impression").html("0");
-                $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '#FF0000'}, "medium");
-                $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-            }
-        } else {
-            if (calculateOutcome(5, 10)) {
-                let impress = parseInt($("#impression").html()) + 5;
-                $("#impression").html(impress);
-                $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
-                $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-            } else if (parseInt($("#impression").html()-5) > 0) {
-                let impress = parseInt($("#impression").html()) - 5;
-                $("#impression").html(impress);
-                $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '#FF0000'}, "medium");
-                $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-            } else {
-                $("#impression").html("0");
-                $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '#FF0000'}, "medium");
-                $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-            }
-        }
         currentQuestion++;
         questionCount++;
         $("#question").html(currentQuestion);
         buildQuestions();
     }
+}
+
+function setImpress(plusMinus, integer) {
+    let impress_nbr = parseInt($("#impression").html());
+    if (plusMinus == "+") {
+        $("#impression").text(impress_nbr + integer);
+    } else {
+        $("#impression").text(impress_nbr - integer);
+    }
+    $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
+    $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
 }
   
 
@@ -144,13 +150,15 @@ function calculateOutcome(charSkill, intSkill) {
 function finishInterview() {
     let finalScore = parseInt($("#impression").html());
     let neededScore = parseInt($("#impress-level").html());
-
-    $("#question-game-area").addClass("hide");
+    $("#question-game-area").animate({opacity: 0}, "slow");
+    setTimeout(() => { $("#question-game-area").addClass("hide"); }, 1500);
 
     if (finalScore >= neededScore) {
-        $("#ending-success").removeClass("hide");
+        setTimeout(() => { $("#ending-success").removeClass("hide"); }, 1500);
+        setTimeout(() => { $("#ending-success").animate({opacity: 1}, "medium"); }, 1500);
     } else {
-        $("#ending-fail").removeClass("hide");
+        setTimeout(() => { $("#ending-fail").removeClass("hide"); }, 1500);
+        setTimeout(() => { $("#ending-fail").animate({opacity: 1}, "medium"); }, 1500);
     }
 }
   

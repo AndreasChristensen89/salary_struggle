@@ -31,3 +31,7 @@
 .top-text-interview {
   height: 100px;
 }
+
+#ending-fail, #ending-success {
+  opacity: 0;
+}

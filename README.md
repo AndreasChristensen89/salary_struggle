@@ -59,6 +59,8 @@ Current idea for interview questions:
     - Question 3 is the code-based answer
     - Question 4 is wild, and is a risk. More payoff, higher risk.
 
+    - Some questions have correct answers, while others are a matter of the taste of the interviewer
+
 
 Bugs:
 - Fix sorting method, so items with 0 in sorted effect will not show
