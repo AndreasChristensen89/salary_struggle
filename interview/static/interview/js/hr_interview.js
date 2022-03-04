@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
-// var timeLeft = 5;
-// var timerId = setInterval(countdown, 1000);
 var currentQuestion = 1;
 var questionCount = 0;
 var questionSet = {};
@@ -40,7 +38,7 @@ function attemptSkill(event) {
     let charSkill = parseInt($(`#char-${skill}`).html());
     let intSkill = parseInt($(`#interw-${skill}`).html());
 
-    let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
+    let randomNumber = Math.floor(Math.random() * intSkill) + 1;
 
     if (randomNumber <= charSkill) {
         let impress = parseInt($("#impression").text());
@@ -51,23 +49,6 @@ function attemptSkill(event) {
 
     $(`#${skill}-btn`).prop("disabled",true);
 }
-
-// function countdown() {
-//     if (timeLeft == -1) {
-//         failContinue();
-//     } else {
-//         $('#timer').html(timeLeft);
-//         timeLeft--;
-//     }
-// }
-
-// function failContinue() {
-//     $("#question").html(currentQuestion+1);
-//     currentQuestion++;
-//     console.log($("#question").html())
-//     timeLeft = 5;
-//     countdown();
-// }
 
 function buildQuestions() {
     questionSet = hrQuestions;

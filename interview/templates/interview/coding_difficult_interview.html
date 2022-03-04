@@ -94,24 +94,52 @@
             <button aria-label="Number button 7" id="number7-btn" class="btn border col-2 number-btn" value="7">7</button>
             <button aria-label="Number button 8" id="number8-btn" class="btn border col-2 number-btn" value="8">8</button>
             <button aria-label="Number button 9" id="number9-btn" class="btn border col-2 number-btn" value="9">9</button>
-            <button aria-label="Delete button" id="delete-btn" class="btn border col-4 number-btn" value="delete">Delete</button>
-            <button aria-label="Submit button" id="submit-number-btn" class="btn border col-4" value="submit">Submit</button>
+            <hr>
+            <button aria-label="Delete button" id="delete-btn" class="btn border col-4 bg-danger number-btn" value="delete">Delete</button>
+            <button aria-label="Submit button" id="submit-number-btn" class="btn border bg-success col-4" value="submit">Submit</button>
         </div>
         <div class="col-10 mx-auto text-center mt-1 hide" id="code-buttons">
-         <p class="col-12 lead" id="answer-code">return </p>
-          <button aria-label="Code button +" id="codeplus-btn" class="btn border col-2 code-btn" value="+">+</button>
-          <button aria-label="Code button -" id="codeminus-btn" class="btn border col-2 code-btn" value="-">-</button>
-          <button aria-label="Code button *" id="codemulti-btn" class="btn border col-2 code-btn" value="*">*</button>
-          <button aria-label="Code button 1" id="code1-btn" class="btn border col-2 code-btn" value="1">1</button>
-          <button aria-label="Code button 2" id="code2-btn" class="btn border col-2 code-btn" value="2">2</button>
-          <button aria-label="Code button 3" id="code3-btn" class="btn border col-2 code-btn" value="3">3</button>
-          <button aria-label="Code button 4" id="code4-btn" class="btn border col-2 code-btn" value="4">4</button>
-          <button aria-label="Delete button" id="delete-btn" class="btn border col-4 code-btn" value="delete">Delete</button>
-          <button aria-label="Submit button" id="submit-code-btn" class="btn border col-4" value="submit">Submit</button>
-      </div>
+         <p class="col-12 lead" id="answer-code"></p>
+         <hr>
+
+         <div class="row pt-2">
+           <div class="col-12">
+            <button aria-label="Code button +" id="codeplus-btn" class="btn border col-3 code-btn" value="+">+</button>
+            <button aria-label="Code button -" id="codeminus-btn" class="btn border col-3 code-btn" value="-">-</button>
+            <button aria-label="Code button *" id="codemulti-btn" class="btn border col-3 code-btn" value="*">*</button>
+           </div>
+         </div>
+
+          <div class="row pt-2">
+            <div class="col-12">
+              <button aria-label="Code button 1" id="code1-btn" class="btn border col-2 code-btn mx-1" value="1">1</button>
+              <button aria-label="Code button 2" id="code2-btn" class="btn border col-2 code-btn mx-1" value="2">2</button>
+              <button aria-label="Code button 3" id="code3-btn" class="btn border col-2 code-btn mx-1" value="3">3</button>
+              <button aria-label="Code button 4" id="code4-btn" class="btn border col-2 code-btn mx-1" value="4">4</button>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-12">
+              <button aria-label="Delete button" id="delete-btn" class="btn mx-auto text-center border col-4 bg-danger code-btn" value="delete">Delete</button>
+              <button aria-label="Submit button" id="submit-code-btn" class="btn mx-auto text-center border bg-success col-4" value="submit">Submit</button>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="row answer-buttons hide">
+          <div class="col-10 mx-auto text-center mt-1">
+            <button aria-label="Answer Button charm" id="answer-charm-btn" class="btn border col-12 answer-btn" value="charm">Answer 1</button>
+            <button aria-label="Answer Button intellect" id="answer-intellect-btn" class="btn border col-12 answer-btn" value="intellect">Answer 2</button>
+            <button aria-label="Answer Button coding" id="answer-coding-btn" class="btn border col-12 answer-btn" value="coding">Answer 3</button>
+          </div>
+        </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row mt-3 hide">
         <div class="col-10 text-center mx-auto">
           <button aria-label="Charm Button" id="charm-btn" class="btn btn-danger m-2 col-10 chance-btn" value="charm">Charm him</button>
           <div class="col-12 hide" id="alternative-charm">

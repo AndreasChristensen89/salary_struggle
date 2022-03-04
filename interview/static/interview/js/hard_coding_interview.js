@@ -22,8 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
             $(".chance-btn").click(attemptSkill);
             $(".number-btn").click(passNumber);
             $("#submit-number-btn").click(passNumberAnswer);
+            $(".code-btn").click(passCode);
+            $("#submit-code-btn").click(passCodeAnswer);
             $("#answer-text").animate({fontWeight: '900'}, "medium");
             $("#answer-text").animate({fontWeight: '300'}, "medium");
+            $("#answer-charm-btn").click(checkAnswer);
+            $("#answer-intellect-btn").click(checkAnswer);
+            $("#answer-coding-btn").click(checkAnswer);
             buildQuestions();
             timer();
         }
@@ -33,6 +38,7 @@ var currentQuestion = 1;
 var questionCount = 0;
 var questionSet = {};
 var timeleft = 0;
+var time = 8;
 
 
 function passCode(event) {
@@ -40,7 +46,7 @@ function passCode(event) {
     let length = $("#answer-code").html().length;
 
     if (selectedAction === "delete") {
-        if (length > 7) {
+        if (length > 0) {
             $("#answer-code").html($("#answer-code").html().slice(0, -1));
         }
     } else {
@@ -67,6 +73,8 @@ function passNumberAnswer() {
     let int1 = $("#question-text").html().slice(8, 9);
     let int2 = $("#question-text").html().slice(12);
     let rightAnswer = int1 * int2;
+    console.log(rightAnswer);
+    console.log($("#answer-text").html());
 
     if ($("#answer-text").html() == rightAnswer) {
         setImpress("+", 3);
@@ -79,8 +87,8 @@ function passNumberAnswer() {
 
 
 function passCodeAnswer() {
-    let int1 = $("#answer-code").html().slice(7);
-    let firstChar = $("#answer-code").html().slice(7, 8);
+    let str = $("#answer-code").html();
+    let firstChar = $("#answer-code").html().slice(0, 1);
     let lastChar = $("#answer-code").html().slice(-1);
     let button = $("#submit-code-btn");
     let correctAnswer = $("#question-text").html().slice(-2);
@@ -91,20 +99,20 @@ function passCodeAnswer() {
     } else if (lastChar == "*" || lastChar == "+" || lastChar == "-") {
         button.addClass("bg-danger");
         setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
-    } else if (int1.includes("--") || int1.includes("++") || int1.includes("**")) {
+    } else if (str.includes("--") || str.includes("++") || str.includes("**")) {
         button.addClass("bg-danger");
         setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
     } else {
-        console.log(stringCalculator(int1));
+        console.log(stringCalculator(str));
         console.log(correctAnswer.trim());
-        console.log(stringCalculator(int1) == correctAnswer.trim());
+        console.log(stringCalculator(str) == correctAnswer.trim());
         
-        if (stringCalculator(int1) == correctAnswer.trim()) {
+        if (stringCalculator(str) == correctAnswer.trim()) {
             setImpress("+", 3);
         } else {
         setImpress("-", 3);
         }
-    $("#answer-code").html("return ");
+    $("#answer-code").html("");
     buildQuestions();
       }
 }
@@ -116,14 +124,15 @@ function stringCalculator(fn) {
 
 
 function timer() {
-    
     setInterval(function(){
-        if(timeleft >= 100){
+        if(timeleft >= time){
             setImpress("-", 3);
             timeleft = 0;
+            $("#answer-text").html("");
+            $("#answer-code").html("");
             buildQuestions();
         }
-        $("#timer").html(100 - timeleft);
+        $("#timer").html(time - timeleft);
         timeleft++;
     }, 1000);
 }
@@ -146,24 +155,32 @@ function attemptSkill(event) {
 }
 
 function buildQuestions() {
-    if (currentQuestion >= 6) {
+    if (currentQuestion > 12) {
+        $(".answer-btn").prop("disabled",true);
+        finishInterview();
+    } else if (currentQuestion > 9) {
         timeleft = 0;
-        $("#number-buttons").addClass("hide");
-        $("#code-buttons").removeClass("hide");
-        // checks if one button has events, and if so we can assume that submit is similar
-        let events = $._data(document.getElementById('codeplus-btn'), "events");
-        let hasEvents = (events != null);
-        if (hasEvents == false) {
-            $(".code-btn").click(passCode);
-            $("#submit-code-btn").click(passCodeAnswer);
-        }
-        let randCode = Math.floor(Math.random() * 12) + 1;
-        $("#question-text").html(`Create a return statement that produces ${randCode}`);
+        questionSet = hardCodingQuestions;
+        console.log(questionCount);
+        $(".answer-buttons").removeClass("hide");
+        $("#code-buttons").addClass("hide");
+        $("#question-text").html(questionSet[questionCount].question);
+        $("#answer-charm-btn").html(questionSet[questionCount].a);
+        $("#answer-intellect-btn").html(questionSet[questionCount].b);
+        $("#answer-coding-btn").html(questionSet[questionCount].c);
+        questionCount++;
     } else if (currentQuestion < 6) {
         timeleft = 0;
         let randInt1 = Math.floor(Math.random() * 10) + 1;
         let randInt2 = Math.floor(Math.random() * 10) + 1;
         $("#question-text").html(`What is ${randInt1} * ${randInt2}`);
+    } else if (currentQuestion > 5 ) {
+        timeleft = 0;
+        $("#number-buttons").addClass("hide");
+        $("#code-buttons").removeClass("hide");
+        let randCode = Math.floor(Math.random() * 20) + 5;
+        $("#question-text").html(`Create a statement that results in ${randCode}`);
+        time = 12;
     }
 
     if (currentQuestion == 20) {
@@ -173,15 +190,18 @@ function buildQuestions() {
 }
 
 function checkAnswer(event) {
-    let answer = event.target.value;
-    let correctAnswer = questionSet[questionCount].answer;
-    let impress = parseInt($("#impression").html());
+    let skill = event.target.value;
+    let charSkill = parseInt($(`#char-${skill}`).html());
+    let intSkill = parseInt($(`#interw-${skill}`).html());
 
-    if (correctAnswer == answer) {
+    let randomNumber = Math.floor(Math.random() * intSkill) + 1;
+
+    if (randomNumber <= charSkill) {
         setImpress("+", 3);
     } else {
         setImpress("-", 3);
     }
+
     timeleft = 0;
     buildQuestions();
 }
@@ -197,7 +217,6 @@ function setImpress(plusMinus, integer) {
     }
     $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
     $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-    questionCount++;
     currentQuestion++;
     $("#question").html(currentQuestion);
 }

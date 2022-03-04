@@ -36,6 +36,7 @@
   opacity: 0;
 }
 
-#answer-text {
+#answer-text,
+#answer-code {
   min-height: 30px;
 }
