@@ -88,8 +88,8 @@ def coding_difficult_interview(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not character.level == 3:
-        messages.error(request, "Your can only enter here when you're level 3")
+    elif not character.level == 4:
+        messages.error(request, "Your can only enter here when you're level 4")
         return redirect(reverse('grind:city'))
 
     interviewers = Interviewer.objects.filter(level=3)

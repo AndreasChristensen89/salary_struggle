@@ -11,12 +11,14 @@ def enter_game(request):
     """ Delete a product from the store """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -30,12 +32,14 @@ def city(request):
     """ A view to return the city page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -49,12 +53,14 @@ def bar_page(request):
     """ A view to return the bar page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -68,12 +74,14 @@ def library_page(request):
     """ A view to return the library page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -87,12 +95,14 @@ def downtown_page(request):
     """ A view to return the downtown page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -106,12 +116,14 @@ def house_page(request):
     """ A view to return the home page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -125,12 +137,14 @@ def agency_page(request):
     """ A view to return the agency page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -144,13 +158,16 @@ def store_page(request):
     """ A view to return the store page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     items = Item.objects.all()
-    character = get_object_or_404(ActiveCharacter, user=request.user)
     character_items = character.items.all()
 
     context = {
@@ -167,12 +184,14 @@ def call_center_page(request):
     """ A view to return the call-center page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -186,12 +205,14 @@ def back_alley_page(request):
     """ A view to return the back alley page """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     context = {
         'character': character,
@@ -207,12 +228,14 @@ def update_charm_home(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy >= 40:
         ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+1)
@@ -228,12 +251,14 @@ def sleep(request):
     """ Update view to add full energy """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy < 100:
         # subtracts penalties from the day
@@ -268,16 +293,17 @@ def study_home(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy >= 40:
-        curr_coding = ActiveCharacter.objects.get(user=request.user).coding
-        ActiveCharacter.objects.filter(user=request.user).update(coding=curr_coding+1)
+        ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+1)
         set_energy(request.user, 40)
     else:
         messages.error(request, 'Not enough energy')
@@ -290,12 +316,14 @@ def bar_converse(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy >= 40:
         if dice_roll(2, 3):
@@ -315,12 +343,14 @@ def bar_drink(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy >= 40:
         if character.money > 1000:
@@ -342,12 +372,14 @@ def library_study(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy >= 60:
         if dice_roll(2, 3):
@@ -370,12 +402,14 @@ def agency_knowledge(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if dice_roll(character.intellect, 20):
         ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
@@ -392,12 +426,14 @@ def agency_charm(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if dice_roll(character.charm, 20):
         ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
@@ -414,12 +450,14 @@ def agency_coding(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if dice_roll(character.coding, 20):
         ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
@@ -436,12 +474,14 @@ def agency_combine(request):
     """ Update view to add more charm """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     chances = character.coding + character.intellect + character.charm
 
@@ -463,13 +503,15 @@ def add_item(request, item_id):
     """
 
     profile = get_object_or_404(Profile, user=request.user)
+    c = get_object_or_404(ActiveCharacter, user=request.user)
+    i = get_object_or_404(Item, id=item_id)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    i = get_object_or_404(Item, id=item_id)
-    c = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if c.money >= i.price:
         if i not in c.items.all():
@@ -504,12 +546,14 @@ def apply_job(request):
     """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if dice_roll(character.charm, 20):
         ActiveCharacter.objects.filter(user=request.user).update(has_job=True)
@@ -527,12 +571,14 @@ def work(request):
     """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     salary = character.charm * 200
 
@@ -554,12 +600,14 @@ def fight(request):
     """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.energy >= 60:
         if dice_roll(5, 10):
@@ -584,12 +632,14 @@ def gamble(request):
     """
 
     profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
+    elif not profile.paid and character.level >= 2:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
 
     if character.money >= 1000:
         if dice_roll(1, 3):

@@ -1,0 +1,183 @@
+{% extends "grind/game_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'interview/css/interview.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated and character.level == 4 %}
+
+    <!-- Intro section -->
+  <section id="introduction">
+    <div class="row pt-3 intro">
+        <div class="col-10 mx-auto text-center">
+             <h1 class="display-3">Welcome to your third interview</h1>
+        </div>
+    </div>
+
+    <div class="row pt-3 intro-interviewer hide" id="head-intro">
+      <div class="col-10 mx-auto text-center top-text-interview">
+           <h1 class="display-4">Here's your interviewer</h1>
+      </div>
+    </div>
+
+    <div class="row pt-3 interviewer-presentation hide">
+      <div class="col-10 mx-auto text-center top-text-interview">
+           <h1 class="display-4">{{interviewer.name}}</h1>
+      </div>
+    </div>
+
+    <div class="row pt-5 hide" id="interviewer">
+      <div class="col-10 text-center mx-auto">
+        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="hr-img">
+      </div>
+    </div>
+
+    <div class="row pt-3 intro-interviewer hide">
+      <div class="col-10 mx-auto text-center">
+           <p class="lead">Best of luck!</p>
+      </div>
+    </div>
+
+    <div class="row pt-3 hide interviewer-presentation">
+      <div class="col-10 mx-auto text-center">
+           <p class="lead">{{interviewer.intro}}</p>
+      </div>
+    </div>
+  </section>
+
+    <div class="row pt-3" id="next-button">
+      <button class="btn mx-auto icon" id="next-comment">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <!-- Question Section -->
+    <section class="hide" id="question-game-area">
+
+      <div class="row">
+        <div class="col text-center mx-auto">
+          <ul class="list-inline">
+            <li class="list-inline-item lead">Question</li>
+            <li class="list-inline-item lead" id="question">1</li>
+            <li class="list-inline-item lead">Impression:</li>
+            <li class="list-inline-item lead" id="impression">1</li>
+            <li class="list-inline-item lead">/</li>
+            <li class="list-inline-item lead" id="impress-level">{{interviewer.impress_lvl}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-10 mx-auto text-center mt-5">
+          <h2 class="h2" id="timer">Get ready!</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-10 mx-auto text-center mt-1">
+          <p class="lead" id="question-text">Question</h2>
+        </div>
+      </div>
+
+      <div class="row answer-buttons">
+        <div class="col-10 mx-auto text-center mt-1">
+          <button aria-label="Answer Button 1" id="answer1-btn" class="btn border col-12 answer-btn" value="a">Answer 1</button>
+          <button aria-label="Answer Button 2" id="answer2-btn" class="btn border col-12 answer-btn" value="b">Answer 2</button>
+          <button aria-label="Answer Button 3" id="answer3-btn" class="btn border col-12 answer-btn" value="c">Answer 3</button>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-10 text-center mx-auto">
+          <button aria-label="Charm Button" id="charm-btn" class="btn btn-danger m-2 col-10 chance-btn" value="charm">Charm him</button>
+          <div class="col-12 hide" id="alternative-charm">
+              <p class="lead" id="charm-answer"></p>
+          </div>
+          <button aria-label="Intellect Button" id="intellect-btn" class="btn btn-primary m-2 col-10 chance-btn" value="intellect">Show your intellect</button>
+          <div class="col-12 hide" id="alternative-intellect">
+            <p class="lead" id="intellect-answer"></p>
+        </div>
+          <button aria-label="Coding Button" id="coding-btn" class="btn btn-success m-2 col-10 chance-btn" value="coding">Display coding skills</button>
+          <div class="col-12 hide" id="alternative-coding">
+            <p class="lead" id="coding-answer"></p>
+        </div>
+        <div class="next-question hide">
+          <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        </div>
+      </div>
+    </section>
+  
+    <div class="d-none">
+      <div id="char-charm">{{character.charm}}</div>
+      <div id="char-intellect">{{character.intellect}}</div>
+      <div id="char-coding">{{character.coding}}</div>
+    </div>
+
+    <div class="d-none">
+      <div id="interw-charm">{{interviewer.coldness}}</div>
+      <div id="interw-intellect">{{interviewer.intellect}}</div>
+      <div id="interw-coding">{{interviewer.coding}}</div>
+    </div>
+
+    <!----------------- End section --------------------->
+
+    <section class="hide" id="ending-success">
+      <div class="row pt-3 ending-success">
+          <div class="col-10 mx-auto text-center">
+               <h1 class="display-4">Sweet, you pulled through!</h1>
+          </div>
+      </div>
+  
+      <div class="row pt-3 ending-success">
+        <div class="col-10 mx-auto text-center top-text-interview">
+             <p class="lead">Your level went up! Check out the agency for your next step</p>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-10 mx-auto text-center">
+          <a href="{% url 'interview:interview_success' %}">
+              <h3 class="h3">Level up and continue</h3>
+          </a>
+        </div>
+      </div>
+      
+    </section>
+
+    <section class="hide" id="ending-fail">
+      <div class="row pt-3 ending-success">
+          <div class="col-10 mx-auto text-center">
+               <h1 class="display-4">Damn, this could have gone better.</h1>
+          </div>
+      </div>
+  
+      <div class="row pt-3 ending-fail">
+        <div class="col-10 mx-auto text-center top-text-interview">
+             <p class="lead">Don't worry, this won't be your last attempt. Head back to the agency and try again!</p>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-10 mx-auto text-center">
+          <a href="{% url 'grind:house' %}">
+              <h3 class="h3">Return home</h3>
+          </a>
+        </div>
+      </div>
+      
+    </section>
+
+
+
+{% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'interview/js/hard_coding_interview.js' %}"></script>
+    <script type="text/javascript" src="{% static 'interview/js/questions.js' %}"></script>
+{% endblock %}
+
