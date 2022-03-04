@@ -20,9 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
             $(".chance-btn").click(attemptSkill);
-            $("#answer1-btn").click(checkAnswer);
-            $("#answer2-btn").click(checkAnswer);
-            $("#answer3-btn").click(checkAnswer);
+            $(".answer-btn").click(passNumber);
+            $("#submit-btn").click(passAnswer);
             buildQuestions();
             timer();
         }
@@ -33,27 +32,55 @@ var questionCount = 0;
 var questionSet = {};
 var timeleft = 0;
 
+function passNumber(event) {
+    let selectedAction = event.target.value;
+    let length = $("#answer-text").html().length;
+
+    if ($("#answer-text").html() == "Use buttons") {
+        $("#answer-text").html(selectedAction);
+    } else if (selectedAction === "delete") {
+        if (length > 0) {
+        $("#answer-text").html($("#answer-text").html().slice(0, -1));
+        }
+    } else {
+        $("#answer-text").html($("#answer-text").html() + selectedAction);
+    }
+}
+
+function passAnswer() {
+    let int1 = $("#question-text").html().slice(8, 9);
+    let int2 = $("#question-text").html().slice(12);
+    let rightAnswer = int1 * int2;
+
+    if ($("#answer-text").html() == rightAnswer) {
+        setImpress("+", 3);
+    } else {
+        setImpress("-", 3);
+    }
+    $("#answer-text").html("");
+    buildQuestions();
+}
 
 function timer() {
+    
     setInterval(function(){
-    if(timeleft >= 20){
-        setImpress("-", 3);
-        timeleft = 0;
-        buildQuestions();
-    }
-    $("#timer").html(20 - timeleft);
-    timeleft++;
-}, 1000);
+        if(timeleft >= 5){
+            setImpress("-", 3);
+            timeleft = 0;
+            buildQuestions();
+        }
+        $("#timer").html(5 - timeleft);
+        timeleft++;
+    }, 1000);
 }
 
 
 function attemptSkill(event) {
-    clearInterval(timer);
     let skill = event.target.value;
     let charSkill = parseInt($(`#char-${skill}`).html());
     let intSkill = parseInt($(`#interw-${skill}`).html());
 
-    let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
+    let randomNumber = Math.floor(Math.random() * intSkill) + 1;
 
     if (randomNumber <= charSkill) {
         setImpress("+", 3);
@@ -70,32 +97,24 @@ function buildQuestions() {
         $(".answer-btn").prop("disabled",true);
         finishInterview();
     }
-    if (timeleft == 20) {
-        timeleft = 0;
-    }
+
     if (questionCount < questionSet.length) {
         timeleft = 0;
-        $("#question-text").html(questionSet[questionCount].question);
-        $("#answer1-btn").html(questionSet[questionCount].a);
-        $("#answer2-btn").html(questionSet[questionCount].b);
-        $("#answer3-btn").html(questionSet[questionCount].c);
+        let randInt1 = Math.floor(Math.random() * 10) + 1;
+        let randInt2 = Math.floor(Math.random() * 10) + 1;
+        $("#question-text").html(`What is ${randInt1} * ${randInt2}`);
     }
 }
 
 function checkAnswer(event) {
-    clearInterval(timer);
     let answer = event.target.value;
     let correctAnswer = questionSet[questionCount].answer;
-    console.log(answer);
-    console.log(correctAnswer);
     let impress = parseInt($("#impression").html());
 
     if (correctAnswer == answer) {
         setImpress("+", 3);
-    } else if (impress - 3 > 0) {
-        setImpress("-", 3);
     } else {
-        $("#impression").text("0");
+        setImpress("-", 3);
     }
     timeleft = 0;
     buildQuestions();

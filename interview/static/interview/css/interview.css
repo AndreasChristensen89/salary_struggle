@@ -35,3 +35,7 @@
 #ending-fail, #ending-success {
   opacity: 0;
 }
+
+#answer-text {
+  min-height: 30px;
+}
