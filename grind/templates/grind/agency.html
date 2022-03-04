@@ -21,52 +21,54 @@
     </div>
     
     {% if character.level == 1 %}
-    <div class="row py-5 text-center">
-        <div class="col">
-            <h2>Ask recruiter for coding interview</h2>
+    <div class="row pt-5 text-center">
+        <div class="col-10 mx-auto">
+            <h3 class="h3">Ask for interview</h3>
         </div>
     </div>
     
-    <div class="row py-5">
+    <div class="row pt-2">
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
+        <div class="col-6 mx-auto text-center">
             <a href="{% url 'grind:agency-knowledge' %}">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Blow hind mind with knowledge</h5>
-                    <p class="card-text round">Odds: Intellect to 20</p>
+                <div class="border rounded-top">
+                    <p class="lead font-weight-bold">Use intellect</p>
+                    <!-- <p class="lead">Odds: Intellect to 20</p> -->
                 </div>
             </a>
         </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
+        <div class="col-6 mx-auto text-center mb-4">
             <a href="{% url 'grind:agency-charm' %}">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Charm him</h5>
-                    <p class="card-text round">Odds: Charm to 20</p>
+                <div class="border rounded-top">
+                    <p class="lead font-weight-bold">Use charm</p>
+                    <!-- <p class="lead">Odds: Charm to 20</p> -->
                 </div>
             </a>
         </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
+        <div class="col-6 mx-auto text-center mb-4">
             <a href="{% url 'grind:agency-coding' %}">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Display coding skills</h5>
-                    <p class="card-text round">Odds: Coding to 20</p>
+                <div class="border rounded-top">
+                    <p class="lead font-weight-bold">Use coding</h5>
+                    <!-- <p class="lead">Odds: Coding to 20</p> -->
                 </div>
             </a>
         </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
+        <div class="col-6 mx-auto text-center">
             <a href="{% url 'grind:agency-combine' %}">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Combine your skills</h5>
-                    <p class="card-text round">Odds: Intellect + Charisma + Coding to 60</p>
+                <div class="border rounded-top">
+                    <h5 class="lead font-weight-bold">Combine your skills</h5>
+                    <!-- <p class="lead">Odds: Intellect + Charisma + Coding to 60</p> -->
                 </div>
             </a>
         </div>
 
     </div>
+
     {% elif character.level == 2 %}
+
     <div class="row py-5 text-center">
         <div class="col-10 mx-auto">
             <a href="{% url 'interview:hr_interview' %}">
@@ -84,6 +86,9 @@
 
     <div class="row pt-2 text-center hide" id="hint-text">
         <div class="col-10 mx-auto">
+            <p class="lead border hide hint">Hi, I'm Steve the recruiter.</p>
+            <p class="lead border hide hint">Glad to meet you. You look like you have some promise.</p>
+            <p class="lead border hide hint">Your first interview is now available.</p>
             <p class="lead border hide hint">Oh yeah, I should probably give you a briefing of the interview you're about to join</p>
             <p class="lead border hide hint">So, the company's name is Data Drifters and they specialize in database integrations.</p>
             <p class="lead border hide hint">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
