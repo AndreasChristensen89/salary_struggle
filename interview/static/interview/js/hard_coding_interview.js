@@ -20,8 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
             $(".chance-btn").click(attemptSkill);
-            $(".answer-btn").click(passNumber);
-            $("#submit-btn").click(passAnswer);
+            $(".number-btn").click(passNumber);
+            $("#submit-number-btn").click(passNumberAnswer);
+            $("#answer-text").animate({fontWeight: '900'}, "medium");
+            $("#answer-text").animate({fontWeight: '300'}, "medium");
             buildQuestions();
             timer();
         }
@@ -32,11 +34,25 @@ var questionCount = 0;
 var questionSet = {};
 var timeleft = 0;
 
+
+function passCode(event) {
+    let selectedAction = event.target.value;
+    let length = $("#answer-code").html().length;
+
+    if (selectedAction === "delete") {
+        if (length > 7) {
+            $("#answer-code").html($("#answer-code").html().slice(0, -1));
+        }
+    } else {
+            $("#answer-code").html($("#answer-code").html() + selectedAction);
+        }
+}
+
 function passNumber(event) {
     let selectedAction = event.target.value;
     let length = $("#answer-text").html().length;
 
-    if ($("#answer-text").html() == "Use buttons") {
+    if ($("#answer-text").html() == "Hurry! Use the buttons!") {
         $("#answer-text").html(selectedAction);
     } else if (selectedAction === "delete") {
         if (length > 0) {
@@ -47,7 +63,7 @@ function passNumber(event) {
     }
 }
 
-function passAnswer() {
+function passNumberAnswer() {
     let int1 = $("#question-text").html().slice(8, 9);
     let int2 = $("#question-text").html().slice(12);
     let rightAnswer = int1 * int2;
@@ -61,15 +77,53 @@ function passAnswer() {
     buildQuestions();
 }
 
+
+function passCodeAnswer() {
+    let int1 = $("#answer-code").html().slice(7);
+    let firstChar = $("#answer-code").html().slice(7, 8);
+    let lastChar = $("#answer-code").html().slice(-1);
+    let button = $("#submit-code-btn");
+    let correctAnswer = $("#question-text").html().slice(-2);
+    
+    if (firstChar == "*" || firstChar == "+" || firstChar == "-") {
+        button.addClass("bg-danger");
+        setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
+    } else if (lastChar == "*" || lastChar == "+" || lastChar == "-") {
+        button.addClass("bg-danger");
+        setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
+    } else if (int1.includes("--") || int1.includes("++") || int1.includes("**")) {
+        button.addClass("bg-danger");
+        setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
+    } else {
+        console.log(stringCalculator(int1));
+        console.log(correctAnswer.trim());
+        console.log(stringCalculator(int1) == correctAnswer.trim());
+        
+        if (stringCalculator(int1) == correctAnswer.trim()) {
+            setImpress("+", 3);
+        } else {
+        setImpress("-", 3);
+        }
+    $("#answer-code").html("return ");
+    buildQuestions();
+      }
+}
+
+// calculates the math in a string
+function stringCalculator(fn) {
+    return new Function('return ' + fn)();
+}
+
+
 function timer() {
     
     setInterval(function(){
-        if(timeleft >= 5){
+        if(timeleft >= 100){
             setImpress("-", 3);
             timeleft = 0;
             buildQuestions();
         }
-        $("#timer").html(5 - timeleft);
+        $("#timer").html(100 - timeleft);
         timeleft++;
     }, 1000);
 }
@@ -92,17 +146,29 @@ function attemptSkill(event) {
 }
 
 function buildQuestions() {
-    questionSet = codingQuestions;
-    if (questionCount == questionSet.length-1) {
-        $(".answer-btn").prop("disabled",true);
-        finishInterview();
-    }
-
-    if (questionCount < questionSet.length) {
+    if (currentQuestion >= 6) {
+        timeleft = 0;
+        $("#number-buttons").addClass("hide");
+        $("#code-buttons").removeClass("hide");
+        // checks if one button has events, and if so we can assume that submit is similar
+        let events = $._data(document.getElementById('codeplus-btn'), "events");
+        let hasEvents = (events != null);
+        if (hasEvents == false) {
+            $(".code-btn").click(passCode);
+            $("#submit-code-btn").click(passCodeAnswer);
+        }
+        let randCode = Math.floor(Math.random() * 12) + 1;
+        $("#question-text").html(`Create a return statement that produces ${randCode}`);
+    } else if (currentQuestion < 6) {
         timeleft = 0;
         let randInt1 = Math.floor(Math.random() * 10) + 1;
         let randInt2 = Math.floor(Math.random() * 10) + 1;
         $("#question-text").html(`What is ${randInt1} * ${randInt2}`);
+    }
+
+    if (currentQuestion == 20) {
+        $(".answer-btn").prop("disabled",true);
+        finishInterview();
     }
 }
 
