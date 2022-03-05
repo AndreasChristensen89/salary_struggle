@@ -40,17 +40,17 @@
   </head>
   <body>
     <header class="container-fluid">
-        <div class="row">
+        <div class="row align-items-center">
           <a class="col-3 text-center" href="{% url 'home:index' %}">
             <div class="rounded circle m-2">
-              <i class="fas fa-times"></i>
+              <i class="fas fa-times" id="exit"></i>
             </div>
           </a>
           <span class="col-3 text-muted text-center"><i class="fas fa-bolt mx-1"></i> {{character.energy}}</span>
           <span class="col-3 text-muted text-center"><i class="fas fa-people-arrows mx-1"></i> {{character.charm}}</span>
           <span class="col-3 text-muted text-center"><i class="fas fa-brain mx-1"></i> {{character.intellect}}</span>
         </div>
-        <div class="row border-bottom">
+        <div class="row border-bottom pb-2">
           <span class="col-2 text-muted text-center float-right"><i class="far fa-calendar-alt"></i> {{character.day}}</span>
           <span class="col-3 text-muted text-center float-right"><i class="fas fa-code mx-1"></i> {{character.coding}}</span>
           <span class="col-3 text-muted text-center float-right"><i class="fas fa-fire-alt mx-1"></i> {{character.endurance}}</span>
@@ -85,6 +85,12 @@
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
+
+        setTimeout(function () {
+          let messages = document.getElementById('msg');
+          let alert = new bootstrap.Alert(messages);
+          alert.close();
+      }, 1500);
     </script>
     {% endblock %}
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, JsonResponse
 from profiles.models import Profile, ActiveCharacter
 from codex.models import Item
 from .functions import set_energy, validate_user, dice_roll
@@ -43,6 +44,7 @@ def city(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/city.html', context)
@@ -64,6 +66,7 @@ def bar_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/bar.html', context)
@@ -85,6 +88,7 @@ def library_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/library.html', context)
@@ -106,6 +110,7 @@ def downtown_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/downtown.html', context)
@@ -127,6 +132,7 @@ def house_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/house.html', context)
@@ -148,6 +154,7 @@ def agency_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/agency.html', context)
@@ -174,6 +181,7 @@ def store_page(request):
         'items': items,
         'character': character,
         'character_items': character_items,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/store.html', context)
@@ -195,6 +203,7 @@ def call_center_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/call_center.html', context)
@@ -216,6 +225,7 @@ def back_alley_page(request):
 
     context = {
         'character': character,
+        'no_bag_display': True,
     }
 
     return render(request, 'grind/back_alley.html', context)
@@ -237,9 +247,9 @@ def update_charm_home(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    if character.energy >= 40:
+    if character.energy >= 40-character.endurance:
         ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+1)
-        set_energy(request.user, 40)
+        set_energy(request.user, 40-character.endurance)
     else:
         messages.error(request, 'Not enough energy')
 
@@ -302,9 +312,9 @@ def study_home(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    if character.energy >= 40:
+    if character.energy >= 40-character.endurance:
         ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+1)
-        set_energy(request.user, 40)
+        set_energy(request.user, 40-character.endurance)
     else:
         messages.error(request, 'Not enough energy')
 
@@ -325,12 +335,12 @@ def bar_converse(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    if character.energy >= 40:
+    if character.energy >= 40-character.endurance:
         if dice_roll(2, 3):
             ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+2)
-            set_energy(request.user, 40)
+            set_energy(request.user, 40-character.endurance)
         else:
-            set_energy(request.user, 40)
+            set_energy(request.user, 40-character.endurance)
             messages.error(request, 'Out of luck!')
     else:
         messages.error(request, 'Not enough energy')
@@ -352,13 +362,13 @@ def bar_drink(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    if character.energy >= 40:
+    if character.energy >= 40-character.endurance:
         if character.money > 1000:
             ActiveCharacter.objects.filter(user=request.user).update(
                 charm=character.charm+2,
                 money=character.money-1000,
                 energy_penalty=character.energy_penalty+20)
-            set_energy(request.user, 40)
+            set_energy(request.user, 40-character.endurance)
         else:
             messages.error(request, "Get a job, you're too broke to even buy a beer")
     else:
@@ -381,15 +391,15 @@ def library_study(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    if character.energy >= 60:
+    if character.energy >= 60-character.endurance:
         if dice_roll(2, 3):
             ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+2)
             ActiveCharacter.objects.filter(user=request.user).update(intellect=character.intellect+2)
-            set_energy(request.user, 60)
+            set_energy(request.user, 60-character.endurance)
         else:
             ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+1)
             ActiveCharacter.objects.filter(user=request.user).update(intellect=character.intellect+1)
-            set_energy(request.user, 60)
+            set_energy(request.user, 60-character.endurance)
             messages.error(request, 'Your friends came along and distracted you. Half effort = half reward')
     else:
         messages.error(request, 'Not enough energy')
@@ -580,13 +590,12 @@ def work(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    salary = character.charm * 200
+    salary = character.charm * 100
 
-    if character.energy >= 60:
-        curr_money = ActiveCharacter.objects.get(user=request.user).money
-        ActiveCharacter.objects.filter(user=request.user).update(money=curr_money+salary)
+    if character.energy >= 60-character.endurance:
+        ActiveCharacter.objects.filter(user=request.user).update(money=character.money+salary)
         messages.error(request, f'You made ¥{salary}')
-        set_energy(request.user, 60)
+        set_energy(request.user, 60-character.endurance)
     else:
         messages.error(request, 'Not enough energy')
 
@@ -609,11 +618,11 @@ def fight(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    if character.energy >= 60:
+    if character.energy >= 60-character.endurance:
         if dice_roll(5, 10):
             ActiveCharacter.objects.filter(user=request.user).update(endurance=character.endurance+3)
             messages.success(request, 'Nicely done, the other guy looks pretty roughed up. Your endurance went up')
-            set_energy(request.user, 60)
+            set_energy(request.user, 60-character.endurance)
         else:
             ActiveCharacter.objects.filter(user=request.user).update(
                 energy=0,
@@ -643,14 +652,15 @@ def gamble(request):
 
     if character.money >= 1000:
         if dice_roll(1, 3):
-            curr_money = ActiveCharacter.objects.get(user=request.user).money
-            ActiveCharacter.objects.filter(user=request.user).update(money=curr_money+3000)
+            ActiveCharacter.objects.filter(user=request.user).update(money=character.money+3000)
             messages.success(request, 'Lucky you, you just pocketed ¥3000')
         else:
-            curr_money = ActiveCharacter.objects.get(user=request.user).money
-            ActiveCharacter.objects.filter(user=request.user).update(money=curr_money-1000)
+            ActiveCharacter.objects.filter(user=request.user).update(money=character.money-1000)
             messages.error(request, 'Better luck next time. Try to win it back, or stay sensible.')
     else:
         messages.error(request, "In your current financial situation you probably shouldn't")
 
     return redirect(reverse('grind:back-alley'))
+
+
+

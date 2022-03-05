@@ -3,7 +3,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-5">
+<div class="container h-100 mt-3">
     <div class="row">
         <div class="col text-center">
             <h1 class="h1">Downtown</h1>
@@ -12,38 +12,42 @@
 
     <div class="row">
         <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
-            <i class="fa-solid fa-circle-arrow-left">Back</i>
+            <i class="fas fa-arrow-left"></i>
         </a>
     </div>
-    
-    <div class="row py-5">
 
-        <div class="col-10 card mx-auto text-center">
+    <div class="row pt-5">
+        <div class="col-6 border rounded mx-auto text-center">
             <a href="{% url 'grind:store' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Store</h5>
-                    <p class="lead">Some items might come in handy</p>
+                <div class="col-12 rounded">
+                    <h5 class="h5">Store</h5>
+                    <p">Buy items</p>
                 </div>
             </a>
         </div>
-
-        <div class="col-10 card mx-auto text-center">
+    </div>
+        
+    <div class="row pt-2">
+        <div class="col-6 border rounded mx-auto text-center">
             <a href="{% url 'grind:call-center' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Call Center</h5>
-                    <p class="lead">Make some money on the side</p>
+                <div class="col-12 rounded">
+                    <h5 class="h5">Call Center</h5>
+                    <p>Work part time</p>
                 </div>
             </a>
         </div>
+    </div>
 
-        <div class="col-10 card mx-auto text-center">
+    <div class="row pt-2">
+        <div class="col-6 border rounded mx-auto text-center">
             <a href="{% url 'grind:back-alley' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Back Alley</h5>
-                    <p class="lead">Get your hands dirty</p>
+                <div class="col-12 rounded">
+                    <h5 class="h5">Back Alley</h5>
+                    <p>Get your hands dirty</p>
                 </div>
             </a>
         </div>
+    </div>
 
     </div>
 </div>

@@ -8,7 +8,7 @@ def view_shopping_bag(request):
     """ A view that renders the shopping bag """
 
     context = {
-        'on_shopping_bag_page': True,
+        'no_bag_display': True,
     }
 
     return render(request, 'shopping_bag/shopping_bag.html', context)

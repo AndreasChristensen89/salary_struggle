@@ -38,3 +38,7 @@ body {
     margin: 0;
     height: 100%;
 }
+
+#exit {
+    font-size: 10pt;
+}

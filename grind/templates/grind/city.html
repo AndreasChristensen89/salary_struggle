@@ -3,61 +3,68 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-5">
+<div class="container h-100 mt-3">
     <div class="row">
         <div class="col text-center">
             <h1 class="h1">City</h1>
         </div>
     </div>
     
-    <div class="row py-4">
-
-        <div class="col-10 card mx-auto text-center">
+    <div class="row pt-5">
+        <div class="col-6 border rounded mx-auto text-center">
             <a href="{% url 'grind:bar' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Bar</h5>
-                    <p class="lead">Why not, eh?</p>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-10 card mx-auto text-center">
-            <a href="{% url 'grind:library' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Library</h5>
-                    <p class="lead">Get that brain buzzing</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-10 card mx-auto text-center">
-            <a href="{% url 'grind:downtown' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Downtown</h5>
-                    <p class="lead">Explore</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-10 card mx-auto text-center">
-            <a href="{% url 'grind:house' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Home</h5>
-                    <p class="lead">Return to your little cave</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-10 card mx-auto text-center">
-            <a href="{% url 'grind:agency' %}">
-                <div class="col rounded-top">
-                    <h5 class="display-5 pt-2">Agency</h5>
-                    <p class="lead">Let's work on that job</p>
+                <div class="col-12 rounded">
+                    <p class="h5">Bar</h5>
+                    <p>Why not, eh?</p>
                 </div>
             </a>
         </div>
     </div>
+
+    <div class="row pt-2">
+        <div class="col-6 border rounded mx-auto text-center">
+            <a href="{% url 'grind:library' %}">
+                <div class="col-12 rounded">
+                    <h5 class="h5">Library</h5>
+                    <p>Study</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-6 border rounded mx-auto text-center">
+            <a href="{% url 'grind:downtown' %}">
+                <div class="col-12 rounded">
+                    <h5 class="h5">Downtown</h5>
+                    <p>Explore</p>
+                </div>
+            </a>
+        </div>
+    </div>
+        
+    <div class="row pt-2">
+        <div class="col-6 border rounded mx-auto text-center">
+            <a href="{% url 'grind:house' %}">
+                <div class="col-12 rounded">
+                    <h5 class="h5">House</h5>
+                    <p>Return home</p>
+                </div>
+            </a>
+        </div>
+    </div>
+        
+    <div class="row pt-2">
+        <div class="col-6 border rounded mx-auto text-center">
+            <a href="{% url 'grind:agency' %}">
+                <div class="col-12 rounded">
+                    <h5 class="h5">Agency</h5>
+                    <p>Job time!</p>
+                </div>
+            </a>
+        </div>
+    </div>
+        
 </div>
 {% endif %}
 {% endblock %}
