@@ -16,7 +16,7 @@ def enter_game(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -37,7 +37,7 @@ def city(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -58,7 +58,7 @@ def bar_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -79,7 +79,7 @@ def library_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -100,7 +100,7 @@ def downtown_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -121,7 +121,7 @@ def house_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -142,7 +142,7 @@ def agency_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -163,7 +163,7 @@ def store_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -189,7 +189,7 @@ def call_center_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -210,7 +210,7 @@ def back_alley_page(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -233,7 +233,7 @@ def update_charm_home(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -256,7 +256,7 @@ def sleep(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -298,7 +298,7 @@ def study_home(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -321,7 +321,7 @@ def bar_converse(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -348,7 +348,7 @@ def bar_drink(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -377,7 +377,7 @@ def library_study(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -407,7 +407,7 @@ def agency_knowledge(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -431,7 +431,7 @@ def agency_charm(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -455,7 +455,7 @@ def agency_coding(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -479,7 +479,7 @@ def agency_combine(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -509,7 +509,7 @@ def add_item(request, item_id):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and c.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -551,7 +551,7 @@ def apply_job(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -576,7 +576,7 @@ def work(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -605,7 +605,7 @@ def fight(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
@@ -637,7 +637,7 @@ def gamble(request):
     if not profile.active_char:
         messages.error(request, 'You need to create a character before you can enter here')
         return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 2:
+    elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
