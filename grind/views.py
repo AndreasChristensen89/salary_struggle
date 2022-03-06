@@ -233,94 +233,116 @@ def back_alley_page(request):
     return render(request, 'grind/back_alley.html', context)
 
 
-# Update views
+# ------------------------ Update views --------------------------
 
-@login_required
-def update_charm_home(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.energy >= 40-character.endurance:
-        ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+1)
-        set_energy(request.user, 40-character.endurance)
-    else:
-        messages.error(request, 'Not enough energy')
-
-    return redirect(reverse('grind:house'))
-
-
-@login_required
-def sleep(request):
-    """ Update view to add full energy """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.energy < 100:
-        # subtracts penalties from the day
-        ActiveCharacter.objects.filter(user=request.user).update(
-            energy=100-character.energy_penalty,
-            intellect=character.intellect-character.intellect_penalty,
-            charm=character.charm-character.charm_penalty,
-            coding=character.coding-character.coding_penalty,
-            endurance=character.endurance-character.endurance_penalty,
-            day=character.day+1
-            )
-        # resets all penalties to 0 for new day
-        ActiveCharacter.objects.filter(user=request.user).update(
-            energy_penalty=0,
-            intellect_penalty=0,
-            charm_penalty=0,
-            coding_penalty=0,
-            endurance_penalty=0,
-            )
-        messages.info(request, f'Day {character.day+1} - take your time')
-        if (100-character.energy_penalty) < 0:
-            ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-            messages.info(request, 'No energy. Looks like you went too rough on yourself yesterday.')
-    else:
-        messages.error(request, 'Your energy is full. No need to sleep')
-
-    return redirect(reverse('grind:house'))
+class update_charm_home(UpdateView):
+    """
+    Updates charm from home
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            character = ActiveCharacter.objects.get(user=self.request.user)
+            # Update Active Character
+            if character.energy >= 40-character.endurance:
+                character.charm = character.charm + 1
+                character.energy = character.energy - (40-character.endurance)
+                character.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
-@login_required
-def study_home(request):
-    """ Update view to add more charm """
+class sleep(UpdateView):
+    """
+    Restores energy, advances one day, and applies penalties
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # Update Active Character
+            if c.energy < 100:
+                # subtracts penalties from the day
+                c.energy = 100-c.energy_penalty
+                c.intellect = c.intellect-c.intellect_penalty
+                c.charm = c.charm-c.charm_penalty
+                c.coding = c.coding-c.coding_penalty
+                c.endurance = c.endurance-c.endurance_penalty
+                c.day = c.day+1
+                # resets all penalties to 0 for new day
+                c.energy_penalty = 0
+                c.intellect_penalty = 0
+                c.charm_penalty = 0
+                c.coding_penalty = 0
+                c.endurance_penalty = 0
+                c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
 
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
+class study_home(UpdateView):
+    """
+    Restores energy, advances one day, and applies penalties
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # Update Active Character
+            if c.energy >= 40-c.endurance:
+                c.coding = c.coding + 1
+                c.energy = c.energy-(40-c.endurance)
+                c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
-    if character.energy >= 40-character.endurance:
-        ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+1)
-        set_energy(request.user, 40-character.endurance)
-    else:
-        messages.error(request, 'Not enough energy')
 
-    return redirect(reverse('grind:house'))
+class bar_drink(UpdateView):
+    """
+    Test if ajax updates without refresh
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            character = ActiveCharacter.objects.get(user=self.request.user)
+            # Update Active Character
+            if character.energy >= 40-character.endurance:
+                if character.money > 1000:
+                    character.charm = character.charm + 2
+                    character.energy = character.energy - (40-character.endurance)
+                    character.money = character.money-1000
+                    character.energy_penalty = character.energy_penalty+20
+                    character.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
 @login_required
@@ -344,35 +366,6 @@ def bar_converse(request):
         else:
             set_energy(request.user, 40-character.endurance)
             messages.error(request, 'Out of luck!')
-    else:
-        messages.error(request, 'Not enough energy')
-
-    return redirect(reverse('grind:bar'))
-
-
-@login_required
-def bar_drink(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.energy >= 40-character.endurance:
-        if character.money > 1000:
-            ActiveCharacter.objects.filter(user=request.user).update(
-                charm=character.charm+2,
-                money=character.money-1000,
-                energy_penalty=character.energy_penalty+20)
-            set_energy(request.user, 40-character.endurance)
-        else:
-            messages.error(request, "Get a job, you're too broke to even buy a beer")
     else:
         messages.error(request, 'Not enough energy')
 
@@ -663,33 +656,3 @@ def gamble(request):
         messages.error(request, "In your current financial situation you probably shouldn't")
 
     return redirect(reverse('grind:back-alley'))
-
-
-class ajax_drink(UpdateView):
-    """
-    Test if ajax updates without refresh
-    """
-    def post(self, *args, **kwargs):
-        """
-        Overrides POST method to ensure the request is AJAX,
-        Updates the user's active character profile with the
-        information received via AJAX, and returns the appropriate HTTP
-        responses accoringly.
-        """
-        if self.request.is_ajax():
-            # Obtain Active Character
-            character = ActiveCharacter.objects.get(user=self.request.user)
-            # Update Active Character
-            if character.energy >= 40-character.endurance:
-                if character.money > 1000:
-                    character.charm = character.charm + 2
-                    character.energy = character.energy - (40-character.endurance)
-                    character.money = character.money-1000
-                    character.energy_penalty = character.energy_penalty+20
-                    character.save()
-                    return HttpResponse(200)
-                else:
-                    return HttpResponse(400)
-            else:
-                return HttpResponse(400)
-        return HttpResponse(400)

@@ -19,35 +19,29 @@
     </div>
 
     <div class="row pt-5">
-        <div class="col-6 card mx-auto text-center">
-            <a href="{% url 'grind:sleep' %}" id="sleep">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Sleep</h5>
-                    <p class="card-text round">Rest up</p>
-                </div>
-            </a>
+        <div class="col-6 card mx-auto text-center" id="sleep">
+            <div class="card-body rounded-top">
+                <h5 class="card-title">Sleep</h5>
+                <p class="card-text round">Rest up</p>
+            </div>
         </div>
     </div>
 
     <div class="row pt-2">
-        <div class="col-6 card mx-auto text-center">
-            <a href="{% url 'grind:study-home' %}">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Study</h5>
-                    <p class="card-text round">+1 coding</p>
-                </div>
-            </a>
+        <div class="col-6 card mx-auto text-center" id="homeStudy">
+            <div class="card-body rounded-top">
+                <h5 class="card-title">Study</h5>
+                <p class="card-text round">+1 coding</p>
+            </div>
         </div>
     </div>
 
     <div class="row pt-2">
-        <div class="col-6 card mx-auto text-center">
-            <a href="{% url 'grind:update_charm_home' %}">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Practice Charm</h5>
-                    <p class="card-text round">+1 charm</p>
-                </div>
-            </a>
+        <div class="col-6 card mx-auto text-center" id="homeCharm">
+            <div class="card-body rounded-top">
+                <h5 class="card-title">Practice Charm</h5>
+                <p class="card-text round">+1 charm</p>
+            </div>
         </div>
     </div>
         
@@ -60,4 +54,9 @@
     </h1>
 </div>
 {% endif %}
+{% csrf_token %}
+{% endblock %}
+
+{% block postloadjs %}
+    <script type="text/javascript" src="{% static 'grind/js/ajax_home.js' %}"></script>
 {% endblock %}

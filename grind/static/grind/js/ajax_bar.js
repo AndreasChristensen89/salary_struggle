@@ -1,0 +1,36 @@
+const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+document.querySelector('[name=csrfmiddlewaretoken]').remove();
+
+var charm = parseInt($("#charm").html());
+var money = parseInt($("#money").html());
+var energy = parseInt($("#energy").html());
+var endurance = parseInt($("#endurance").html());
+
+$("#drinkButton").click(function() {
+    $.ajax({
+        type: "POST",
+        url: "/grind/bar-drink/",
+        headers: {'X-CSRFToken': csrf},
+        success: function(){
+            if (energy-40 >= 0 && money >= 1000) {
+                $("#drinkButton").addClass("bg-success");
+                $("#charm").html(charm+2);
+                charm = charm+2;
+                $("#money").html(money-1000);
+                money = money-1000;
+                $("#energy").html(energy-(40-endurance));
+                energy = energy-(40-endurance);
+                setTimeout(() => { 
+                    $("#drinkButton").removeClass("bg-success");
+                }, 800);
+            } else {
+                $("#drinkButton").addClass("bg-danger");
+                setTimeout(() => { 
+                    $("#drinkButton").removeClass("bg-danger");
+                }, 800);
+            }
+            
+        }
+    });
+});

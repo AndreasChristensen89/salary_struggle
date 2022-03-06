@@ -28,7 +28,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/e98ebe1726.js" crossorigin="anonymous"></script>
-        <script src="{% static 'grind/js/overlay.js' %}"></script>
         <!-- Stripe -->
         <!-- <script src="https://js.stripe.com/v3/"></script> -->
     {% endblock %}
@@ -46,19 +45,24 @@
               <i class="fas fa-times" id="exit"></i>
             </div>
           </a>
-          <!-- <i class="fas fa-bolt mx-1"></i> -->
-          <!-- <i class="fas fa-people-arrows mx-1"></i> -->
-          <span class="col-3 text-muted text-center" id="energy">{{character.energy}}</span>
-          <span class="col-3 text-muted text-center" id="charm">{{character.charm}}</span>
-          <span class="col-3 text-muted text-center"><i class="fas fa-brain mx-1"></i> {{character.intellect}}</span>
+          
+          <span class="col-3 text-muted text-center" id="energy"><i class="fas fa-bolt mx-1"></i> {{character.energy}}</span>
+          <span class="col-3 text-muted text-center" id="charm"><i class="fas fa-people-arrows mx-1"></i> {{character.charm}}</span>
+          <span class="col-3 text-muted text-center" id="intellect"><i class="fas fa-brain mx-1"></i> {{character.intellect}}</span>
         </div>
         <div class="row border-bottom pb-2">
-          <!-- <i class="fas fa-yen-sign mx-1"></i> -->
-          <!-- <i class="fas fa-fire-alt mx-1"></i> -->
-          <span class="col-2 text-muted text-center float-right"><i class="far fa-calendar-alt"></i> {{character.day}}</span>
-          <span class="col-3 text-muted text-center float-right"><i class="fas fa-code mx-1"></i> {{character.coding}}</span>
-          <span class="col-3 text-muted text-center float-right" id="endurance">{{character.endurance}}</span>
-          <span class="col-4 text-muted text-center float-right" id="money">{{character.money}}</span>
+          
+          
+          <span class="col-2 text-muted text-center float-right" id="day"><i class="far fa-calendar-alt"></i> {{character.day}}</span>
+          <span class="col-3 text-muted text-center float-right" id="coding"><i class="fas fa-code mx-1"></i> {{character.coding}}</span>
+          <span class="col-3 text-muted text-center float-right" id="endurance"><i class="fas fa-fire-alt mx-1"></i> {{character.endurance}}</span>
+          <span class="col-4 text-muted text-center float-right" id="money"><i class="fas fa-yen-sign mx-1"></i> {{character.money}}</span>
+
+          <span class="d-none" id="energyPenalty">{{character.energy_penalty}}</span>
+          <span class="d-none" id="charmPenalty">{{character.charm_penalty}}</span>
+          <span class="d-none" id="codingPenalty">{{character.coding_penalty}}</span>
+          <span class="d-none" id="intellectPenalty">{{character.intellect_penalty}}</span>
+          <span class="d-none" id="endurancePenalty">{{character.endurance_penalty}}</span>
       </div>
     </header>
 
