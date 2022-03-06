@@ -345,31 +345,30 @@ class bar_drink(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def bar_converse(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.energy >= 40-character.endurance:
-        if dice_roll(2, 3):
-            ActiveCharacter.objects.filter(user=request.user).update(charm=character.charm+2)
-            set_energy(request.user, 40-character.endurance)
+class bar_converse(UpdateView):
+    """
+    Calcualtes odds 2 to 1, checks energy, and updates charm if ok
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            # Update Active Character
+            if c.energy >= 40-c.endurance and random_number <= 2:
+                c.charm = c.charm + 2
+                c.energy = c.energy - (40-c.endurance)
+                c.save()
+            return HttpResponse(200)
         else:
-            set_energy(request.user, 40-character.endurance)
-            messages.error(request, 'Out of luck!')
-    else:
-        messages.error(request, 'Not enough energy')
-
-    return redirect(reverse('grind:bar'))
+            return HttpResponse(400)
 
 
 @login_required

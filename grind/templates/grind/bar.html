@@ -18,31 +18,22 @@
     
     <div class="row py-5">
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
-            <a href="#" id="drinkButton">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Drink</h5>
-                    <p class="card-text round">+2 Charm</p>
-                    <p class="card-text round">-1000¥</p>
-                    <p class="card-text round">-40 energy & 20 energy penalty</p>
-                </div>
-            </a>
-            <!-- <div class="col-6 loot-button-container text-center py-3">
-                <button class="btn btn-dark col-6 mx-auto" id="drinkButton" type="button">
-                    <span class="button-effect">Charm</span>
-                </button> 
-            </div> -->
+        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center" id="drinkButton">
+            <div class="card-body rounded-top">
+                <h5 class="card-title">Drink</h5>
+                <p class="card-text round">+2 Charm</p>
+                <p class="card-text round">-1000¥</p>
+                <p class="card-text round">-40 energy & 20 energy penalty</p>
+            </div>
         </div>
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
-            <a href="{% url 'grind:bar-converse' %}">
+        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center" id="converse">
                 <div class="card-body rounded-top">
                     <h5 class="card-title">Converse</h5>
                     <p class="card-text round">+2 charm</p>
                     <p class="card-text round">-40 energy & risk</p>
                     <p class="card-text round">Odds: 2 to 1</p>
                 </div>
-            </a>
         </div>
 
     </div>
