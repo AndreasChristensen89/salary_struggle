@@ -12,9 +12,6 @@ $("#drinkButton").click(function() {
         type: "POST",
         url: "/grind/ajax-drink/",
         headers: {'X-CSRFToken': csrf},
-        data: {
-            'updateCharm': 2
-        },
         success: function(){
             $("#drinkButton").addClass("bg-success");
             $("#charm").html(charm+2);
@@ -23,6 +20,9 @@ $("#drinkButton").click(function() {
             money = money-1000;
             $("#energy").html(energy-(40-endurance));
             energy = energy-(40-endurance);
-        }
+        },
+        error: (error) => {
+          console.log(error);
+  }
     });
 });

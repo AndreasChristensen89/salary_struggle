@@ -679,15 +679,17 @@ class ajax_drink(UpdateView):
         if self.request.is_ajax():
             # Obtain Active Character
             character = ActiveCharacter.objects.get(user=self.request.user)
-            # Receive Ajax charm
-            update_charm = json.loads(self.request.POST['updateCharm'])
             # Update Active Character
             if character.energy >= 40-character.endurance:
                 if character.money > 1000:
-                    character.charm = character.charm + update_charm
+                    character.charm = character.charm + 2
                     character.energy = character.energy - (40-character.endurance)
                     character.money = character.money-1000
                     character.energy_penalty = character.energy_penalty+20
                     character.save()
                     return HttpResponse(200)
+                else:
+                    return HttpResponse(400)
+            else:
+                return HttpResponse(400)
         return HttpResponse(400)
