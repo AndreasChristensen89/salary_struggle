@@ -29,40 +29,32 @@
     
     <div class="row pt-2">
 
-        <div class="col-6 mx-auto text-center">
-            <a href="{% url 'grind:agency-knowledge' %}">
-                <div class="border rounded-top">
-                    <p class="lead font-weight-bold">Use intellect</p>
-                    <!-- <p class="lead">Odds: Intellect to 20</p> -->
-                </div>
-            </a>
+        <div class="col-6 mx-auto text-center" value="intellect" id="agencyIntellect">
+            <div class="border rounded-top">
+                <p class="lead font-weight-bold">Use intellect</p>
+                <!-- <p class="lead">Odds: Intellect to 20</p> -->
+            </div>
         </div>
 
-        <div class="col-6 mx-auto text-center mb-4">
-            <a href="{% url 'grind:agency-charm' %}">
-                <div class="border rounded-top">
-                    <p class="lead font-weight-bold">Use charm</p>
-                    <!-- <p class="lead">Odds: Charm to 20</p> -->
-                </div>
-            </a>
+        <div class="col-6 mx-auto text-center mb-4" value="charm" id="agencyCharm">
+            <div class="border rounded-top">
+                <p class="lead font-weight-bold">Use charm</p>
+                <!-- <p class="lead">Odds: Charm to 20</p> -->
+            </div>
         </div>
 
-        <div class="col-6 mx-auto text-center mb-4">
-            <a href="{% url 'grind:agency-coding' %}">
-                <div class="border rounded-top">
-                    <p class="lead font-weight-bold">Use coding</h5>
+        <div class="col-6 mx-auto text-center mb-4" value="coding" id="agencyCoding">
+            <div class="border rounded-top">
+                <p class="lead font-weight-bold">Use coding</h5>
                     <!-- <p class="lead">Odds: Coding to 20</p> -->
-                </div>
-            </a>
+            </div>
         </div>
 
-        <div class="col-6 mx-auto text-center">
-            <a href="{% url 'grind:agency-combine' %}">
-                <div class="border rounded-top">
-                    <h5 class="lead font-weight-bold">Combine your skills</h5>
-                    <!-- <p class="lead">Odds: Intellect + Charisma + Coding to 60</p> -->
-                </div>
-            </a>
+        <div class="col-6 mx-auto text-center" id="agencyCombSkills">
+            <div class="border rounded-top">
+                <h5 class="lead font-weight-bold">Combine your skills</h5>
+                <!-- <p class="lead">Odds: Intellect + Charisma + Coding to 60</p> -->
+            </div>
         </div>
 
     </div>
@@ -191,9 +183,19 @@
     {% endif %}
 </div>
 {% endif %}
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <h2 class="h2 text-light">Level up! </h2><i class="fas fa-plus"></i>
+        </span>
+    </h1>
+    
+</div>
+{% csrf_token %}
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'grind/js/agency.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grind/js/ajax_agency.js' %}"></script>
 {% endblock %}

@@ -371,58 +371,69 @@ class bar_converse(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def library_study(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.energy >= 60-character.endurance:
-        if dice_roll(2, 3):
-            ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+2)
-            ActiveCharacter.objects.filter(user=request.user).update(intellect=character.intellect+2)
-            set_energy(request.user, 60-character.endurance)
+class library_study(UpdateView):
+    """
+    Calcualtes odds 2 to 1, checks energy, and updates charm if ok
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            # Update Active Character
+            if c.energy >= 60-c.endurance:
+                if random_number <= 2:
+                    c.intellect = c.intellect + 2
+                    c.coding = c.coding + 2
+                    c.energy = c.energy - (60-c.endurance)
+                    c.save()
+                else:
+                    c.intellect = c.intellect + 1
+                    c.coding = c.coding + 1
+                    c.energy = c.energy - (60-c.endurance)
+                    c.save()
+            return HttpResponse(200)
         else:
-            ActiveCharacter.objects.filter(user=request.user).update(coding=character.coding+1)
-            ActiveCharacter.objects.filter(user=request.user).update(intellect=character.intellect+1)
-            set_energy(request.user, 60-character.endurance)
-            messages.error(request, 'Your friends came along and distracted you. Half effort = half reward')
-    else:
-        messages.error(request, 'Not enough energy')
-
-    return redirect(reverse('grind:library'))
+            return HttpResponse(400)
 
 
-@login_required
-def agency_knowledge(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if dice_roll(character.intellect, 20):
-        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
-        messages.success(request, 'Nicely done, he is completely floored. Your level went up and an HR interview is now available to you')
-    else:
-        ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-        messages.error(request, '"That made absolutely no sense." he quietly told you. Your morale is broken = energy drained')
-
-    return redirect(reverse('grind:agency'))
+class agency_knowledge(UpdateView):
+    """
+    Compares player's stat level to random number
+    Updates level if success
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            skill = self.request.POST['skill']
+            print(skill)
+            print(random_number)
+            # Update Active Character
+            if c.intellect >= random_number:
+                c.level = c.level + 1
+                c.save()
+            else:
+                c.energy = 0
+                c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
 @login_required

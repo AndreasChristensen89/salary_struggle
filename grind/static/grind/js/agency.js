@@ -1,7 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    $("#hint-btn").click(function(){
+$("#hint-btn").click(function(){
             $('#hint-text').removeClass("hide");
             $('#next-hint').removeClass("hide");
             $(".hint").addClass("temp");
@@ -9,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
             $('.hint').eq(0).removeClass("hide").animate({opacity: "1.0"}, 1000);
             $("#next-hint").delay(2000).animate({opacity: "1.0"}, "fast");
         });
-});
 
 var hint = 0;
 

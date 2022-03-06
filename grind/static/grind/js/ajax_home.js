@@ -1,9 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    $("#sleep").click(function(){
-        
-    });
-});
-
 // get the CSRF token
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
 // remove the token from the DOM
