@@ -25,11 +25,9 @@
                 <ul class="list-group list-group-flush border"></ul>
                 {% for item in items %}
                     {% if item in character_items %}
-                    <li class="list-group-item">{{item.name}} - ¥{{item.price}} <strong>Purchased</strong></li>
+                        <li class="list-group-item">{{item.name}} - ¥{{item.price}} <strong>Purchased</strong></li>
                     {% else %}
-                    <a href="{% url 'grind:add-item' item.id %}">
-                        <li class="list-group-item">{{item.name}} - ¥{{item.price}}</li>
-                    </a>
+                        <li class="list-group-item item-buy" permanent={{item.permanent}} value={{item.id}} price={{item.price}} id="item{{item.id}}">{{item.name}} - ¥{{item.price}}</li>
                     {% endif %}
                 {% endfor %}
                 </ul>
@@ -38,4 +36,10 @@
     </div>
 </div>
 {% endif %}
+{% csrf_token %}
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'grind/js/ajax_store.js' %}"></script>
 {% endblock %}

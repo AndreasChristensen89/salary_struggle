@@ -474,48 +474,47 @@ class agency_combine(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def add_item(request, item_id):
+class add_item(UpdateView):
     """
-    Updates the character's stats according to item stats
-    Attaches the item to character if permanent
+    Compares player's stat level to random number
+    Updates level if success
     """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    c = get_object_or_404(ActiveCharacter, user=request.user)
-    i = get_object_or_404(Item, id=item_id)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and c.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if c.money >= i.price:
-        if i not in c.items.all():
-            ActiveCharacter.objects.filter(user=request.user).update(
-                intellect=c.intellect+i.intellect,
-                charm=c.charm+i.charm,
-                coding=c.coding+i.coding,
-                energy=c.energy+i.energy,
-                endurance=c.endurance+i.endurance,
-                intellect_penalty=c.intellect_penalty+i.intellect_penalty,
-                charm_penalty=c.charm_penalty+i.charm_penalty,
-                coding_penalty=c.coding_penalty+i.coding_penalty,
-                energy_penalty=c.energy_penalty+i.energy_penalty,
-                endurance_penalty=c.endurance_penalty+i.endurance_penalty,
-                money=c.money-i.price
-                )
-
-            if i.permanent:
-                c.items.add(i)
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive item
+            item_id = json.loads(self.request.POST['item_id'])
+            i = get_object_or_404(Item, id=item_id)
+            # Update Active Character
+            if c.money >= i.price:
+                if i not in c.items.all():
+                    # subtracts penalties from the day
+                    c.intellect = c.intellect + i.intellect
+                    c.charm = c.charm + i.charm
+                    c.coding = c.coding + i.coding
+                    c.energy = c.energy + i.energy
+                    c.endurance = c.endurance + i.endurance
+                    # resets all penalties to 0 for new day
+                    c.energy_penalty = c.energy_penalty + i.energy_penalty
+                    c.intellect_penalty = c.intellect_penalty + i.intellect_penalty
+                    c.charm_penalty = c.charm_penalty + i.charm_penalty
+                    c.coding_penalty = c.coding_penalty + i.coding_penalty
+                    c.endurance_penalty = c.endurance_penalty + i.endurance_penalty
+                    c.money = c.money - i.price
+                    c.save()
+                    if i.permanent:
+                        c.items.add(i)
+                        c.save()
+            return HttpResponse(200)
         else:
-            messages.error(request, 'You already own this')
-    else:
-        messages.error(request, 'You cannot afford this')
-
-    return redirect(reverse('grind:store'))
+            return HttpResponse(400)
 
 
 @login_required

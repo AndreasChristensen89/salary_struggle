@@ -45,5 +45,38 @@ body {
 
 #enter-grind {
     background-image: url(/media/background-enter.png);
+    background-size: cover;
     background-repeat: no-repeat;
+    height: 320px;
+}
+
+#background-fill {
+    background-color: #57bcf2;
+    height: 100%;
+}
+
+#enter-link {
+    margin: 30px auto;
+    font-size: 18pt;
+    width: 150px;
+    background-color: rgb(58 148 50);
+    border-radius: 20px;
+    box-shadow: black 0px 1px 20px 0px;
+    cursor: pointer;
+    color: white;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes element-move {
+    from {
+        transform: scale(1.0);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
 }
