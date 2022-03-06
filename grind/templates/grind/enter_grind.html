@@ -3,6 +3,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+<div id="#enter-grind">
 <div class="row my-4">
     <a class="col-12 mt-5" href="{% url 'grind:house' %}">
     <div class="col-10 mx-auto text-center">
@@ -11,6 +12,7 @@
         <h1 class="display-3">Grind</h1>
     </div>
     </a>
+</div>
 </div>
 {% endif %}
 {% endblock %}

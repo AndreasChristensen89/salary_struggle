@@ -42,3 +42,8 @@ body {
 #exit {
     font-size: 10pt;
 }
+
+#enter-grind {
+    background-image: url(/media/background-enter.png);
+    background-repeat: no-repeat;
+}
