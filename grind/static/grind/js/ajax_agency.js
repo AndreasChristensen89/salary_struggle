@@ -10,39 +10,69 @@ var charm = parseInt($("#charm").text());
 var endurance = parseInt($("#endurance").text());
 var level = parseInt($("#level").text());
 
-$("#agencyIntellect").click(function() {
-    let randomIntellect = Math.floor(Math.random() * 20) + 1;
+$(".ask-interview").click(function() {
+    let randomNumber = Math.floor(Math.random() * 20) + 1;
     let skill = $(this).attr("value");
     
     $.ajax({
     type: "POST",
-    url: "/grind/agency-intellect/",
+    url: "/grind/agency-skill/",
     headers: {'X-CSRFToken': csrf},
     data: {
-        'random_number': randomIntellect,
+        'random_number': randomNumber,
         'skill': skill
     },
     success: function(){
-        if (intellect >= randomIntellect) {
-            $("#level").text(level++);
-            level++;
-
-            $('.overview').fadeToggle(100);
-            $('#loading-overlay').fadeToggle(100);
-
-            setTimeout(() => { 
-                $('.overview').fadeToggle(100);
-                $('#loading-overlay').fadeToggle(100);
-            }, 30000);
+        if (parseInt($(`#${skill}`).text()) >= randomNumber && level == 1) {
+            success();
         } else {
-            $("#agencyIntellect").addClass("bg-danger");
-            $("#energy").text("0");
-            energy = 0;
-
-            setTimeout(() => { 
-                $("#agencyIntellect").removeClass("bg-danger");
-            }, 800);
+            fail(skill);
         } 
     }
     }); 
 });
+
+$("#agency_combine").click(function() {
+    let randomNumber = Math.floor(Math.random() * 60) + 1;
+    
+    $.ajax({
+    type: "POST",
+    url: "/grind/agency-combine/",
+    headers: {'X-CSRFToken': csrf},
+    data: {
+        'random_number': randomNumber,
+    },
+    success: function(){
+        if (intellect+coding+charm >= randomNumber) {
+            success();
+        } else {
+            fail("combine");
+        } 
+    }
+    }); 
+});
+
+function success() {
+    $("#level").text(level++);
+    level++;
+
+    $('.overview').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+    $(".level-one").addClass("hide");
+    $("#passed").removeClass("hide");
+
+    setTimeout(() => {
+        $('.overview').fadeToggle(100);
+        $('#loading-overlay').fadeToggle(100);
+    }, 2000);
+}
+
+function fail(skill) {
+    $(`#agency_${skill}`).addClass("bg-danger");
+    $("#energy").text("0");
+    energy = 0;
+
+    setTimeout(() => {
+        $(`#agency_${skill}`).removeClass("bg-danger");
+    }, 800);
+}

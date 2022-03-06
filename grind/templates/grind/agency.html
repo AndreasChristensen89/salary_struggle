@@ -21,37 +21,43 @@
     </div>
     
     {% if character.level == 1 %}
-    <div class="row pt-5 text-center">
+    <div class="row pt-5 text-center level-one">
         <div class="col-10 mx-auto">
             <h3 class="h3">Ask for interview</h3>
+        </div>
+    </div>
+
+    <div class="row pt-5 text-center hide" id="passed">
+        <div class="col-10 mx-auto">
+            <h3 class="lead">I think we might be able to set you up with an interview. Come back later and we'll see if we have anything for you.</h3>
         </div>
     </div>
     
     <div class="row pt-2">
 
-        <div class="col-6 mx-auto text-center" value="intellect" id="agencyIntellect">
-            <div class="border rounded-top">
+        <div class="col-6 mx-auto text-center level-one">
+            <div class="border rounded-top ask-interview" value="intellect" id="agency_intellect">
                 <p class="lead font-weight-bold">Use intellect</p>
                 <!-- <p class="lead">Odds: Intellect to 20</p> -->
             </div>
         </div>
 
-        <div class="col-6 mx-auto text-center mb-4" value="charm" id="agencyCharm">
-            <div class="border rounded-top">
+        <div class="col-6 mx-auto text-center mb-4 level-one">
+            <div class="border rounded-top ask-interview" value="charm" id="agency_charm">
                 <p class="lead font-weight-bold">Use charm</p>
                 <!-- <p class="lead">Odds: Charm to 20</p> -->
             </div>
         </div>
 
-        <div class="col-6 mx-auto text-center mb-4" value="coding" id="agencyCoding">
-            <div class="border rounded-top">
+        <div class="col-6 mx-auto text-center mb-4 level-one">
+            <div class="border rounded-top ask-interview" value="coding" id="agency_coding">
                 <p class="lead font-weight-bold">Use coding</h5>
                     <!-- <p class="lead">Odds: Coding to 20</p> -->
             </div>
         </div>
 
-        <div class="col-6 mx-auto text-center" id="agencyCombSkills">
-            <div class="border rounded-top">
+        <div class="col-6 mx-auto text-center level-one">
+            <div class="border rounded-top" id="agency_combine">
                 <h5 class="lead font-weight-bold">Combine your skills</h5>
                 <!-- <p class="lead">Odds: Intellect + Charisma + Coding to 60</p> -->
             </div>
@@ -80,13 +86,14 @@
         <div class="col-10 mx-auto">
             <p class="lead border hide hint">Hi, I'm Steve the recruiter.</p>
             <p class="lead border hide hint">Glad to meet you. You look like you have some promise.</p>
-            <p class="lead border hide hint">Your first interview is now available.</p>
-            <p class="lead border hide hint">Oh yeah, I should probably give you a briefing of the interview you're about to join</p>
+            <p class="lead border hide hint">I'm please to let you know that your first interview is now available.</p>
+            <p class="lead border hide hint">I should probably give you a briefing of what you're about to join</p>
             <p class="lead border hide hint">So, the company's name is Data Drifters and they specialize in database integrations.</p>
             <p class="lead border hide hint">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
-            <p class="lead border hide hint">They can be quite selfish. You basically have to adapt your answer to their personality traits in order succeed.</p>
+            <p class="lead border hide hint">They can be quite selfish. You basically have to adapt your answer to their personality traits in order to succeed.</p>
             <p class="lead border hide hint">You can always attempt your skills with them. They won't penalize you for that.</p>
             <p class="lead border hide hint">See if you can reach the impress level needed.</p>
+            <p class="lead border hide hint">Best of luck to you!</p>
         </div>
 
         <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>

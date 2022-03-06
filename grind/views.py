@@ -404,7 +404,7 @@ class library_study(UpdateView):
             return HttpResponse(400)
 
 
-class agency_knowledge(UpdateView):
+class agency_skill(UpdateView):
     """
     Compares player's stat level to random number
     Updates level if success
@@ -422,10 +422,19 @@ class agency_knowledge(UpdateView):
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
             skill = self.request.POST['skill']
-            print(skill)
             print(random_number)
+            print(skill)
+            print(c.intellect >= random_number)
+            print(c.charm >= random_number)
+            print(c.coding >= random_number)
             # Update Active Character
-            if c.intellect >= random_number:
+            if skill == "intellect" and c.intellect >= random_number:
+                c.level = c.level + 1
+                c.save()
+            elif skill == "charm" and c.charm >= random_number:
+                c.level = c.level + 1
+                c.save()
+            elif skill == "coding" and c.coding >= random_number:
                 c.level = c.level + 1
                 c.save()
             else:
@@ -436,78 +445,33 @@ class agency_knowledge(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def agency_charm(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if dice_roll(character.charm, 20):
-        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
-        messages.success(request, 'Awesome, you see stars in his eyes! Your level went up and an HR interview is now available to you')
-    else:
-        ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-        messages.error(request, '"...Are you coming on to me?" he asks you with an annoying look on his face. Your morale is broken = energy drained')
-
-    return redirect(reverse('grind:agency'))
-
-
-@login_required
-def agency_coding(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if dice_roll(character.coding, 20):
-        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
-        messages.success(request, 'His eyes are the size of dinner plates! Your level went up and an HR interview is now available to you')
-    else:
-        ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-        messages.error(request, '"I know a bit of code, and that there was just amateurish" he tells you with half closed eyes. Your morale is broken = energy drained')
-
-    return redirect(reverse('grind:agency'))
-
-
-@login_required
-def agency_combine(request):
-    """ Update view to add more charm """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    chances = character.coding + character.intellect + character.charm
-
-    if dice_roll(chances, 60):
-        ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
-        messages.success(request, '"Wow"! he says enthusiastically. "Consider yourself on to the next stage". Your level went up and an HR interview is now available to you')
-    else:
-        ActiveCharacter.objects.filter(user=request.user).update(energy=0)
-        messages.error(request, '"You probably need some experience before moving on", he says with a dry voice. manage.py Your morale is broken = energy drained')
-
-    return redirect(reverse('grind:agency'))
+class agency_combine(UpdateView):
+    """
+    Compares player's stat level to random number
+    Updates level if success
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            # Update Active Character
+            if (c.intellect + c.charm + c.coding) >= random_number:
+                c.level = c.level + 1
+                c.save()
+            else:
+                c.energy = 0
+                c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
 @login_required
