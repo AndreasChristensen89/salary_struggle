@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
+from django.views.generic import UpdateView
 from profiles.models import Profile, ActiveCharacter
 from codex.models import Item
 from .functions import set_energy, validate_user, dice_roll
+import json
 
 
 @login_required
@@ -663,4 +665,29 @@ def gamble(request):
     return redirect(reverse('grind:back-alley'))
 
 
-
+class ajax_drink(UpdateView):
+    """
+    Test if ajax updates without refresh
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            character = ActiveCharacter.objects.get(user=self.request.user)
+            # Receive Ajax charm
+            update_charm = json.loads(self.request.POST['updateCharm'])
+            # Update Active Character
+            if character.energy >= 40-character.endurance:
+                if character.money > 1000:
+                    character.charm = character.charm + update_charm
+                    character.energy = character.energy - (40-character.endurance)
+                    character.money = character.money-1000
+                    character.energy_penalty = character.energy_penalty+20
+                    character.save()
+                    return HttpResponse(200)
+        return HttpResponse(400)

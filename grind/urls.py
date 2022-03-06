@@ -29,4 +29,5 @@ urlpatterns = [
     path('work/', views.work, name='work'),
     path('fight/', views.fight, name='fight'),
     path('gamble/', views.gamble, name='gamble'),
+    path('ajax-drink/', views.ajax_drink.as_view(), name='ajax-drink')
 ]
