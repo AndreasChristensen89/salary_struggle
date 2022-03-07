@@ -362,10 +362,12 @@ class BarConverse(UpdateView):
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
             # Update Active Character
-            if c.energy >= 40-c.endurance and random_number <= 2:
-                c.charm = c.charm + 2
+            if c.energy >= 40-c.endurance:
+                if (random_number <= 2):
+                    c.charm = c.charm + 2
+
                 c.energy = c.energy - (40-c.endurance)
-                c.save()
+                c.save()     
             return HttpResponse(200)
         else:
             return HttpResponse(400)

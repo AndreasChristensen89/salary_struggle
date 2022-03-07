@@ -17,7 +17,7 @@ $("#homeCharm").click(function() {
         url: "/grind/charm-home/",
         headers: {'X-CSRFToken': csrf},
         success: function(){
-            if (energy-40 >= 0) {
+            if (energy - (40-endurance) >= 0 ) {
                 $("#homeCharm").addClass("bg-success");
                 $("#charm").text(charm+1);
                 charm = charm+1;
@@ -88,13 +88,13 @@ $("#homeStudy").click(function() {
         url: "/grind/study-home/",
         headers: {'X-CSRFToken': csrf},
         success: function(){
-            if (energy >= 40) {
+            if (energy - (40-endurance) >= 0 ) {
                 $("#homeStudy").addClass("bg-success");
                 $("#energy").text(energy-(40-endurance));
                 $("#coding").text(coding+1);;
 
                 coding = coding+1;
-                energy = energy-40;
+                energy = energy- (40-endurance);
 
                 setTimeout(() => { 
                     $("#homeStudy").removeClass("bg-success");

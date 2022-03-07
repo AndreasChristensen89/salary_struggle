@@ -13,26 +13,31 @@ $("#drinkButton").click(function() {
         url: "/grind/bar-drink/",
         headers: {'X-CSRFToken': csrf},
         success: function(){
-            if (energy-40 >= 0 && money >= 1000) {
-                $("#drinkButton").addClass("bg-success");
-                $("#charm").text(charm+2);
-                $("#money").text(money-1000);
-                $("#energy").text(energy-(40-endurance));
-                
-                charm = charm+2;
-                money = money-1000;
-                energy = energy-(40-endurance);
+            if (energy >= (40-endurance)) {
+                if (money >= 1000) {
+                    $("#drinkButton").addClass("bg-success");
+                    $("#charm").text(charm+2);
+                    $("#money").text(money-1000);
+                    charm = charm+2;
+                    money = money-1000;
 
-                setTimeout(() => { 
+                    setTimeout(() => { 
                     $("#drinkButton").removeClass("bg-success");
-                }, 800);
+                    }, 800);
+                } else {
+                    $("#drinkButton").addClass("bg-danger");
+                    setTimeout(() => { 
+                        $("#drinkButton").removeClass("bg-danger");
+                    }, 800);
+                }
+                $("#energy").text(energy-(40-endurance));
+                energy = energy-(40-endurance);
             } else {
                 $("#drinkButton").addClass("bg-danger");
                 setTimeout(() => { 
                     $("#drinkButton").removeClass("bg-danger");
                 }, 800);
             }
-            
         }
     });
 });
@@ -50,7 +55,7 @@ $("#converse").click(function() {
         'random_number': randomNumber
     },
     success: function(){
-        if (energy-40 >= 0 && randomNumber <= 2) {
+        if (energy >= (40-endurance) && randomNumber <= 2) {
             $("#converse").addClass("bg-success");
             $("#charm").text(charm+2);
             $("#energy").text(energy-(40-endurance));

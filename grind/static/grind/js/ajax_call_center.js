@@ -62,7 +62,7 @@ $("#work").click(function() {
     url: "/grind/work/",
     headers: {'X-CSRFToken': csrf},
     success: function(){
-        if (energy-(60-endurance) >= 0) {
+        if (energy >= (60-endurance)) {
             $("#work").addClass("bg-success");
             $("#money").text(money + salary);
             $("#energy").text(energy - (60 - endurance));
