@@ -235,7 +235,7 @@ def back_alley_page(request):
 
 # ------------------------ Update views --------------------------
 
-class update_charm_home(UpdateView):
+class UpdateCharmHome(UpdateView):
     """
     Updates charm from home
     """
@@ -259,7 +259,7 @@ class update_charm_home(UpdateView):
             return HttpResponse(400)
 
 
-class sleep(UpdateView):
+class Sleep(UpdateView):
     """
     Restores energy, advances one day, and applies penalties
     """
@@ -294,7 +294,7 @@ class sleep(UpdateView):
             return HttpResponse(400)
 
 
-class study_home(UpdateView):
+class StudyHome(UpdateView):
     """
     Restores energy, advances one day, and applies penalties
     """
@@ -318,7 +318,7 @@ class study_home(UpdateView):
             return HttpResponse(400)
 
 
-class bar_drink(UpdateView):
+class BarDrink(UpdateView):
     """
     Test if ajax updates without refresh
     """
@@ -345,7 +345,7 @@ class bar_drink(UpdateView):
             return HttpResponse(400)
 
 
-class bar_converse(UpdateView):
+class BarConverse(UpdateView):
     """
     Calcualtes odds 2 to 1, checks energy, and updates charm if ok
     """
@@ -371,7 +371,7 @@ class bar_converse(UpdateView):
             return HttpResponse(400)
 
 
-class library_study(UpdateView):
+class LibraryStudy(UpdateView):
     """
     Calcualtes odds 2 to 1, checks energy, and updates charm if ok
     """
@@ -404,7 +404,7 @@ class library_study(UpdateView):
             return HttpResponse(400)
 
 
-class agency_skill(UpdateView):
+class AgencySkill(UpdateView):
     """
     Compares player's stat level to random number
     Updates level if success
@@ -445,7 +445,7 @@ class agency_skill(UpdateView):
             return HttpResponse(400)
 
 
-class agency_combine(UpdateView):
+class AgencyCombine(UpdateView):
     """
     Compares player's stat level to random number
     Updates level if success
@@ -474,7 +474,7 @@ class agency_combine(UpdateView):
             return HttpResponse(400)
 
 
-class add_item(UpdateView):
+class AddItem(UpdateView):
     """
     Compares player's stat level to random number
     Updates level if success

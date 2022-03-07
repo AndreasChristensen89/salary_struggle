@@ -16,24 +16,44 @@
         </a>
     </div>
 
-    <div class="row py-5"> 
-        
-        <div class="col-10 card mx-auto p-4 text-center" style="width: 18rem;">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Selection</h5>    
-                </div>
-                <ul class="list-group list-group-flush border"></ul>
-                {% for item in items %}
-                    {% if item in character_items %}
-                        <li class="list-group-item">{{item.name}} - ¥{{item.price}} <strong>Purchased</strong></li>
-                    {% else %}
-                        <li class="list-group-item item-buy" permanent={{item.permanent}} value={{item.id}} price={{item.price}} id="item{{item.id}}">{{item.name}} - ¥{{item.price}}</li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-            </div>
+    <div class="row py-5">
 
+        <div class="col-10 mx-auto text-center">
+            <hr>
+            {% for item in items %}
+            {% if item in character_items %}
+            <p>{{item.name}} - ¥{{item.price}} <strong>Owned</strong></p>
+            {% else %}
+            <p class="item-buy" permanent={{item.permanent}} value={{item.id}} price={{item.price}}
+                id="item{{item.id}}">{{item.name}} - ¥{{item.price}}</p>
+            {% endif %}
+            <p class="text-muted d-inline">
+                {% if item.intellect > 0 %}
+                Intellect: 
+                </p>
+                <p class="text-muted d-inline" value="intellect" id="item{{item.id}}stat">{{item.intellect}}</p>
+                {% elif item.charm > 0 %}
+                Charm: 
+                </p>
+                <p class="text-muted d-inline" value="charm" id="item{{item.id}}stat">{{item.charm}}</p>
+                {% elif item.coding > 0 %}
+                Coding: 
+                </p>
+                <p class="text-muted d-inline" value="coding" id="item{{item.id}}stat">{{item.coding}}</p>
+                {% elif item.energy > 0 %}
+                Energy: 
+                </p>
+                <p class="text-muted d-inline" value="energy" id="item{{item.id}}stat">{{item.energy}}</p>
+                {% elif item.endurance > 0 %}
+                Endurance: 
+                </p>
+                <p class="text-muted d-inline" value="endurance" id="item{{item.id}}stat">{{item.endurance}}</p>
+                {% endif %}
+            <hr>
+            {% endfor %}
+        </div>
     </div>
+
 </div>
 {% endif %}
 {% csrf_token %}
