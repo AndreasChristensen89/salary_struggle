@@ -607,30 +607,31 @@ class Fight(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def gamble(request):
+class Gamble(UpdateView):
     """
-    Updates endurance, given winning outcome
+    Compares player's stat level to random number
+    Updates level if success
     """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.money >= 1000:
-        if dice_roll(1, 3):
-            ActiveCharacter.objects.filter(user=request.user).update(money=character.money+3000)
-            messages.success(request, 'Lucky you, you just pocketed ¥3000')
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            # Update Active Character
+            if c.money >= 1000:
+                if random_number == 1:
+                    c.money = c.money + 2000
+                    c.save()
+                else:
+                    c.money = c.money - 1000
+                    c.save()
+            return HttpResponse(200)
         else:
-            ActiveCharacter.objects.filter(user=request.user).update(money=character.money-1000)
-            messages.error(request, 'Better luck next time. Try to win it back, or stay sensible.')
-    else:
-        messages.error(request, "In your current financial situation you probably shouldn't")
-
-    return redirect(reverse('grind:back-alley'))
+            return HttpResponse(400)

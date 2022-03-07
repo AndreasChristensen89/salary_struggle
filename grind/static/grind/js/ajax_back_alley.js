@@ -7,6 +7,7 @@ var intellect = parseInt($("#intellect").text());
 var energy = parseInt($("#energy").text());
 var coding = parseInt($("#coding").text());
 var endurance = parseInt($("#endurance").text());
+var money = parseInt($("#money").text());
 
 $("#fight").click(function() {
     let randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -48,5 +49,39 @@ $("#fight").click(function() {
             }, 800);
         }   
     }
+    }); 
+});
+
+$("#gamble").click(function() {
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
+    
+    $.ajax({
+    type: "POST",
+    url: "/grind/gamble/",
+    headers: {'X-CSRFToken': csrf},
+    data: {
+        'random_number': randomNumber
+    },
+    success: function(){
+        if (randomNumber == 1) {
+            $("#gamble").addClass("bg-success");
+            $("#money").text(money + 2000);
+                    
+            money = money + 2000
+
+            setTimeout(() => { 
+                $("#gamble").removeClass("bg-success");
+            }, 800);
+        } else {
+            $("#gamble").addClass("bg-warning");
+            $("#money").text(money - 1000);
+                    
+            money = money - 1000
+
+            setTimeout(() => { 
+                $("#gamble").removeClass("bg-warning");
+            }, 800);
+            }
+        }
     }); 
 });

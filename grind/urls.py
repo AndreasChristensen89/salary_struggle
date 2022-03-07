@@ -25,6 +25,6 @@ urlpatterns = [
     path('add-item/', views.AddItem.as_view(), name='add-item'),   # Done
     path('apply-job/', views.ApplyJob.as_view(), name='apply-job'), # Done
     path('work/', views.Work.as_view(), name='work'),   # Done
-    path('fight/', views.Fight.as_view(), name='fight'),    # Work
-    path('gamble/', views.gamble, name='gamble'),
+    path('fight/', views.Fight.as_view(), name='fight'),    # Done
+    path('gamble/', views.Gamble.as_view(), name='gamble'),   # Done
 ]
