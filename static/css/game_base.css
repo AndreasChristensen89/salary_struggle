@@ -20,6 +20,18 @@ body {
 .maintxt {position: relative;}
 .maintxt > img, .overlay-text {position: absolute;}
 
+.hide {
+    display: none;
+  }
+
+.temp {
+      opacity: 0;
+}
+
+#next-hint {
+    opacity: 0;
+}
+
 #loading-overlay {
 	display: none;
 	position: fixed;

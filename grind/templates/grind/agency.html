@@ -1,10 +1,6 @@
 {% extends "grind/game_base.html" %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'grind/css/grind.css' %}">
-{% endblock %}
-
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container h-100 mt-5">

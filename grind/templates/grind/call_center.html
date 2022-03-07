@@ -19,14 +19,18 @@
     <div class="row py-5">
         {% if not character.has_job %}
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
-            <a href="{% url 'grind:apply-job' %}">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Ask for a job</h5>
-                    <p class="card-text round">Odds: charm to 20</p>
-                </div>
-            </a>
-        </div>
+            <div class="col-8 border text-center mx-auto" id="apply">
+                <h3 class="lead">Ask for a job</h3>
+                <p class="text-muted">Odds: charm to 20</p>
+            </div>
+
+            <div class="col-8 text-center mx-auto hide" id="rejected">
+                <h3 class="lead">Get lost kid. You need to work on your self-presentation.</h3>
+            </div>
+
+            <div class="col-8 text-center mx-auto hide" id="passed">
+                <h3 class="lead">Alright, Kiddo, get your butt ready to work. Come back later and you can start.</h3>
+            </div>
         
         {% else %}
 
@@ -42,5 +46,20 @@
         {% endif %}
     </div>
 </div>
+
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <h2 class="h2 text-light">You've got a part-time job </h2><i class="fas fa-plus"></i>
+        </span>
+    </h1>
+    
+</div>
 {% endif %}
+{% csrf_token %}
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'grind/js/ajax_call_center.js' %}"></script>
 {% endblock %}

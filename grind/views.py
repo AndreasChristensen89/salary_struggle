@@ -517,29 +517,35 @@ class AddItem(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def apply_job(request):
+class ApplyJob(UpdateView):
     """
-    Updates characters job status to true if successfull outcome
+    Compares player's stat level to random number
+    Updates level if success
     """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if dice_roll(character.charm, 20):
-        ActiveCharacter.objects.filter(user=request.user).update(has_job=True)
-        messages.success(request, '"Get in the damn chair and start working" - You now have a part time job')
-    else:
-        messages.error(request, '"Get lost kid", says the manager')
-
-    return redirect(reverse('grind:call-center'))
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            # Update Active Character
+            if c.energy >= (60-c.endurance):
+                if c.charm >= random_number:
+                    c.has_job = True
+                    c.energy = c.energy - (60-c.endurance)
+                    c.save()
+                else:
+                    c.energy = c.energy - (60-c.endurance)
+                    c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
 @login_required
