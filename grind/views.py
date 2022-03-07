@@ -575,36 +575,36 @@ class Work(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def fight(request):
+class Fight(UpdateView):
     """
-    Updates endurance, given winning outcome
+    Compares player's stat level to random number
+    Updates level if success
     """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    if character.energy >= 60-character.endurance:
-        if dice_roll(5, 10):
-            ActiveCharacter.objects.filter(user=request.user).update(endurance=character.endurance+3)
-            messages.success(request, 'Nicely done, the other guy looks pretty roughed up. Your endurance went up')
-            set_energy(request.user, 60-character.endurance)
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # receive random number
+            random_number = json.loads(self.request.POST['random_number'])
+            # Update Active Character
+            if c.energy >= (60-c.endurance):
+                if random_number >= 5:
+                    c.endurance = c.endurance + 3
+                    c.energy = c.energy - (60-c.endurance)
+                    c.save()
+                else:
+                    c.energy = 0
+                    c.energy_penalty = 50
+                    c.save()
+            return HttpResponse(200)
         else:
-            ActiveCharacter.objects.filter(user=request.user).update(
-                energy=0,
-                energy_penalty=character.energy_penalty+50)
-            messages.error(request, 'Auch, you may need a trip to the hospital. No more energy for you today, and make sure to rest tomorrow')
-    else:
-        messages.error(request, 'Not enough energy')
-
-    return redirect(reverse('grind:back-alley'))
+            return HttpResponse(400)
 
 
 @login_required

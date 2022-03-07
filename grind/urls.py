@@ -24,7 +24,7 @@ urlpatterns = [
     path('agency-combine/', views.AgencyCombine.as_view(), name='agency-combine'), # Done
     path('add-item/', views.AddItem.as_view(), name='add-item'),   # Done
     path('apply-job/', views.ApplyJob.as_view(), name='apply-job'), # Done
-    path('work/', views.Work.as_view(), name='work'),   # Work
-    path('fight/', views.fight, name='fight'),
+    path('work/', views.Work.as_view(), name='work'),   # Done
+    path('fight/', views.Fight.as_view(), name='fight'),    # Work
     path('gamble/', views.gamble, name='gamble'),
 ]
