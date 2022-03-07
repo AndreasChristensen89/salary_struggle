@@ -23,8 +23,8 @@ urlpatterns = [
     path('agency-skill/', views.AgencySkill.as_view(), name='agency-skill'),     # Done
     path('agency-combine/', views.AgencyCombine.as_view(), name='agency-combine'), # Done
     path('add-item/', views.AddItem.as_view(), name='add-item'),   # Done
-    path('apply-job/', views.ApplyJob.as_view(), name='apply-job'), # Work
-    path('work/', views.work, name='work'),
+    path('apply-job/', views.ApplyJob.as_view(), name='apply-job'), # Done
+    path('work/', views.Work.as_view(), name='work'),   # Work
     path('fight/', views.fight, name='fight'),
     path('gamble/', views.gamble, name='gamble'),
 ]

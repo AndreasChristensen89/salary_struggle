@@ -34,13 +34,11 @@
         
         {% else %}
 
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center">
-            <a href="{% url 'grind:work' %}">
-                <div class="card-body rounded-top admin-confirmed">
-                    <h5 class="card-title">Work</h5>
-                    <p class="card-text round">Pay: charm * ¥200</p>
-                </div>
-            </a>
+        <div class="col-6 card mx-auto text-center" id="work">
+            <div class="card-body rounded-top">
+                <h5 class="card-title">Work</h5>
+                <p class="card-text round">Pay: charm * ¥200</p>
+            </div>
         </div>
 
         {% endif %}

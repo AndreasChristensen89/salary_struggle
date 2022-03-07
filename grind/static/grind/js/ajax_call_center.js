@@ -4,7 +4,9 @@ document.querySelector('[name=csrfmiddlewaretoken]').remove();
 var charm = parseInt($("#charm").text());
 var energy = parseInt($("#energy").text());
 var endurance = parseInt($("#endurance").text());
+var money = parseInt($("#money").text());
 
+// apply for a job ajax
 $("#apply").click(function() {
     let randomNumber = Math.floor(Math.random() * 20) + 1;
     console.log(randomNumber);
@@ -48,5 +50,35 @@ $("#apply").click(function() {
         }
 
         }
+    }); 
+});
+
+// work ajax
+$("#work").click(function() {
+    let salary = charm * 100;
+    
+    $.ajax({
+    type: "POST",
+    url: "/grind/work/",
+    headers: {'X-CSRFToken': csrf},
+    success: function(){
+        if (energy-(60-endurance) >= 0) {
+            $("#work").addClass("bg-success");
+            $("#money").text(money + salary);
+            $("#energy").text(energy - (60 - endurance));
+
+            money = money + salary;
+            energy = energy - (60 - endurance);
+
+            setTimeout(() => {
+                $("#work").removeClass("bg-success");
+            }, 800);
+        } else {
+            $("#work").addClass("bg-danger");
+            setTimeout(() => { 
+                $("#work").removeClass("bg-danger");
+            }, 800);
+        }   
+    }
     }); 
 });

@@ -548,32 +548,31 @@ class ApplyJob(UpdateView):
             return HttpResponse(400)
 
 
-@login_required
-def work(request):
+class Work(UpdateView):
     """
-    View to increase money, given enough energy
+    Compares player's stat level to random number
+    Updates level if success
     """
-
-    profile = get_object_or_404(Profile, user=request.user)
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-    elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
-        return redirect(reverse('profiles:profile'))
-
-    salary = character.charm * 100
-
-    if character.energy >= 60-character.endurance:
-        ActiveCharacter.objects.filter(user=request.user).update(money=character.money+salary)
-        messages.error(request, f'You made ¥{salary}')
-        set_energy(request.user, 60-character.endurance)
-    else:
-        messages.error(request, 'Not enough energy')
-
-    return redirect(reverse('grind:call-center'))
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # calculate salary
+            salary = c.charm * 100
+            # Update Active Character
+            if c.energy >= (60-c.endurance):
+                c.money = c.money + salary
+                c.energy = c.energy - (60-c.endurance)
+                c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
 @login_required
