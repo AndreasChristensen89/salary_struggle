@@ -82,4 +82,6 @@ Bugs:
 
 
 To do list:
-Include endurance in energy drawn
+- Include endurance in energy drawn - DONE
+- Include ajax call at the of interview to avoid players refreshing to restart interview
+

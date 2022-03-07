@@ -37,7 +37,7 @@ function attemptSkill(event) {
     let charSkill = parseInt($(`#char-${skill}`).html());
     let intSkill = parseInt($(`#interw-${skill}`).html());
 
-    let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
+    let randomNumber = Math.floor(Math.random() * intSkill) + 5;
 
     if (randomNumber <= charSkill) {
         setImpress("+", 3);
@@ -67,10 +67,10 @@ function checkAnswer(event) {
 
     if (correctAnswer == answer) {
         setImpress("+", 3);
-    } else if (impress - 3 > 0) {
+    } else if (impress - 3 >= 0) {
         setImpress("-", 3);
     } else {
-        $("#impression").text("0");
+        setImpress("-", 0)
     }
 
     if (questionCount == questionSet.length-1) {
@@ -115,6 +115,22 @@ function finishInterview() {
     setTimeout(() => { $("#question-game-area").addClass("hide"); }, 1500);
 
     if (finalScore >= neededScore) {
+        $.ajax({
+        type: "POST",
+        url: "/grind/agency-skill/",
+        headers: {'X-CSRFToken': csrf},
+        data: {
+            'random_number': randomNumber,
+            'skill': skill
+        },
+        success: function(){
+            if (parseInt($(`#${skill}`).text()) >= randomNumber && level == 1) {
+                success();
+            } else {
+                fail(skill);
+            }
+        }
+        });
         setTimeout(() => { $("#ending-success").removeClass("hide"); }, 1500);
         setTimeout(() => { $("#ending-success").animate({opacity: 1}, "medium"); }, 1500);
     } else {
