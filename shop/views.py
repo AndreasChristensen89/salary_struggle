@@ -4,12 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from .models import Product
 from .forms import ProductForm
+from profiles.models import Profile
 
 
 def all_products(request):
     """ A view to return the products page """
 
     products = Product.objects.all()
+    profile = Profile.objects.get(user=request.user)
     sort = None
     direction = None
 
@@ -32,6 +34,7 @@ def all_products(request):
     context = {
         'products': products,
         'current_sorting': current_sorting,
+        'profile': profile,
     }
 
     return render(request, 'shop/products.html', context)
