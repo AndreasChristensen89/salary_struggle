@@ -9,8 +9,7 @@ from codex.models import Item
 
 class Profile(models.Model):
     """
-    Profile model to keep track of paid status,
-    order history, and delivery information
+    Profile model to keep track of paid status and order history
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     paid = models.BooleanField(default=False)

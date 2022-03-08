@@ -47,13 +47,20 @@
                             <div class="col-12 col-sm-6 mb-2">
                                 {% include 'shopping_bag/product_info.html' %}
                             </div>
+                            {% if not item.product.name == "Premium Membership" %}
                             <div class="col-12 col-sm-6 order-sm-last">
                                 <p class="my-0">Price each: €{{ item.product.price }}</p>
                                 <p><strong>Subtotal: </strong>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                             </div>
+                            
                             <div class="col-12 col-sm-6 order-sm-last">
                                 {% include 'shopping_bag/quantity_form_mobile.html' %}
                             </div>
+                            {% else %}
+                            <div class="col-12 col-sm-6 order-sm-last">
+                                <p><strong>Subtotal: </strong>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            </div>
+                            {% endif %}
                         </div>
                         <div class="row">
                             <div class="col"><hr></div>
@@ -89,12 +96,14 @@
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price }}</p>
                                     </td>
+                                    {% if not item.product.name == "Premium Membership" %}
                                     <td class="py-3 w-25">
                                         {% include 'shopping_bag/quantity_form.html' %}
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                             <tr>
