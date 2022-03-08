@@ -8,7 +8,7 @@ import stripe
 
 from shop.models import Product
 from profiles.models import Profile
-from profiles.forms import ProfileDetailsForm
+# from profiles.forms import ProfileDetailsForm
 from shopping_bag.contexts import shopping_bag_contents
 from .forms import OrderForm
 from .models import Order, OrderItem
@@ -57,13 +57,13 @@ def checkout(request):
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
-            'postcode': request.POST['postcode'],
-            'town_or_city': request.POST['town_or_city'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
-            'county': request.POST['county'],
+            # 'phone_number': request.POST['phone_number'],
+            # 'country': request.POST['country'],
+            # 'postcode': request.POST['postcode'],
+            # 'town_or_city': request.POST['town_or_city'],
+            # 'street_address1': request.POST['street_address1'],
+            # 'street_address2': request.POST['street_address2'],
+            # 'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
 
@@ -85,7 +85,7 @@ def checkout(request):
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
+                        "Please contact us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
@@ -116,13 +116,13 @@ def checkout(request):
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
-                    'phone_number': profile.default_phone_number,
-                    'country': profile.default_country,
-                    'postcode': profile.default_postcode,
-                    'town_or_city': profile.default_town_or_city,
-                    'street_address1': profile.default_street_address1,
-                    'street_address2': profile.default_street_address2,
-                    'county': profile.default_county,
+                    # 'phone_number': profile.default_phone_number,
+                    # 'country': profile.default_country,
+                    # 'postcode': profile.default_postcode,
+                    # 'town_or_city': profile.default_town_or_city,
+                    # 'street_address1': profile.default_street_address1,
+                    # 'street_address2': profile.default_street_address2,
+                    # 'county': profile.default_county,
                 })
             except Profile.DoesNotExist:
                 order_form = OrderForm()
@@ -157,19 +157,19 @@ def checkout_success(request, order_number):
         order.save()
 
         # Save the user's info
-        if save_info:
-            profile_data = {
-                'default_phone_number': order.phone_number,
-                'default_country': order.country,
-                'default_postcode': order.postcode,
-                'default_town_or_city': order.town_or_city,
-                'default_street_address1': order.street_address1,
-                'default_street_address2': order.street_address2,
-                'default_county': order.county,
-            }
-            user_profile_form = ProfileDetailsForm(profile_data, instance=profile)
-            if user_profile_form.is_valid():
-                user_profile_form.save()
+        # if save_info:
+        #     profile_data = {
+        #         'default_phone_number': order.phone_number,
+        #         'default_country': order.country,
+        #         'default_postcode': order.postcode,
+        #         'default_town_or_city': order.town_or_city,
+        #         'default_street_address1': order.street_address1,
+        #         'default_street_address2': order.street_address2,
+        #         'default_county': order.county,
+        #     }
+        #     user_profile_form = ProfileDetailsForm(profile_data, instance=profile)
+        #     if user_profile_form.is_valid():
+        #         user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \

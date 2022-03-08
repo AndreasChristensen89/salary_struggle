@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.views import generic, View
+from .forms import ProfileForm
 from premium.models import Order
-from .forms import ProfileDetailsForm
+# from .forms import ProfileDetailsForm
 from .models import Profile
 from .models import ActiveCharacter
 
@@ -11,16 +15,6 @@ from .models import ActiveCharacter
 def profile(request):
     """ A view to return the profile page """
     user_profile = get_object_or_404(Profile, user=request.user)
-
-    if request.method == 'POST':
-        form = ProfileDetailsForm(request.POST, instance=user_profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile information updated')
-        else:
-            messages.error(request, 'Update failed. Please ensure the form is valid')
-    else:
-        form = ProfileDetailsForm(instance=user_profile)
     
     if user_profile.active_char:
         character = get_object_or_404(ActiveCharacter, user=request.user)
@@ -29,7 +23,6 @@ def profile(request):
     orders = user_profile.orders.all()
     template = 'profiles/profiles.html'
     context = {
-        'form': form,
         'orders': orders,
         'on_profile_page': True,
         'profile': user_profile,
@@ -37,6 +30,19 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+
+class UpdateProfile(SuccessMessageMixin, generic.UpdateView):
+    """
+    View and update user profile
+    """
+    form_class = ProfileForm
+    template_name = 'profiles/update_profile.html'
+    success_message = 'Profile updated successfully!'
+    success_url = '/profile/'
+
+    def get_object(self):
+        return self.request.user
 
 
 @login_required
