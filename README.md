@@ -79,10 +79,12 @@ Bugs:
     - Included a check to JS if url contained "bag", which would mean that it's on the shopping bag site. If not then no need to look for mobile form - got it from this post: https://stackoverflow.com/questions/4597050/how-to-check-if-the-url-contains-a-given-string
 - Users without characters can still enter the Grind, they just get the message, but still have then enter button. They can even enter, which brings them to the house. Trying to increase stats brings 404. Clicking the link to the city redirects them.
 - Button in agency disappears if you open the messages a second time, and doesn't display messages in right order.
+    - Needed to reset counter
+- Have a look at success emails - none sent under development version
+- Check order in admin for original bag. Shows dictionary
 
 
 To do list:
 - Include endurance in energy drawn - DONE
 - Include ajax call at the of interview to avoid players refreshing to restart interview
 - Make all items in shop digital so no address is needed
-

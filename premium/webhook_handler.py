@@ -26,7 +26,7 @@ class StripeWHookHandler:
         body = render_to_string(
             'premium/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
@@ -74,7 +74,7 @@ class StripeWHookHandler:
             #     profile.default_street_address2 = shipping_details.address.line2
             #     profile.default_county = shipping_details.address.state
             #     profile.save()
-        
+
         order_exists = False    # first we assume that order doesn't exist
         attempt = 1     # If the view is slow for some reason, we introduce some delay 
         while attempt <= 5:

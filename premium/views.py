@@ -22,7 +22,7 @@ def cache_checkout_data(request):
     to this view, give it the client secret.
     We add this to the payment intent in a key called metadata
     """
-    
+
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]     # payment intent id
         stripe.api_key = settings.STRIPE_SECRET_KEY
