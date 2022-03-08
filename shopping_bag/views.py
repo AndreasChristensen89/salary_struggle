@@ -20,12 +20,17 @@ def add_to_bag(request, item_id):
 
     profile = Profile.objects.get(user=request.user)
     redirect_url = request.POST.get('redirect_url')
-    if not profile.paid:
-        product = Product.objects.get(pk=item_id)
+    product = Product.objects.get(pk=item_id)
+    print(profile.paid)
+    print(product.name == "Premium Membership")
+
+    if profile.paid and product.name == "Premium Membership": 
+        messages.error(request, "You are already a premium user.")
+    else:
         quantity = int(request.POST.get('quantity'))    # convert since it comes as a string from the template
         bag = request.session.get('bag', {})    # We check to see if there's a bag var, if not we create one {}
         # now we have a python object
-        
+            
         if item_id in list(bag.keys()):  # if there's already a key in the dictionary
             if product.name != "Premium Membership":
                 bag[item_id] += quantity     # increment the quantity
@@ -37,8 +42,6 @@ def add_to_bag(request, item_id):
             messages.success(request, f'{product.name} was added to the shopping bag')
 
         request.session['bag'] = bag    # put the bag into the session, override the variable with an update version
-    else:
-        messages.error(request, "You are already a premium user.")
     return redirect(redirect_url)
 
 
