@@ -46,17 +46,41 @@
             </div>
           </a>
           
-          <span class="col-3 text-muted text-center" id="energy"><i class="fas fa-bolt mx-1"></i> {{character.energy}}</span>
-          <span class="col-3 text-muted text-center" id="charm"><i class="fas fa-people-arrows mx-1"></i> {{character.charm}}</span>
-          <span class="col-3 text-muted text-center" id="intellect"><i class="fas fa-brain mx-1"></i> {{character.intellect}}</span>
+          <div class="col-3">
+            <span><i class="fas fa-bolt mx-1"></i>
+            </span><span class="text-muted text-center" id="energy"> {{character.energy}}</span>
+          </div>
+          <div class="col-3">
+            <span><i class="fas fa-people-arrows mx-1"></i></span>
+            <span class="text-muted text-center" id="charm"> {{character.charm}}</span>
+          </div>
+          <div class="col-3">
+            <span><i class="fas fa-brain mx-1"></i></span>
+            <span class="text-muted text-center" id="intellect"> {{character.intellect}}</span>
+          </div>
+          
         </div>
         <div class="row border-bottom pb-2">
+          <div class="col-3">
+            <span><i class="far fa-calendar-alt"></i></span>
+            <span class="text-muted text-center" id="day"> {{character.day}}</span>
+          </div>
           
+          <div class="col-3">
+            <span><i class="fas fa-code ml-1"></i></span>
+            <span class="text-muted text-center" id="coding"> {{character.coding}}</span>
+          </div>
+
+          <div class="col-3">
+            <span><i class="fas fa-fire-alt ml-1"></i></span>
+            <span class="text-muted text-center" id="endurance"> {{character.endurance}}</span>
+          </div>
           
-          <span class="col-2 text-muted text-center float-right" id="day"><i class="far fa-calendar-alt"></i> {{character.day}}</span>
-          <span class="col-3 text-muted text-center float-right" id="coding"><i class="fas fa-code mx-1"></i> {{character.coding}}</span>
-          <span class="col-3 text-muted text-center float-right" id="endurance"><i class="fas fa-fire-alt mx-1"></i> {{character.endurance}}</span>
-          <span class="col-4 text-muted text-center float-right" id="money"><i class="fas fa-yen-sign mx-1"></i> {{character.money}}</span>
+          <div class="col-3">
+            <span><i class="fas fa-yen-sign ml-1"></i></span>
+            <span class="text-muted text-center" id="money"> {{character.money}}</span>
+          </div>
+          
 
           <span class="d-none" id="energyPenalty">{{character.energy_penalty}}</span>
           <span class="d-none" id="charmPenalty">{{character.charm_penalty}}</span>
