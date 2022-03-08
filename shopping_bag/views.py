@@ -21,8 +21,6 @@ def add_to_bag(request, item_id):
     profile = Profile.objects.get(user=request.user)
     redirect_url = request.POST.get('redirect_url')
     product = Product.objects.get(pk=item_id)
-    print(profile.paid)
-    print(product.name == "Premium Membership")
 
     if profile.paid and product.name == "Premium Membership": 
         messages.error(request, "You are already a premium user.")

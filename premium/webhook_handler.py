@@ -104,8 +104,8 @@ class StripeWHookHandler:
                         quantity=item_data,
                     )
                     order_line_item.save()
-                    if item_id == 10:
-                        profile.paid=True
+                    if product.name == "Premium Membership":
+                        profile.paid = True
                         profile.save()
             except Exception as e:  # delete the order if it was created
                 if order:
