@@ -88,12 +88,13 @@ function attemptSkill(event) {
         }, "medium");
         currentQuestion++;
         questionCount++;
+        console.log(questionCount);
         $("#question-text").animate({
             opacity: 0
         }, "medium");
     }, 2500);
     setTimeout(() => {
-        if (questionCount == questionSet.length - 1) {
+        if (questionCount == questionSet.length) {
             finishInterview();
         } else {
             buildQuestions();
@@ -120,6 +121,9 @@ function buildQuestions() {
     $("#answer-coding").html(questionSet[questionCount].c);
     $("#answer-wild").html(questionSet[questionCount].d);
     $("#question-text").animate({opacity: 1}, "slow");
+    setTimeout(() => {
+        $(".answer-btn").animate({opacity: 1}, "slow");
+    }, 500);
 }
 
 function checkAnswer(event) {
@@ -131,10 +135,10 @@ function checkAnswer(event) {
     console.log(correctAnswer);
 
     if (correctAnswer == answer) {
-        $(`#answer-${answer}`).addClass("bg-success")
+        $(event.target).addClass("bg-success")
         setImpress("+", 3);
         setTimeout(() => {
-            $(`#answer-${answer}`).removeClass("bg-success")
+            $(event.target).removeClass("bg-success")
         }, 1000);
     } 
     else if (answer == "wild") 
@@ -154,30 +158,27 @@ function checkAnswer(event) {
         }
     } else {
         setImpress("-", 3);
-        $(`#answer-${answer}`).addClass("bg-danger")
+        $(event.target).addClass("bg-danger")
         setTimeout(() => {
-            $(`#answer-${answer}`).removeClass("bg-danger")
+            $(event.target).removeClass("bg-danger")
         }, 1000);
     }
 
     setTimeout(() => {
-        $("#bubble").animate({
-            opacity: 0
-        }, "medium");
         currentQuestion++;
         questionCount++;
-        $("#question-text").animate({
-            opacity: 0
-        }, "medium");
-    }, 2500);
+        console.log(questionCount);
+        $("#question-text").animate({opacity: 0}, "medium");
+        $(".answer-btn").animate({opacity: 0}, "medium");
+    }, 1500);
     setTimeout(() => {
-        if (questionCount == questionSet.length - 1) {
+        if (questionCount == questionSet.length) {
             finishInterview();
         } else {
             buildQuestions();
             $(".skill-btn").prop("disabled", false);
         }
-    }, 3500);
+    }, 2500);
 }
 
 function setImpress(plusMinus, integer) {
