@@ -62,50 +62,50 @@
             <li class="list-inline-item lead">Question</li>
             <li class="list-inline-item lead" id="question">1</li>
             <li class="list-inline-item lead">Impression:</li>
-            <li class="list-inline-item lead" id="impression">0</li>
+            <li class="list-inline-item lead" id="impression">1</li>
             <li class="list-inline-item lead">/</li>
             <li class="list-inline-item lead" id="impress-level">{{interviewer.impress_lvl}}</li>
           </ul>
         </div>
       </div>
 
-      <!-- <div class="row">
-        <div class="col-10 mx-auto text-center mt-5">
-          <h2 class="h2" id="timer"></h2>
-        </div>
-      </div> -->
-
       <div class="row">
         <div class="col-10 mx-auto text-center mt-1">
-          <p class="lead" id="question-text">Question</h2>
+          <p class="lead font-weight-bold" id="question-text">Question</h2>
         </div>
       </div>
 
-      <div class="row answer-buttons">
+      <div class="row answer-buttons mt-5" id="bubble-row">
         <div class="col-10 mx-auto text-center mt-1">
-          <button aria-label="Answer Button 1" id="answer1-btn" class="btn border col-12 answer-btn" value="a">Answer 1</button>
-          <button aria-label="Answer Button 2" id="answer2-btn" class="btn border col-12 answer-btn" value="b">Answer 2</button>
-          <button aria-label="Answer Button 3" id="answer3-btn" class="btn border col-12 answer-btn" value="c">Answer 3</button>
+          <p class="hide" id="bubble"></p>
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="next-question hide">
+        <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
+      </div>
+
+      <div class="row mt-3 my-5 hide" id="question-answers">
+        <div class="col-10 mx-auto text-center mt-3">
+          <h4 class="h4 text center">Choose your answer</h4>
+        </div>
+        <div class="col-10 text-center mx-auto mt-2">
+          <button aria-label="Answer Intellect" class="btn border my-3 answer-btn col-8" id="answer-intellect" value="a"></button>
+          <button aria-label="Answer Charm" class="btn border my-3 answer-btn col-8" id="answer-charm" value="b"></button>
+          <button aria-label="Answer Coding" class="btn border my-3 answer-btn col-8" id="answer-coding" value="c"></button>
+          <button aria-label="Answer Wild" class="btn border my-3 answer-btn col-8" id="answer-wild" value="wild"></button>
+        </div>
+      </div>
+
+      <div class="row mt-3 fixed-bottom my-5" id="skill-answers">
+        <div class="col-10 mx-auto text-center mt-3">
+          <h4 class="h4 text center">Choose your approach</h4>
+        </div>
         <div class="col-10 text-center mx-auto">
-          <button aria-label="Charm Button" id="charm-btn" class="btn btn-danger m-2 col-10 chance-btn" value="charm">Charm him</button>
-          <div class="col-12 hide" id="alternative-charm">
-              <p class="lead" id="charm-answer"></p>
-          </div>
-          <button aria-label="Intellect Button" id="intellect-btn" class="btn btn-primary m-2 col-10 chance-btn" value="intellect">Show your intellect</button>
-          <div class="col-12 hide" id="alternative-intellect">
-            <p class="lead" id="intellect-answer"></p>
-        </div>
-          <button aria-label="Coding Button" id="coding-btn" class="btn btn-success m-2 col-10 chance-btn" value="coding">Display coding skills</button>
-          <div class="col-12 hide" id="alternative-coding">
-            <p class="lead" id="coding-answer"></p>
-        </div>
-        <div class="next-question hide">
-          <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
-        </div>
+          <button aria-label="Charm Button" id="charm-btn" class="btn border m-2 col-3 skill-btn" value="charm">Charm</button>
+          <button aria-label="Intellect Button" id="intellect-btn" class="btn border m-2 col-3 skill-btn" value="intellect">Intellect</button>
+          <button aria-label="Coding Button" id="coding-btn" class="btn border m-2 col-3 skill-btn" value="coding">Coding</button>
+          <button aria-label="Coding Button" id="wild-btn" class="btn border m-2 col-3 skill-btn" value="wild">Wild</button>
         </div>
       </div>
     </section>

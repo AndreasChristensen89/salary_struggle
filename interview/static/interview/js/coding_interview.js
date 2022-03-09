@@ -19,10 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#introduction").addClass("hide");
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
-            $(".chance-btn").click(attemptSkill);
-            $("#answer1-btn").click(checkAnswer);
-            $("#answer2-btn").click(checkAnswer);
-            $("#answer3-btn").click(checkAnswer);
+            $(".skill-btn").click(attemptSkill);
+            $(".answer-btn").click(checkAnswer);
             buildQuestions();
         }
         });
@@ -33,73 +31,185 @@ var questionCount = 0;
 var questionSet = {};
 
 function attemptSkill(event) {
+    // get the skill
     let skill = event.target.value;
-    let charSkill = parseInt($(`#char-${skill}`).html());
-    let intSkill = parseInt($(`#interw-${skill}`).html());
+    // disable answer buttons
+    $(".skill-btn").prop("disabled", true);
+    // set bubble text to answer and display it
+    $("#bubble").text($(`#answer-${skill}`).text())
+    $("#bubble").removeClass("hide");
 
-    let randomNumber = Math.floor(Math.random() * intSkill) + 5;
+    // 40% chance of winning if "wild" is chosen
+    if (skill == "wild") {
+        setTimeout(() => {
+            $("#bubble").animate({
+                opacity: 1
+            }, "medium");
+        }, 200);
 
-    if (randomNumber <= charSkill) {
-        setImpress("+", 3);
+        setTimeout(() => {
+            if (calculateOutcome(4, 10)) {
+                setImpress("+", 5);
+            } else {
+                setImpress("-", 5);
+            }
+        }, 1000);
     } else {
-        setImpress("-", 3);
+        // else get char and interviewer's skill level
+        let charSkill = parseInt($(`#char-${skill}`).html());
+        let intSkill = parseInt($(`#interw-${skill}`).html());
+        console.log(`Character ${skill} level: ${charSkill}`);
+        console.log(`Interviewer ${skill} level ${intSkill}`);
+
+        // generate random number
+        let randomNumber = Math.floor(Math.random() * intSkill) + 1;
+
+        console.log(`random number: ${randomNumber}`);
+        console.log("");
+
+        setTimeout(() => {
+            $("#bubble").animate({
+                opacity: 1
+            }, "medium");
+        }, 200);
+
+        setTimeout(() => {
+            if (randomNumber <= charSkill) {
+                setImpress("+", 3);
+            } else {
+                setImpress("-", 3);
+            }
+        }, 1000);
     }
 
-    buildQuestions();
+    setTimeout(() => {
+        $("#bubble").animate({
+            opacity: 0
+        }, "medium");
+        currentQuestion++;
+        questionCount++;
+        console.log(questionCount);
+        $("#question-text").animate({
+            opacity: 0
+        }, "medium");
+    }, 2500);
+    setTimeout(() => {
+        if (questionCount == questionSet.length) {
+            finishInterview();
+        } else {
+            buildQuestions();
+            $(".skill-btn").prop("disabled", false);
+        }
+    }, 3500);
 }
 
 function buildQuestions() {
+    $("#question").html(currentQuestion);
     questionSet = codingQuestions;
-    if (questionCount < questionSet.length) {
+    if (questionSet[questionCount].answer.length != 0) {
+        if (questionCount < questionSet.length) {
+            $("#skill-answers").addClass("hide");
+            $("#bubble-row").addClass("hide");
+            $("#question-answers").removeClass("hide");
+        }
+    } else {
         $("#question-text").html(questionSet[questionCount].question);
-        $("#answer1-btn").html(questionSet[questionCount].a);
-        $("#answer2-btn").html(questionSet[questionCount].b);
-        $("#answer3-btn").html(questionSet[questionCount].c);
     }
+    $("#question-text").html(questionSet[questionCount].question);
+    $("#answer-intellect").html(questionSet[questionCount].a);
+    $("#answer-charm").html(questionSet[questionCount].b);
+    $("#answer-coding").html(questionSet[questionCount].c);
+    $("#answer-wild").html(questionSet[questionCount].d);
+    $("#question-text").animate({opacity: 1}, "slow");
+    setTimeout(() => {
+        $(".answer-btn").animate({opacity: 1}, "slow");
+    }, 500);
 }
 
 function checkAnswer(event) {
+
     let answer = event.target.value;
-    let correctAnswer = questionSet[questionCount].answer;
     console.log(answer);
+        
+    let correctAnswer = questionSet[questionCount].answer;
     console.log(correctAnswer);
-    let impress = parseInt($("#impression").html());
 
     if (correctAnswer == answer) {
+        $(event.target).addClass("bg-success")
         setImpress("+", 3);
-    } else if (impress - 3 >= 0) {
-        setImpress("-", 3);
+        setTimeout(() => {
+            $(event.target).removeClass("bg-success")
+        }, 1000);
+    } 
+    else if (answer == "wild") 
+    {
+        if (calculateOutcome(4, 10)) {
+            $("#answer-wild").addClass("bg-success")
+            setImpress("+", 5);
+            setTimeout(() => {
+                $("#answer-wild").removeClass("bg-success")
+            }, 1000);
+        } else {
+            setImpress("-", 5);
+            $("#answer-wild").addClass("bg-danger")
+            setTimeout(() => {
+                $("#answer-wild").removeClass("bg-danger")
+            }, 1000);
+        }
     } else {
-        setImpress("-", 0)
+        setImpress("-", 3);
+        $(event.target).addClass("bg-danger")
+        setTimeout(() => {
+            $(event.target).removeClass("bg-danger")
+        }, 1000);
     }
 
-    if (questionCount == questionSet.length-1) {
-        $(".answer-btn").prop("disabled",true);
-        finishInterview();
-    } else {
-        buildQuestions();
-    }
+    setTimeout(() => {
+        currentQuestion++;
+        questionCount++;
+        console.log(questionCount);
+        $("#question-text").animate({opacity: 0}, "medium");
+        $(".answer-btn").animate({opacity: 0}, "medium");
+    }, 1500);
+    setTimeout(() => {
+        if (questionCount == questionSet.length) {
+            finishInterview();
+        } else {
+            buildQuestions();
+            $(".skill-btn").prop("disabled", false);
+        }
+    }, 2500);
 }
 
 function setImpress(plusMinus, integer) {
+    
     let impress_nbr = parseInt($("#impression").html());
     if (plusMinus == "+") {
         $("#impression").html(impress_nbr + integer);
-    } else if (impress_nbr - integer >= 0) {
-        $("#impression").html(impress_nbr - integer);
-    } else {
+        $("#impression").addClass("text-success").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        setTimeout(() => { 
+            $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-success");
+            }, 800);
+    } else if (impress_nbr - integer < 0) {
         $("#impression").html("0");
+        $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        setTimeout(() => { 
+            $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-danger");
+            }, 800);
+    } else {
+        $("#impression").html(impress_nbr - integer);
+        $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        setTimeout(() => { 
+            $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-danger");
+        }, 800);
     }
-    $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
-    $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
-    questionCount++;
-    currentQuestion++;
-    $("#question").html(currentQuestion);
 }
   
 
 function calculateOutcome(charSkill, intSkill) {
-    let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
+    let randomNumber = Math.floor(Math.random() * intSkill) + 1;
+    console.log(`Randomnumber: ${randomNumber}`);
+    console.log(`Randomnumber <= 4: ${randomNumber <= 4}`);
 
     if (randomNumber <= charSkill) {
         return true;
@@ -112,30 +222,13 @@ function finishInterview() {
     let finalScore = parseInt($("#impression").html());
     let neededScore = parseInt($("#impress-level").html());
     $("#question-game-area").animate({opacity: 0}, "slow");
-    setTimeout(() => { $("#question-game-area").addClass("hide"); }, 1500);
+    setTimeout(() => { $("#question-game-area").addClass("hide"); }, 2000);
 
     if (finalScore >= neededScore) {
-        $.ajax({
-        type: "POST",
-        url: "/grind/agency-skill/",
-        headers: {'X-CSRFToken': csrf},
-        data: {
-            'random_number': randomNumber,
-            'skill': skill
-        },
-        success: function(){
-            if (parseInt($(`#${skill}`).text()) >= randomNumber && level == 1) {
-                success();
-            } else {
-                fail(skill);
-            }
-        }
-        });
-        setTimeout(() => { $("#ending-success").removeClass("hide"); }, 1500);
-        setTimeout(() => { $("#ending-success").animate({opacity: 1}, "medium"); }, 1500);
+        setTimeout(() => { $("#ending-success").removeClass("hide"); }, 2000);
+        setTimeout(() => { $("#ending-success").animate({opacity: 1}, "medium"); }, 2000);
     } else {
-        setTimeout(() => { $("#ending-fail").removeClass("hide"); }, 1500);
-        setTimeout(() => { $("#ending-fail").animate({opacity: 1}, "medium"); }, 1500);
+        setTimeout(() => { $("#ending-fail").removeClass("hide"); }, 2000);
+        setTimeout(() => { $("#ending-fail").animate({opacity: 1}, "medium"); }, 2000);
     }
 }
-  
