@@ -68,6 +68,8 @@ $("#converse").click(function() {
             }, 800);
         } else {
             $("#converse").addClass("bg-danger");
+            $("#energy").text(energy-(40-endurance));
+            energy = energy-(40-endurance);
             setTimeout(() => { 
                 $("#converse").removeClass("bg-danger");
             }, 800);

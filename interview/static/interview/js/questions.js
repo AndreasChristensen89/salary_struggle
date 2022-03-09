@@ -19,7 +19,7 @@ const hrQuestions = [
       question: "What's your greatest strength?",
       a: "My analytical skills and my problem solving.",
       b: "My motivation, attitude, and my way with words.",
-      c: "I could code my way out of a bar fight.",
+      c: "I could code my way out of a bar fight",
       d: "I am a mountain of strength.",
       answer: "",
     },
@@ -45,15 +45,15 @@ const hrQuestions = [
       b: "Cisco Media",
       c: "Data Drifters",
       d: "Never mind the name, I'll succeed anywhere.",
-      answer: "coding",
+      answer: "c",
     },
     {
-      question: "Do you know what we do here?",
+      question: "Do you know what we do here at Data Drifters?",
       a: "Streaming service.",
       b: "Accounting software.",
       c: "Database integrations.",
       d: "Hire people like me to win.",
-      answer: "coding",
+      answer: "c",
     },
   ];
 

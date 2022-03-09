@@ -46,7 +46,7 @@ You do not need to implement this fix right now while you are doing the walkthro
 
 Video is: The shopping bag: the shopping bag
 
-
+Speech bubble: https://codepen.io/rikschennink/pen/mjywQb
 
 Installed django-countries for the dropdown box in the form
 
