@@ -122,42 +122,62 @@ function buildQuestions() {
     $("#question-text").animate({opacity: 1}, "slow");
 }
 
-function checkAnswer() {
+function checkAnswer(event) {
 
-    // let answer = event.target.value;
+    let answer = event.target.value;
+    console.log(answer);
         
-    // let correctAnswer = questionSet[questionCount].answer;
+    let correctAnswer = questionSet[questionCount].answer;
+    console.log(correctAnswer);
 
-    // if (correctAnswer == answer) {
-    //     setImpress("+", 3);
-    // } else {
-    //     setImpress("-", 3);
-    // }
+    if (correctAnswer == answer) {
+        $(`#answer-${answer}`).addClass("bg-success")
+        setImpress("+", 3);
+        setTimeout(() => {
+            $(`#answer-${answer}`).removeClass("bg-success")
+        }, 1000);
+    } 
+    else if (answer == "wild") 
+    {
+        if (calculateOutcome(4, 10)) {
+            $("#answer-wild").addClass("bg-success")
+            setImpress("+", 5);
+            setTimeout(() => {
+                $("#answer-wild").removeClass("bg-success")
+            }, 1000);
+        } else {
+            setImpress("-", 5);
+            $("#answer-wild").addClass("bg-danger")
+            setTimeout(() => {
+                $("#answer-wild").removeClass("bg-danger")
+            }, 1000);
+        }
+    } else {
+        setImpress("-", 3);
+        $(`#answer-${answer}`).addClass("bg-danger")
+        setTimeout(() => {
+            $(`#answer-${answer}`).removeClass("bg-danger")
+        }, 1000);
+    }
 
-    // } else {
-        
-    //     let charSkill = parseInt($(`#char-${answer}`).html());
-    //     let intSkill = parseInt($(`#interw-${answer}`).html());
-    //     console.log(`charSkill: ${charSkill}`);
-    //     console.log(`intSkill: ${intSkill}`);
-
-    //     if (calculateOutcome(charSkill, intSkill)) {
-    //         setImpress("+", 3);
-    //     } else {
-    //         setImpress("-", 3);
-    //     }
-
-    // }
-
-    // if (questionCount == questionSet.length-1) {
-    //     $(".answer-btn").prop("disabled",true);
-    //     finishInterview();
-    // } else {
-    //     currentQuestion++;
-    //     questionCount++;
-    //     $("#question").html(currentQuestion);
-    //     buildQuestions();
-    // }
+    setTimeout(() => {
+        $("#bubble").animate({
+            opacity: 0
+        }, "medium");
+        currentQuestion++;
+        questionCount++;
+        $("#question-text").animate({
+            opacity: 0
+        }, "medium");
+    }, 2500);
+    setTimeout(() => {
+        if (questionCount == questionSet.length - 1) {
+            finishInterview();
+        } else {
+            buildQuestions();
+            $(".skill-btn").prop("disabled", false);
+        }
+    }, 3500);
 }
 
 function setImpress(plusMinus, integer) {
@@ -180,7 +200,7 @@ function setImpress(plusMinus, integer) {
         $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
         setTimeout(() => { 
             $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-danger");
-            }, 800);
+        }, 800);
     }
 }
   
@@ -188,7 +208,7 @@ function setImpress(plusMinus, integer) {
 function calculateOutcome(charSkill, intSkill) {
     let randomNumber = Math.floor(Math.random() * intSkill) + 1;
     console.log(`Randomnumber: ${randomNumber}`);
-    console.log(`Randomnumber <= charSkill: ${randomNumber <= charSkill}`);
+    console.log(`Randomnumber <= 4: ${randomNumber <= 4}`);
 
     if (randomNumber <= charSkill) {
         return true;
