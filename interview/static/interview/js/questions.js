@@ -26,7 +26,7 @@ const hrQuestions = [
     {
       question: "Why should we hire you?",
       a: "To become a smarter and better organized company.",
-      b: "With my personality I will make your workplace happier.",
+      b: "With my personality I will make your workplace shine.",
       c: "I can code anything for you.",
       d: "Because you'll be doomed if you don't.",
       answer: "",
@@ -34,8 +34,8 @@ const hrQuestions = [
     {
       question: "Tell me about your motivation for this role.",
       a: "I want to be challenged in an intellectual position.",
-      b: "I love to make people work better together.",
-      c: "I want to bring your coding quality to the next level.",
+      b: "I want to work alongside talented people such as yourself.",
+      c: "I want to bring the quality of your code to the next level.",
       d: "Well, money. I'll do anything for money.",
       answer: "",
     },
@@ -63,6 +63,7 @@ const hrQuestions = [
       a: "Lists cannot be altered while tuples can",
       b: "Lists can hold integers",
       c: "Lists are mutable while tuples are immutable",
+      d: "To me they're the same - both easy to understand",
       answer: "c",
       charm: "Look the interviewer deep in the eyes and let the charm take effect",
       intellect: "Argue that that there are more urgent matters at hand",

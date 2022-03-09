@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#answer-charm-btn").click(checkAnswer);
             $("#answer-intellect-btn").click(checkAnswer);
             $("#answer-coding-btn").click(checkAnswer);
+            $("#question-text").animate({opacity: 1}, "medium");
             buildQuestions();
             timer();
         }
