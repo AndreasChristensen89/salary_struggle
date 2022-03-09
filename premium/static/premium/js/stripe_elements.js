@@ -53,14 +53,12 @@ form.addEventListener('submit', function(ev) {   // when the user clicks the sub
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);  // an triggers loading overlay...
 
-    // var saveInfo = Boolean($('#id-save-info').attr('checked')); 
     // ... then we create four vars to capture the form data
     // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
-        // 'save_info': saveInfo,
     };
     var url = '/premium/cache_checkout_data/'; // we can't put these in the payment intent here...
 
