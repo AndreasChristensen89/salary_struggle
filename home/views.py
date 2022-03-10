@@ -5,8 +5,10 @@ from shop.models import Product
 
 def index(request):
     """ A view to return the index page """
-
-    profile = Profile.objects.get(user=request.user)
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user=request.user)
+    else:
+        profile = False
     membership = Product.objects.get(name="Premium Membership")
 
     context = {

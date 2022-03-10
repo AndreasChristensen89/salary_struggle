@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col text-center mt-3">
-            <h2 class="logo-font">All Our Digital Products</h2>
+            <h2 class="logo-font">Shop</h2>
             <hr class="w-50 mb-1">
         </div>
     </div>
@@ -24,8 +24,8 @@
     <div class="row mt-1 mb-2">
         <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
             <div class="sort-select-wrapper w-50">
-                <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
-                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                <select id="sort-selector" class="custom-select custom-select-sm rounded border">
+                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>{% if current_sorting == 'None_None' %}Filter{% else %}Reset{% endif %}</option>
                     <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                     <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
                 </select>
@@ -35,25 +35,24 @@
 
     <div class="row">
         <div class="product-container col-10 offset-1">
-            <div class="row mt-1 mb-2"></div>
             <div class="row">
                 {% for product in products %}
                     {% if not product.name == "Premium Membership" %}
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 px-1">
                             <a href="{% url 'shop:product_details' product.id %}">
-                            <div class="card h-100 border-0">
+                            <div class="card border product-height">
                                 {% if product.image %}
                                     <img class="card-img-top img-fluid product-img mx-auto" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
                                     <img class="card-img-top img-fluid product-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 {% endif %}
-                                <div class="card-body pb-0">
-                                    <p class="lead">{{ product.name }}</p>
+                                <div class="card-body">
+                                    <p class="lead product-name">{{ product.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead text-left"><strong>€{{ product.price }}</strong></p>
+                                            <p class="lead text-left font-weight-bold">€{{ product.price }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -62,21 +61,21 @@
                         </div>
                     {% else %}
                         {% if not profile.paid %}
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 my-3 px-0">
                                 <a href="{% url 'shop:product_details' product.id %}">
-                                <div class="card h-100 border-0">
+                                <div class="card">
                                     {% if product.image %}
-                                        <img class="card-img-top img-fluid product-img mx-auto" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        <img class="card-img-top img-fluid product-img mx-auto h-50" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     {% else %}
-                                        <img class="card-img-top img-fluid product-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                        <img class="card-img-top img-fluid product-img mx-auto h-50" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                     {% endif %}
-                                    <div class="card-body pb-0">
-                                        <p class="lead">{{ product.name }}</p>
+                                    <div class="card-body">
+                                        <p class="lead product-name">{{ product.name }}</p>
                                     </div>
                                     <div class="card-footer bg-white pt-0 border-0 text-left">
                                         <div class="row">
                                             <div class="col">
-                                                <p class="lead text-left"><strong>€{{ product.price }}</strong></p>
+                                                <p class="lead text-left font-weight-bold">€{{ product.price }}</p>
                                             </div>
                                         </div>
                                         {% if user.is_superuser %}

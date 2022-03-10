@@ -30,6 +30,8 @@ $(".item-buy").click(function() {
             let element = $(`#item${itemID}stat`).attr("value");
             // the current stat level
             let curr_number = parseInt($(`#${element}`).text());
+            $("#money").text(money-price);
+            money = money - price;
             // Adds stat to old stat
             $(`#${element}`).text(curr_number + increase);
             $(`#item${itemID}`).addClass("bg-success");

@@ -109,8 +109,15 @@ body {
 } */
 
 .product-img {
-    height: 300px;
-    width: 250px;
+    height: 215px;
+}
+
+.product-name {
+    font-size: 12pt;
+}
+
+.product-height {
+    height: 350px;
 }
 
 .interviewer-img {
