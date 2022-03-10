@@ -38,36 +38,33 @@
     <title>Salary Struggle {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
             <a class="navbar-brand" href="{% url 'home:index' %}">Salary Struggle</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'grind:enter' %}">The Grind</a>
+                        <a class="nav-link" href="{% url 'grind:enter' %}">Game</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Game Info
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
+                            <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">About</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'profiles:profile' %}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'codex:items' %}">Items</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
@@ -76,14 +73,71 @@
                         <a class="nav-link" href="{% url 'shop:add_product' %}">Add products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'shopping_bag:shopping_bag' %}">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+                    </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                            href="{% url 'shopping_bag:shopping_bag' %}">
+                            <div class="text-center">
+                                <div><i class="fas fa-shopping-bag fa-lg"></i>
+                                    {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                    €0.00
+                                    {% endif %}
+                                </div>
+                                <!-- <p class="my-0">
+                                    {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                    €0.00
+                                    {% endif %}
+                                </p> -->
+                            </div>
+                        </a>
+                    </li>
+                    {% elif user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'grind:enter' %}">Game</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Game Info
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
+                            <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">About</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profiles:profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+                    </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                            href="{% url 'shopping_bag:shopping_bag' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="my-0">
+                                <p class="col-3">
                                     {% if grand_total %}
-                                        €{{ grand_total|floatformat:2 }}
+                                    €{{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        €0.00
+                                    €0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -100,6 +154,29 @@
                 </ul>
             </div>
         </nav>
+        <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'home:index' %}">Salary Struggle</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                
+
+                
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav> -->
     </header>
 
     {% if messages %}
