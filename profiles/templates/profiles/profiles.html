@@ -19,9 +19,9 @@
     <div class="container">
 
         <div class="row">
-            <div class="col">
+            <div class="col-12 text-center">
                 <hr>
-                <h2 class="logo-font mb-4">Profile</h2>
+                <h2 class="logo-font mb-4">PROFILE</h2>
                 <hr>
             </div>
         </div>
@@ -36,6 +36,9 @@
                 {% else %}
                 <div class="col-12">
                     <h4 class="h4 mb-4">Free</h4>
+                </div>
+                <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
+                    <a class="lead" href="{% url 'shop:product_details' membership.id %}">Upgrade to Premium</a>
                 </div>
                 {% endif %}
             </div>
@@ -73,13 +76,7 @@
                     {% endif %}
             </div>
         </div>
-        {% if not profile.paid %}
-        <div class="row mb-4">
-            <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
-                <a class="lead" href="#">Upgrade to Premium</a>
-            </div>
-        </div>
-        {% endif %}
+
         <div class="row mb-4">
             <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
                 <a class="lead" href="{% url 'profiles:new_character' %}">Restart character</a>
@@ -94,20 +91,33 @@
         </div>
 
         {% endif %}
+
+        <hr>
+
         <div class="row my-1">
             <div class="col-12 col-lg-6">
-                <p class="text-muted">User information</p>
-                <a href="{% url 'profiles:update_profile' %}">
-                    Update User information
-                </a>
-                <ul class="list-group">
+                <p class="lead">User information</p>
+                <div class="col-8 py-2 border border-black text-center mx-auto">
+                    <a href="{% url 'profiles:update_profile' %}">
+                        Edit User information
+                    </a>
+                </div>
+                
+                <ul class="list-group my-2">
                     <li class="list-group-item">First Name: {{user.first_name}}</li>
                     <li class="list-group-item">Last Name: {{user.last_name}}</li>
                     <li class="list-group-item">Email: {{user.email}}</li>
                 </ul>
             </div>
+        </div>
+
+        <hr>
+
+        <div class="row my-3">
+
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Order History</p>
+                <p class="lead">Order History</p>
+                {% if orders %}
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
                         <thead>
@@ -143,8 +153,12 @@
                         </tbody>
                     </table>
                 </div>
+                {% else %}
+                <p class="text-muted">No orders placed</p>
+                {% endif %}
             </div>
         </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}

@@ -9,12 +9,14 @@ from premium.models import Order
 # from .forms import ProfileDetailsForm
 from .models import Profile
 from .models import ActiveCharacter
+from shop.models import Product
 
 
 @login_required
 def profile(request):
     """ A view to return the profile page """
     user_profile = get_object_or_404(Profile, user=request.user)
+    membership = Product.objects.get(name="Premium Membership")
     
     if user_profile.active_char:
         character = get_object_or_404(ActiveCharacter, user=request.user)
@@ -27,6 +29,7 @@ def profile(request):
         'on_profile_page': True,
         'profile': user_profile,
         'character': character,
+        'membership': membership,
     }
 
     return render(request, template, context)

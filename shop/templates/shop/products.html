@@ -12,15 +12,15 @@
 {% endblock %}
 
 {% block content%}
-<div class="overlay"></div>
+<!-- <div class="overlay"></div> -->
 <div class="container-fluid">
     <div class="row">
         <div class="col text-center mt-3">
-            <h2 class="logo-font">All Products</h2>
+            <h2 class="logo-font">All Our Digital Products</h2>
             <hr class="w-50 mb-1">
         </div>
     </div>
-
+    
     <div class="row mt-1 mb-2">
         <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
             <div class="sort-select-wrapper w-50">
@@ -43,17 +43,17 @@
                             <a href="{% url 'shop:product_details' product.id %}">
                             <div class="card h-100 border-0">
                                 {% if product.image %}
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid product-img mx-auto" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid product-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.name }}</p>
+                                    <p class="lead">{{ product.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
+                                            <p class="lead text-left"><strong>€{{ product.price }}</strong></p>
                                         </div>
                                     </div>
                                 </div>
@@ -66,17 +66,17 @@
                                 <a href="{% url 'shop:product_details' product.id %}">
                                 <div class="card h-100 border-0">
                                     {% if product.image %}
-                                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        <img class="card-img-top img-fluid product-img mx-auto" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     {% else %}
-                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                        <img class="card-img-top img-fluid product-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                     {% endif %}
                                     <div class="card-body pb-0">
-                                        <p class="mb-0">{{ product.name }}</p>
+                                        <p class="lead">{{ product.name }}</p>
                                     </div>
                                     <div class="card-footer bg-white pt-0 border-0 text-left">
                                         <div class="row">
                                             <div class="col">
-                                                <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
+                                                <p class="lead text-left"><strong>€{{ product.price }}</strong></p>
                                             </div>
                                         </div>
                                         {% if user.is_superuser %}

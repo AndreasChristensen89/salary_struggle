@@ -23,11 +23,6 @@ body {
 }
 
 /* From walkthrough project */
-.logo-font {
-    text-transform: uppercase;
-}
-
-/* From walkthrough project */
 .main-logo-link {
     width: fit-content;
 }
@@ -103,7 +98,7 @@ body {
 }
 
 /* From walkthrough project */
-.overlay {
+/* .overlay {
 	height: 100%;
 	width: 100%;
 	top: 0;
@@ -111,6 +106,16 @@ body {
 	position: fixed;
 	background: white;
 	z-index: -1;
+} */
+
+.product-img {
+    height: 300px;
+    width: 250px;
+}
+
+.interviewer-img {
+    height: 300px;
+    width: 200px;
 }
 
 /* From walkthrough project */
@@ -133,6 +138,26 @@ a.category-badge > span.badge:hover {
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+
+#game-link {
+    background-color: #489d4f;
+}
+
+#upgrade-link {
+    background-color: #d8bd4b;
+}
+
+.profile-link {
+    background-color: #d85252;
+}
+
+#shop-link {
+    background-color: #3c71c2;
+}
+
+.footer {
+    background-color: #5280a7;
 }
 
 .message-container {

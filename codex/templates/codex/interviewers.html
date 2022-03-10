@@ -44,15 +44,15 @@
     <div class="row">
         <div class="product-container col-10 offset-1">
             <div class="row mt-1 mb-2"></div>
-            <div class="row">
+            <div class="row mt-3">
                 {% for interviewer in interviewers %}
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <a href="{% url 'codex:interviewer_details' interviewer.id %}">
                         <div class="card h-100 border-0">
                             {% if interviewer.image %}
-                                <img class="card-img-top img-fluid" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                                <img class="card-img-top img-fluid interviewer-img mx-auto" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
                             {% else %}
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
+                                <img class="card-img-top img-fluid interviewer-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
                             {% endif %}
                             <div class="card-body pb-0">
                                 <p class="mb-0">{{ interviewer.name }}</p>

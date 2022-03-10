@@ -39,7 +39,7 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary fixed-top">
             <a class="navbar-brand" href="{% url 'home:index' %}">Salary Struggle</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +81,7 @@
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="{% url 'shopping_bag:shopping_bag' %}">
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i>
+                                <div class="text-center"><i class="fas fa-shopping-bag fa-lg"></i>
                                     {% if grand_total %}
                                     €{{ grand_total|floatformat:2 }}
                                     {% else %}
@@ -133,7 +133,7 @@
                             href="{% url 'shopping_bag:shopping_bag' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="col-3">
+                                <p class="">
                                     {% if grand_total %}
                                     €{{ grand_total|floatformat:2 }}
                                     {% else %}
@@ -154,29 +154,6 @@
                 </ul>
             </div>
         </nav>
-        <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'home:index' %}">Salary Struggle</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
-                
-
-                
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav> -->
     </header>
 
     {% if messages %}
@@ -202,6 +179,19 @@
 
     {% block content %}
     {% endblock%}
+
+    <footer class="footer mt-auto py-3">
+        <p class="m-0 text-center text-white">Made by Dre</p>
+        <p class="m-0 text-center text-white">Follow me: 
+          <a href="https://facebook.com" aria-label="Visit our Facebook page (opens in a new tab)"
+          target="_blank" rel="noopener"><i class="fab fa-facebook-square ms-3 text-white" aria-hidden="true"></i></a>
+          <a href="https://youtube.com" aria-label="Visit our Youtube channel (opens in a new tab)"
+          target="_blank" rel="noopener"><i class="fab fa-youtube-square ms-3 text-white" aria-hidden="true"></i></a>
+          <a href="https://github.com/AndreasChristensen89?tab=repositories" aria-label="Visit my Github page (opens in a new tab)"
+          target="_blank" rel="noopener"><i class="fab fa-github ms-3 text-white" aria-hidden="true"></i></a>
+          <a href="https://instagram.com" aria-label="Visit our instagram page (opens in a new tab)"
+          target="_blank" rel="noopener"><i class="fab fa-instagram-square ms-3 text-white" aria-hidden="true"></i></a></p>
+    </footer>
 
     {% block postloadjs %}
     <script type="text/javascript">
