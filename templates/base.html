@@ -37,7 +37,7 @@
 
     <title>Salary Struggle {% block extra_title %}{% endblock %}</title>
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-primary fixed-top">
             <a class="navbar-brand" href="{% url 'home:index' %}">Salary Struggle</a>
@@ -88,13 +88,6 @@
                                     €0.00
                                     {% endif %}
                                 </div>
-                                <!-- <p class="my-0">
-                                    {% if grand_total %}
-                                    €{{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                    €0.00
-                                    {% endif %}
-                                </p> -->
                             </div>
                         </a>
                     </li>

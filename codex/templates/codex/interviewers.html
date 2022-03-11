@@ -41,38 +41,41 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="product-container col-10 offset-1">
-            <div class="row mt-1 mb-2"></div>
-            <div class="row mt-3">
-                {% for interviewer in interviewers %}
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                        <a href="{% url 'codex:interviewer_details' interviewer.id %}">
-                        <div class="card h-100 border-0">
-                            {% if interviewer.image %}
-                                <img class="card-img-top img-fluid interviewer-img mx-auto" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
-                            {% else %}
-                                <img class="card-img-top img-fluid interviewer-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
+    <div class="row mt-5">
+        {% for interviewer in interviewers %}
+        <div class="col-6">
+            <a href="{% url 'codex:interviewer_details' interviewer.id %}">
+            <div class="card product-height">
+                {% if interviewer.image %}
+                    <img class="card-img-top img-fluid interviewer-img mx-auto mt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                {% else %}
+                    <img class="card-img-top img-fluid interviewer-img mx-auto mt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <p class="mb-0">{{ interviewer.name }}</p>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="row">
+                        <div class="col">
+                            <small class="lead">Level {{ interviewer.level }}</small>
+                            {% if item.intellect > 0 %}
+                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Intellect: {{ item.intellect }}</small>
                             {% endif %}
-                            <div class="card-body pb-0">
-                                <p class="mb-0">{{ interviewer.name }}</p>
-                            </div>
-                            <div class="card-footer bg-white pt-0 border-0 text-left">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">STATS</p>
-                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>Level: {{ interviewer.level }}</small>
-                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>Intellect: {{ interviewer.intellect }}</small>
-                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>Coldness: {{ interviewer.coldness }}</small>
-                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>Coding: {{ interviewer.coding }}</small>
-                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>Impress Level: {{ interviewer.impress_lvl }}</small>
-                                    </div>
-                                </div>
-                            </div>
+                            {% if item.charm > 0 %}
+                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Charm: {{ item.charm }}</small>
+                            {% endif %}
+                            {% if item.coding > 0 %}
+                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Coding: {{ item.coding }}</small>
+                            {% endif %}
+                            {% if item.energy > 0 %}
+                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Energy: {{ item.energy }}</small>
+                            {% endif %}
                         </div>
-                        </a>
                     </div>
-                    {% if forloop.counter|divisibleby:1 %}
+                </div>
+            </div>
+            </a>
+            {% if forloop.counter|divisibleby:1 %}
                         <div class="col-12 d-sm-none mb-5">
                             <hr>
                         </div>
@@ -92,9 +95,8 @@
                             <hr>
                         </div>
                     {% endif %}
-                {% endfor %}
-            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 <!-- button from walkthrough -->

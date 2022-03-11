@@ -112,17 +112,22 @@ body {
     height: 215px;
 }
 
+.interviewer-img {
+    height: 215px;
+    width: 130px;
+}
+
+.interviewer-detail-img {
+    height: 260px;
+    width: 150px;
+}
+
 .product-name {
     font-size: 12pt;
 }
 
 .product-height {
     height: 350px;
-}
-
-.interviewer-img {
-    height: 300px;
-    width: 200px;
 }
 
 /* From walkthrough project */
