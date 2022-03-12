@@ -54,6 +54,18 @@ body {
     height: 320px;
 }
 
+#house-background-img {
+    background-image: url(/media/house_background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40%;
+    width: 100%;
+}
+
+#house-background {
+    background-color: #e3d9ca;
+}
+
 #background-fill {
     background-color: #57bcf2;
     height: 100%;
