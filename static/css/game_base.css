@@ -55,10 +55,10 @@ body {
 }
 
 #house-background-img {
-    background-image: url(/media/house_background.png);
+    background-image: url(/media/house-mobile.png);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 40%;
+    height: 600px;
     width: 100%;
 }
 
