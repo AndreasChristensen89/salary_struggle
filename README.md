@@ -90,6 +90,6 @@ To do list:
 - Make all items in shop digital so no address is needed - DONE
 - Design more characters
 - Finish final interview
-- Make introduction to game
+- Make introduction to game - DONE
 - Make ending to game - good + fail
 - Remove grand total and only have total

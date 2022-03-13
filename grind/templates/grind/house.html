@@ -5,35 +5,33 @@
 {% if user.is_authenticated %}
 
 <div class="h-100 overview" id="house-background">
-    <div class="row bg-dark">
-        <div class="col text-center">
-            <h1 class="display-4 text-white">Home</h1>
-        </div>
-    </div>
-
     <div id="house-background-img">
 
         <div class="row">
             <a class="col-2 text-center border border-dark m-3 rounded" href="{% url 'grind:city' %}">
                 <i class="fas fa-arrow-left text-info"></i>
             </a>
+            <div class="col-6 text-center">
+                <h1 class="display-4 rounded place">Home</h1>
+            </div>
         </div>
+
 
         <div class="row fixed-bottom my-4">
         <div class="col-4 mx-auto text-center">
-            <div class="rounded border border-dark home-button" id="sleep">
+            <div class="rounded border border-dark update-button" id="sleep">
                 <h5 class="h5">Sleep</h5>
                 <p class="">Rest up</p>
             </div>
         </div>
         <div class="col-4 mx-auto text-center">
-            <div class="rounded border border-dark home-button" id="homeStudy">
+            <div class="rounded border border-dark update-button" id="homeStudy">
                 <h5 class="h5">Study</h5>
                 <p class="">+1 coding</p>
             </div>
         </div>
         <div class="col-4 mx-auto text-center">
-            <div class="rounded border border-dark home-button" id="homeCharm">
+            <div class="rounded border border-dark update-button" id="homeCharm">
                 <h5 class="h5">Charm</h5>
                 <p class="">+1 charm</p>
             </div>

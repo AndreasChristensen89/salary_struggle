@@ -3,41 +3,39 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-5">
-    <div class="row">
-        <div class="col text-center">
-            <h1 class="h1">Bar</h1>
+<div class="h-100 overview" id="bar-background">
+    <div id="bar-background-img">
+
+        <div class="row">
+            <a class="col-2 text-center border border-dark m-3 rounded" href="{% url 'grind:city' %}">
+                <i class="fas fa-arrow-left text-info"></i>
+            </a>
         </div>
-    </div>
 
-    <div class="row">
-        <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
-            <i class="fa-solid fa-circle-arrow-left">Back</i>
-        </a>
-    </div>
-    
-    <div class="row py-5">
-
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center" id="drinkButton">
-            <div class="card-body rounded-top">
-                <h5 class="card-title">Drink</h5>
-                <p class="card-text round">+2 Charm</p>
-                <p class="card-text round">-1000¥</p>
-                <p class="card-text round">-40 energy & 20 energy penalty</p>
+        <div class="row fixed-bottom my-4">
+            <div class="col-6 mx-auto text-center">
+                <div class="rounded border border-dark update-button" id="drinkButton">
+                    <h5 class="h5">Drink</h5>
+                    <p class="">Mind the hangover</p>
+                </div>
+            </div>
+            <div class="col-6 mx-auto text-center">
+                <div class="rounded border border-dark update-button" id="converse">
+                    <h5 class="h5">Converse</h5>
+                    <p class="">+2 charm</p>
+                </div>
             </div>
         </div>
-
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center" id="converse">
-                <div class="card-body rounded-top">
-                    <h5 class="card-title">Converse</h5>
-                    <p class="card-text round">+2 charm</p>
-                    <p class="card-text round">-40 energy & risk</p>
-                    <p class="card-text round">Odds: 2 to 1</p>
-                </div>
-        </div>
-
     </div>
 </div>
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-bed"></i>
+        </span>
+    </h1>
+</div>
+
 {% endif %}
 {% csrf_token %}
 {% endblock %}

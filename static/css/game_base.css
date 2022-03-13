@@ -60,11 +60,20 @@ body {
     font-size: 20pt;
 }
 
+.place {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
 #enter-grind {
     background-image: url(/media/background-enter.png);
     background-size: cover;
     background-repeat: no-repeat;
     height: 320px;
+}
+
+#house-background {
+    background-color: #e3d9ca;
 }
 
 #house-background-img {
@@ -74,12 +83,19 @@ body {
     height: 100%;
 }
 
-#house-background {
+#bar-background-img {
+    background-image: url(/media/bar_background_mobile.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#bar-background {
     background-color: #e3d9ca;
 }
 
-.home-button {
-    background-color: rgba(56, 139, 172, 0.5);
+.update-button {
+    background-color: rgba(56, 139, 172);
 }
 
 #background-fill {

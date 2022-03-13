@@ -22,7 +22,7 @@
         </div>
         {% if user.is_authenticated %}
             {% if profile.active_char and profile.paid %}
-                {% if character.level > 1 %}
+                {% if character.day > 1 %}
                     <div class="row" id="game-link">
                         <a class="col-12 border py-5 mx-auto text-center" href="{% url 'grind:enter' %}">
                             <h2 class="h2">Play</h2>
