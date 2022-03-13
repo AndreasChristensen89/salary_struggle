@@ -54,9 +54,9 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Game Info
+                            Codex
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
                             <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
                             <div class="dropdown-divider"></div>
@@ -81,7 +81,7 @@
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="{% url 'shopping_bag:shopping_bag' %}">
                             <div class="text-center">
-                                <div class="text-center"><i class="fas fa-shopping-bag fa-lg"></i>
+                                <div class="text-center"><i class="fas fa-shopping-basket"></i>
                                     {% if grand_total %}
                                     €{{ grand_total|floatformat:2 }}
                                     {% else %}
@@ -100,7 +100,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Game Info
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
                             <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
                             <div class="dropdown-divider"></div>
@@ -117,6 +117,9 @@
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
                     </li>
                     </ul>
@@ -125,7 +128,7 @@
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="{% url 'shopping_bag:shopping_bag' %}">
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <div><i class="fas fa-shopping-basket"></i></div>
                                 <p class="">
                                     {% if grand_total %}
                                     €{{ grand_total|floatformat:2 }}
@@ -143,10 +146,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
-                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

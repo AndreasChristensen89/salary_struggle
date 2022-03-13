@@ -49,6 +49,16 @@ class UpdateProfile(SuccessMessageMixin, generic.UpdateView):
 
 
 @login_required
+def confirm_new_char(request):
+    """ 
+    Makes user confirm that old character is deleted,
+    and new one is created 
+    """
+
+    return render(request, 'profiles/restart_character.html')
+
+
+@login_required
 def create_new_character(request):
     """ Delete a product from the store """
 

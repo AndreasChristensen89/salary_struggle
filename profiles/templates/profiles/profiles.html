@@ -46,7 +46,7 @@
 
         {% if profile.active_char %}
         <div class="row mb-4">
-            <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
+            <div class="col-10 col-md-6 mx-auto text-center border rounded">
                 <h4 class="display-5 mb-2">Your Character</h4>
                     <div class="col-12">
                         <p>Level {{ character.level }}</p>
@@ -78,8 +78,8 @@
         </div>
 
         <div class="row mb-4">
-            <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
-                <a class="lead" href="{% url 'profiles:new_character' %}">Restart character</a>
+            <div class="col-6 mx-auto text-center border border-black rounded">
+                <a class="lead" href="{% url 'profiles:confirm_new_char' %}">Restart character</a>
             </div>
         </div>
         {% else %}

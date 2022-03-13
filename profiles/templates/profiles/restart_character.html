@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row my-5">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <hr>
+                <h2 class="h2 font-weight-bold b-4">Restart Character</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 text-center mx-auto mb-3">
+              <h3 class="h3">Are you sure you want to restart your character?</h3>
+              <p class="lead mt-3">Your will be permanent, and your progress will not be saved.</p>
+            </div> 
+        </div>
+
+        <div class="row text-center">
+            <a class="btn btn-primary mx-auto col-3" href="{% url 'profiles:profile' %}">Cancel</a>
+            <a class="btn btn-danger mx-auto col-3" href="{% url 'profiles:new_character' %}">Restart</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}
