@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
-
-
 var hint = 0;
 
 function nextHint() {
@@ -23,7 +21,5 @@ function nextHint() {
         $('#next-hint').addClass("hide");
         $('#hint-text').addClass("hide");
         $('.temp').removeClass("temp");
-        hint = 0;
     }
-    
 }

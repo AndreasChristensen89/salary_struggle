@@ -47,6 +47,19 @@ body {
     font-size: 10pt;
 }
 
+#next-btn {
+    opacity: 0;
+}
+
+.intro-text {
+    height: 100px;
+    opacity: 0;
+}
+
+#intro-btn {
+    font-size: 20pt;
+}
+
 #enter-grind {
     background-image: url(/media/background-enter.png);
     background-size: cover;

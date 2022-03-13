@@ -4,6 +4,7 @@ from . import views
 app_name = 'grind'
 
 urlpatterns = [
+    path('intro/', views.intro, name='intro'),
     path('enter/', views.enter_game, name='enter'),
     path('city/', views.city, name='city'),
     path('bar/', views.bar_page, name='bar'),

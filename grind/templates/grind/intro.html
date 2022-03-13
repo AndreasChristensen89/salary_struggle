@@ -1,0 +1,49 @@
+{% extends "grind/game_base.html" %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-4">Salary</h1>
+        </div>
+        <div class="col text-center">
+            <h1 class="display-4">Struggle</h1>
+        </div>
+    </div>
+
+    <div class="row pt-5" id="hint-row">
+        <div class="col-4 mx-auto text-center">
+            <button aria-label="Hint nutton" id="intro-btn" class="btn"><i class="far fa-comment-dots"></i></button>
+        </div>
+    </div>
+
+    <div class="row pt-2 text-center hide" id="intro-box">
+        <div class="col-10 mx-auto">
+            <p class="lead hide intro-text">Life is hard.</p>
+            <p class="lead hide intro-text">Sometimes even unfair.</p>
+            <p class="lead hide intro-text">It seems that life has given you quite a few lemons recently. It doesn't look too good for you.</p>
+            <p class="lead hide intro-text">Oh, and the massive debt you've piled up doesn't help much either.</p>
+            <p class="lead hide intro-text">They called up you yesterday and said you have 30 days to pay.</p>
+            <p class="lead hide intro-text">Maybe you should go get a job.</p>
+            <p class="lead hide intro-text">... how does one do that? You don't have any skills to speak of.</p>
+            <p class="lead hide intro-text">The agency could help, but they wouldn't want anything to do with you in your current state.</p>
+            <p class="lead hide intro-text">Better go work on your skills. Explore a bit.</p>
+            <p class="lead hide intro-text">The clock is ticking.</p>
+            <p class="lead hide intro-text">Best of luck to you!</p>
+            <a class="lead hide intro-text" href="{% url 'grind:enter' %}">Go!</a>
+        </div>
+
+        <button aria-label="Next hint button" id="next-btn" class="border btn col-4 mx-auto hide">Next</button>
+    </div>
+
+</div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'grind/js/intro.js' %}"></script>
+{% endblock %}

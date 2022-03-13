@@ -10,6 +10,26 @@ import json
 
 
 @login_required
+def intro(request):
+    """ Intro for level 1 players """
+
+    profile = get_object_or_404(Profile, user=request.user)
+    character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'You need to create a character before you can enter here')
+        return redirect(reverse('profiles:profile'))
+    elif not profile.paid and character.level > 1:
+        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        return redirect(reverse('profiles:profile'))
+
+    context = {
+        'character': character,
+    }
+
+    return render(request, 'grind/intro.html', context)
+
+@login_required
 def enter_game(request):
     """ Delete a product from the store """
 
@@ -22,12 +42,10 @@ def enter_game(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.level > 1:
+        return redirect(reverse('grind:enter'))
 
-    context = {
-        'character': character,
-    }
-
-    return render(request, 'grind/enter_grind.html', context)
+    return render(request, 'grind/enter_grind.html')
 
 
 @login_required
