@@ -60,6 +60,10 @@ body {
     font-size: 20pt;
 }
 
+.return-arrow {
+    font-size: 25pt;
+}
+
 .place {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -91,11 +95,23 @@ body {
 }
 
 #bar-background {
-    background-color: #e3d9ca;
+    background-color: #dea866;
+}
+
+#agency-background-img {
+    background-image: url(/media/agency-background-mobile.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#agency-background {
+    background-color: #749ead;
 }
 
 .update-button {
     background-color: rgba(56, 139, 172);
+    color: white;
 }
 
 #background-fill {

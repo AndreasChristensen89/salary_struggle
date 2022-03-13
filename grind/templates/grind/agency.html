@@ -3,19 +3,15 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-5">
-    <div class="row">
-        <div class="col text-center">
-            <h1 class="h1">Agency</h1>
-        </div>
-    </div>
+<div class="h-100" id="agency-background">
+    <div id="agency-background-img">
 
     <div class="row">
-        <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
-            <i class="fa-solid fa-circle-arrow-left">Back</i>
+        <a class="col-2 text-center m-3 rounded" href="{% url 'grind:city' %}">
+            <i class="fas fa-arrow-left text-info return-arrow"></i>
         </a>
     </div>
-    
+
     {% if character.level == 1 %}
     <div class="row pt-5 text-center level-one">
         <div class="col-10 mx-auto">
@@ -29,32 +25,32 @@
         </div>
     </div>
     
-    <div class="row pt-2">
+    <div class="row pt-2 fixed-bottom">
 
-        <div class="col-6 mx-auto text-center level-one">
-            <div class="border rounded-top ask-interview" value="intellect" id="agency_intellect">
-                <p class="lead font-weight-bold">Use intellect</p>
+        <div class="col-5 mx-auto text-center level-one">
+            <div class="border rounded ask-interview update-button" value="intellect" id="agency_intellect">
+                <p class="lead update-button">Use intellect</p>
                 <!-- <p class="lead">Odds: Intellect to 20</p> -->
             </div>
         </div>
 
-        <div class="col-6 mx-auto text-center mb-4 level-one">
-            <div class="border rounded-top ask-interview" value="charm" id="agency_charm">
-                <p class="lead font-weight-bold">Use charm</p>
+        <div class="col-5 mx-auto text-center mb-4 level-one">
+            <div class="border rounded ask-interview update-button" value="charm" id="agency_charm">
+                <p class="lead update-button">Use charm</p>
                 <!-- <p class="lead">Odds: Charm to 20</p> -->
             </div>
         </div>
 
-        <div class="col-6 mx-auto text-center mb-4 level-one">
-            <div class="border rounded-top ask-interview" value="coding" id="agency_coding">
-                <p class="lead font-weight-bold">Use coding</h5>
+        <div class="col-5 mx-auto text-center mb-4 level-one">
+            <div class="border rounded ask-interview update-button" value="coding" id="agency_coding">
+                <p class="lead">Use coding</p>
                     <!-- <p class="lead">Odds: Coding to 20</p> -->
             </div>
         </div>
 
-        <div class="col-6 mx-auto text-center level-one">
-            <div class="border rounded-top" id="agency_combine">
-                <h5 class="lead font-weight-bold">Combine your skills</h5>
+        <div class="col-5 mx-auto text-center level-one">
+            <div class="border rounded update-button" id="agency_combine">
+                <p class="lead update-button">Combine skills</p>
                 <!-- <p class="lead">Odds: Intellect + Charisma + Coding to 60</p> -->
             </div>
         </div>
@@ -184,6 +180,7 @@
         <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
     </div>
     {% endif %}
+    </div>
 </div>
 {% endif %}
 <div id="loading-overlay">
