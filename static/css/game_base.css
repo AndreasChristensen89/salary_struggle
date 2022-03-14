@@ -69,6 +69,20 @@ body {
     color: white;
 }
 
+#city-background-img {
+    background-image: url(/media/city-background-mobile.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.city-link {
+    height: 100px;
+    width: 100px;
+    color: wheat;
+    background-color: rgb(57 35 35 / 70%);
+}
+
 #enter-grind {
     background-image: url(/media/background-enter.png);
     background-size: cover;
@@ -107,6 +121,10 @@ body {
 
 #agency-background {
     background-color: #749ead;
+}
+
+#hint-btn {
+    font-size: 32pt;
 }
 
 .update-button {

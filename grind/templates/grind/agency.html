@@ -59,36 +59,36 @@
 
     {% elif character.level == 2 %}
 
-    <div class="row py-5 text-center">
+    <div class="row mb-5 text-center">
         <div class="col-10 mx-auto">
-            <a href="{% url 'interview:hr_interview' %}">
+            <a id="HRInterview" class="hide" href="{% url 'interview:hr_interview' %}">
                 <h3 class="h3 border">Start HR interview</h3>
             </a>
         </div>
     </div>
 
 
-    <div class="row pt-5" id="hint-row">
-        <div class="col-10 float-right">
-            <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
+    <div class="row fixed-bottom mb-5" id="hint-row">
+        <div class="col-12 text-center">
+            <button aria-label="Hint nutton" id="hint-btn" class="btn"><i class="far fa-comment-dots"></i></button>
         </div>
     </div>
 
-    <div class="row pt-2 text-center hide" id="hint-text">
+    <div class="row pt-2 text-center hide fixed-bottom mb-5" id="hint-text">
         <div class="col-10 mx-auto">
-            <p class="lead border hide hint">Hi, I'm Steve the recruiter.</p>
-            <p class="lead border hide hint">Glad to meet you. You look like you have some promise.</p>
-            <p class="lead border hide hint">I'm pleased to let you know that your first interview is now available.</p>
-            <p class="lead border hide hint">I should probably give you a briefing of what you're about to join</p>
-            <p class="lead border hide hint">So, the company's name is Data Drifters and they specialize in database integrations.</p>
-            <p class="lead border hide hint">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
-            <p class="lead border hide hint">They can be quite selfish. You basically have to adapt your answer to their personality traits in order to succeed.</p>
+            <p class="lead border hide hint bg-info">Hi, I'm Steve the recruiter.</p>
+            <p class="lead border hide hint bg-info">Glad to meet you. You look like you have some promise.</p>
+            <p class="lead border hide hint bg-info">I'm pleased to let you know that your first interview is now available.</p>
+            <p class="lead border hide hint bg-info">I should probably give you a briefing of what you're about to join</p>
+            <p class="lead border hide hint bg-info">So, the company's name is Data Drifters and they specialize in database integrations.</p>
+            <p class="lead border hide hint bg-info">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
+            <p class="lead border hide hint bg-info">They can be quite selfish. You basically have to adapt your answer to their personality traits in order to succeed.</p>
             <!-- <p class="lead border hide hint">You can always attempt your skills with them. They won't penalize you for that.</p> -->
-            <p class="lead border hide hint">See if you can reach the impress level needed.</p>
-            <p class="lead border hide hint">Best of luck to you!</p>
+            <p class="lead border hide hint bg-info">See if you can reach the impress level needed.</p>
+            <p class="lead border hide hint bg-info">Best of luck to you!</p>
         </div>
 
-        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
+        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide bg-primary">Next</button>
     </div>
     {% elif character.level == 3 %}
     <div class="row py-5 text-center">
@@ -99,8 +99,7 @@
         </div>
     </div>
 
-
-    <div class="row pt-5" id="hint-row">
+    <div class="row pt-5">
         <div class="col-10 float-right">
             <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
         </div>
@@ -129,7 +128,7 @@
     </div>
 
 
-    <div class="row pt-5" id="hint-row">
+    <div class="row pt-5">
         <div class="col-10 float-right">
             <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
         </div>
@@ -158,8 +157,8 @@
     </div>
 
 
-    <div class="row pt-5" id="hint-row">
-        <div class="col-10 float-right">
+    <div class="row">
+        <div class="col-4">
             <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
         </div>
     </div>

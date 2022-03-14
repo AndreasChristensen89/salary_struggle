@@ -93,8 +93,8 @@ def bar_page(request):
 
 
 @login_required
-def library_page(request):
-    """ A view to return the library page """
+def cafe_page(request):
+    """ A view to return the cafe page """
 
     profile = get_object_or_404(Profile, user=request.user)
     character = get_object_or_404(ActiveCharacter, user=request.user)
@@ -111,7 +111,7 @@ def library_page(request):
         'no_bag_display': True,
     }
 
-    return render(request, 'grind/library.html', context)
+    return render(request, 'grind/cafe.html', context)
 
 
 @login_required
@@ -391,7 +391,7 @@ class BarConverse(UpdateView):
             return HttpResponse(400)
 
 
-class LibraryStudy(UpdateView):
+class CafeStudy(UpdateView):
     """
     Calcualtes odds 2 to 1, checks energy, and updates charm if ok
     """

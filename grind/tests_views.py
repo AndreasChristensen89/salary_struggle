@@ -90,14 +90,14 @@ class TestNavigationViews(TestCase):
         self.assertTemplateUsed(response, 'grind/house.html')
         self.assertTemplateUsed(response, 'grind/game_base.html')
 
-    def test_library_page(self):
-        """ Test library page """
+    def test_cafe_page(self):
+        """ Test cafe page """
         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
-        response = self.client.get('/grind/library/')
+        response = self.client.get('/grind/cafe/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'grind/library.html')
+        self.assertTemplateUsed(response, 'grind/cafe.html')
         self.assertTemplateUsed(response, 'grind/game_base.html')
 
     def test_store_page(self):
@@ -206,7 +206,7 @@ class TestUpdateCharacterViews(TestCase):
         self.assertEqual(char.energy, 60)
         self.assertEqual(char.energy_penalty, 20)
 
-    def test_library_study(self):
+    def test_cafe_study(self):
         """
         See if charm+coding raise and energy is drained
         """
@@ -218,7 +218,7 @@ class TestUpdateCharacterViews(TestCase):
         array_intellect = []
         array_energy = []
         for i in range(20):
-            response = self.client.get('/grind/library-study/', follow=True)
+            response = self.client.get('/grind/cafe-study/', follow=True)
             char = ActiveCharacter.objects.get(user=new_user)
             array_coding.append(char.coding)
             array_intellect.append(char.intellect)
@@ -228,7 +228,7 @@ class TestUpdateCharacterViews(TestCase):
                 energy=100,
                 intellect=1)
         
-        self.assertRedirects(response, '/grind/library/')
+        self.assertRedirects(response, '/grind/cafe/')
         self.assertTrue(2 in array_coding)
         self.assertTrue(3 in array_coding)
         self.assertTrue(2 in array_intellect)

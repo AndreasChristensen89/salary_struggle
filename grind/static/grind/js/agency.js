@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $("#hint-btn").click(function(){
             $('#hint-text').removeClass("hide");
             $('#next-hint').removeClass("hide");
+            $("#hint-row").addClass("hide");
             $(".hint").addClass("temp");
             $('.hint').eq(0).removeClass("hide").animate({opacity: "1.0"}, 1000);
             $("#next-hint").delay(2000).animate({opacity: "1.0"}, "fast");
@@ -20,6 +21,9 @@ function nextHint() {
     } else {
         $('#next-hint').addClass("hide");
         $('#hint-text').addClass("hide");
-        $('.temp').removeClass("temp");
+        $(".temp").removeClass("temp");
+        $("#hint-row").removeClass("hide");
+        $("#HRInterview").removeClass("hide");
+        hint = 0;
     }
 }

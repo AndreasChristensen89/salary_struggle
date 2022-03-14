@@ -93,3 +93,6 @@ To do list:
 - Make introduction to game - DONE
 - Make ending to game - good + fail
 - Remove grand total and only have total
+- Add objectives in intro screen
+- Change purchase success
+- Change messages

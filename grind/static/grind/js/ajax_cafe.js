@@ -15,7 +15,7 @@ $("#study").click(function() {
     
     $.ajax({
     type: "POST",
-    url: "/grind/library-study/",
+    url: "/grind/cafe-study/",
     headers: {'X-CSRFToken': csrf},
     data: {
         'random_number': randomNumber
