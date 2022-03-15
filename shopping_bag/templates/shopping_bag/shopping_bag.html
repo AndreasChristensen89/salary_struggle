@@ -23,7 +23,7 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 {% if bag_items %}
 
                 <div class="d-block d-md-none">
@@ -46,10 +46,8 @@
                             <div class="col-6 col-sm-6 mb-2">
                                 {% include 'shopping_bag/product_image.html' %}
                             </div>
-                            {% if not item.product.name == "Premium Membership" %}
                             <div class="col-6 col-sm-6 mb-2">
                                 {% include 'shopping_bag/product_info.html' %}
-                                <p class="my-0">Price each: €{{ item.product.price }}</p>
                                 <p><strong>Subtotal: </strong>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                             </div>
                         </div>
@@ -57,19 +55,6 @@
                             <div class="col-8 col-sm-6 order-sm-last mx-auto">
                                 {% include 'shopping_bag/quantity_form_mobile.html' %}
                             </div>
-                        </div>
-                            {% else %}
-                            <div class="col-6 col-sm-6 mb-2">
-                                <p><strong>Subtotal: </strong>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6 order-sm-last text-center">
-                                <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove item</small></a>
-                            </div>
-                        </div>
-                            {% endif %}
                         </div>
                         <div class="row">
                             <div class="col"><hr></div>
