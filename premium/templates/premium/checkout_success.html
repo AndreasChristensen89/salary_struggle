@@ -20,15 +20,21 @@
     <div class="row">
         <div class="col text-center">
             <hr>
+            {% if not from_profile %}
             <h2 class="logo-font mb-4">Thank You</h2>
             <hr>
             <p class="lead">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+            {% else %}
+            <h2 class="logo-font mb-4">Order details</h2>
+            <hr>
+            <p class="lead">Below are the details of your order. A confirmation email was sent to <strong>{{ order.email }}</strong>.</p>
+            {% endif %}
         </div>
     </div>
 
     <div class="row">
         <div class="col-12 text-center mt-4">
-            <h2 class="h2">Order Details</h2>
+            <h2 class="h2">Details</h2>
         </div>
     </div>
 
@@ -37,10 +43,10 @@
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Overview</a>
             <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Items</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Total</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Contact</a>
           </div>
         </div>
-        <div class="col-8 pr-2">
+        <div class="col-8 pr-2 order-details">
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                 <div>

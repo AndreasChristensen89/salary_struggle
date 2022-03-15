@@ -56,6 +56,12 @@ body {
     width: 100px;
 }
 
+/* order details page  */
+
+.order-details {
+    overflow-x: auto;
+}
+
 /* From walkthrough project */
 .btt-link,
 .update-link,
