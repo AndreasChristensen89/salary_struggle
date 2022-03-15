@@ -9,8 +9,9 @@ a {
 body {
     /* background: url('/media/test_background.png') no-repeat center center fixed;
     background-size: contain; */
-    color: #555;
+    color: white;
     font-family: 'Lato';
+    background-color: black;
 }
 
 /* From walkthrough project */
@@ -47,6 +48,12 @@ body {
     position: fixed;
     bottom: 10px;
     right: 10px;
+}
+
+/* Shopping bag */
+.bag-item-img {
+    height: 120px;
+    width: 100px;
 }
 
 /* From walkthrough project */
