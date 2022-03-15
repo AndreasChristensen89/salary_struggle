@@ -86,13 +86,14 @@ Bugs:
 
 To do list:
 - Include endurance in energy drawn - DONE
-- Include ajax call at the of interview to avoid players refreshing to restart interview
 - Make all items in shop digital so no address is needed - DONE
+- Make introduction to game - DONE
+- Add objectives in intro screen - DONE
+
+- Include ajax call at the of interview to avoid players refreshing to restart interview
 - Design more characters
 - Finish final interview
-- Make introduction to game - DONE
 - Make ending to game - good + fail
 - Remove grand total and only have total
-- Add objectives in intro screen
 - Change purchase success
 - Change messages

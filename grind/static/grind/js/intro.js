@@ -24,7 +24,7 @@ function nextIntro() {
         $("#intro-btn").addClass("hide");
         hint++;
         $(".intro-text").eq(hint).removeClass("hide").animate({opacity: "1"}, "slow");
-        if (hint == 11) {
+        if (hint == 12) {
                 $('#next-btn').addClass("hide");
             }
         }, 500);

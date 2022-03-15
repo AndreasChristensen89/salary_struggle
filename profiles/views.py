@@ -17,6 +17,7 @@ def profile(request):
     """ A view to return the profile page """
     user_profile = get_object_or_404(Profile, user=request.user)
     membership = Product.objects.get(name="Premium Membership")
+    character = False
     
     if user_profile.active_char:
         character = get_object_or_404(ActiveCharacter, user=request.user)

@@ -1,12 +1,17 @@
-<a href="{% url 'shop:all_products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-    <span class="icon">
-        <i class="fas fa-chevron-left"></i>
-    </span>
-    <span class="text-uppercase">Keep Shopping</span>
-</a>
-<a href="{% url 'premium:checkout' %}" class="btn btn-black rounded-0 btn-lg">
-    <span class="text-uppercase">Secure Checkout</span>
-    <span class="icon">
-        <i class="fas fa-lock"></i>
-    </span>
-</a>
+<div class="row">
+    <a href="{% url 'premium:checkout' %}" class="btn btn-black rounded btn-lg mx-3">
+        <span class="text-uppercase">Secure Checkout</span>
+        <span class="icon">
+            <i class="fas fa-lock"></i>
+        </span>
+    </a>
+</div>
+
+<div class="row my-3">
+    <a href="{% url 'shop:all_products' %}" class="mx-3">
+        <span class="icon btn btn-outline-black rounded btn-lg">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+    </a>
+    <span class="lead">Back to shop</span>
+</div>

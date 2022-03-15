@@ -57,7 +57,23 @@ body {
 }
 
 #intro-btn {
-    font-size: 20pt;
+    font-size: 24pt;
+    cursor: pointer;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+#start-btn {
+    font-size: 18pt;
+    cursor: pointer;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .return-arrow {
