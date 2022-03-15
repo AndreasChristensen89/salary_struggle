@@ -27,131 +27,103 @@
     </div>
 
     <div class="row">
-        <div class="col-4">
-          <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Order number</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Date</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Items</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Price</a>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                ...
-            </div>
-            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                ...
-            </div>
-            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                ...
-            </div>
-            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                ...
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <div class="row">
         <div class="col-12 text-center mt-4">
             <h2 class="h2">Order Details</h2>
         </div>
-        <div class="col-12 col-lg-7">
-            <div class="order-confirmation-wrapper p-2 border rounded">
+    </div>
 
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <p class="lead mb-0 font-weight-bold">Order Number</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="lead mb-0">{{ order.order_number }}</p>
-                    </div>
+    <div class="row my-3">
+        <div class="col-4">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Overview</a>
+            <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Items</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Total</a>
+          </div>
+        </div>
+        <div class="col-8 pr-2">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                <div>
+                    <p class="mb-0 font-weight-bold">Order Total</p>
                 </div>
-
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 font-weight-bold">Order Date</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.date }}</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <hr class="text-info">
-                    </div>
+                <div class="col-12">
+                    <p class="mb-0">€{{ order.order_total }}</p>
                 </div>
                 
+                <div>
+                    <p class="mb-0 font-weight-bold">Order Number</p>
+                </div>
+                <div class="col-12">
+                    <p class="small mb-0">{{ order.order_number }}</p>
+                </div>
+
+                <div>
+                    <p class="mb-0 font-weight-bold">Order Date</p>
+                </div>
+                <div class="col-12">
+                    <p class="mb-0">{{ order.date }}</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                 {% for item in order.orderitems.all %}
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        {% if not item.product.name == "Premium Membership" and item.quantity > 1 %}
-                        <p class="lead mb-0 font-weight-bold">
+                    {% if not item.product.name == "Premium Membership" %}
+                    <div>     
+                        <p class="mb-0 font-weight-bold">
                             {{ item.product.name }} x {{ item.quantity }}
                         </p>
                     </div>
-                    <div class="col-12 col-md-8 text-md-right">
+                    <div class="col-12">
                         <p class="small mb-0">€{{ item.product.price }} each</p>
                     </div>
-                        {% else %}
-                        <p class="lead mb-0 font-weight-bold">
+                    {% else %}
+                    <div>    
+                        <p class="mb-0 font-weight-bold">
                             {{ item.product.name }}
                         </p>
                     </div>
-                    <div class="col-12 col-md-8 text-md-right">
+                    <div class="col-12">
                         <p class="small mb-0">€{{ item.product.price }}</p>
                     </div>
                         {% endif %}
-                </div>
                 {% endfor %}
-                
-                <div class="col-12">
-                    <hr>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 font-weight-bold">Full Name</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.full_name }}</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 font-weight-bold">Order Total</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.order_total }}</p>
-                    </div>
-                </div>
-
             </div>
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                <div>
+                    <p class="mb-0 font-weight-bold">Full Name</p>
+                </div>
+                <div class="col-12">
+                    <p class="mb-0">{{ order.full_name }}</p>
+                </div>
+                <div>
+                    <p class="mb-0 font-weight-bold">Email</p>
+                </div>
+                <div class="col-12">
+                    <p class="mb-0">{{ order.email }}</p>
+                </div>
+            </div>
+          </div>
         </div>
     </div>
 
-        <div class="row">
-			<div class="col-12 col-lg-7 text-right">
-                {% if from_profile %}
-                    <a href="{% url 'profiles:profile' %}" class="btn btn-black rounded-0 my-2">
-                        <span class="icon mr-2">
-                            <i class="fas fa-angle-left"></i>
-                        </span>
-                        <span class="text-uppercase">Return to profile</span>
-                    </a>
-                {% else %}
-                    <a href="{% url 'shop:all_products' %}" class="btn btn-black rounded-0 my-2">
-                        <span class="icon mr-2">
-                            <i class="fas fa-gifts"></i>
-                        </span>
-                        <span class="text-uppercase">Back to store</span>
-                    </a>
-                {% endif %}
-			</div>
+    <div class="row my-4">
+		<div class="col-12 col-lg-7 text-right">
+            {% if from_profile %}
+                <a href="{% url 'profiles:profile' %}" class="btn btn-info rounded-0 my-2">
+                    <span class="icon mr-2">
+                        <i class="fas fa-angle-left"></i>
+                    </span>
+                    <span class="text-uppercase">Return to profile</span>
+                </a>
+            {% else %}
+                <a href="{% url 'shop:all_products' %}" class="btn btn-info rounded-0 my-2">
+                    <span class="icon mr-2">
+                        <i class="fas fa-gifts"></i>
+                    </span>
+                    <span class="text-uppercase">Back to store</span>
+                </a>
+            {% endif %}
 		</div>
+	</div>
 
-    </div>
+</div>
 {% endblock %}
