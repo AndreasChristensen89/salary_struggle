@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row my-5">
+    <div class="container header-container bg-black">
+        <div class="row mt-5">
             <div class="col">
                 
             </div>
@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container pt-5">
         <div class="row mb-5">
             <div class="col-10 my-auto mx-auto">
                 <h1 class="display-4 text-center">
@@ -69,23 +69,18 @@
                 <h2 class="h2">Shop</h2>
             </a>
         </div>
-        <div class="row">
-            <a class="col-12 border py-5 mx-auto text-center" href="{% url 'account_logout' %}">
-                <h2 class="h2">Logout</h2>
-            </a>
-        </div>
             
     </div>
         {% else %}
         <div class="row">
-            <div class="my-5 mx-auto text-center">
-                <a class="col-6 my-2 display-5" href="{% url 'account_signup' %}">
-                    <div class="col">Register</div>
-                </a>
-                <a class="col-6 my-2 display-5" href="{% url 'account_login' %}">
-                    <div class="col">Login</div>
-                </a>
-            </div>
+            <a class="col-4 my-5 mx-auto text-center border border-black rounded" href="{% url 'account_signup' %}">
+                Register
+            </a>
+
+            <a class="col-4 my-5 mx-auto text-center border border-black rounded" href="{% url 'account_login' %}">
+                Login
+            </a>
+                
         </div>
         {% endif %}
 </div>

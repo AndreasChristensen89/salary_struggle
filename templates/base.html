@@ -156,7 +156,7 @@
     </header>
 
     {% if messages %}
-    <div class="message-container">
+    <div class="message-container col-12">
         {% for message in messages %}
             {% with message.level as level %}
                 {% if level == 40 %}
@@ -200,7 +200,7 @@
           let messages = document.getElementById('msg');
           let alert = new bootstrap.Alert(messages);
           alert.close();
-      }, 10000);
+      }, 100000);
     </script>
     {% endblock %}
 

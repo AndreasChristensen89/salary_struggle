@@ -9,9 +9,8 @@ a {
 body {
     /* background: url('/media/test_background.png') no-repeat center center fixed;
     background-size: contain; */
-    color: white;
+    color: black;
     font-family: 'Lato';
-    background-color: black;
 }
 
 /* From walkthrough project */
@@ -187,7 +186,7 @@ a.category-badge > span.badge:hover {
 
 .message-container {
     position: fixed;
-    right: 15px;
+    top: 56px;
     z-index: 99999999;
 }
 
@@ -197,7 +196,7 @@ a.category-badge > span.badge:hover {
 }
 
 .toast-capper {
-    height: 2px;
+    height: 5px;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
