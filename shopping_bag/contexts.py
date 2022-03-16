@@ -22,13 +22,10 @@ def shopping_bag_contents(request):
             'product': product,
         })
 
-    grand_total = total
-
     context = {
         'bag_items': bag_items,
         'total': total,
         'product_count': product_count,
-        'grand_total': grand_total,
     }
 
     return context

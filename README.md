@@ -91,9 +91,12 @@ To do list:
 - Add objectives in intro screen - DONE
 - Change purchase success - DONE
 - Change messages mobile - DONE
+- Remove grand total and only have total - DONE
 
 - Include ajax call at the of interview to avoid players refreshing to restart interview
+- Test Ajax calls
 - Design more characters
 - Finish final interview
 - Make ending to game - good + fail
-- Remove grand total and only have total - started
+- Redesign allauth pages
+

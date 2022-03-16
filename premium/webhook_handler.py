@@ -52,7 +52,7 @@ class StripeWHookHandler:
         bag = intent.metadata.bag
 
         billing_details = intent.charges.data[0].billing_details
-        grand_total = round(intent.charges.data[0].amount / 100, 2)
+        order_total = round(intent.charges.data[0].amount / 100, 2)
 
         # Clean data in the shipping details
         # for field, value in shipping_details.address.items():
@@ -72,7 +72,7 @@ class StripeWHookHandler:
                 order = Order.objects.get(  # Try to get the order with the info from the payment intent
                     full_name__iexact=billing_details.name,    # iexact to find exact match but case insentitve
                     email__iexact=billing_details.email,
-                    grand_total=grand_total,
+                    order_total=order_total,
                     original_bag=bag,
                     stripe_pid=pid,
                 )

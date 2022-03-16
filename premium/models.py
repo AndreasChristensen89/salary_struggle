@@ -23,7 +23,6 @@ class Order(models.Model):
     email = models.EmailField(max_length=254, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     # original_bag added to keep track of individual bags to avoid duplicates,
@@ -42,7 +41,6 @@ class Order(models.Model):
         Uses Sum() across all items
         """
         self.order_total = self.orderitems.aggregate(Sum('item_total'))['item_total__sum'] or 0
-        self.grand_total = self.order_total
         self.save()
 
     def save(self, *args, **kwargs):
