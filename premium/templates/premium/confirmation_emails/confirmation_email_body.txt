@@ -7,7 +7,7 @@ Order Date: {{ order.date }}
 
 Order Total: €{{ order.order_total }}
 
-If you have any questions, feel free to reach out at {{ contact.email }}.
+If you have any questions, feel free to reach out at salarystruggle@gmail.com.
 
 Thank you very much for your purchase!
 

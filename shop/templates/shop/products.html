@@ -40,16 +40,16 @@
                     {% if not product.name == "Premium Membership" %}
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 px-1">
                             <a href="{% url 'shop:product_details' product.id %}">
-                            <div class="card border product-height">
+                            <div class="card border product-height my-2">
                                 {% if product.image %}
                                     <img class="card-img-top img-fluid product-img mx-auto" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
                                     <img class="card-img-top img-fluid product-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 {% endif %}
                                 <div class="card-body">
-                                    <p class="lead product-name">{{ product.name }}</p>
+                                    <p class="lead product-name text-center">{{ product.name }}</p>
                                 </div>
-                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="bg-white pt-0 mx-auto text-center">
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead text-left font-weight-bold">€{{ product.price }}</p>

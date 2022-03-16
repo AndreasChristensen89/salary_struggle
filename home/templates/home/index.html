@@ -22,55 +22,44 @@
         </div>
         {% if user.is_authenticated %}
             {% if profile.active_char and profile.paid %}
-                {% if character.day == 1 %}
-                    <div class="row" id="game-link">
-                        <a class="col-12 border py-5 mx-auto text-center" href="{% url 'grind:intro' %}">
-                            <h2 class="h2">Play</h2>
-                        </a>
-                    </div>
-                {% else %}
                 <div class="row" id="game-link">
-                    <a class="col-12 border py-5 mx-auto text-center" href="{% url 'grind:enter' %}">
+                    {% if character.day == 1 %}
+                    <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:intro' %}">
+                    {% else %}
+                    <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:enter' %}">
+                    {% endif %}
                         <h2 class="h2">Play</h2>
                     </a>
                 </div>
-                {% endif %}
-                <div class="row profile-link">
-                    <a class="col-12 border py-5 mx-auto text-center" href="{% url 'profiles:profile' %}">
+                
+                <div class="row">
+                    <a class="col-6 border py-5 mx-auto text-center profile-link" href="{% url 'profiles:profile' %}">
                         <h2 class="h2">Profile</h2>
+                    </a>
+                    <a class="col-6 border py-5 mx-auto text-center" id="shop-link" href="{% url 'shop:all_products' %}">
+                        <h2 class="h2">Shop</h2>
                     </a>
                 </div>
             {% elif profile.active_char %}
-                <div class="row" id="game-link">
-                    <a class="col-12 border py-5 mx-auto text-center" href="{% url 'grind:intro' %}">
-                        <h2 class="h2">Play</h2>
-                    </a>
-                </div>
-                <div class="row" id="upgrade-link">
-                    <a class="col-12 border py-5 mx-auto text-center" href="{% url 'shop:product_details' membership.id %}">
-                        <h2 class="h2">Upgrade to premium</h2>
-                    </a>
-                </div>
-                <div class="row profile-link">
-                    <a class="col-12 border py-5 mx-auto text-center" href="{% url 'profiles:profile' %}">
-                        <h2 class="h2">Profile</h2>
-                    </a>
-                </div>
-            {% else %}
+            <div class="row" id="game-link">
+                {% if character.day == 1 %}
+                <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:intro' %}">
+                {% else %}
+                <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:enter' %}">
+                {% endif %}
+                    <h2 class="h2">Play</h2>
+                </a>
+            </div>
+
             <div class="row profile-link">
-                <a class="col-12 border py-5 mx-auto text-center" href="{% url 'profiles:profile' %}">
+                <a class="col-6 border py-5 mx-auto text-center" href="{% url 'profiles:profile' %}">
                     <h2 class="h2">Profile</h2>
-                    <p class="lead">Create your character here</p>
+                </a>
+                <a class="col-6 border py-5 mx-auto text-center" id="shop-link" href="{% url 'shop:all_products' %}">
+                    <h2 class="h2">Shop</h2>
                 </a>
             </div>
             {% endif %}
-        <div class="row" id="shop-link">
-            <a class="col-12 border py-5 mx-auto text-center" href="{% url 'shop:all_products' %}">
-                <h2 class="h2">Shop</h2>
-            </a>
-        </div>
-            
-    </div>
         {% else %}
         <div class="row">
             <a class="col-4 my-5 mx-auto text-center border border-black rounded" href="{% url 'account_signup' %}">

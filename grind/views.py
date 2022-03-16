@@ -42,8 +42,8 @@ def enter_game(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
-    elif character.level > 1:
-        return redirect(reverse('grind:enter'))
+    # elif character.level > 1:
+    #     return redirect(reverse('grind:enter'))
 
     return render(request, 'grind/enter_grind.html')
 

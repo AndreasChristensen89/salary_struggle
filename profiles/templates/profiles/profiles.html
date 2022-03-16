@@ -20,7 +20,6 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <hr>
                 <h2 class="logo-font mb-4">PROFILE</h2>
                 <hr>
             </div>
@@ -28,15 +27,10 @@
 
         <div class="row mb-4">
             <div class="col text-center">
-                <h3 class="display-5 mb-2">Profile status</h3>
                 {% if profile.paid %}
-                    <div class="col-12">
-                        <h4 class="h4 mb-4">Premium</h4>
-                    </div>
+                <h3 class="display-5 mb-2">Premium Member</h3>
                 {% else %}
-                <div class="col-12">
-                    <h4 class="h4 mb-4">Free</h4>
-                </div>
+                <h3 class="display-5 mb-2">Free Member</h3>
                 <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
                     <a class="lead" href="{% url 'shop:product_details' membership.id %}">Upgrade to Premium</a>
                 </div>
@@ -92,30 +86,26 @@
 
         {% endif %}
 
-        <hr>
-
         <div class="row my-1">
-            <div class="col-12 col-lg-6">
-                <p class="lead">User information</p>
-                <div class="col-8 py-2 border border-black text-center mx-auto">
-                    <a href="{% url 'profiles:update_profile' %}">
-                        Edit User information
-                    </a>
-                </div>
+            <div class="col-12 col-lg-6 border">
+                <h3 class="h3 my-3 text-center">User information</h3>
                 
                 <ul class="list-group my-2">
                     <li class="list-group-item">First Name: {{user.first_name}}</li>
                     <li class="list-group-item">Last Name: {{user.last_name}}</li>
                     <li class="list-group-item">Email: {{user.email}}</li>
                 </ul>
+                <a href="{% url 'profiles:update_profile' %}">
+                    <div class="col-6 py-2 mb-2 border border-black rounded text-center mx-auto bg-info lead">
+                        Edit Information    
+                    </div>
+                </a>
             </div>
         </div>
 
-        <hr>
-
         <div class="row my-3">
 
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 border">
                 <p class="lead">Order History</p>
                 {% if orders %}
                 <div class="order-history table-responsive">

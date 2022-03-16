@@ -57,12 +57,19 @@ $("#sleep").click(function() {
                 $("#endurance").text(endurance-endurancePenalty);
                 $("#day").text(day+1);
 
+                // applying penalties, if any
                 coding = coding-codingPenalty;
                 intellect = intellect-intellectPenalty;
                 energy = 100-energyPenalty;
                 charm = charm-charmPenalty;
                 endurance = endurance-endurancePenalty;
                 day++;
+
+                codingPenalty = 0;
+                intellectPenalty = 0;
+                energyPenalty = 0;
+                charmPenalty = 0;
+                endurancePenalty = 0;
 
                 $('.overview').fadeToggle(100);
                 $('#loading-overlay').fadeToggle(100);
