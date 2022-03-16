@@ -99,5 +99,5 @@ To do list:
 - Finish final interview
 - Make ending to game - good + fail
 - Redesign allauth pages
-- Redesign intro page
+- Redesign intro page - Started
 

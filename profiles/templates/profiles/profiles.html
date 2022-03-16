@@ -68,12 +68,9 @@
                             <p>Has job: Yes</p>
                         </div>
                     {% endif %}
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-6 mx-auto text-center border border-black rounded">
-                <a class="lead" href="{% url 'profiles:confirm_new_char' %}">Restart character</a>
+                    <div class="col-8 mx-auto text-center border border-black rounded mb-3">
+                        <a class="lead" href="{% url 'profiles:confirm_new_char' %}">Restart character</a>
+                    </div>
             </div>
         </div>
         {% else %}
