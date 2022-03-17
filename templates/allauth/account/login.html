@@ -6,11 +6,10 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block inner_content %}
-<div class="container h-100 mt-5">
-  <div class="row py-5">
+<div class="container h-100 mt-5 text-center">
+  <div class="row pt-5 pb-2">
       <div class="col">
-        <hr>
-        <h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
+        <h2>{% trans "Sign In" %}</h2>
         <hr>
       </div>
   </div>
@@ -46,7 +45,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'home:index' %}">Home</a>
+  <a class="btn btn-outline-black rounded" href="{% url 'home:index' %}">Back</a>
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
   <p class="mt-2">
     <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
