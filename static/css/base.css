@@ -22,7 +22,7 @@ body {
 }
 
 .title-height {
-    height: 100px;
+    height: 150px;
 }
 
 #hero-background {
@@ -38,6 +38,24 @@ body {
 
 .intro-content {
     height: 200px;
+}
+
+.profile-btn {
+    width: 175px;
+}
+
+.user-edit-btn {
+    position : absolute;
+    bottom   : 0;
+    margin: 0 auto;
+}
+
+#user-info-div {
+    min-height: 290px;
+}
+
+#upgrade-link {
+    width: 215px;
 }
 
 .cover-text {
@@ -59,12 +77,12 @@ body {
     }
 }
 
-.animation:hover {
-    transform: translateY(-10px);
+.hover:hover {
+    transform: translateY(-7px);
     transition: all 0.3s ease 0s;
 }
 
-.animation:not(:hover) {
+.hover:not(:hover) {
     transform: translateY(0px);
     transition: all 0.3s ease 0s;
 }
@@ -222,10 +240,6 @@ a.category-badge > span.badge:hover {
 
 #game-link {
     background-color: #489d4f;
-}
-
-#upgrade-link {
-    background-color: #d8bd4b;
 }
 
 .profile-link {

@@ -48,9 +48,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_superuser %}
+                    {% if profile.active_char %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'grind:enter' %}">Play</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

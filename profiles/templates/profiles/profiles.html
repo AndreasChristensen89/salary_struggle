@@ -12,75 +12,59 @@
 {% endblock %}
 
 {% block content %}
-    <!-- <div class="container"> -->
-
+<div class="container-fluid">
         <div class="row">
-            <div class="col-12 text-center title-height">
+            <div class="col-12 pt-5 text-center title-height">
                 <h2>PROFILE</h2>
                 <hr>
             </div>
         </div>
 
         <div class="row mb-4">
-            <div class="col text-center">
+            <div class="col-12 text-center">
                 {% if profile.paid %}
                 <h3 class="display-5 mb-2">Premium Member</h3>
                 {% else %}
                 <h3 class="display-5 mb-2">Free Member</h3>
-                <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
-                    <a class="lead" href="{% url 'shop:product_details' membership.id %}">Upgrade to Premium</a>
-                </div>
+                <a class="lead" href="{% url 'shop:product_details' membership.id %}">
+                    <div class="col mx-auto text-center border border-black rounded" id="upgrade-link">
+                        Upgrade to Premium
+                    </div>
+                </a>
                 {% endif %}
             </div>
         </div>
 
-        {% if profile.active_char %}
+        
         <div class="row mb-4">
-            <div class="col-10 col-md-6 mx-auto text-center border rounded">
-                <h4 class="display-5 mb-2">Your Character</h4>
-                    <div class="col-12">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto border rounded">
+                {% if profile.active_char %}
+                <h3 class="h3 my-3 text-center">Your Character</h3>
                         <p>Level {{ character.level }}</p>
-                    </div>
-                    <div class="col-12">
                         <p>Day: {{ character.day }}</p>
-                    </div>
-                    <div class="col-12">
                         <p>Money: {{ character.money }}</p>
-                    </div>
-                    <div class="col-12">
                         <p>Intellect: {{ character.intellect }}</p>
-                    </div>
-                    <div class="col-12">
                         <p>Charm: {{ character.charm }}</p>
-                    </div>
-                    <div class="col-12">
                         <p>Coding: {{ character.coding }}</p>
-                    </div>
-                    <div class="col-12">
                         <p>Endurance: {{ character.endurance }}</p>
-                    </div>
                     {% if character.has_job %}
-                        <div class="col-12">
-                            <p>Has job: Yes</p>
-                        </div>
+                        <p>Has job: Yes</p>
                     {% endif %}
-                    <div class="col-8 mx-auto text-center border border-black rounded mb-3">
-                        <a class="lead" href="{% url 'profiles:confirm_new_char' %}">Restart character</a>
-                    </div>
+                    <a href="{% url 'profiles:confirm_new_char' %}">
+                        <div class="col mx-auto text-center lead border border-black rounded mb-3 profile-btn">
+                            Restart character
+                        </div>
+                    </a>
+                {% else %}
+                    <a href="{% url 'profiles:new_character' %}">
+                        <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn mt-5 lead">
+                            Create New Character
+                        </div>
+                    </a>
+                {% endif %}
             </div>
-        </div>
-        {% else %}
 
-        <div class="row mb-4">
-            <div class="col-10 col-md-6 mx-auto text-center border border-black rounded">
-                <a class="lead" href="{% url 'profiles:new_character' %}">Create New Character</a>
-            </div>
-        </div>
-
-        {% endif %}
-
-        <div class="row my-1">
-            <div class="col-12 col-lg-6 border">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto border rounded justify-content-center" id="user-info-div">
                 <h3 class="h3 my-3 text-center">User information</h3>
                 
                 <ul class="list-group my-2">
@@ -88,18 +72,17 @@
                     <li class="list-group-item">Last Name: {{user.last_name}}</li>
                     <li class="list-group-item">Email: {{user.email}}</li>
                 </ul>
-                <a href="{% url 'profiles:update_profile' %}">
-                    <div class="col-6 py-2 mb-2 border border-black rounded text-center mx-auto bg-info lead">
-                        Edit Information    
+
+                <a class="lead" href="{% url 'profiles:update_profile' %}">
+                    <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn user-edit-btn lead">
+                        Edit Information
                     </div>
                 </a>
+
             </div>
-        </div>
 
-        <div class="row my-3">
-
-            <div class="col-12 col-lg-6 border">
-                <p class="lead">Order History</p>
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto border rounded">
+                <h3 class="h3 my-3 text-center">Order History</h3>
                 {% if orders %}
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
@@ -131,7 +114,7 @@
                 {% endif %}
             </div>
         </div>
-<!-- </div> -->
+    </div>
 {% endblock %}
 
 {% block postloadjs %}
