@@ -2,17 +2,14 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container bg-black">
-        <div class="row mt-5 mb-2">
-            <div class="col">
-                
-            </div>
-        </div>
-    </div>
+<div class="container header-container">
+    <div class="container-header"></div>
+</div>
 {% endblock %}
 
 {% block content %}
-<section>
+<div class="container-fluid">
+<div class="row">
     <div id="hero-background">
 
         <div class="row mb-5 cover-text">
@@ -90,14 +87,14 @@
         {% endif %}
 
     </div>
-</section>
+</div>
 <div class="row">
-    <div class="col-6 border border-white bg-info text-center intro-content">
-        <p class="lead">Random things go here</p>
+    <div class="col-6 border border-white intro-content position-relative hover" id="contact-bg">
+        <h3 class="h3 text-white main-link">Contact</h3>
     </div>
-    <div class="col-6 border border-white bg-danger text-center intro-content">
-        <p class="lead">Other random things are inserted here</p>
+    <div class="col-6 border border-white text-dark intro-content position-relative hover" id="about-bg">
+        <h3 class="h3 main-link">About</h3>
     </div>
 </div>
-
+</div>
 {% endblock %}

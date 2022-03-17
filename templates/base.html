@@ -39,11 +39,11 @@
   </head>
   <body class="d-flex flex-column h-100">
     <header>
-        <nav class="navbar navbar-expand-md bg-primary fixed-top text-white">
+        <nav class="navbar navbar-expand-md fixed-top">
             <a class="navbar-brand" href="{% url 'home:index' %}">Salary Struggle</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="text-white"><i class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
@@ -80,7 +80,7 @@
                     </ul>
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                        <a class="{% if total %}font-weight-bold{% else %}text-white{% endif %} nav-link"
                             href="{% url 'shopping_bag:shopping_bag' %}">
                             <div class="text-center">
                                 <div class="text-center"><i class="fas fa-shopping-basket"></i>
@@ -129,7 +129,7 @@
                     <li class="nav-item">
                         <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="{% url 'shopping_bag:shopping_bag' %}">
-                            <div class="text-center">
+                            <div class="text-center text-white">
                                 <div><i class="fas fa-shopping-basket"></i></div>
                                 <p class="">
                                     {% if total %}
