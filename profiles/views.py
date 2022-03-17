@@ -27,8 +27,6 @@ def profile(request):
     context = {
         'orders': orders,
         'on_profile_page': True,
-        'profile': user_profile,
-        'character': character,
         'membership': membership,
     }
 

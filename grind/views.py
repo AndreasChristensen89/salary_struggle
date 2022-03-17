@@ -23,11 +23,7 @@ def intro(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    context = {
-        'character': character,
-    }
-
-    return render(request, 'grind/intro.html', context)
+    return render(request, 'grind/intro.html')
 
 @login_required
 def enter_game(request):
@@ -42,8 +38,6 @@ def enter_game(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
-    # elif character.level > 1:
-    #     return redirect(reverse('grind:enter'))
 
     return render(request, 'grind/enter_grind.html')
 
@@ -63,7 +57,6 @@ def city(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -85,7 +78,6 @@ def bar_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -107,7 +99,6 @@ def cafe_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -129,7 +120,6 @@ def downtown_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -151,7 +141,6 @@ def house_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -173,7 +162,6 @@ def agency_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -199,7 +187,6 @@ def store_page(request):
 
     context = {
         'items': items,
-        'character': character,
         'character_items': character_items,
         'no_bag_display': True,
     }
@@ -222,7 +209,6 @@ def call_center_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 
@@ -244,7 +230,6 @@ def back_alley_page(request):
         return redirect(reverse('profiles:profile'))
 
     context = {
-        'character': character,
         'no_bag_display': True,
     }
 

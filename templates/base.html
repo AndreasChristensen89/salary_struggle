@@ -58,10 +58,9 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Codex
                         </a>
-                        <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
                             <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">About</a>
                         </div>
                     </li>
@@ -105,7 +104,7 @@
                         <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
                             <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'home:contact_login' %}">Contact</a>
                             <a class="dropdown-item" href="#">About</a>
                         </div>
                     </li>
@@ -114,9 +113,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'profiles:profile' %}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
@@ -147,6 +143,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
@@ -202,7 +204,7 @@
           let messages = document.getElementById('msg');
           let alert = new bootstrap.Alert(messages);
           alert.close();
-      }, 100000);
+      }, 1500);
     </script>
     {% endblock %}
 

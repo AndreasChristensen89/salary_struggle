@@ -43,7 +43,6 @@ def hr_interview(request):
     interviewer = interviewers[rand_num]
 
     context = {
-        'character': character,
         'interviewer': interviewer
     }
 
@@ -70,7 +69,6 @@ def coding_interview(request):
     interviewer = interviewers[rand_num]
 
     context = {
-        'character': character,
         'interviewer': interviewer
     }
 
@@ -97,7 +95,6 @@ def coding_difficult_interview(request):
     interviewer = interviewers[rand_num]
 
     context = {
-        'character': character,
         'interviewer': interviewer
     }
 
@@ -124,7 +121,6 @@ def final_interview(request):
     interviewer = interviewers[rand_num]
 
     context = {
-        'character': character,
         'interviewer': interviewer
     }
 

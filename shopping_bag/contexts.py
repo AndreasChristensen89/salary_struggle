@@ -1,7 +1,6 @@
-from decimal import Decimal
-from django.conf import settings
 from django.shortcuts import get_object_or_404
 from shop.models import Product
+from profiles.models import Profile, ActiveCharacter
 
 
 def shopping_bag_contents(request):
@@ -11,6 +10,13 @@ def shopping_bag_contents(request):
     total = 0
     product_count = 0
     bag = request.session.get('bag', {})
+    character = False
+    profile = False
+
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user=request.user)
+        if profile.active_char:
+            character = ActiveCharacter.objects.get(user=request.user)
 
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -26,6 +32,8 @@ def shopping_bag_contents(request):
         'bag_items': bag_items,
         'total': total,
         'product_count': product_count,
+        'profile': profile,
+        'character': character,
     }
 
     return context
