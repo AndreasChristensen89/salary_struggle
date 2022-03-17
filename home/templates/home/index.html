@@ -3,7 +3,7 @@
 
 {% block page_header %}
     <div class="container header-container bg-black">
-        <div class="row mt-5">
+        <div class="row mt-5 mb-2">
             <div class="col">
                 
             </div>
@@ -12,66 +12,92 @@
 {% endblock %}
 
 {% block content %}
-<div class="container pt-5">
-        <div class="row mb-5">
-            <div class="col-10 my-auto mx-auto">
-                <h1 class="display-4 text-center">
+<section>
+    <div id="hero-background">
+
+        <div class="row mb-5 text-white cover-text">
+            <div class="col-10 py-5 mx-auto">
+                <h1 class="display-4 py-4 text-center">
                     Salary Struggle
                 </h1>
             </div>
         </div>
+
         {% if user.is_authenticated %}
-            {% if profile.active_char and profile.paid %}
-                <div class="row" id="game-link">
+            {% if profile.active_char %}
+
+            <div class="row pt-5 cover-text">
+                
+                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded animation">
                     {% if character.day == 1 %}
-                    <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:intro' %}">
+                    <a href="{% url 'grind:intro' %}">
                     {% else %}
-                    <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:enter' %}">
+                    <a href="{% url 'grind:enter' %}">
                     {% endif %}
-                        <h2 class="h2">Play</h2>
+                        <h2 class="h2 text-white">PLAY</h2>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded animation">
+                    <a href="{% url 'profiles:profile' %}">
+                        <h2 class="h2 text-white">PROFILE</h2>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded animation">
+                    <a href="{% url 'shop:all_products' %}">
+                        <h2 class="text-white">SHOP</h2>
                     </a>
                 </div>
                 
-                <div class="row">
-                    <a class="col-6 border py-5 mx-auto text-center profile-link" href="{% url 'profiles:profile' %}">
-                        <h2 class="h2">Profile</h2>
-                    </a>
-                    <a class="col-6 border py-5 mx-auto text-center" id="shop-link" href="{% url 'shop:all_products' %}">
-                        <h2 class="h2">Shop</h2>
-                    </a>
-                </div>
-            {% elif profile.active_char %}
-            <div class="row" id="game-link">
-                {% if character.day == 1 %}
-                <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:intro' %}">
-                {% else %}
-                <a class="col-12 border py-5 mx-auto text-center bg-black text-white" href="{% url 'grind:enter' %}">
-                {% endif %}
-                    <h2 class="h2">Play</h2>
-                </a>
             </div>
 
-            <div class="row profile-link">
-                <a class="col-6 border py-5 mx-auto text-center" href="{% url 'profiles:profile' %}">
-                    <h2 class="h2">Profile</h2>
-                </a>
-                <a class="col-6 border py-5 mx-auto text-center" id="shop-link" href="{% url 'shop:all_products' %}">
-                    <h2 class="h2">Shop</h2>
-                </a>
+            {% else %}
+            <div class="row pt-5 cover-text">
+
+                <div class="col-4 mx-auto text-center text-white border border-white rounded">
+                    <a href="{% url 'profiles:profile' %}">
+                        <h2 class="text-white">PROFILE</h2>
+                    </a>
+                </div>
+
+                <div class="col-4 mx-auto text-center text-white border border-white rounded">
+                    <a href="{% url 'shop:all_products' %}">
+                        <h2 class="text-white">SHOP</h2>
+                    </a>
+                </div>
+                
             </div>
             {% endif %}
-        {% else %}
-        <div class="row">
-            <a class="col-4 my-5 mx-auto text-center border border-black rounded" href="{% url 'account_signup' %}">
-                Register
-            </a>
 
-            <a class="col-4 my-5 mx-auto text-center border border-black rounded" href="{% url 'account_login' %}">
-                Login
-            </a>
-                
+        {% else %}
+        <div class="row pt-5 cover-text">
+
+            <div class="col-4 mx-auto text-center text-white border border-white rounded">
+                <a href="{% url 'account_signup' %}">
+                    <h2 class="text-white">REGISTER</h2>
+                </a>
+            </div>
+
+            <div class="col-4 mx-auto text-center text-white border border-white rounded">
+                <a href="{% url 'account_login' %}">
+                    <h2 class="text-white">LOGIN</h2>
+                </a>
+            </div>
+
         </div>
+                
         {% endif %}
+
+    </div>
+</section>
+<div class="row">
+    <div class="col-6 border border-white bg-info text-center intro-content">
+        <p class="lead">Random things go here</p>
+    </div>
+    <div class="col-6 border border-white bg-danger text-center intro-content">
+        <p class="lead">Other random things are inserted here</p>
+    </div>
 </div>
 
 {% endblock %}

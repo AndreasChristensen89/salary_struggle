@@ -92,12 +92,12 @@ To do list:
 - Change purchase success - DONE
 - Change messages mobile - DONE
 - Remove grand total and only have total - DONE
+- Redesign allauth pages - DONE intially, still resembles CI styling
 
 - Include ajax call at the of interview to avoid players refreshing to restart interview
 - Test Ajax calls
 - Design more characters
 - Finish final interview
 - Make ending to game - good + fail
-- Redesign allauth pages
 - Redesign intro page - Started
 
