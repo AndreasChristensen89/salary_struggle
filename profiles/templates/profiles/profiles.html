@@ -13,11 +13,11 @@
 
 {% block content %}
 <div class="container-fluid">
-        <div class="row">
+        <div class="row position-relative">
             <div class="col-12 pt-5 text-center title-height">
-                <h2>PROFILE</h2>
-                <hr>
+                <h2 class="h2 centered">PROFILE</h2>
             </div>
+            <hr>
         </div>
 
         <div class="row mb-4">
@@ -51,7 +51,7 @@
                         <p>Has job: Yes</p>
                     {% endif %}
                     <a href="{% url 'profiles:confirm_new_char' %}">
-                        <div class="col mx-auto text-center lead border border-black rounded mb-3 profile-btn">
+                        <div class="col mx-auto text-center lead border border-black rounded profile-btn" id="restart-char">
                             Restart character
                         </div>
                     </a>
@@ -64,7 +64,7 @@
                 {% endif %}
             </div>
 
-            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto border rounded justify-content-center" id="user-info-div">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto border rounded position-relative" id="user-info-div">
                 <h3 class="h3 my-3 text-center">User information</h3>
                 
                 <ul class="list-group my-2">
@@ -74,7 +74,7 @@
                 </ul>
 
                 <a class="lead" href="{% url 'profiles:update_profile' %}">
-                    <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn user-edit-btn lead">
+                    <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn lead" id="user-edit-btn">
                         Edit Information
                     </div>
                 </a>

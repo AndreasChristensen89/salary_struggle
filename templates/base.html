@@ -48,95 +48,113 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_superuser %}
-                    {% if profile.active_char %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'grind:enter' %}">Play</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Codex
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
-                            <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                            <a class="dropdown-item" href="#">About</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profiles:profile' %}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'shop:add_product' %}">Add products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
-                    </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="{% if total %}font-weight-bold{% else %}text-white{% endif %} nav-link"
-                            href="{% url 'shopping_bag:shopping_bag' %}">
-                            <div class="text-center">
-                                <div class="text-center"><i class="fas fa-shopping-basket"></i>
-                                    {% if total %}
-                                    €{{ total|floatformat:2 }}
-                                    {% else %}
-                                    €0.00
-                                    {% endif %}
+                        {% if profile.active_char %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'grind:enter' %}">Play</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Codex
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
+                                <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
+                                <a class="dropdown-item" href="#">About</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profiles:profile' %}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shop:add_product' %}">Add products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+                        </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="{% if total %}font-weight-bold{% else %}text-white{% endif %} nav-link"
+                                href="{% url 'shopping_bag:shopping_bag' %}">
+                                <div class="text-center">
+                                    <div class="text-center"><i class="fas fa-shopping-basket"></i>
+                                        {% if total %}
+                                        €{{ total|floatformat:2 }}
+                                        {% else %}
+                                        €0.00
+                                        {% endif %}
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
-                    {% elif user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'grind:enter' %}">Game</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Game Info
-                        </a>
-                        <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
-                            <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                            <a class="dropdown-item" href="{% url 'home:contact_login' %}">Contact</a>
-                            <a class="dropdown-item" href="#">About</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profiles:profile' %}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
-                    </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                            href="{% url 'shopping_bag:shopping_bag' %}">
-                            <div class="text-center text-white">
-                                <div><i class="fas fa-shopping-basket"></i></div>
-                                <p class="">
-                                    {% if total %}
-                                    €{{ total|floatformat:2 }}
+                            </a>
+                        </li>
+                        {% elif user.is_authenticated %}
+                            {% if profile.active_char %}
+                                <li class="nav-item">
+                                    {% if character.day == 1 %}
+                                        <a class="nav-link" href="{% url 'grind:intro' %}">Play</a>
                                     {% else %}
-                                    €0.00
+                                        <a class="nav-link" href="{% url 'grind:enter' %}">Play</a>
                                     {% endif %}
-                                </p>
-                            </div>
-                        </a>
-                    </li>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Codex
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
+                                    <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'shop:all_products' %}">Shop</a>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    About
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'home:contact_login' %}">Contact</a>
+                                    <a class="dropdown-item" href="#">About</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Account
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a>
+                                    <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                                </div>
+                            </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                                    href="{% url 'shopping_bag:shopping_bag' %}">
+                                    <div class="text-center text-white">
+                                        <div><i class="fas fa-shopping-basket"></i>
+                                            {% if total %}
+                                            €{{ total|floatformat:2 }}
+                                            {% else %}
+                                            €0.00
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
