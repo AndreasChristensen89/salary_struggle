@@ -15,10 +15,10 @@
 <section>
     <div id="hero-background">
 
-        <div class="row mb-5 text-white cover-text">
+        <div class="row mb-5 cover-text">
             <div class="col-10 py-5 mx-auto">
                 <h1 class="display-4 py-4 text-center">
-                    Salary Struggle
+                    SALARY STRUGGLE
                 </h1>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
             <div class="row pt-5 cover-text">
                 
-                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded animation">
+                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded intro-div animation">
                     {% if character.day == 1 %}
                     <a href="{% url 'grind:intro' %}">
                     {% else %}
@@ -38,13 +38,13 @@
                     </a>
                 </div>
 
-                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded animation">
+                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded intro-div animation">
                     <a href="{% url 'profiles:profile' %}">
                         <h2 class="h2 text-white">PROFILE</h2>
                     </a>
                 </div>
 
-                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded animation">
+                <div class="col-6 col-md-3 mx-auto text-center text-white border border-white rounded intro-div animation">
                     <a href="{% url 'shop:all_products' %}">
                         <h2 class="text-white">SHOP</h2>
                     </a>
@@ -55,13 +55,13 @@
             {% else %}
             <div class="row pt-5 cover-text">
 
-                <div class="col-4 mx-auto text-center text-white border border-white rounded">
+                <div class="col-4 mx-auto text-center text-white border border-white rounded intro-div animation">
                     <a href="{% url 'profiles:profile' %}">
                         <h2 class="text-white">PROFILE</h2>
                     </a>
                 </div>
 
-                <div class="col-4 mx-auto text-center text-white border border-white rounded">
+                <div class="col-4 mx-auto text-center text-white border border-white rounded intro-div animation">
                     <a href="{% url 'shop:all_products' %}">
                         <h2 class="text-white">SHOP</h2>
                     </a>
@@ -73,13 +73,13 @@
         {% else %}
         <div class="row pt-5 cover-text">
 
-            <div class="col-4 mx-auto text-center text-white border border-white rounded animation">
+            <div class="col-4 mx-auto text-center text-white border border-white rounded animation intro-div">
                 <a href="{% url 'account_signup' %}">
                     <h2 class="text-white">REGISTER</h2>
                 </a>
             </div>
 
-            <div class="col-4 mx-auto text-center text-white border border-white rounded animation">
+            <div class="col-4 mx-auto text-center text-white border border-white rounded animation intro-div">
                 <a href="{% url 'account_login' %}">
                     <h2 class="text-white">LOGIN</h2>
                 </a>
