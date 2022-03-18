@@ -3,8 +3,8 @@ from django.shortcuts import redirect, reverse, get_object_or_404
 from django.contrib import messages
 from profiles.models import Profile, ActiveCharacter
 
-
-def validate_user(request):
+# All functions here Unused
+def validate_user(request): 
     """
     Checks if user is logged and has a character
     """

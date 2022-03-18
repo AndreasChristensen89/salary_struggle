@@ -1,133 +1,124 @@
-import json
 from django.test import TestCase
 from django.contrib.auth.models import User
 from profiles.models import ActiveCharacter
 from codex.models import Item
 
 
-def create_new_character():
+class TestNavigationViews(TestCase):
+
     """
-    Creates user, character, and logs in
+    Test all pages for the grind navigation
     """
-    new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-    ActiveCharacter.create_new_character(new_user)
-    self.client.login(username='john', password='johnpassword')
 
-# class TestNavigationViews(TestCase):
+    def test_agency_page(self):
+        """ Test agency page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/agency/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/agency.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     """
-#     Test all pages for the grind navigation
-#     """
+    def test_back_alley_page(self):
+        """ Test back alley page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/back-alley/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/back_alley.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_agency_page(self):
-#         """ Test agency page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/agency/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/agency.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_bar_page(self):
+        """ Test bar page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/bar/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/bar.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_back_alley_page(self):
-#         """ Test back alley page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/back-alley/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/back_alley.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_cafe_page(self):
+        """ Test cafe page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/cafe/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/cafe.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_bar_page(self):
-#         """ Test bar page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/bar/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/bar.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_call_center_page(self):
+        """ Test call center page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/call-center/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/call_center.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_cafe_page(self):
-#         """ Test cafe page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/cafe/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/cafe.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_city_page(self):
+        """ Test city page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/city/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/city.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_call_center_page(self):
-#         """ Test call center page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/call-center/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/call_center.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_downtown_page(self):
+        """ Test downtown page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/downtown/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/downtown.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_city_page(self):
-#         """ Test city page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/city/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/city.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_enter_grind_page(self):
+        """ Test downtown page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/enter/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/enter_grind.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_downtown_page(self):
-#         """ Test downtown page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/downtown/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/downtown.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_house_page(self):
+        """ Test house page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/house/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/house.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_enter_grind_page(self):
-#         """ Test downtown page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/enter/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/enter_grind.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_intro_page(self):
+        """ Test house page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/intro/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/intro.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
-#     def test_house_page(self):
-#         """ Test house page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/house/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/house.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
-
-#     def test_intro_page(self):
-#         """ Test house page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/intro/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/intro.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
-
-#     def test_store_page(self):
-#         """ Test store page """
-#         new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-#         ActiveCharacter.create_new_character(new_user)
-#         self.client.login(username='john', password='johnpassword')
-#         response = self.client.get('/grind/store/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'grind/store.html')
-#         self.assertTemplateUsed(response, 'grind/game_base.html')
+    def test_store_page(self):
+        """ Test store page """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/grind/store/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'grind/store.html')
+        self.assertTemplateUsed(response, 'grind/game_base.html')
 
 
 class TestUpdateCharacterAjaxViews(TestCase):
