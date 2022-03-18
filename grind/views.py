@@ -600,8 +600,8 @@ class Fight(UpdateView):
             # Update Active Character
             if c.energy >= (60-c.endurance):
                 if random_number >= 5:
-                    c.endurance = c.endurance + 3
                     c.energy = c.energy - (60-c.endurance)
+                    c.endurance = c.endurance + 3
                     c.save()
                 else:
                     c.energy = 0

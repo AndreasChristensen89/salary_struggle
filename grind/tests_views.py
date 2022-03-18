@@ -5,6 +5,14 @@ from profiles.models import ActiveCharacter
 from codex.models import Item
 
 
+def create_new_character():
+    """
+    Creates user, character, and logs in
+    """
+    new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+    ActiveCharacter.create_new_character(new_user)
+    self.client.login(username='john', password='johnpassword')
+
 # class TestNavigationViews(TestCase):
 
 #     """
@@ -335,3 +343,244 @@ class TestUpdateCharacterAjaxViews(TestCase):
         character = ActiveCharacter.objects.get(user=new_user)
         self.assertTrue(character.level == 1)
         self.assertTrue(character.energy == 0)
+
+    def test_agency_combine_success_ajax(self):
+        """
+        Tests, given winning outcome, level upgraded,
+        energy not changed
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        ActiveCharacter.objects.filter(user=new_user).update(
+            intellect=15, coding=15, charm=15)
+
+        data = {'random_number': 45}
+
+        response = self.client.post(
+            '/grind/agency-combine/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.level == 2)
+        self.assertTrue(character.energy == 100)
+    
+    def test_agency_combine_fail_ajax(self):
+        """
+        Tests, given winning outcome, level upgraded,
+        energy not changed
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        ActiveCharacter.objects.filter(user=new_user).update(
+            intellect=15, coding=15, charm=15)
+
+        data = {'random_number': 46}
+
+        response = self.client.post(
+            '/grind/agency-combine/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.level == 1)
+        self.assertTrue(character.energy == 0)
+
+    def test_add_item_permanent_ajax(self):
+        """
+        Tests if permanent item is added to character,
+        and money subtracted
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        Item.objects.create(name='item', price=100, permanent=True)
+        self.client.login(username='john', password='johnpassword')
+
+        data = {'item_id': 1}
+
+        response = self.client.post(
+            '/grind/add-item/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        item = Item.objects.get(id=1)
+        self.assertTrue(item in character.items.all())
+        self.assertTrue(character.money == 19900)
+
+    def test_add_item_not_permanent_ajax(self):
+        """
+        Tests if permanent item is not added to character,
+        and money subtracted
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        Item.objects.create(name='item', price=100)
+        self.client.login(username='john', password='johnpassword')
+
+        data = {'item_id': 1}
+
+        response = self.client.post(
+            '/grind/add-item/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        item = Item.objects.get(id=1)
+        self.assertTrue(item not in character.items.all())
+        self.assertTrue(character.money == 19900)
+
+    def test_apply_job_success_ajax(self):
+        """
+        Tests, if charm is sufficient, character has_job,
+        energy subtracted
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        ActiveCharacter.objects.filter(user=new_user).update(charm=15)
+
+        data = {'random_number': 15}
+
+        response = self.client.post(
+            '/grind/apply-job/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.has_job)
+        self.assertTrue(character.energy == 41)
+
+    def test_apply_job_fail_ajax(self):
+        """
+        Tests, if charm is insufficient, character has_job is False,
+        energy subtracted
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        ActiveCharacter.objects.filter(user=new_user).update(charm=15)
+
+        data = {'random_number': 17}
+
+        response = self.client.post(
+            '/grind/apply-job/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(not character.has_job)
+        self.assertTrue(character.energy == 41)
+
+    def test_work_ajax(self):
+        """
+        Tests if energy subtracted and money increased
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+        ActiveCharacter.objects.filter(user=new_user).update(charm=10)
+
+        response = self.client.post(
+            '/grind/work/',
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.energy == 41)
+        self.assertTrue(character.money == 21000)
+
+    def test_fight_success_ajax(self):
+        """
+        Tests, given winning outcome, endurance upgraded,
+        energy subtracted
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+
+        data = {'random_number': 5}
+
+        response = self.client.post(
+            '/grind/fight/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.energy == 41)
+        self.assertTrue(character.endurance == 4)
+
+    def test_fight_fail_ajax(self):
+        """
+        Tests, given winning outcome, endurance upgraded,
+        energy subtracted
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+
+        data = {'random_number': 2}
+
+        response = self.client.post(
+            '/grind/fight/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.energy == 0)
+        self.assertTrue(character.endurance == 1)
+        self.assertTrue(character.energy_penalty == 50)
+
+    def test_gamle_success_ajax(self):
+        """
+        Tests if winning outcome increases money
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+
+        data = {'random_number': 1}
+
+        response = self.client.post(
+            '/grind/gamble/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.money == 22000)
+
+    def test_gamle_fail_ajax(self):
+        """
+        Tests if winning outcome increases money
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        self.client.login(username='john', password='johnpassword')
+
+        data = {'random_number': 2}
+
+        response = self.client.post(
+            '/grind/gamble/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.money == 19000)
