@@ -60,7 +60,7 @@
                             </a>
                         </div>
                     {% else %}
-                        {% if not profile.paid %}
+                        {% if user.is_authenticated and not profile.paid %}
                             <div class="col-6 col-sm-6 col-md-6 col-lg-4 my-3 px-0">
                                 <a href="{% url 'shop:product_details' product.id %}">
                                 <div class="card">

@@ -11,7 +11,9 @@ def all_products(request):
     """ A view to return the products page """
 
     products = Product.objects.all()
-    profile = Profile.objects.get(user=request.user)
+    profile = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user=request.user)
     sort = None
     direction = None
 

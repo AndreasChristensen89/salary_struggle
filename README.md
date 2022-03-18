@@ -94,9 +94,9 @@ To do list:
 - Remove grand total and only have total - DONE
 - Redesign Item & Interviewer pages - DONE
 - Redesign allauth pages - DONE intially, still resembles CI styling
+- Test Ajax calls - DONE
 
 - Include ajax call at the of interview to avoid players refreshing to restart interview
-- Test Ajax calls
 - Design more characters
 - Finish final interview
 - Make ending to game - good + fail
