@@ -92,6 +92,7 @@ To do list:
 - Change purchase success - DONE
 - Change messages mobile - DONE
 - Remove grand total and only have total - DONE
+- Redesign Item & Interviewer pages - DONE
 - Redesign allauth pages - DONE intially, still resembles CI styling
 
 - Include ajax call at the of interview to avoid players refreshing to restart interview
@@ -101,5 +102,7 @@ To do list:
 - Make ending to game - good + fail
 - Redesign intro page - Started
 - Finish leaderboard set limit top 10
-- Redesign Item & Interviewer pages
+- Redesign product, item, and interviewer detail pages
+- Test new views
+
 

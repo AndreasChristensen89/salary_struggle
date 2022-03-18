@@ -370,7 +370,7 @@ class BarConverse(UpdateView):
                     c.charm = c.charm + 2
 
                 c.energy = c.energy - (40-c.endurance)
-                c.save()     
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
