@@ -56,12 +56,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Codex
+                                Game Info
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
                                 <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                                <a class="dropdown-item" href="#">About</a>
+                                <a class="dropdown-item" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -73,8 +73,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'shop:add_product' %}">Add products</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Account
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a>
+                                <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                            </div>
                         </li>
                         </ul>
                         <ul class="navbar-nav">
