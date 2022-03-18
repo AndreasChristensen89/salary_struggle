@@ -43,11 +43,11 @@
         {% for item in items %}
         <div class="col-6">
             <a href="{% url 'codex:item_details' item.id %}">
-            <div class="card product-height">
+            <div class="card product-height text-center">
                 {% if item.image %}
-                    <img class="card-img-top img-fluid product-img mx-auto" src="{{ item.image.url }}" alt="{{ item.name }}">
+                    <img class="card-img-top img-fluid item-img mx-auto pt-2" src="{{ item.image.url }}" alt="{{ item.name }}">
                 {% else %}
-                    <img class="card-img-top img-fluid product-img mx-auto" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+                    <img class="card-img-top img-fluid item-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                 {% endif %}
                 <div class="card-body">
                     <p class="mb-0">{{ item.name }}</p>
@@ -57,16 +57,19 @@
                         <div class="col">
                             <small class="text-muted"><i class="fas fa-yen-sign">{{ item.price }}</i></small>
                             {% if item.intellect > 0 %}
-                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Intellect: {{ item.intellect }}</small>
+                                <small class="text-muted"><i class="fas fa-brain mx-1"></i> Intellect: {{ item.intellect }}</small>
                             {% endif %}
                             {% if item.charm > 0 %}
-                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Charm: {{ item.charm }}</small>
+                                <small class="text-muted"><i class="fas fa-people-arrows mx-1"></i> Charm: {{ item.charm }}</small>
                             {% endif %}
                             {% if item.coding > 0 %}
-                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Coding: {{ item.coding }}</small>
+                                <small class="text-muted"><i class="fas fa-code ml-1"></i> Coding: {{ item.coding }}</small>
                             {% endif %}
                             {% if item.energy > 0 %}
-                                <small class="text-muted"><i class="fas fa-star mr-1"></i>Energy: {{ item.energy }}</small>
+                                <small class="text-muted"><i class="fas fa-bolt mx-1"></i> Energy: {{ item.energy }}</small>
+                            {% endif %}
+                            {% if item.endurance > 0 %}
+                                <small class="text-muted"><i class="fas fa-fire-alt ml-1"></i> Endurance: {{ item.endurance }}</small>
                             {% endif %}
                         </div>
                     </div>
@@ -97,68 +100,6 @@
         {% endfor %}
     </div>
 
-    <!-- <div class="row">
-        <div class="product-container col-10 offset-1">
-            <div class="row">
-                {% for item in items %}
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                        <a href="{% url 'codex:item_details' item.id %}">
-                        <div class="card border product-height">
-                            {% if item.image %}
-                                <img class="card-img-top img-fluid product-img mx-auto h-50" src="{{ item.image.url }}" alt="{{ item.name }}">
-                            {% else %}
-                                <img class="card-img-top img-fluid product-img mx-auto h-50" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
-                            {% endif %}
-                            <div class="card-body pb-0">
-                                <p class="mb-0">{{ item.name }}</p>
-                            </div>
-                            <div class="card-footer bg-white pt-0 border-0 text-left">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">STATS</p>
-                                        <small class="text-muted"><i class="fas fa-yen-sign">{{ item.price }}</i></small>
-                                        {% if item.intellect > 0 %}
-                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>Intellect: {{ item.intellect }}</small>
-                                        {% endif %}
-                                        {% if item.charm > 0 %}
-                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>Charm: {{ item.charm }}</small>
-                                        {% endif %}
-                                        {% if item.coding > 0 %}
-                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>Coding: {{ item.coding }}</small>
-                                        {% endif %}
-                                        {% if item.energy > 0 %}
-                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>Energy: {{ item.energy }}</small>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    {% if forloop.counter|divisibleby:1 %}
-                        <div class="col-12 d-sm-none mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}                        
-                    {% if forloop.counter|divisibleby:2 %}
-                        <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                    {% if forloop.counter|divisibleby:3 %}
-                        <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                    {% if forloop.counter|divisibleby:4 %}
-                        <div class="col-12 d-none d-xl-block mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </div> -->
 </div>
 <!-- button from walkthrough -->
 <div class="btt-button shadow-sm rounded-0 border border-black">

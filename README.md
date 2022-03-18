@@ -100,4 +100,6 @@ To do list:
 - Finish final interview
 - Make ending to game - good + fail
 - Redesign intro page - Started
+- Finish leaderboard set limit top 10
+- Redesign Item & Interviewer pages
 

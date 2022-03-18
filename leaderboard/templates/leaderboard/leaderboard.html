@@ -14,18 +14,18 @@
 {% block content %}
 <div class="container mt-5">
         <div class="row mb-5">
-            <div class="col-10 my-auto mx-auto">
-                <h1 class="display-4 text-center">
+            <div class="col-12 mx-auto">
+                <h1 class="h1 text-center">
                     Leaderboard
                 </h1>
             </div>
         </div>
 
-        <ul class="list-group">
+        <ul class="list-group col-8 col-md-6 mx-auto">
             {% for entry in leaderboard %}
-            <li class="list-group-item">{{ forloop.counter }} - {{ entry.user.username | title }}: Day {{entry.char_day}}</li>
+            <li class="list-group-item"><strong>{{ forloop.counter }}. {{ entry.user.username | title }}</strong>: Day {{entry.char_day}}</li>
             {% endfor %}
-          </ul>
+        </ul>
 </div>
 
 {% endblock %}
