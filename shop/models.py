@@ -19,7 +19,9 @@ class Product(models.Model):
         https://stackoverflow.com/questions/2511222/efficiently-generate-a-16-character-alphanumeric-string
         """
         if not self.sku:
-            sku = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(8))
+            sku = ''.join(random.choice(
+                string.ascii_uppercase +
+                string.ascii_lowercase + string.digits) for _ in range(8))
             self.sku = sku
         super().save(*args, **kwargs)
 

@@ -57,3 +57,15 @@ class TestNavigationViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'shop/add_product.html')
         self.assertTemplateUsed(response, 'base.html')
+
+    def test_delete_product_page(self):
+        """
+        Tests if product is deleted
+        """
+
+        Product.objects.create(name='name', price=1)
+
+        User.objects.create_superuser('superuser', 'superuser@admin.com', 'adminpass')
+        self.client.login(username='superuser', password='adminpass')
+        self.client.get('/shop/delete/1/')
+        self.assertEqual(Product.objects.count(), 0)

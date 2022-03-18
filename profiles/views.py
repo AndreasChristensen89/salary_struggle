@@ -2,8 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
-from django.views import generic, View
+from django.views import generic
 from .forms import ProfileForm
 from premium.models import Order
 # from .forms import ProfileDetailsForm
@@ -17,10 +16,6 @@ def profile(request):
     """ A view to return the profile page """
     user_profile = get_object_or_404(Profile, user=request.user)
     membership = Product.objects.get(name="Premium Membership")
-    character = False
-    
-    if user_profile.active_char:
-        character = get_object_or_404(ActiveCharacter, user=request.user)
 
     orders = user_profile.orders.all()
     template = 'profiles/profiles.html'
@@ -69,11 +64,6 @@ def order_history(request, order_number):
     View to show the order history
     """
     order = get_object_or_404(Order, order_number=order_number)
-
-    # messages.info(request, (
-    #     f'This is a past confirmation for order number {order_number}. '
-    #     'A confirmation email was sent on the order date.'
-    # ))
 
     template = 'premium/checkout_success.html'
     context = {
