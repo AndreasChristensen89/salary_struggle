@@ -80,10 +80,11 @@ Bugs:
 - Users without characters can still enter the Grind, they just get the message, but still have then enter button. They can even enter, which brings them to the house. Trying to increase stats brings 404. Clicking the link to the city redirects them.
 - Button in agency disappears if you open the messages a second time, and doesn't display messages in right order.
     - Needed to reset counter
-- Have a look at success emails - none sent under development version
+- Have a look at success emails - none sent under development version - WORK NOW
 - Check order in admin for original bag. Shows dictionary
 - Cannot test create_new_character properly. Won't reset according to test
 - Cannot make product form pass in test with correct input
+- Don't know how to test add_item view and adjust_bag view.
 
 
 To do list:

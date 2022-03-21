@@ -22,7 +22,7 @@ def add_to_bag(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     product = Product.objects.get(pk=item_id)
 
-    if profile.paid and product.name == "Premium Membership": 
+    if profile.paid and product.name == "Premium Membership":
         messages.error(request, "You are already a premium user.")
     else:
         quantity = int(request.POST.get('quantity'))    # convert since it comes as a string from the template

@@ -4,7 +4,10 @@ from profiles.models import Profile, ActiveCharacter
 
 
 def shopping_bag_contents(request):
-    """ context function that makes the shopping bag available across the entire application """
+    """
+    context function that makes the shopping bag available
+    across the entire application
+    """
 
     bag_items = []
     total = 0
