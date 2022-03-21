@@ -110,12 +110,12 @@ body {
     background-color: #e3d9ca;
 }
 
-#house-background-img {
-    background-image: url(/media/house-mobile.png);
+/* #house-background-img {
+    background-image: url(/media/backgrounds/house-mobile.png);
     background-size: contain;
     background-repeat: no-repeat;
     height: 100%;
-}
+} */
 
 #bar-background-img {
     background-image: url(/media/bar_background_mobile.png);
@@ -206,4 +206,25 @@ body {
 
 #question-text {
     opacity: 0;
+}
+
+/* --------------------------- media queries ------------------------------ */
+
+@media (max-width: 800px) {
+    #house-background-img {
+        background-image: url(/media/backgrounds/house-mobile.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+}
+
+@media (max-width: 366px) {
+    #house-background-img {
+        background-image: url(/media/backgrounds/house-mobile.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1200px;
+        width: 100vw;
+    }
 }
