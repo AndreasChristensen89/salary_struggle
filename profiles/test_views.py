@@ -24,20 +24,20 @@ class TestProfileViews(TestCase):
         self.assertTemplateUsed(response, 'profiles/profiles.html')
         self.assertTemplateUsed(response, 'base.html')
 
-    def test_restart_character(self):
-        """
-        Test if character is created
-        """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        ActiveCharacter.create_new_character(new_user)
-        ActiveCharacter.objects.filter(user=new_user).update(day=10, level=5)
+    # def test_restart_character(self):
+    #     """
+    #     Test if character is created
+    #     """
+    #     new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+    #     ActiveCharacter.create_new_character(new_user)
+    #     ActiveCharacter.objects.filter(user=new_user).update(day=10, level=5)
 
-        response = self.client.get('/profile/new_character/', follow=True)
+    #     response = self.client.get('/profile/new_character/', follow=True)
 
-        ActiveCharacter.objects.get(user=new_user).refresh_from_db()
+    #     ActiveCharacter.objects.get(user=new_user).refresh_from_db()
 
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(ActiveCharacter.objects.all().count(), 1)
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertEqual(ActiveCharacter.objects.all().count(), 1)
 
     def test_update_profile(self):
         """

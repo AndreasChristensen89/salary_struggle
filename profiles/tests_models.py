@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 from .models import Profile, ActiveCharacter
 
 
-class TestProfile(TestCase):
+class TestProfileForm(TestCase):
     """ tests to test the profile model """
 
     def test_profile_object_exists(self):
         """ test if object is created """
 
-        new_user = User.objects.create_user('John', 'lennon@thebeatles.com', 'johnpassword')
+        User.objects.create_user('John', 'lennon@thebeatles.com', 'johnpassword')
         self.assertEqual(Profile.objects.all().count(), 1)
 
     def test_profile_class_works(self):
