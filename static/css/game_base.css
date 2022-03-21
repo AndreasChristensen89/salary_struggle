@@ -85,26 +85,27 @@ body {
     color: white;
 }
 
-#city-background-img {
-    background-image: url(/media/city-background-mobile.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100%;
+#city-background {
+    background-color: white;
 }
 
 .city-link {
-    height: 100px;
-    width: 100px;
-    color: wheat;
-    background-color: rgb(57 35 35 / 70%);
+    height: 70px;
+    width: 140px;
+    color: white;
+    background-color: rgb(68 101 128);
 }
 
-#enter-grind {
-    background-image: url(/media/background-enter.png);
+#city-links {
+    margin-bottom: 20%;
+}
+
+/* #enter-grind {
+    background-image: url(/media/backgrounds/background-enter.png);
     background-size: cover;
     background-repeat: no-repeat;
     height: 320px;
-}
+} */
 
 #house-background {
     background-color: #e3d9ca;
@@ -117,12 +118,12 @@ body {
     height: 100%;
 } */
 
-#bar-background-img {
+/* #bar-background-img {
     background-image: url(/media/bar_background_mobile.png);
     background-size: contain;
     background-repeat: no-repeat;
     height: 100%;
-}
+} */
 
 #bar-background {
     background-color: #dea866;
@@ -137,6 +138,10 @@ body {
 
 #agency-background {
     background-color: #749ead;
+}
+
+#cafe-background {
+    background-color: #c2c2c2;
 }
 
 #hint-btn {
@@ -211,11 +216,47 @@ body {
 /* --------------------------- media queries ------------------------------ */
 
 @media (max-width: 1200px) {
+    
+    #enter-grind {
+        background-image: url(/media/backgrounds/background-enter.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 320px;
+    }
+    
     #house-background-img {
         background-image: url(/media/backgrounds/house_horizontal.png);
         background-size: contain;
         background-repeat: no-repeat;
         height: 100%;
+    }
+
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%
+    }
+
+    #city-background-img {
+        background-image: url(/media/backgrounds/city_backgrond_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+
+    #agency-background-img {
+        background-image: url(/media/backgrounds/agency_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%
+    }
+
+    #cafe-background-img {
+        background-image: url(/media/backgrounds/cafee_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%
     }
 
     .action-btns {
@@ -226,6 +267,38 @@ body {
 @media (max-width: 768px) {
     #house-background-img {
         background-image: url(/media/backgrounds/house-mobile.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1200px;
+        width: 100vw;
+    }
+
+    #city-background-img {
+        background-image: url(/media/backgrounds/);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1200px;
+        width: 100vw;
+    }
+
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_background_mobile.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1200px;
+        width: 100vw;
+    }
+
+    #cafe-background-img {
+        background-image: url(/media/backgrounds/cafe_mobile.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1200px;
+        width: 100vw;
+    }
+
+    #agency-background-img {
+        background-image: url(/media/backgrounds/agency-background-mobile.png);
         background-size: contain;
         background-repeat: no-repeat;
         height: 1300px;

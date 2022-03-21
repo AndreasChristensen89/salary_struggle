@@ -35,7 +35,7 @@ body {
 }
 
 #hero-background {
-    background-image: url(/media/index_background.jpg);
+    background-image: url(/media/backgrounds/index_background.jpg);
     background-color: #000;
     height: 570px;
     width: 100%;

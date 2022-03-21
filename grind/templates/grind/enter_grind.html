@@ -3,26 +3,24 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container" id="background-fill">
-    <div class="row">
+<div class="text-center" id="background-fill">
+    <div class="row fixed-bottom" id="enter-grind">
+    </div>
+    
+    <div class="row pt-5">
         <div class="col text-center">
-            <h1 class="display-4">Salary</h1>
-        </div>
-        <div class="col text-center">
-            <h1 class="display-4">Struggle</h1>
+            <h1 class="display-4">Salary Struggle</h1>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
     <a class="col-12" href="{% url 'grind:house' %}">
         <div class="col-10 mx-auto text-center" id="enter-link">
             Enter
         </div>
     </a>
     </div>
-    <div class="row fixed-bottom" id="enter-grind">
 
-</div>
 </div>
 {% endif %}
 {% endblock %}

@@ -3,10 +3,10 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="" id="city-background-img">
-    <!-- <div id="city-background-img"> -->
+<div class="h-100 overview" id="city-background">
+    <div class="text-center" id="city-background-img">
     
-        <div class="row mb-5 fixed-bottom">
+        <div class="row fixed-bottom" id="city-links">
             <div class="col-3 rounded mx-auto text-center">
                 <a href="{% url 'grind:bar' %}">
                     <div class="border rounded city-link d-flex justify-content-center">
@@ -52,6 +52,7 @@
                 </a>
             </div>
         </div>
+    </div>
         
 </div>
 {% endif %}

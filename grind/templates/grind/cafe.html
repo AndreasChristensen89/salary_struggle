@@ -3,30 +3,35 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-5">
-    <div class="row">
-        <div class="col text-center">
-            <h1 class="h1">Cafe</h1>
+<div class="h-100 overview" id="cafe-background">
+    <div class="text-center" id="cafe-background-img">
+
+        <div class="row">
+            <a class="text-center" href="{% url 'grind:city' %}">
+                <div class="col-2 text-center m-3 rounded">
+                    <i class="fas fa-arrow-left text-info return-arrow"></i>
+                </div>
+                
+            </a>
         </div>
-    </div>
 
-    <div class="row">
-        <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
-            <i class="fa-solid fa-circle-arrow-left">Back</i>
-        </a>
-    </div>
-    
-    <div class="row py-5"> 
-
-        <div class="col-9 col-sm-6 col-md-4 col-lg-3 card mx-auto text-center" id="study">
-            <div class="card-body rounded-top admin-confirmed">
-                <h5 class="card-title">Study</h5>
-                <p class="card-text round">Work on your coding and your brain</p>
-                <p class="danger">Odds: 2 to 1</p>
+        <div class="row fixed-bottom action-btns">
+            <div class="col-3 mx-auto text-center">
+                <div class="rounded border border-dark update-button" id="study">
+                    <h5 class="h5">Study</h5>
+                    <p class="">Odds 2 to 1</p>
+                </div>
             </div>
         </div>
-
     </div>
+</div>
+
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-bed"></i>
+        </span>
+    </h1>
 </div>
 {% endif %}
 {% csrf_token %}
