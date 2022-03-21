@@ -234,6 +234,10 @@ body {
     width: 120px;
 }
 
+.shop-img {
+    max-width: 400px;
+}
+
 .filter {
     width: 30vw;
     max-width: 50vw;
@@ -433,4 +437,30 @@ a.category-badge > span.badge:hover {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+.form-group {
+    width: 200px;
+}
+
+/* --------------------------- media queries ------------------------------ */
+
+@media (max-width: 768px) {
+    .shop-img {
+        width: 45%;
+    }
+
+    .smaller-prod {
+        text-align: center!important;
+    }
+
+    #small-width {
+        width: 200px!important;
+    }
+}
+
+@media (max-width: 576px) {
+    .shop-img {
+        width: 60%;
+    }
 }

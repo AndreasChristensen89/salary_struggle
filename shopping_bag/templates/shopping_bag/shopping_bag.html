@@ -22,9 +22,8 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
                 {% if bag_items %}
-
+                <div class="col-12">
                 <div class="d-block d-md-none">
                     <div class="row">
                         <div class="col">
@@ -113,14 +112,17 @@
                             </tr>
                         </table>
                     </div>
+                </div>
                 {% else %}
-                    <p class="lead mb-5">Your bag is empty</p>
-                    <a href="{% url 'shop:all_products' %}" class="btn btn-outline-black rounded-0">
+                <div class="col-12 text-center">
+                    <p class="lead mb-5 text-center">Your bag is empty</p>
+                    <a href="{% url 'shop:all_products' %}" class="btn btn-outline-black rounded">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="text-uppercase">Keep shopping</span>
+                        <span class="text-uppercase">Return</span>
                     </a>
+                </div>
                 {% endif %}
             </div>
     </div>
