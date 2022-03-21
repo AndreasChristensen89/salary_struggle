@@ -82,6 +82,8 @@ Bugs:
     - Needed to reset counter
 - Have a look at success emails - none sent under development version
 - Check order in admin for original bag. Shows dictionary
+- Cannot test create_new_character properly. Won't reset according to test
+- Cannot make product form pass in test with correct input
 
 
 To do list:
@@ -103,7 +105,6 @@ To do list:
 - Redesign intro page - Started
 - Finish leaderboard set limit top 10
 - Redesign product, item, and interviewer detail pages
-- Cannot test create_new_character properly. Won't reset according to test
 - Test new views
 
 
