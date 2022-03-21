@@ -103,6 +103,7 @@ To do list:
 - Redesign intro page - Started
 - Finish leaderboard set limit top 10
 - Redesign product, item, and interviewer detail pages
+- Cannot test create_new_character properly. Won't reset according to test
 - Test new views
 
 

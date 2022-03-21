@@ -36,12 +36,12 @@ class Leaderboard(models.Model):
 
         entry = {}
         entry['user'] = active_char.user
-        entry['char_intellect'] = active_char.current_level
-        entry['char_charm'] = active_char.battle_count
-        entry['char_coding'] = active_char.character_id
-        entry['char_endurance'] = active_char.char_hp
-        entry['char_money'] = active_char.char_attack
-        entry['char_day'] = active_char.char_defense
+        entry['char_intellect'] = active_char.intellect
+        entry['char_charm'] = active_char.charm
+        entry['char_coding'] = active_char.coding
+        entry['char_endurance'] = active_char.endurance
+        entry['char_money'] = active_char.money
+        entry['char_day'] = active_char.day
 
         new_leaderboard_entry = cls(**entry)
         new_leaderboard_entry.save()

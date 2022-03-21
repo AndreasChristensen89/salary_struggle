@@ -24,31 +24,39 @@ class TestProfileViews(TestCase):
         self.assertTemplateUsed(response, 'profiles/profiles.html')
         self.assertTemplateUsed(response, 'base.html')
 
-    # def test_restart_character(self):
-    #     """
-    #     Test if character is restarts
-    #     """
-    #     new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-    #     ActiveCharacter.create_new_character(new_user)
-    #     ActiveCharacter.objects.filter(user=new_user).update(day=10)
-    #     response = self.client.get('/profile/new_character/')
+    def test_restart_character(self):
+        """
+        Test if character is created
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        ActiveCharacter.objects.filter(user=new_user).update(day=10, level=5)
 
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertEqual(ActiveCharacter.objects.filter(day=1).count(), 1)
+        response = self.client.get('/profile/new_character/', follow=True)
+
+        ActiveCharacter.objects.get(user=new_user).refresh_from_db()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(ActiveCharacter.objects.all().count(), 1)
 
     def test_update_profile(self):
         """
         Tests if profile is updated
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
         self.client.login(username='john', password='johnpassword')
-    
-        response = self.client.post(
-            reverse('update_profile'),
+
+        response = response = self.client.post(
+            '/profile/update/',
             {'username': 'tester',
              'first_name': 'test',
              'last_name': 'testtwo',
-             'email': 'lennon@thebeatles.com'})
-        new_user.refresh_from_db()
+             'email': 'lennon@thebeatles.com'},
+            )
+
+        user.refresh_from_db()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(new_user.username, 'tester')
+        self.assertEqual(user.username, 'tester')
+        self.assertEqual(user.first_name, 'test')
+        self.assertEqual(user.last_name, 'testtwo')
+        self.assertEqual(user.email, 'lennon@thebeatles.com')
