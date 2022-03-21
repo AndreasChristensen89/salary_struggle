@@ -50,8 +50,7 @@ Speech bubble: https://codepen.io/rikschennink/pen/mjywQb
 
 Installed django-countries for the dropdown box in the form
 
-For multiple forms on a page:
-http://www.nurettinabaci.org/2021/01/12/python/handling-multiple-forms-on-the-same-page-in-django/
+Installed mathfilter for subtracting endurance from energy needed
 
 Current idea for interview questions:
     - Question 1 is the intellectual answer

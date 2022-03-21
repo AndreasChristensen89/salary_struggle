@@ -1,5 +1,6 @@
 {% extends "grind/game_base.html" %}
 {% load static %}
+{% load mathfilters %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -14,26 +15,24 @@
                 </div>
                 
             </a>
-            <!-- <div class="col-6 text-center">
-                <h1 class="display-4 rounded place">Home</h1>
-            </div> -->
         </div>
 
 
-        <div class="row fixed-bottom my-4">
-        <div class="col-4 mx-auto text-center">
+        <div class="row fixed-bottom action-btns">
+        <div class="col-3 mx-auto text-center">
             <div class="rounded border border-dark update-button" id="sleep">
                 <h5 class="h5">Sleep</h5>
                 <p class="">Rest up</p>
             </div>
         </div>
-        <div class="col-4 mx-auto text-center">
+        <div class="col-3 mx-auto text-center">
             <div class="rounded border border-dark update-button" id="homeStudy">
                 <h5 class="h5">Study</h5>
                 <p class="">+1 coding</p>
+                <p class="">Energy {{ 40|sub:character.endurance }}</p>
             </div>
         </div>
-        <div class="col-4 mx-auto text-center">
+        <div class="col-3 mx-auto text-center">
             <div class="rounded border border-dark update-button" id="homeCharm">
                 <h5 class="h5">Charm</h5>
                 <p class="">+1 charm</p>

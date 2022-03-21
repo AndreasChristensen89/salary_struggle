@@ -210,21 +210,25 @@ body {
 
 /* --------------------------- media queries ------------------------------ */
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     #house-background-img {
-        background-image: url(/media/backgrounds/house-mobile.png);
+        background-image: url(/media/backgrounds/house_horizontal.png);
         background-size: contain;
         background-repeat: no-repeat;
         height: 100%;
     }
+
+    .action-btns {
+        margin-bottom: 200px;
+    }
 }
 
-@media (max-width: 366px) {
+@media (max-width: 768px) {
     #house-background-img {
         background-image: url(/media/backgrounds/house-mobile.png);
         background-size: contain;
         background-repeat: no-repeat;
-        height: 1200px;
+        height: 1300px;
         width: 100vw;
     }
 }
