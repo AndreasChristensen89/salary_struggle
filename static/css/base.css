@@ -239,14 +239,14 @@ body {
     width: 120px;
 }
 
-.interviewer-img {
-    height: 215px;
-    width: 130px;
-}
-
 .interviewer-detail-img {
     height: 260px;
     width: 150px;
+}
+
+.all-interviewer-img {
+    height: 215px;
+    width: 130px
 }
 
 .product-name {
@@ -255,6 +255,11 @@ body {
 
 .product-height {
     height: 250px;
+    max-width: 300px;
+}
+
+.interviewer-height {
+    height: 300px;
     max-width: 300px;
 }
 

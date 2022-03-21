@@ -46,11 +46,11 @@
                 {% for interviewer in interviewers %}
                 <div class="col-6 col-sm-6 col-md-6 col-lg-4 px-1">
                     <a href="{% url 'codex:interviewer_details' interviewer.id %}">
-                    <div class="card border product-height my-2">
+                    <div class="card border interviewer-height my-2">
                         {% if interviewer.image %}
-                            <img class="card-img-top img-fluid item-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                            <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
                         {% else %}
-                            <img class="card-img-top img-fluid item-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
+                            <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
                         {% endif %}
                         <div class="card-body">
                             <p class="lead product-name text-center">{{ interviewer.name }}</p>
