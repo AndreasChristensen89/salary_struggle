@@ -225,10 +225,6 @@ body {
     width: 120px;
 }
 
-.shop-img {
-    max-width: 400px;
-}
-
 #small-width {
     width: 200px;
 }
@@ -436,13 +432,13 @@ a.category-badge > span.badge:hover {
 
 /* --------------------------- media queries ------------------------------ */
 
-/* @media (min-width: 768px) {
+/* @media (max-width: 3000px) {
     .shop-img {
         max-width: 400px;
     }
 } */
 
-@media (max-width: 767px) {
+@media screen and (max-width: 766px) {
     .shop-img {
         max-width: none;
         width: 80%;
