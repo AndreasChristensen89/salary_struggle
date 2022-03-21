@@ -15,11 +15,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-                <div class="image-container my-5">
+                <div class="image-container my-5 text-center">
                     {% if item.image %}
-                        <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="{{ item.name }}">
+                        <img class="card-img-top img-fluid item-img" src="{{ item.image.url }}" alt="{{ item.name }}">
                     {% else %}
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+                        <img class="card-img-top img-fluid item-img" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                     {% endif %}
                 </div>
             </div>
@@ -28,19 +28,19 @@
                     <p class="mb-0">{{ item.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">¥{{ item.price }}</p>
                     {% if item.intellect > 0 %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>+{{ item.intellect }} Intellect</small>
+                        <small class="text-muted"><i class="fas fa-brain mx-1"></i>+{{ item.intellect }} Intellect</small>
                     {% endif %}
                     {% if item.charm > 0 %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>+{{ item.charm }} Charm</small>
+                        <small class="text-muted"><i class="fas fa-people-arrows mx-1"></i>+{{ item.charm }} Charm</small>
                     {% endif %}
                     {% if item.coding > 0 %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>+{{ item.coding }} Coding</small>
+                        <small class="text-muted"><i class="fas fa-code ml-1"></i>+{{ item.coding }} Coding</small>
                     {% endif %}
                     {% if item.energy > 0 %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>+{{ item.energy }} Energy</small>
+                        <small class="text-muted"><i class="fas fa-bolt mx-1"></i>+{{ item.energy }} Energy</small>
                     {% endif %}
                     {% if item.endurance > 0 %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>+{{ item.endurance }} Endurance</small>
+                        <small class="text-muted"><i class="fas fa-fire-alt ml-1"></i>+{{ item.endurance }} Endurance</small>
                     {% endif %}
                     <p class="mt-3">{{ item.description }}</p>
                 </div>

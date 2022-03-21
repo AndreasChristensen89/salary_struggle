@@ -46,9 +46,9 @@
                     <a href="{% url 'codex:item_details' item.id %}">
                     <div class="card border product-height my-2">
                         {% if item.image %}
-                            <img class="card-img-top img-fluid item-img mx-auto pt-2" src="{{ item.image.url }}" alt="{{ item.name }}">
+                            <img class="card-img-top img-fluid all-item-img mx-auto pt-2" src="{{ item.image.url }}" alt="{{ item.name }}">
                         {% else %}
-                            <img class="card-img-top img-fluid item-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+                            <img class="card-img-top img-fluid all-item-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                         {% endif %}
                         <div class="card-body">
                             <p class="lead product-name text-center">{{ item.name }}</p>
