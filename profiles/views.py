@@ -64,6 +64,12 @@ def order_history(request, order_number):
     View to show the order history
     """
     order = get_object_or_404(Order, order_number=order_number)
+    profile = Profile.objects.get(user=request.user)
+
+    if request.user.is_authenticated:
+        if not profile == order.user_profile:
+            messages.warning(request, 'Access restricted')
+            return redirect(reverse('home:index'))
 
     template = 'premium/checkout_success.html'
     context = {
