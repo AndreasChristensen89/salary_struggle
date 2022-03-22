@@ -12,6 +12,25 @@ body {
     overflow: hidden;
 }
 
+.message-container {
+    position: fixed;
+    top: 73px;
+    z-index: 99999999;
+}
+
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 5px;
+}
+
+.toast.show {
+    display: contents;
+}
+
 .arrow {
     height: 10px;
     width: 10px;
