@@ -9,13 +9,13 @@ from django.contrib import messages
 def index(request):
     """ A view to return the index page """
 
-    # membership = Product.objects.get(name="Premium Membership")
-
-    # context = {
-    #     'membership': membership,
-    # }
-
     return render(request, 'home/index.html')
+
+
+def about(request):
+    """ A view to return the about page """
+
+    return render(request, 'home/about.html')
 
 
 def contact(request):

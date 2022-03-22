@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="container-header"></div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 py-5 mx-auto text-center">
+            <h1 class="h1">
+                About Salary Struggle
+            </h1>
+        </div>
+    </div>
+
+    <div class="row text-center mb-5">
+        <div class="col-10 col-md-5 col-lg-4 mx-auto my-3 px-2">
+            <h3 class="h3">GAME</h3>
+            <p>
+                Salary Struggle is a game made for everyone who enjoys a fun little challenge. 
+                The game is largely luck based, but there are definitely strategies to help you get ahead. 
+                Explore and expand your knowledge, and spend your energy and money wisely. A top 10 result 
+                will get you on the leaderboard
+            </p>
+        </div>
+        <div class="col-10 col-md-5 col-lg-4 mx-auto my-3 px-2">
+            <h3 class="h3">SETTING</h3>
+                <p>
+                The game takes place in a fictional city, lightly inspired by Tokyo, where you play as an unfortunate 
+                soul who has piles of debt. The only way forward is to get a job as a self taught 
+                programmer within 30 days. This is no easy task, and you need more than coding skills to make it.
+                </p>
+        </div>
+        <div class="col-10 col-md-5 col-lg-4 mx-auto my-3 px-2">
+            <h3 class="h3">SHOP</h3>
+            <p>
+                Check out our online shop with behind the scenes art, as well as the chance to get personalised items 
+                from the creators themselves.
+            </p>
+            {% if user.is_authenticated %}
+            <p>Check out our shop <a href="{% url 'shop:all_products' %}"><u>here</u></a></p>
+            {% else %}
+            <p>To access our shop head over and <a href="{% url 'account_signup' %}"><u>register</u></a> for an account
+            or <a href="{% url 'account_login' %}"><u>login</u></a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
