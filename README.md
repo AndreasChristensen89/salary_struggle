@@ -286,29 +286,38 @@ All non-text elements are marked with aria-labels, and the contrast between back
 
 # CRUD
 ## Create
-Users and admin can create objects in the Booking model via the booking form + booking view code on the booking page. Admin can additionally create objects via the admin panel.
+Users and admin create an object in the Profile model when registering. Through purchases objects are created in the Order model. Each profile user can create a character, which creates an object and connects it to the User instance. Through purchases both non-users and user can create instances in the Order model.
+Admin can create Items, Interviewers, and Products.
+By finishing the game, if top 10 is reached, users create an instance of the Leaderboard Model
 
 ## Reading
-Users can find their past (previous bookings page) and future booking (upcoming bookings page) object on their site and see the booking details (booking details page). Admin can see all bookings in admin panel, or filtered bookings on the pending bookings page, accepted bookings page, and the updated bookings page.
+Users can see lists of the all the products, items, and interviewers from in Product model, the Item model, and the Interviewer model. Users can also see the details of their profile on their profile page, as well as the stats of their created character.
 
 ## Updating
-Users can update their future bookings on the upcoming bookings page using the UpdateView class. It is limited in that they can only alter the comment. However, admin is able to alter every aspect of the booking objects, done in the admin panel, pending bookings, updated bookings, and accepted bookings, and can alter bookings from any time.
+Users can play the game and update their character stats. Users can also update their User information.
+Admin can update the objects from the Product, Item, Interviewer, and Profile models.
 
 ## Deletion
-Users can delete their future bookings on the upcoming bookings page. Admin can delete bookings via the pending bookings, updated bookings, accepted bookings, and can delete all bookings from any time.
+Users can reset their character, which deletes the old character and creates a new.
+Admin can delete products, items, and interviewers.
 
 # Email
-During development the following was used in settings.py: EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+Gmail was implemented with the following settings:
 
-Post-production a Gmail was implemented with the following settings:
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'salarystruggle@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'dresdiner.notice@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('APP_KEY')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'dresdiner.notice@gmail.com'
+Environmental variables are stored in Heroku.
+
 This sends live emails from a gmail I created for this project
 Password in stored in env.py
 variable is also added to Heroku config variables
@@ -336,56 +345,166 @@ Admin credentials given on submission
 
 # Django
 ## Django Apps
-### salary_struggle - main
-### Reservations
-Contains the booking and table models as well as the booking and profile form. Contains all the views related to booking, both for admin and users. Also contains all the booking logic in a separate file booking.py.
-### Homepage
-Simply contains the view for the index page and the 404 view code.
-### Contact
-Contains the view codes for the contact pages as well as the forms
-### Menu
-Contains the view for the menu page as well as the two models; Category and Meals.
-### Restaurant
-Contains two models: OpeningHours and BookingDetails
+### Salary_struggle - main
+### Codex
+Contains the data in relation to the Items and Interviews found in the game
+
+Contains the Item and Interviewer models. Contains all the views and templates related to these which includes the pages for all items, all interviewers, as well as their detail pages.
+### Grind
+Contains all the game data, excluding interviews.
+
+Contains all the views and templates for the game, excluding interviews. Views include all ajax requests, and the static folder includes all the JS files for progression, intro, and ajax.
+### Home
+Application for the index page and contact pages.
+
+Includes the home page, index, as well as the two contact pages; one for authenticated users and one for non-authenticated. Includes two forms for the two contact pages, templates for the views, and the three view functions
+### Interview
+Contains the part of the game related to interviews.
+
+Contains the views, templates, CSS, and JavaScript files for the interviews in the game.
+### Leaderboard
+Application for the leaderboard, which displays best performances
+Contains the Leaderboard model, the view, and the template
+### Premium
+Contains everything related to checkout, including payment, webhook handling, signals, and order creation
+
+Contains the Order model, and the OrderItem model that works together with the Order model. Contains signals file which calls the OrderItem model. Contains the checkout view, the checkout success view, and the cache checkout view. Contains the order form for placing orders.
+### Profiles
+Contains everything related to profiles and the characters used in the game
+### Shop
+Application for products in the shop, as well as their information.
+### Shopping_bag
+Application that handles the shopping bag, adding, updating and removing. Makes shopping bag available across site.
 
 ## Django models
-Six models
+Seven models
 
-### Booking - stores object for each reservation.
-Has an autogenerated slug field with random chars, User logged in is added, takes number of guests and a booking start. Booking end is automatically generated in view code according to the BookingDetails model. Updated on, and created on are created and uses current datetime. Status has three options,1: "Pending", 2: "Approved", and 3: "Declined", is automatically set to 0. Comment is optional. Table is a ManyToManyField and can have multiple tables attached from the Table model.
-In first I included first_name and last_name in the Booking model, but it seemed extensive, especially when a user was already created. Instead, I found it better to require adding contact details before making a booking. This way the same user can easily book again, and the details are taken from the user. The first_name and last_name could be cut from the booking, thus making it more appropriate to book using only a datetime and guests number.
+### 1. Interviewer - stores object for each interviewer in the game
+Fields:
+- Name: CharField
+- Stats: 
+    - intellect: IntegerField
+    - coldness: IntegerField - opposite to character's charm
+    - coding: IntegerField
+    - impress level: Integer - number needed to pass interview
+    - level: Integer - Can be HR, Software Developer, Senior Software Developer, or Boss. Class method IntegerChoices used. Determines which interview the interviewer belongs in.
+- Image: ImageField
+- Paid: Boolean - if True only available to premium members
+- Intro: TextField - The intro statement the interviews gives at the start of an interview
+- Description: TextField - Used in the details page.
 
-### Table - store object for each table
-Needs a unique table number, number of seats, and a zone. Seats and zone are used in booking logic.
+### 2. Item - stores objects for each item in the game
+Fields:
+- Name: CharField
+- Price: IntegerField - price of the item
+- Intellect: IntegerField - increase in character's intellect
+- Charm: IntegerField - increase in character's charm
+- Coding: IntegerField - increase in character's coding
+- Energy: IntegerField - increase in character's energy
+- Endurance: IntegerField - increase in character's endurance
+- Intellect Penalty: IntegerField - subtracts this value from intellect after sleep
+- Charm Penalty: IntegerField - subtracts this value from charm after sleep
+- Coding Penalty: IntegerField - subtracts this value from coding after sleep
+- Energy Penalty: IntegerField - subtracts this value from energy after sleep
+- Permanent: BooleanField - If True item is attached to character's m2m Item field
+- Image: ImageField
+- Description: TextField - Used in details page
 
-### OpeningHours - stores objects for each weekday. Takes in weekday, opening time and closing time, which uses timefields.
+### 3. Leaderboard - store object for each entry in leaderboard
+Fields:
+- User: ForeignKey - gets user connected to character
+- Submission Date: DateTimeField - registers time of submission
+- Character Intellect - gets intellect from character
+- Character Charm - gets charm from character
+- Character Coding - gets coding from character
+- Character Endurance - gets endurace from character
+- Character Money - gets money from character
+- Character Day - gets day from character
 
-### Bookings details - should only store one object for booking details.
-Takes in booking duration, meaning how long time each booking should occupy in the system. Next is table assign method, which has three options: 0 - "Off - admin assigns tables", 1 - "Assign any tables in same zone", 2 - "Assign any tables". Finally assign method limit, which is automatically set to 100. Admin can specify if they want the system to not sort automatically if the number of guests for a single reservation is more than this number.
+Has a classmethod active_char_to_leaderboard which takes the character as a parameter, creates an empty entry, adds in all fields from character, and saves the cls entry.
 
-### Category - stores an object for each food category.
-One field; name. Connects to meal.
+### 4. Order - stores objects for each order
+Fields
+- Order number: CharField - generated by class method
+- User Profile: ForeignKey - connected to user. Can be empty as non-users can also place orders
+- Full name: CharField
+- Email: EmailField
+- Date: DateTimeField
+- Order_total: DecimalField - works with OrderItem model. Item costs are aggregated in class method update_total which connects to OrderItem
+- Original Bag: TextField - original bag kept to keep track of individual bags and avoid duplicates, as customers can buy the same thing several times.
+- Stripe PID: CharField
 
-### Meals - stores an object for each meal.
-Name must be unique. Takes in description. Uses foreignkey to connect to a Category object. Takes in number specifying how many people it is meant for. Price is a decimal field with max 4 digits and two decimal places. Image must be included, which will be uploaded to cloud via Pillow (installed). Slug is auto generated from the name field.
+
+### 5. OrderItem - stores an object for each food category.
+Fields:
+- Order: ForeignKey - connected to the order
+- Product - ForeignKey - connected to the product
+- Quantity - IntegerField
+- Item Total - DecimalField
+
+Overrides save method and multiplies the product price with the quantity, and updates the order total
+
+### 6. Profile - stores an object for each profile.
+Fields:
+- User: OneToOneField - Can only be connected to one user
+- Paid: BooleanField - Is set to False by default, but changes to True if user purchases Premium Membership
+- Active character: BooleanField - Set to True if user creates a character
+
+Has a class method to set the active character to False
+
+### 7. ActiveCharacter - stores an object for each character
+fields:
+- User: ForeignKey
+Integer stats, all set to default start values:
+- level = 1
+- day = 1
+- money = 20000
+- intellect = 1
+- charm = 1
+- coding = 1
+- endurance = 1
+- energy = 100
+- intellect penalty = 0
+- charm penalty = 0
+- coding penalty = 0
+- endurance penalty = 0
+- energy penalty = 0
+
+- Has job: BooleanField - set to False. True if character gets a part time job
+- items: ManyToManyField - connected to Item model.
+
+Uses a class method to add new character and sets the active character boolean of Profile model to True. If the user already has a character it deletes the old and creates a new using the User.
+
+### 8. Product - stores an object for each product
+Fields:
+- sku: CharField - autogenerated in method
+- name: CharField
+- description: TextField
+- price: DecimalField
+- image: ImageField
 
 ## Django forms
-Four forms
-
-### BookTableForm - form for creating booking on the booking page
-Has three fields: Number of guests, Date and Time, and Comment.
-Checks if sum of seats (from available tables) are greater or equal to number of guests.
-Checks if Date and Time is in future
-Check if number of guests are at least 1
-Checks if Date and time is within closing time minus booking duration. E.g. if closing time is 22:00 and booking duration is 120 mins, then latest time is 20:00
-
-### ProfileForm - form for the profile page
-Fields: username, first name, last name, email, and password. Only password is not mandatory.
+Five forms
 
 ### ContactForm - form for the contact page
 Fields: name, email, and message.
+Connects to contact view
 ### ContactFormLoggedIn - form for the contact page for registered users
-One field: message. View code handles the rest.
+One field: message. Connects to contact_logged_in view code which handles the rest.
+
+### OrderForm - form for placing an order
+Has Two fields: Full name and Email
+Connects to Order model
+
+### ProfileForm - form for the profile page
+Fields: username, first name, last name, email, and password. Only password is not mandatory.
+Connects to User and in connection with the UpdateView class from Django
+
+### ProductForm - form for the admin to add products to Product Model
+Fields: sku, name, price, description, image.
+sku is autogenerated.
+
+
 
 
 # Bugs:
@@ -406,7 +525,8 @@ One field: message. View code handles the rest.
 - Users without characters can still enter the Grind, they just get the message, but still have then enter button. They can even enter, which brings them to the house. Trying to increase stats brings 404. Clicking the link to the city redirects them.
 - Button in agency disappears if you open the messages a second time, and doesn't display messages in right order.
     - Needed to reset counter
-- Have a look at success emails - none sent under development version - WORK NOW
+- Have a look at success emails - none sent under development version
+    - Issue was that emails are only sent if Stripe webhook is successfull. Development version has private 8000 gate.
 - Check order in admin for original bag. Shows dictionary
 - Cannot test create_new_character properly. Won't reset according to test
 - Cannot make product form pass in test with correct input
