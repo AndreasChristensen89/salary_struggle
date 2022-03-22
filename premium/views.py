@@ -72,6 +72,7 @@ def checkout(request):
                         quantity=item_data,
                     )
                     order_line_item.save()
+                    # if the item is premium membership profile is set to paid
                     if product.name == "Premium Membership":
                         profile = Profile.objects.get(user=request.user)
                         profile.paid = True

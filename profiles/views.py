@@ -3,17 +3,20 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
-from .forms import ProfileForm
 from premium.models import Order
-# from .forms import ProfileDetailsForm
+from shop.models import Product
+from .forms import ProfileForm
 from .models import Profile
 from .models import ActiveCharacter
-from shop.models import Product
 
 
 @login_required
 def profile(request):
-    """ A view to return the profile page """
+    """ 
+    A view to return the profile page
+    Premium membership in context in order to provide link in template,
+    in case admin deletes and create a new => new id for product
+    """
     user_profile = get_object_or_404(Profile, user=request.user)
     membership = Product.objects.get(name="Premium Membership")
 
@@ -30,7 +33,7 @@ def profile(request):
 
 class UpdateProfile(SuccessMessageMixin, generic.UpdateView):
     """
-    View and update user profile
+    View to update user profile
     """
     form_class = ProfileForm
     template_name = 'profiles/update_profile.html'
@@ -43,9 +46,9 @@ class UpdateProfile(SuccessMessageMixin, generic.UpdateView):
 
 @login_required
 def confirm_new_char(request):
-    """ 
+    """
     Makes user confirm that old character is deleted,
-    and new one is created 
+    and new one is created
     """
 
     return render(request, 'profiles/restart_character.html')
@@ -74,7 +77,8 @@ def order_history(request, order_number):
     template = 'premium/checkout_success.html'
     context = {
         'order': order,
-        'from_profile': True,   # So we can check if the user got there via the order history view
+        # checks if the user got there via the order history view
+        'from_profile': True,
     }
 
     return render(request, template, context)

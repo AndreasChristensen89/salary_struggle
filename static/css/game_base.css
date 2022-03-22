@@ -18,6 +18,25 @@ body {
     z-index: 99999999;
 }
 
+#game-header {
+    width: 70%;
+    height: 70px;
+}
+
+.game-stat {
+    top: 20px;
+}
+
+#exit-link {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+#exit-icon {
+    font-size: 32pt;
+}
+
 
 .custom-toast {
     overflow: visible;
@@ -60,10 +79,6 @@ body {
     justify-content: center;
     margin: 0;
     height: 100%;
-}
-
-#exit {
-    font-size: 10pt;
 }
 
 #next-btn {

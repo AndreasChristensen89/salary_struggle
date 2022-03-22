@@ -72,6 +72,7 @@ class StripeWHookHandler:
                 order = Order.objects.get(  # Try to get the order with the info from the payment intent
                     full_name__iexact=billing_details.name,    # iexact to find exact match but case insentitve
                     email__iexact=billing_details.email,
+                    user_profile=profile,
                     order_total=order_total,
                     original_bag=bag,
                     stripe_pid=pid,

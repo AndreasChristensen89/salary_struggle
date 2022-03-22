@@ -571,6 +571,7 @@ To do list:
 - Redesign allauth pages - DONE intially, still resembles CI styling
 - Test Ajax calls - DONE
 - Make sure order is attached to user so other cannot access success page - DONE
+- Order history was accessible for others with the link - defensive programming DONE
 - Include ajax call at the of interview to avoid players refreshing to restart interview - DONE
 
 
