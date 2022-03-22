@@ -355,6 +355,10 @@ I decided to only have the user be able to have one character at a time. As the 
 ## Locations
 
 ## Interviews
+After the intro of the interviews the JavaScript code creates an ajax request that resets the energy of the character.
+This is done for two reasons:
+* Players could otherwise easily restart the interview and retry with no penalty - you need full energy to start an interview
+* Interviews are meant to be special and exhaustive, and the player will need to be at full power
 
 ## Limit
 Players are bound by the stats of their character in terms of choices. Each day is limited by the energy the character has, which can be extended with the use of items
@@ -566,8 +570,10 @@ To do list:
 - Redesign Item & Interviewer pages - DONE
 - Redesign allauth pages - DONE intially, still resembles CI styling
 - Test Ajax calls - DONE
+- Make sure order is attached to user so other cannot access success page - DONE
+- Include ajax call at the of interview to avoid players refreshing to restart interview - DONE
 
-- Include ajax call at the of interview to avoid players refreshing to restart interview
+
 - Design more characters
 - Finish final interview
 - Make ending to game - good + fail
@@ -575,11 +581,10 @@ To do list:
 - Finish leaderboard set limit top 10
 - Redesign product, item, and interviewer detail pages
 - Test new views
-<!-- - Make non-user be able to use shopping bag -->
 - Create About page
-- Make sure order is attached to user so other cannot access success page
 - Business + SEO criteria
 - Change MEDIA link for product with no picture
 - Change checkout page resign for items
+
 
 

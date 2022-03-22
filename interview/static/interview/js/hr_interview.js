@@ -1,5 +1,6 @@
 // Adds eventlistener, adds function to hide intro by click
 document.addEventListener('DOMContentLoaded', function () {
+    
     $(".intro").animate({opacity: "1.0"}, "slow")
 
     $("#next-comment").click(function(){
@@ -16,12 +17,33 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#head-intro").addClass("hide");
             $(".interviewer-presentation").removeClass("hide");
         } else {
+            
             $("#introduction").addClass("hide");
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
             $(".skill-btn").click(attemptSkill);
             $(".answer-btn").click(checkAnswer);
             buildQuestions();
+
+            // Sends an ajax request to reset player's energy.
+            // Done in order to prevent players from reloading windom an resetting interview
+            // Energy is needed to start interview
+
+            // get the CSRF token
+            const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            // remove the token from the DOM
+            document.querySelector('[name=csrfmiddlewaretoken]').remove();
+            
+            var energy = parseInt($("#energy").text());
+            $.ajax({
+                type: "POST",
+                url: "/interview/reset-energy/",
+                headers: {'X-CSRFToken': csrf},
+                success: function(){
+                    $("#energy").text(0);
+                    energy = 0;
+                    } 
+            });
         }
         });
 });

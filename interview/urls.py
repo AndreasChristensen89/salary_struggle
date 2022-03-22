@@ -9,4 +9,5 @@ urlpatterns = [
     path('coding-interview/', views.coding_interview, name='coding_interview'),
     path('difficult-coding-interview/', views.coding_difficult_interview, name='coding_difficult_interview'),
     path('final-interview/', views.final_interview, name='final_interview'),
+    path('reset-energy/', views.ResetEnergy.as_view(), name='reset_energy'),
 ]

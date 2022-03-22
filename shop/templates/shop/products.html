@@ -39,20 +39,22 @@
             <div class="row">
                 {% for product in products %}
                     {% if product.name == "Premium Membership" and profile.paid %}
-                        <div class="d-none">
+                    <div class="d-none">
                     {% else %}
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 px-1">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 px-1">
                     {% endif %}
-                            <a href="{% url 'shop:product_details' product.id %}">
+                        <a href="{% url 'shop:product_details' product.id %}">
                             <div class="card border product-height my-2 text-center">
                                 {% if product.image %}
                                     <img class="card-img-top img-fluid product-img mx-auto pt-2" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
                                     <img class="card-img-top img-fluid product-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 {% endif %}
+
                                 <div class="card-body">
                                     <p class="lead product-name">{{ product.name }}</p>
                                 </div>
+
                                 <div class="bg-white pt-0 mx-auto">
                                     <div class="row">
                                         <div class="col">
@@ -60,12 +62,13 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            </a>
-                        </div>
+                        </a>
+                    </div>
                 {% endfor %}
+                </div>
             </div>
-        </div>
     </div>
 </div>
 <!-- button from walkthrough -->

@@ -1,4 +1,5 @@
 import json
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
@@ -14,6 +15,7 @@ from .models import Order, OrderItem
 
 
 @require_POST
+@login_required
 def cache_checkout_data(request):
     """
     View create in connection to having the user be able to save info
@@ -36,6 +38,7 @@ def cache_checkout_data(request):
         return HttpResponse(content=error, status=400)
 
 
+@login_required
 def checkout(request):
     """ A view to return the checkout """
 
@@ -126,6 +129,7 @@ def checkout(request):
     return render(request, template, context)
 
 
+@login_required
 def checkout_success(request, order_number):
     """
     Handle successful checkouts

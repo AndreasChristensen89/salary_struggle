@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import Profile, ActiveCharacter
 from codex.models import Interviewer
+from django.views.generic import UpdateView
+from django.http import HttpResponse
 
 
 @login_required
@@ -37,6 +39,9 @@ def hr_interview(request):
     elif not character.level == 2:
         messages.error(request, "Your can only enter here when you're level 2")
         return redirect(reverse('grind:city'))
+    elif character.energy < 100:
+        messages.error(request, "You need full energy to enter here")
+        return redirect(reverse('grind:agency'))
 
     interviewers = Interviewer.objects.filter(level=1)
     rand_num = randint(0, interviewers.count()-1)
@@ -63,6 +68,9 @@ def coding_interview(request):
     elif not character.level == 3:
         messages.error(request, "Your can only enter here when you're level 3")
         return redirect(reverse('grind:city'))
+    elif character.energy < 100:
+        messages.error(request, "You need full energy to enter here")
+        return redirect(reverse('grind:agency'))
 
     interviewers = Interviewer.objects.filter(level=2)
     rand_num = randint(0, interviewers.count()-1)
@@ -89,6 +97,9 @@ def coding_difficult_interview(request):
     elif not character.level == 4:
         messages.error(request, "Your can only enter here when you're level 4")
         return redirect(reverse('grind:city'))
+    elif character.energy < 100:
+        messages.error(request, "You need full energy to enter here")
+        return redirect(reverse('grind:agency'))
 
     interviewers = Interviewer.objects.filter(level=3)
     rand_num = randint(0, interviewers.count()-1)
@@ -115,6 +126,9 @@ def final_interview(request):
     elif not character.level == 5:
         messages.error(request, "Your can only enter here when you're level 5")
         return redirect(reverse('grind:city'))
+    elif character.energy < 100:
+        messages.error(request, "You need full energy to enter here")
+        return redirect(reverse('grind:agency'))
 
     interviewers = Interviewer.objects.filter(level=4)
     rand_num = randint(0, interviewers.count()-1)
@@ -125,3 +139,26 @@ def final_interview(request):
     }
 
     return render(request, 'interview/final_interview.html', context)
+
+
+class ResetEnergy(UpdateView):
+    """
+    Resets players energy to avoid reload window,
+    thus preventing "cheating" restarts
+    """
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # Update Active Character
+            c.energy = 0
+            c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)

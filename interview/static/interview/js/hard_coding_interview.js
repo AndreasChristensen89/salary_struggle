@@ -32,6 +32,26 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#question-text").animate({opacity: 1}, "medium");
             buildQuestions();
             timer();
+
+            // Sends an ajax request to reset player's energy.
+            // Done in order to prevent players from reloading windom an resetting interview
+            // Energy is needed to start interview
+
+            // get the CSRF token
+            const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            // remove the token from the DOM
+            document.querySelector('[name=csrfmiddlewaretoken]').remove();
+            
+            var energy = parseInt($("#energy").text());
+            $.ajax({
+                type: "POST",
+                url: "/interview/reset-energy/",
+                headers: {'X-CSRFToken': csrf},
+                success: function(){
+                    $("#energy").text(0);
+                    energy = 0;
+                    } 
+            });
         }
         });
 });
