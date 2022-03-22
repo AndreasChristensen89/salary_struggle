@@ -7,6 +7,7 @@ from .forms import ProductForm
 from profiles.models import Profile
 
 
+@login_required
 def all_products(request):
     """ A view to return the products page """
 
@@ -42,6 +43,7 @@ def all_products(request):
     return render(request, 'shop/products.html', context)
 
 
+@login_required
 def product_details(request, product_id):
     """ A view to return the item details page """
 

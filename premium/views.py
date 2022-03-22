@@ -51,11 +51,13 @@ def checkout(request):
             'email': request.POST['email'],
         }
         order_form = OrderForm(form_data)
+        profile = Profile.objects.get(user=request.user)
 
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
+            order.user_profile = profile
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
@@ -129,14 +131,21 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     order = get_object_or_404(Order, order_number=order_number)
+    profile = Profile.objects.get(user=request.user)
 
     if request.user.is_authenticated:
-        profile = Profile.objects.get(user=request.user)
-        # Attach the user's profile to the order
-        order.user_profile = profile
-        order.save()
-
-    messages.success(request, 'Order is successful!')
+        if profile == order.user_profile:
+            # profile = Profile.objects.get(user=request.user)
+            # # Attach the user's profile to the order
+            # order.user_profile = profile
+            # order.save()
+            messages.success(request, 'Order is successful!')
+        else:
+            messages.warning(request, 'No access')
+            return redirect(reverse('home:index'))
+    else:
+        messages.warning(request, 'Correct login needed to see order details')
+        return redirect(reverse('home:index'))
 
     if 'bag' in request.session:
         del request.session['bag']

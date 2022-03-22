@@ -333,6 +333,8 @@ Email is sent when registering to confirm the email.
 Admin credentials given on submission
 
 ## Must have settings...
+Profile model and ActiveCharacter model is connected via the views.
+This means that admin cannot delete an active character connected to a user without having set the active_char of the profile to False.
 
 # Setup explanation
 ## Premium Membership
@@ -573,5 +575,11 @@ To do list:
 - Finish leaderboard set limit top 10
 - Redesign product, item, and interviewer detail pages
 - Test new views
+<!-- - Make non-user be able to use shopping bag -->
+- Create About page
+- Make sure order is attached to user so other cannot access success page
+- Business + SEO criteria
+- Change MEDIA link for product with no picture
+- Change checkout page resign for items
 
 
