@@ -4,7 +4,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="h-100 overview" id="bar-background">
-    <div id="bar-background-img">
+    <div class="text-center" id="bar-background-img">
 
         <div class="row">
             <a class="col-2 text-center m-3 rounded" href="{% url 'grind:city' %}">
@@ -12,20 +12,23 @@
             </a>
         </div>
 
-        <div class="row fixed-bottom my-4">
-            <div class="col-6 mx-auto text-center">
-                <div class="rounded border border-dark update-button" id="drinkButton">
-                    <h5 class="h5">Drink</h5>
-                    <p class="">Mind the hangover</p>
-                </div>
-            </div>
-            <div class="col-6 mx-auto text-center">
-                <div class="rounded border border-dark update-button" id="converse">
-                    <h5 class="h5">Converse</h5>
-                    <p class="">+2 charm</p>
-                </div>
-            </div>
-        </div>
+        <button class="action" aria-label="Opens and closes the menu">
+            <span class="menuIcon material-icons" aria-hidden="true">
+                Actions
+            </span>
+            <span class="xIcon material-icons d-none" aria-hidden="true">
+                Close
+            </span>
+        </button>
+        <ul class="menu rounded" id="menu-bg">
+            <li>
+                <div class="menuLink lead d-none" id="drinkButton" aria-label="">Drink</div>
+            </li>
+            <li>
+                <div class="menuLink lead d-none" id="converse" aria-label="">Converse</div>
+            </li>
+        </ul>
+
     </div>
 </div>
 <div id="loading-overlay">
@@ -42,4 +45,5 @@
 
 {% block postloadjs %}
     <script type="text/javascript" src="{% static 'grind/js/ajax_bar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}

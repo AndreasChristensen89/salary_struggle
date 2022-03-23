@@ -1,4 +1,4 @@
-.hamburger {
+.action {
     position: fixed;
     z-index: 100;
     bottom: 1rem;
@@ -17,7 +17,7 @@
 
 .menu {
     position: fixed;
-    top: 88px;
+    top: 84px;
     right: 0;
     width: 23vw;
     background: rgb(111, 159, 195, 0.8);

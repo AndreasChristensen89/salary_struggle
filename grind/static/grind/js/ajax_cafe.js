@@ -26,7 +26,7 @@ $("#study").click(function() {
                 $("#study").addClass("bg-success");
                 $("#intellect").text(intellect + 2);
                 $("#coding").text(coding + 2);
-                $("#energy").text(energy-(60-endurance));
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
                     
                 intellect = intellect + 2;
                 coding = coding + 2;
@@ -39,7 +39,7 @@ $("#study").click(function() {
                 $("#study").addClass("bg-warning");
                 $("#intellect").text(intellect+1);
                 $("#coding").text(coding+1);
-                $("#energy").text(energy-(60-endurance));
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
                     
                 intellect = intellect + 1;
                 coding = coding + 1;

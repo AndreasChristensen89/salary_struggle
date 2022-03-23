@@ -59,7 +59,9 @@ function success() {
     $('.overview').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
     $(".level-one").addClass("hide");
-    $("#passed").removeClass("hide");
+    $("#passed").removeClass("d-none");
+    $('#bubble').css('opacity', '1');
+    $('.action').off();
 
     setTimeout(() => {
         $('.overview').fadeToggle(100);

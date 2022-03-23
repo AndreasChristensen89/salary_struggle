@@ -1,20 +1,20 @@
-let menu = document.querySelector(".menu");
+$('.action').click(moveMenu);
 
-$('.hamburger').click(moveMenu);
-
+// When .action is clicked classes change the color, display, and placement of the action menu
+// showing and hiding it
 function moveMenu() {
-    if (menu.classList.contains("menuDown")) {
+    if ( $(".menu").hasClass("menuDown")) {
         $(".menu").removeClass("menuDown");
         $(".menuLink").addClass("d-none");
-        $(".menu").attr('id', 'menu-bg');
+        // $(".menu").attr('id', 'menu-bg');
         $(".xIcon").removeClass("d-block");
         $(".xIcon").addClass("d-none");
         $(".menuIcon").addClass("d-block");
         $(".menuIcon").removeClass("d-none");
     } else {
-        menu.classList.add("menuDown");
+        $(".menu").addClass("menuDown");
         $(".menuLink").removeClass("d-none");
-        $(".menu").removeAttr('id');
+        // $(".menu").removeAttr('id');
         $(".xIcon").removeClass("d-none");
         $(".xIcon").addClass("d-block");
         $(".menuIcon").addClass("d-none");
@@ -24,6 +24,6 @@ function moveMenu() {
 
 // let menuLinks = document.querySelectorAll(".menuLink");
 
-// for (let link of menuLinks) {
-//     link.addEventListener("click", moveMenu);
-// }
+for (let link of $(".menuLink")) {
+    link.addEventListener("click", moveMenu);
+}

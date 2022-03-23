@@ -17,7 +17,7 @@ $("#drinkButton").click(function() {
                 if (money >= 1000) {
                     $("#drinkButton").addClass("bg-success");
                     $("#charm").text(charm+2);
-                    $("#money").text(money-1000);
+                    $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money-1000}`);
                     charm = charm+2;
                     money = money-1000;
 
@@ -30,7 +30,7 @@ $("#drinkButton").click(function() {
                         $("#drinkButton").removeClass("bg-danger");
                     }, 800);
                 }
-                $("#energy").text(energy-(40-endurance));
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 energy = energy-(40-endurance);
             } else {
                 $("#drinkButton").addClass("bg-danger");
@@ -58,7 +58,7 @@ $("#converse").click(function() {
         if (energy >= (40-endurance) && randomNumber <= 2) {
             $("#converse").addClass("bg-success");
             $("#charm").text(charm+2);
-            $("#energy").text(energy-(40-endurance));
+            $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 
             charm = charm+2;
             energy = energy-(40-endurance);

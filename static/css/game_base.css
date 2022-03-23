@@ -231,6 +231,24 @@ body {
     }
 }
 
+#bubble-agency {
+    position: relative;
+    max-width: 30em;
+    opacity: 0;
+    background-color: #fff;
+    padding: 1.125em 1.5em;
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+#hr-animation {
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
 #bubble {
     position: relative;
     max-width: 30em;
@@ -254,6 +272,19 @@ body {
 
     border-bottom-color: #fff;
     filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+#hint-row {
+    position: fixed;
+    right: 0;
+    top: 120px;
+    left: 0;
+    z-index: 1030;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 #question-text {

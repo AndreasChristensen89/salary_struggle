@@ -4,7 +4,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="h-100" id="agency-background">
-    <div id="agency-background-img">
+    <div class="text-center" id="agency-background-img">
 
     <div class="row">
         <a class="col-2 text-center m-3 rounded" href="{% url 'grind:city' %}">
@@ -14,82 +14,80 @@
 
     {% if character.level == 1 %}
     <div class="row text-center level-one">
-        <div class="col-10 mx-auto">
-            <h3 class="h3">Ask for interview</h3>
+        <div class="col-10 col-md-8 col-lg-4 mx-auto">
+            <h3 class="bg-white h3">Ask for interview</h3>
         </div>
     </div>
-
-    <div class="row pt-5 text-center hide" id="passed">
-        <div class="col-10 mx-auto">
-            <h3 class="lead">I think we might be able to set you up with an interview. Come back later and we'll see if we have anything for you.</h3>
+    <div class="row answer-buttons d-none" id="passed">
+        <div class="col-10 mx-auto text-center mt-1">
+          <p id="bubble">
+              I think we might be able to set you up with an interview. Come back later and we'll see if we have anything for you.
+          </p>
         </div>
     </div>
-    
-    <div class="row pt-2 fixed-bottom">
-
-        <div class="col-5 mx-auto text-center level-one">
-            <div class="border rounded ask-interview update-button" value="intellect" id="agency_intellect">
-                <p class="lead update-button">Use intellect</p>
-                <!-- <p class="lead">Odds: Intellect to 20</p> -->
-            </div>
-        </div>
-
-        <div class="col-5 mx-auto text-center mb-4 level-one">
-            <div class="border rounded ask-interview update-button" value="charm" id="agency_charm">
-                <p class="lead update-button">Use charm</p>
-                <!-- <p class="lead">Odds: Charm to 20</p> -->
-            </div>
-        </div>
-
-        <div class="col-5 mx-auto text-center mb-4 level-one">
-            <div class="border rounded ask-interview update-button" value="coding" id="agency_coding">
-                <p class="lead">Use coding</p>
-                    <!-- <p class="lead">Odds: Coding to 20</p> -->
-            </div>
-        </div>
-
-        <div class="col-5 mx-auto text-center level-one">
-            <div class="border rounded update-button" id="agency_combine">
-                <p class="lead update-button">Combine skills</p>
-                <!-- <p class="lead">Odds: Intellect + Charisma + Coding to 60</p> -->
-            </div>
-        </div>
-
-    </div>
+    <button class="action" aria-label="Opens and closes the menu">
+        <span class="menuIcon material-icons" aria-hidden="true">
+            Actions
+        </span>
+        <span class="xIcon material-icons d-none" aria-hidden="true">
+            Close
+        </span>
+    </button>
+    <ul class="menu rounded" id="menu-bg">
+        <li>
+            <div class="menuLink lead d-none ask-interview" value="intellect" id="agency_intellect" aria-label="">Use intellect</div>
+        </li>
+        <li>
+            <div class="menuLink lead d-none ask-interview" value="charm" id="agency_charm" aria-label="">Use charm</div>
+        </li>
+        <li>
+            <div class="menuLink lead d-none ask-interview" value="coding" id="agency_coding" aria-label="">Use coding</div>
+        </li>
+        <li>
+            <div class="menuLink lead d-none ask-interview" id="agency_combine" aria-label="">Combine skills</div>
+        </li>
+    </ul>
 
     {% elif character.level == 2 %}
 
-    <div class="row mb-5 text-center">
-        <div class="col-10 mx-auto">
-            <a id="HRInterview" class="hide" href="{% url 'interview:hr_interview' %}">
-                <h3 class="h3 border">Start HR interview</h3>
+    <div class="row mb-5 text-center d-none" id="hrInterviewLink">
+        <div class="col-8 mx-auto">
+            <a id="HRInterview" href="{% url 'interview:hr_interview' %}">
+                <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start HR interview</h3>
             </a>
         </div>
     </div>
 
+    <div class="row answer-buttons d-none" id="introHrInterview">
+        <div class="col-10 mx-auto text-center mt-1">
+          <p id="bubble-agency"></p>
+        </div>
+    </div>
 
-    <div class="row fixed-bottom mb-5" id="hint-row">
+    <button id="next-hint" class="border rounded btn col-4 mx-auto d-none" aria-label="Next hint button">Next</button>
+
+    <div class="row" id="hint-row">
         <div class="col-12 text-center">
             <button aria-label="Hint nutton" id="hint-btn" class="btn"><i class="far fa-comment-dots"></i></button>
         </div>
     </div>
 
-    <div class="row pt-2 text-center hide fixed-bottom mb-5" id="hint-text">
-        <div class="col-10 mx-auto">
-            <p class="lead border hide hint bg-info">Hi, I'm Steve the recruiter.</p>
-            <p class="lead border hide hint bg-info">Glad to meet you. You look like you have some promise.</p>
-            <p class="lead border hide hint bg-info">I'm pleased to let you know that your first interview is now available.</p>
-            <p class="lead border hide hint bg-info">I should probably give you a briefing of what you're about to join</p>
-            <p class="lead border hide hint bg-info">So, the company's name is Data Drifters and they specialize in database integrations.</p>
-            <p class="lead border hide hint bg-info">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
-            <p class="lead border hide hint bg-info">They can be quite selfish. You basically have to adapt your answer to their personality traits in order to succeed.</p>
+    <!-- <div class="row pt-2 text-center hide fixed-bottom mb-5" id="hint-text"> -->
+        <div class="d-none">
+            <p class="hint">Hi, I'm Steve the recruiter.</p>
+            <p class="hint">Glad to meet you. You look like you have some promise.</p>
+            <p class="hint">I'm pleased to let you know that your first interview is now available.</p>
+            <p class="hint">I should probably give you a briefing of what you're about to join</p>
+            <p class="hint">So, the company's name is Data Drifters and they specialize in database integrations.</p>
+            <p class="hint">I'm not sure who will interview you. Also, you should know that interviewers are quite different from one another.</p>
+            <p class="hint">They can be quite selfish. You basically have to adapt your answer to their personality traits in order to succeed.</p>
             <!-- <p class="lead border hide hint">You can always attempt your skills with them. They won't penalize you for that.</p> -->
-            <p class="lead border hide hint bg-info">See if you can reach the impress level needed.</p>
-            <p class="lead border hide hint bg-info">Best of luck to you!</p>
+            <p class="hint">See if you can reach the impress level needed.</p>
+            <p class="hint">Best of luck to you!</p>
         </div>
 
         <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide bg-primary">Next</button>
-    </div>
+    <!-- </div> -->
     {% elif character.level == 3 %}
     <div class="row py-5 text-center">
         <div class="col-10 mx-auto">
@@ -116,7 +114,7 @@
             <p class="lead border hide hint">Best of luck to you!</p>
         </div>
 
-        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
+        <!-- <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button> -->
     </div>
     {% elif character.level == 4 %}
     <div class="row py-5 text-center">
@@ -197,4 +195,5 @@
     {{ block.super }}
     <script type="text/javascript" src="{% static 'grind/js/agency.js' %}"></script>
     <script type="text/javascript" src="{% static 'grind/js/ajax_agency.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}
