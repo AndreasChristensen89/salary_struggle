@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 
 class Leaderboard(models.Model):
     """
-    Leaderboard Model
+    Leaderboard Model for entries of finished games
+    Takes in active character's stats, checks for top 10,
+    if ok adds the score
     """
 
     class Meta:
@@ -15,6 +17,7 @@ class Leaderboard(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL,
                              blank=False, null=True)
+    score = models.IntegerField(null=False, blank=False)
     submission_date = models.DateTimeField(auto_now_add=True)
     char_intellect = models.IntegerField(null=False, blank=False)
     char_charm = models.IntegerField(null=False, blank=False)
@@ -27,11 +30,10 @@ class Leaderboard(models.Model):
         return f'{self.user.username} | Day {self.char_day }'
 
     @classmethod
-    def active_char_to_leaderboard(cls, active_char):
+    def active_char_to_leaderboard(cls, active_char, score):
         """
-        Class method for building the required structure of
-        the leaderboard model before saving it to the database.
-        Method takes in active character and their score.
+        Class method that creates an entry to be added
+        Takes in the active character and the score to build entry
         """
 
         entry = {}
@@ -42,6 +44,7 @@ class Leaderboard(models.Model):
         entry['char_endurance'] = active_char.endurance
         entry['char_money'] = active_char.money
         entry['char_day'] = active_char.day
+        entry['score'] = score
 
         new_leaderboard_entry = cls(**entry)
         new_leaderboard_entry.save()
@@ -49,9 +52,8 @@ class Leaderboard(models.Model):
     @staticmethod
     def calculate_score(active_char):
         """
-        Static method for calculating the score of an active
-        player. Used for comparing entries within the database,
-        and for saving new entry to the DB.
+        Calculates score of active character
+        Uses stats and combines them into one number
         """
         score = 0
         score += active_char.day
@@ -65,15 +67,9 @@ class Leaderboard(models.Model):
     @classmethod
     def leaderboard_check(cls, active_char):
         """
-        Class method for checking whether active character
-        has earned a place on the scoreboard.
-        Method obtains all current entries in leaderboard
-        DB, calculates users score, and determines whether
-        the active characters score is higher than the lowest
-        entry in the DB. If so, or if there are less than 10
-        entries in the DB, the method calls the active_char_to_leaderboard
-        method to store the active character and their score to the DB.
-        Returns Bool to confirm if score has been entered, and players score.
+        Checks if active character's score has reached the top 10.
+        Sorts leaderboard and checks length to see if less than 10
+        If more than 10 then compares to 9th entry and replaces if higher
         """
 
         current_leaderboard = cls.objects.sort_leaderboard()
@@ -83,7 +79,7 @@ class Leaderboard(models.Model):
             if current_leaderboard[9].score > score:
                 return (False, score)
             current_leaderboard[9].delete()
-            cls.active_char_to_leaderboard(active_char)
+            cls.active_char_to_leaderboard(active_char, score)
             return (True, score)
-        cls.active_char_to_leaderboard(active_char)
+        cls.active_char_to_leaderboard(active_char, score)
         return (True, score)
