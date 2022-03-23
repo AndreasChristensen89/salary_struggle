@@ -45,3 +45,45 @@ class Leaderboard(models.Model):
 
         new_leaderboard_entry = cls(**entry)
         new_leaderboard_entry.save()
+
+    @staticmethod
+    def calculate_score(active_char):
+        """
+        Static method for calculating the score of an active
+        player. Used for comparing entries within the database,
+        and for saving new entry to the DB.
+        """
+        score = 0
+        score += active_char.day
+        score += active_char.intellect
+        score += active_char.charm
+        score += active_char.coding
+        score += active_char.endurance
+
+        return score
+
+    @classmethod
+    def leaderboard_check(cls, active_char):
+        """
+        Class method for checking whether active character
+        has earned a place on the scoreboard.
+        Method obtains all current entries in leaderboard
+        DB, calculates users score, and determines whether
+        the active characters score is higher than the lowest
+        entry in the DB. If so, or if there are less than 10
+        entries in the DB, the method calls the active_char_to_leaderboard
+        method to store the active character and their score to the DB.
+        Returns Bool to confirm if score has been entered, and players score.
+        """
+
+        current_leaderboard = cls.objects.sort_leaderboard()
+        score = cls.calculate_score(active_char)
+
+        if len(current_leaderboard) >= 10:
+            if current_leaderboard[9].score > score:
+                return (False, score)
+            current_leaderboard[9].delete()
+            cls.active_char_to_leaderboard(active_char)
+            return (True, score)
+        cls.active_char_to_leaderboard(active_char)
+        return (True, score)
