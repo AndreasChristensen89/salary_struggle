@@ -18,14 +18,18 @@ $("#homeCharm").click(function() {
         headers: {'X-CSRFToken': csrf},
         success: function(){
             if (energy - (40-endurance) >= 0 ) {
-                $("#homeCharm").addClass("bg-success");
                 $("#charm").text(charm+1);
                 charm = charm+1;
-                $("#energy").text(energy-(40-endurance));
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 energy = energy-(40-endurance);
+
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(2).fadeToggle(100);
+
                 setTimeout(() => { 
-                    $("#homeCharm").removeClass("bg-success");
-                }, 800);
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(2).fadeToggle(100);
+                }, 1500);
             } else {
                 $("#homeCharm").addClass("bg-danger");
                 setTimeout(() => { 
@@ -51,11 +55,11 @@ $("#sleep").click(function() {
         success: function(){
             if (energy < 100) {
                 $("#charm").text(charm+-charmPenalty);
-                $("#energy").text(100-energyPenalty);
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${100-energyPenalty}`);
                 $("#intellect").text(intellect-intellectPenalty);
                 $("#coding").text(coding-codingPenalty);
                 $("#endurance").text(endurance-endurancePenalty);
-                $("#day").text(day+1);
+                $("#day").html(`<i class="far fa-calendar-alt"></i> ${day+1}`);
 
                 // applying penalties, if any
                 coding = coding-codingPenalty;
@@ -65,6 +69,7 @@ $("#sleep").click(function() {
                 endurance = endurance-endurancePenalty;
                 day++;
 
+                // resetting penalties, in case user stays and performs new actions
                 codingPenalty = 0;
                 intellectPenalty = 0;
                 energyPenalty = 0;
@@ -72,12 +77,12 @@ $("#sleep").click(function() {
                 endurancePenalty = 0;
 
                 $('.overview').fadeToggle(100);
-                $('#loading-overlay').fadeToggle(100);
+                $(".loading-overlay").eq(0).fadeToggle(100);
 
                 setTimeout(() => { 
                     $('.overview').fadeToggle(100);
-                    $('#loading-overlay').fadeToggle(100);
-                }, 1500);
+                    $(".loading-overlay").eq(0).fadeToggle(100);
+                }, 3000);
             } else {
                 $("#sleep").addClass("bg-danger");
                 setTimeout(() => { 
@@ -96,16 +101,20 @@ $("#homeStudy").click(function() {
         headers: {'X-CSRFToken': csrf},
         success: function(){
             if (energy - (40-endurance) >= 0 ) {
-                $("#homeStudy").addClass("bg-success");
-                $("#energy").text(energy-(40-endurance));
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 $("#coding").text(coding+1);;
 
                 coding = coding+1;
                 energy = energy- (40-endurance);
 
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(1).fadeToggle(100);
+
                 setTimeout(() => { 
-                    $("#homeStudy").removeClass("bg-success");
-                }, 800);
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(1).fadeToggle(100);
+                }, 1500);
+
             } else {
                 $("#homeStudy").addClass("bg-danger");
                 setTimeout(() => { 

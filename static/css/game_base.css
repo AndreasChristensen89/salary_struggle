@@ -67,7 +67,7 @@ body {
     background-color: #f8f9fa;
 }
 
-#loading-overlay {
+.loading-overlay {
 	display: none;
 	position: fixed;
     top: 0;
@@ -76,6 +76,14 @@ body {
     height: 100%;
     background: black;
     z-index: 9999;
+}
+
+.loading-icon {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 60%;
 }
 
 .loading-spinner {
@@ -234,6 +242,7 @@ body {
 #bubble-agency {
     position: relative;
     max-width: 30em;
+    height: 160px;
     opacity: 0;
     background-color: #fff;
     padding: 1.125em 1.5em;

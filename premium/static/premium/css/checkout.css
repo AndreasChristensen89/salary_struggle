@@ -49,7 +49,7 @@ select option[value=""] {
 }
 
 /* from walkthrough project */
-#loading-overlay {
+.loading-overlay {
 	display: none;
 	position: fixed;
     top: 0;
