@@ -19,17 +19,11 @@
     position: fixed;
     top: 88px;
     right: 0;
-    /* bottom: 0; */
     width: 23vw;
-    /* background-color: #5a848f; */
-    /* height: 100%; */
     background: rgb(111, 159, 195, 0.8);
-    /* color: white; */
     transform: translateY(-100%);
     transition: transform 0.2s;
     list-style: none;
-    /* padding-top: 10vw;
-    padding-left: 1rem; */
     z-index: 1;
 }
 
@@ -44,7 +38,6 @@ li {
 .menuLink {
     display: inline;
     font-size: 3vw;
-    /* color: white; */
     text-decoration: none;
 }
 
