@@ -17,12 +17,13 @@
 
 .menu {
     position: fixed;
-    top: 84px;
-    right: 0;
-    width: 23vw;
-    background: rgb(111, 159, 195, 0.8);
-    transform: translateY(-100%);
-    transition: transform 0.2s;
+    bottom: 88px;
+    right: 1rem;
+    width: 15vw;
+    height: 200px;
+    /* background: rgb(111, 159, 195, 0.8); */
+    transform: translateX(150%);
+    transition: transform 0.3s;
     list-style: none;
     z-index: 1;
 }
