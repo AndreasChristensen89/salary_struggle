@@ -82,7 +82,7 @@ $("#sleep").click(function() {
                 setTimeout(() => { 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(0).fadeToggle(100);
-                }, 3000);
+                }, 100000);
             } else {
                 $("#sleep").addClass("bg-danger");
                 setTimeout(() => { 
