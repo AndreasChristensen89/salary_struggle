@@ -593,19 +593,20 @@ To do list:
 - Make sure order is attached to user so other cannot access success page - DONE
 - Order history was accessible for others with the link - defensive programming DONE
 - Include ajax call at the of interview to avoid players refreshing to restart interview - DONE
+- Change MEDIA link for product with no picture - DONE
+- Create About page - DONE
+- Test new views - DONE
+- Finish leaderboard set limit top 10 - DONE
+- Redesign intro page - DONE
 
 
 - Design more characters
 - Finish final interview
 - Make ending to game - good + fail
-- Redesign intro page - Started
-- Finish leaderboard set limit top 10
 - Redesign product, item, and interviewer detail pages
-- Test new views
-- Create About page
 - Business + SEO criteria
-- Change MEDIA link for product with no picture
 - Change checkout page resign for items
+- Create messages in game
 
 
 

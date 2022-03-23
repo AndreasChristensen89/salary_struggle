@@ -3,12 +3,13 @@
     z-index: 100;
     bottom: 1rem;
     right: 1rem;
-    width: 15vw;
-    height: 15vw;
+    width: 70px;
+    height: 70px;
     border: black solid 1px;
     background: white;
     cursor: pointer;
     border-radius: 50%;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .xIcon {
@@ -19,13 +20,15 @@
     position: fixed;
     bottom: 88px;
     right: 1rem;
-    width: 15vw;
+    width: 70px;
     height: 200px;
     /* background: rgb(111, 159, 195, 0.8); */
-    transform: translateX(150%);
+    transform: translateX(200%);
     transition: transform 0.3s;
     list-style: none;
     z-index: 1;
+    border: 1px solid black;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .menuDown {
@@ -38,7 +41,7 @@ li {
 
 .menuLink {
     display: inline;
-    font-size: 3vw;
+    font-size: 14pt;
     text-decoration: none;
 }
 
@@ -47,5 +50,5 @@ li {
 }
 
 .material-icons {
-    font-size: 3vw;
+    font-size: 14pt;
 }

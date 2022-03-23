@@ -97,6 +97,7 @@
         <h2 class="h2 text-light text-center">Charm increased</h2>
         <hr>
         <h3 class="h3 text-light text-center">Level {{ character.charm|add:1 }}</h3>
+        <h3 class="h3 text-light text-center">Energy cost: {{ 40|sub:character.endurance }}</h3>
     </h1>
 </div>
 

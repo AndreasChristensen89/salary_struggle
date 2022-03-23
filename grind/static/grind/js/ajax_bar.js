@@ -15,15 +15,18 @@ $("#drinkButton").click(function() {
         success: function(){
             if (energy >= (40-endurance)) {
                 if (money >= 1000) {
-                    $("#drinkButton").addClass("bg-success");
                     $("#charm").text(charm+2);
                     $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money-1000}`);
                     charm = charm+2;
                     money = money-1000;
 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(1).fadeToggle(100);
+
                     setTimeout(() => { 
-                    $("#drinkButton").removeClass("bg-success");
-                    }, 800);
+                        $('.overview').fadeToggle(100);
+                        $(".loading-overlay").eq(0).fadeToggle(100);
+                    }, 100000);
                 } else {
                     $("#drinkButton").addClass("bg-danger");
                     setTimeout(() => { 

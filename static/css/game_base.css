@@ -36,6 +36,18 @@ body {
 
 #exit-icon {
     font-size: 24pt;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+.navbar-expand {
+    justify-content: center!important;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 4vw!important;
+    padding-left: 4vw!important;
 }
 
 
@@ -86,13 +98,13 @@ body {
     height: 60%;
 }
 
-.loading-spinner {
+/* .loading-icon {
 	display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     height: 100%;
-}
+} */
 
 #next-btn {
     opacity: 0;
