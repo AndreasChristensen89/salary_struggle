@@ -25,6 +25,7 @@ body {
 
 .game-stat {
     top: 20px;
+    display: inline-block;
 }
 
 #exit-link {
@@ -61,6 +62,10 @@ body {
 .hide {
     display: none;
   }
+
+#menu-bg {
+    background-color: #f8f9fa;
+}
 
 #loading-overlay {
 	display: none;
@@ -192,15 +197,23 @@ body {
     height: 100%;
 }
 
+#enter-headline {
+    z-index: 99999;
+    font-size: 9vh;
+}
+
 #enter-link {
     margin: 30px auto;
-    font-size: 18pt;
-    width: 150px;
+    font-size: 21pt;
+    width: 37vw;
+    max-width: 200px;
+    min-width: 100px;
     background-color: rgb(58 148 50);
     border-radius: 20px;
     box-shadow: black 0px 1px 20px 0px;
     cursor: pointer;
     color: white;
+    z-index: 99999;
 
     animation-name: element-move;
     animation-duration: 0.5s;
@@ -256,6 +269,7 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         height: 320px;
+        max-height: 50%;
     }
     
     #house-background-img {
@@ -294,7 +308,7 @@ body {
     }
 
     .action-btns {
-        margin-bottom: 200px;
+        margin-bottom: 15%;
     }
 }
 

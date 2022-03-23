@@ -1,0 +1,57 @@
+.hamburger {
+    position: fixed;
+    z-index: 100;
+    bottom: 1rem;
+    right: 1rem;
+    width: 15vw;
+    height: 15vw;
+    border: black solid 1px;
+    background: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.xIcon {
+    display: none;
+}
+
+.menu {
+    position: fixed;
+    top: 88px;
+    right: 0;
+    /* bottom: 0; */
+    width: 23vw;
+    /* background-color: #5a848f; */
+    /* height: 100%; */
+    background: rgb(111, 159, 195, 0.8);
+    /* color: white; */
+    transform: translateY(-100%);
+    transition: transform 0.2s;
+    list-style: none;
+    /* padding-top: 10vw;
+    padding-left: 1rem; */
+    z-index: 1;
+}
+
+.menuDown {
+    transform: translateY(0);
+}
+
+li {
+    padding: 1rem 0;
+}
+
+.menuLink {
+    display: inline;
+    font-size: 3vw;
+    /* color: white; */
+    text-decoration: none;
+}
+
+.menuLink:hover {
+    text-decoration: underline;
+}
+
+.material-icons {
+    font-size: 3vw;
+}

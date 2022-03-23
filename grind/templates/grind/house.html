@@ -2,6 +2,10 @@
 {% load static %}
 {% load mathfilters %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'grind/css/hamburger.css' %}">
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 
@@ -17,29 +21,41 @@
             </a>
         </div>
 
+        <!-- <div class="d-none row fixed-bottom action-btns">
+            <div class="col-3 mx-auto text-center">
+                <div class="rounded border border-dark update-button" id="sleep">
+                    <h5 class="h5">Sleep</h5>
+                    <p class="hide">Rest up</p>
+                </div>
+            </div>
+            <div class="col-3 mx-auto text-center">
+                <div class="rounded border border-dark update-button" id="homeStudy">
+                    <h5 class="h5">Study</h5>
+                    <p class="hide">Energy {{ 40|sub:character.endurance }}</p>
+                </div>
+            </div>
+            <div class="col-3 mx-auto text-center">
+                <div class="rounded border border-dark update-button" id="homeCharm">
+                    <h5 class="h5">Practice</h5>
+                    <p class="hide">Energy {{ 40|sub:character.endurance }}</p>
+                </div>
+            </div>
+        </div> -->
 
-        <div class="row fixed-bottom action-btns">
-        <div class="col-3 mx-auto text-center">
-            <div class="rounded border border-dark update-button" id="sleep">
-                <h5 class="h5">Sleep</h5>
-                <p class="">Rest up</p>
-            </div>
-        </div>
-        <div class="col-3 mx-auto text-center">
-            <div class="rounded border border-dark update-button" id="homeStudy">
-                <h5 class="h5">Study</h5>
-                <p class="">+1 coding</p>
-                <p class="">Energy {{ 40|sub:character.endurance }}</p>
-            </div>
-        </div>
-        <div class="col-3 mx-auto text-center">
-            <div class="rounded border border-dark update-button" id="homeCharm">
-                <h5 class="h5">Charm</h5>
-                <p class="">+1 charm</p>
-                <p class="">Energy {{ 40|sub:character.endurance }}</p>
-            </div>
-        </div>
-    </div>
+        <button class="hamburger" aria-label="Opens and closes the menu">
+            <span class="menuIcon material-icons" aria-hidden="true">
+              Actions
+            </span>
+            <span class="xIcon material-icons d-none" aria-hidden="true">
+              Close
+            </span>
+          </button>
+          <ul class="menu rounded" id="menu-bg">
+            <li><div class="menuLink lead d-none" id="sleep" aria-label="Go to Home page">Sleep</div></li>
+            <li><div class="menuLink lead d-none" id="homeStudy" aria-label="Go to Rules page">Study</div></li>
+            <li><div class="menuLink lead d-none" id="homeCharm" aria-label="Go to Contact page">Practice</div></li>
+          </ul>
+        
     </div>
 </div>
 
@@ -56,4 +72,5 @@
 
 {% block postloadjs %}
     <script type="text/javascript" src="{% static 'grind/js/ajax_home.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}
