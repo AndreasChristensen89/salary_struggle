@@ -154,6 +154,7 @@ body {
 
 .return-arrow {
     font-size: 46pt;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .place {
@@ -318,7 +319,7 @@ body {
 #hint-row {
     position: fixed;
     right: 0;
-    top: 120px;
+    top: 170px;
     left: 0;
     z-index: 1030;
 
