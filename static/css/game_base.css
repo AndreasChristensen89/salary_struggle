@@ -254,7 +254,7 @@ body {
 #bubble-agency {
     /* position: relative; */
     max-width: 30em;
-    height: 160px;
+    height: 100px;
     opacity: 0;
     background-color: #fff;
     padding: 1.125em 1.5em;

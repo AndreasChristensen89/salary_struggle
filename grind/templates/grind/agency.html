@@ -68,7 +68,7 @@
 
     <div class="row" id="hint-row">
         <div class="col-12 text-center">
-            <button aria-label="Hint nutton" id="hint-btn" class="btn"><i class="far fa-comment-dots"></i></button>
+            <button aria-label="Hint nutton" id="hint-btn" class="btn"><i class="fas fa-comment text-primary"></i></button>
         </div>
     </div>
 
@@ -88,17 +88,25 @@
         <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide bg-primary">Next</button>
     <!-- </div> -->
     {% elif character.level == 3 %}
-    <div class="row py-5 text-center">
-        <div class="col-10 mx-auto">
-            <a href="{% url 'interview:coding_interview' %}">
-                <h3 class="h3 border">Start coding interview</h3>
+    <div class="row mb-5 text-center d-none" id="hrInterviewLink">
+        <div class="col-5 mx-auto">
+            <a id="HRInterview" href="{% url 'interview:coding_interview' %}">
+                <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start coding interview</h3>
             </a>
         </div>
     </div>
 
-    <div class="row pt-5">
-        <div class="col-10 float-right">
-            <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
+    <div class="row answer-buttons d-none" id="introHrInterview">
+        <div class="col-10 mx-auto text-center mb-2">
+          <p id="bubble-agency"></p>
+        </div>
+    </div>
+
+    <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none" aria-label="Next hint button">Next</button>
+
+    <div class="row" id="hint-row">
+        <div class="col-12 text-center">
+            <button aria-label="Hint button" id="hint-btn" class="btn"><i class="fas fa-comment text-primary"></i></button>
         </div>
     </div>
 
@@ -108,8 +116,9 @@
             hardships.</p>
         <p class="hint">Don't worry too much. There's always a chance that you can bluff your way out of a situation.
         </p>
-        <p class="hint">Unfortunately for this one there's often only one correct answer, unless you're able to convince
-            the interviewer otherwise</p>
+        <p class="hint">Unfortunately for this one there's often only one correct answer...</p>
+        <p class="hint">... unless you're able to convince the interviewer otherwise</p>
+        <p class="hint">You can always go wild. They might like that if luck is on your side</p>
         <p class="hint">You can use your skills to benefit you. However, you will be penalized if the skill fails.</p>
         <p class="hint">Oh, by the way. I heard that the programming language will be Python. Better prepare a bit.</p>
         <p class="hint">Best of luck to you!</p>

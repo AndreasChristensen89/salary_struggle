@@ -12,7 +12,7 @@
   <section id="introduction">
     <div class="row pt-3 intro">
         <div class="col-10 mx-auto text-center">
-             <h1 class="display-3">Welcome to your first coding interview</h1>
+             <h1 class="display-3">Welcome to the coding interview</h1>
         </div>
     </div>
 
@@ -85,30 +85,31 @@
         <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
       </div>
 
-      <div class="row mt-3 my-5 hide" id="question-answers">
-        <div class="col-10 mx-auto text-center mt-3">
-          <h4 class="h4 text center">Choose your answer</h4>
-        </div>
+      <div class="row hide" id="question-answers">
         <div class="col-10 text-center mx-auto mt-2">
-          <button aria-label="Answer Intellect" class="btn border my-3 answer-btn col-8" id="answer-intellect" value="a"></button>
-          <button aria-label="Answer Charm" class="btn border my-3 answer-btn col-8" id="answer-charm" value="b"></button>
-          <button aria-label="Answer Coding" class="btn border my-3 answer-btn col-8" id="answer-coding" value="c"></button>
-          <button aria-label="Answer Wild" class="btn border my-3 answer-btn col-8" id="answer-wild" value="wild"></button>
+          <button aria-label="Answer A" class="btn border my-1 answer-btn col-8" id="answer-a" value="a"></button>
+          <button aria-label="Answer B" class="btn border my-1 answer-btn col-8" id="answer-b" value="b"></button>
+          <button aria-label="Answer C" class="btn border my-1 answer-btn col-8" id="answer-c" value="c"></button>
         </div>
       </div>
 
       <div class="row mt-3 fixed-bottom my-5" id="skill-answers">
-        <div class="col-10 mx-auto text-center mt-3">
-          <h4 class="h4 text center">Choose your approach</h4>
-        </div>
+        <!-- <div class="col-10 mx-auto text-center mt-3">
+          <h4 class="h4 text center">Skills</h4>
+        </div> -->
         <div class="col-10 text-center mx-auto">
           <button aria-label="Charm Button" id="charm-btn" class="btn border m-2 col-3 skill-btn" value="charm">Charm</button>
           <button aria-label="Intellect Button" id="intellect-btn" class="btn border m-2 col-3 skill-btn" value="intellect">Intellect</button>
           <button aria-label="Coding Button" id="coding-btn" class="btn border m-2 col-3 skill-btn" value="coding">Coding</button>
-          <button aria-label="Coding Button" id="wild-btn" class="btn border m-2 col-3 skill-btn" value="wild">Wild</button>
         </div>
       </div>
     </section>
+
+    <div class="d-none">
+      <div id="answer-charm"></div>
+      <div id="answer-intellect"></div>
+      <div id="answer-coding"></div>
+    </div>
   
     <div class="d-none">
       <div id="char-charm">{{character.charm}}</div>
@@ -156,7 +157,7 @@
   
       <div class="row pt-3 ending-fail">
         <div class="col-10 mx-auto text-center top-text-interview">
-             <p class="lead">Don't worry, this won't be your last attempt. Head back to the agency and try again!</p>
+             <p class="lead">Don't worry, this won't be your last attempt. Head back to the agency anytime and try again!</p>
         </div>
       </div>
 
