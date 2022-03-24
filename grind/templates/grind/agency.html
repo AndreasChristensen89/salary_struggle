@@ -184,16 +184,16 @@
             <p class="hint">Skill up and prepare the best you can.</p>
             <p class="hint">Give it your best shot!</p>
         </div>
-
+        
     {% elif character.level == 5 %}
         {% if character.energy >= 100 %}
-            <div class="row py-5 text-center">
-                <div class="col-10 mx-auto">
-                    <a href="{% url 'interview:final_interview' %}">
-                        <h3 class="h3 border">Start final interview</h3>
-                    </a>
-                </div>
+        <div class="row mb-5 text-center d-none" id="interviewLink">
+            <div class="col-5 mx-auto">
+                <a id="HRInterview" href="{% url 'interview:final_interview' %}">
+                    <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start Final Interview</h3>
+                </a>
             </div>
+        </div>
         {% else %}
             <div class="row mb-5 text-center d-none" id="interviewLink">
                 <div class="col-5 mx-auto">
@@ -201,28 +201,36 @@
                 </div>
             </div>
         {% endif %}
-
-    <div class="row">
-        <div class="col-4">
-            <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
+    <div class="row answer-buttons d-none" id="introInterview">
+        <div class="col-10 mx-auto text-center mb-2">
+            <p id="bubble-agency"></p>
         </div>
     </div>
 
-    <div class="row pt-2 text-center hide" id="hint-text">
-        <div class="col-10 mx-auto">
-            <p class="lead border hide hint">Wow! You actually managed to pass the interview.</p>
-            <p class="lead border hide hint">I know the guy... he can be a tool.</p>
-            <p class="lead border hide hint">Well, I suppose I can only congratulate you on making it this far.</p>
-            <p class="lead border hide hint">The final interview is now available.</p>
-            <p class="lead border hide hint">You'll be meeting the big boss. A serious guy to say the least.</p>
-            <p class="lead border hide hint">He'll probably try to scare you by bringing you in his dungeon-like office.</p>
-            <p class="lead border hide hint">Try to keep your cool. The job is within range. If you made it this far you have what it takes... I'm pretty sure at least!</p>
-            <p class="lead border hide hint">Don't be discouraged! No fear! Go for glory!</p>
-            <p class="lead border hide hint">As always, I wish you the best of luck!</p>
-        </div>
+    <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none"
+        aria-label="Next hint button">Next</button>
 
-        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
+    <div class="row" id="hint-row">
+        <div class="col-12 text-center">
+            <button aria-label="Hint nutton" id="hint-btn" class="btn">
+                <i class="fas fa-comment text-primary"></i>
+            </button>
+        </div>
     </div>
+
+    <div class="d-none">
+        <p class="hint">Wow! You actually managed to pass the interview.</p>
+        <p class="hint">I know the guy... he can be a tool.</p>
+        <p class="hint">Well, I suppose I can only congratulate you on making it this far.</p>
+        <p class="hint">The final interview is now available.</p>
+        <p class="hint">You'll be meeting the big boss. A wild guy to say the least.</p>
+        <p class="hint">He'll probably try to scare you by bringing you in his dungeon-like office.</p>
+        <p class="hint">Try to keep your cool. The job is within range. If you made it this far you have what it takes...
+            I'm pretty sure at least!</p>
+        <p class="hint">Don't be discouraged! No fear! Go for glory!</p>
+        <p class="hint">As always, I wish you the best of luck!</p>
+    </div>
+
     {% endif %}
     </div>
 </div>
