@@ -38,7 +38,12 @@ $("#sleep").click(function() {
                     $(".loading-overlay").eq(0).fadeToggle(100);
                 }, 4000);
             } else {
-                console.log("You already have full energy");
+                $("#game-message").text("Already full energy");
+                $("#game-message-container").removeClass("d-none");
+
+                setTimeout(() => { 
+                    $("#game-message-container").addClass("d-none");
+                }, 1500);
             }
             
         }
@@ -65,7 +70,12 @@ $("#homeCharm").click(function() {
                     $(".loading-overlay").eq(2).fadeToggle(100);
                 }, 1500);
             } else {
-                console.log("Not enough energy");
+                $("#game-message").text("Not enough energy");
+                $("#game-message-container").removeClass("d-none");
+
+                setTimeout(() => { 
+                    $("#game-message-container").addClass("d-none");
+                }, 1500);
             }
             
         }
@@ -95,7 +105,12 @@ $("#homeStudy").click(function() {
                 }, 1500);
 
             } else {
-                console.log("Not enough energy");
+                $("#game-message").text("Not enough energy");
+                $("#game-message-container").removeClass("d-none");
+
+                setTimeout(() => { 
+                    $("#game-message-container").addClass("d-none");
+                }, 1500);
             }
             
         }

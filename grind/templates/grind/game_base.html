@@ -65,14 +65,14 @@
         </div>
       </a>
 
-        <div class="d-none row border-bottom pb-2">
-          
-          <span class="d-none" id="intellect"> {{character.intellect}}</span>
-          <span class="d-none" id="charm"> {{character.charm}}</span>
-          <span class="d-none" id="coding"> {{character.coding}}</span>
-          <span class="d-none" id="endurance"> {{character.endurance}}</span>
-          <span class="d-none" id="energyPenalty">{{character.energy_penalty}}</span>
-          <span class="d-none" id="level">{{character.level}}</span>
+        <div class="d-none">
+          <!-- So JS can collect the variables -->
+          <span id="intellect"> {{character.intellect}}</span>
+          <span id="charm"> {{character.charm}}</span>
+          <span id="coding"> {{character.coding}}</span>
+          <span id="endurance"> {{character.endurance}}</span>
+          <span id="energyPenalty">{{character.energy_penalty}}</span>
+          <span id="level">{{character.level}}</span>
         </div>
     </header>
 
@@ -93,6 +93,10 @@
         {% endfor %}
     </div>
     {% endif %}
+
+    <div class="text-center rounded bg-danger d-none" id="game-message-container">
+          <p class="lead" id="game-message"></p>
+    </div>
 
     {% block page_header %}
     {% endblock %}

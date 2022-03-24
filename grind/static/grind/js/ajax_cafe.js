@@ -55,7 +55,12 @@ $("#study").click(function() {
             $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
             energy = energy-(60-endurance);
         } else {
-            console.log("Not enough energy");
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }   
     }
     }); 

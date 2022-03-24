@@ -30,12 +30,22 @@ $("#drinkButton").click(function() {
                         $(".loading-overlay").eq(0).fadeToggle(100);
                     }, 3000);
                 } else {
-                    console.log("Not enough money");
+                    $("#game-message").text("Not enough money");
+                    $("#game-message-container").removeClass("d-none");
+
+                    setTimeout(() => { 
+                        $("#game-message-container").addClass("d-none");
+                    }, 1500);
                 }
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 energy = energy-(40-endurance);
             } else {
-                console.log("Not enough energy");
+                $("#game-message").text("Not enough energy");
+                $("#game-message-container").removeClass("d-none");
+
+                setTimeout(() => { 
+                    $("#game-message-container").addClass("d-none");
+                }, 1500);
             }
         }
     });
@@ -80,7 +90,12 @@ $("#converse").click(function() {
             $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
             energy = energy-(40-endurance);
         } else {
-            console.log("Not enough energy");
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }
         
             
