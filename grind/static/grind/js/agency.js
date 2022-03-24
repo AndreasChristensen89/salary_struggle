@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#next-hint').click(nextHint);
     $("#hint-btn").click(function(){
             // $('#hint-text').removeClass("hide");
-            $("#introHrInterview").removeClass("d-none");
+            $("#introInterview").removeClass("d-none");
             $('#bubble-agency').css('opacity', '1');
             $('#bubble-agency').text($(".hint").eq(hint).text());
             $("#hint-row").addClass("d-none");
@@ -21,10 +21,8 @@ function nextHint() {
     if ($(".hint").eq(hint).length) {
     } else {
         $('#next-hint').addClass("d-none");
-        // $('#hint-text').addClass("d-none");
-        // $("#hint-row").removeClass("d-none");
-        $("#introHrInterview").addClass("d-none");
-        $('#hrInterviewLink').removeClass("d-none");
+        $("#introInterview").addClass("d-none");
+        $('#interviewLink').removeClass("d-none");
         hint = 0;
     }
 }

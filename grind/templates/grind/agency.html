@@ -51,7 +51,7 @@
     {% elif character.level == 2 %}
 
         {% if character.energy >= 100 %}
-        <div class="row mb-5 text-center d-none" id="hrInterviewLink">
+        <div class="row mb-5 text-center d-none" id="interviewLink">
             <div class="col-5 mx-auto">
                 <a id="HRInterview" href="{% url 'interview:hr_interview' %}">
                     <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start HR interview</h3>
@@ -59,14 +59,14 @@
             </div>
         </div>
         {% else %}
-        <div class="row mb-5 text-center d-none" id="hrInterviewLink">
+        <div class="row mb-5 text-center d-none" id="interviewLink">
             <div class="col-5 mx-auto">
                 <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
             </div>
         </div>
         {% endif %}
 
-    <div class="row answer-buttons d-none" id="introHrInterview">
+    <div class="row answer-buttons d-none" id="introInterview">
         <div class="col-10 mx-auto text-center mb-2">
           <p id="bubble-agency"></p>
         </div>
@@ -96,27 +96,36 @@
         <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide bg-primary">Next</button>
     <!-- </div> -->
     {% elif character.level == 3 %}
-    <div class="row mb-5 text-center d-none" id="hrInterviewLink">
-        <div class="col-5 mx-auto">
-            <a id="HRInterview" href="{% url 'interview:coding_interview' %}">
-                <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start coding interview</h3>
-            </a>
-        </div>
-    </div>
+        {% if character.energy >= 100 %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <a id="HRInterview" href="{% url 'interview:coding_interview' %}">
+                        <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start coding interview</h3>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+                </div>
+            </div>
+        {% endif %}
+    
 
-    <div class="row answer-buttons d-none" id="introHrInterview">
-        <div class="col-10 mx-auto text-center mb-2">
-          <p id="bubble-agency"></p>
+        <div class="row answer-buttons d-none" id="introInterview">
+            <div class="col-10 mx-auto text-center mb-2">
+              <p id="bubble-agency"></p>
+            </div>
         </div>
-    </div>
-
-    <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none" aria-label="Next hint button">Next</button>
-
-    <div class="row" id="hint-row">
-        <div class="col-12 text-center">
-            <button aria-label="Hint button" id="hint-btn" class="btn"><i class="fas fa-comment text-primary"></i></button>
+    
+        <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none" aria-label="Next hint button">Next</button>
+    
+        <div class="row" id="hint-row">
+            <div class="col-12 text-center">
+                <button aria-label="Hint nutton" id="hint-btn" class="btn"><i class="fas fa-comment text-primary"></i></button>
+            </div>
         </div>
-    </div>
 
     <div class="d-none">
         <p class="hint">Glad to hear the HR interview went well</p>
@@ -126,49 +135,72 @@
         </p>
         <p class="hint">Unfortunately for this one there's often only one correct answer...</p>
         <p class="hint">... unless you're able to convince the interviewer otherwise</p>
-        <p class="hint">You can always go wild. They might like that if luck is on your side</p>
         <p class="hint">You can use your skills to benefit you. However, you will be penalized if the skill fails.</p>
         <p class="hint">Oh, by the way. I heard that the programming language will be Python. Better prepare a bit.</p>
         <p class="hint">Best of luck to you!</p>
     </div>
     {% elif character.level == 4 %}
-    <div class="row py-5 text-center">
-        <div class="col-10 mx-auto">
-            <a href="{% url 'interview:coding_difficult_interview' %}">
-                <h3 class="h3 border">Start hard coding interview</h3>
-            </a>
-        </div>
-    </div>
+        {% if character.energy >= 100 %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <a id="HRInterview" href="{% url 'interview:coding_difficult_interview' %}">
+                        <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start interview</h3>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+                </div>
+            </div>
+        {% endif %}
+    
 
-
-    <div class="row pt-5">
-        <div class="col-10 float-right">
-            <button aria-label="Hint nutton" id="hint-btn" class="border btn"><i class="far fa-comment-dots"></i></button>
-        </div>
-    </div>
-
-    <div class="row pt-2 text-center hide" id="hint-text">
-        <div class="col-10 mx-auto">
-            <p class="lead border hide hint">I just heard the news. Great job on that coding interview!</p>
-            <p class="lead border hide hint">Your next interview is now available. It'll be slightly harder since there is a time limit this time around.</p>
-            <p class="lead border hide hint">As always make good use of your skills, and a bit of luck can't hurt either</p>
-            <p class="lead border hide hint">This one can be a bit unpredictable. It's hard for me to give you a whole lot of tips for it.</p>
-            <p class="lead border hide hint">You'll see what I mean once you're there.</p>
-            <p class="lead border hide hint">Skill up and prepare the best you can.</p>
-            <p class="lead border hide hint">Give it your best shot!</p>
+        <div class="row answer-buttons d-none" id="introInterview">
+            <div class="col-10 mx-auto text-center mb-2">
+                <p id="bubble-agency"></p>
+            </div>
         </div>
 
-        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide">Next</button>
-    </div>
+        <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none"
+            aria-label="Next hint button">Next</button>
+
+        <div class="row" id="hint-row">
+            <div class="col-12 text-center">
+                <button aria-label="Hint nutton" id="hint-btn" class="btn">
+                    <i class="fas fa-comment text-primary"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="d-none">
+            <p class="hint">I just heard the news. Great job on that coding interview!</p>
+            <p class="hint">Your next interview is now available</p>
+            <p class="hint">It'll be slightly harder since there is a time limit this time around.</p>
+            <p class="hint">This one can be a bit unpredictable. It's hard for me to give you a whole lot of tips for
+                it.</p>
+            <p class="hint">You'll see what I mean once you're there.</p>
+            <p class="hint">Skill up and prepare the best you can.</p>
+            <p class="hint">Give it your best shot!</p>
+        </div>
+
     {% elif character.level == 5 %}
-    <div class="row py-5 text-center">
-        <div class="col-10 mx-auto">
-            <a href="{% url 'interview:final_interview' %}">
-                <h3 class="h3 border">Start final interview</h3>
-            </a>
-        </div>
-    </div>
-
+        {% if character.energy >= 100 %}
+            <div class="row py-5 text-center">
+                <div class="col-10 mx-auto">
+                    <a href="{% url 'interview:final_interview' %}">
+                        <h3 class="h3 border">Start final interview</h3>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+                </div>
+            </div>
+        {% endif %}
 
     <div class="row">
         <div class="col-4">

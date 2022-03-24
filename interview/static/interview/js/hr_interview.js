@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 url: "/interview/reset-energy/",
                 headers: {'X-CSRFToken': csrf},
                 success: function(){
-                    $("#energy").text(0);
+                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
                     energy = 0;
                     } 
             });

@@ -55,7 +55,12 @@ $("#agency_combine").click(function() {
             }
             
         } else {
-            console.log("Not enough energy");
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         } 
     }
     }); 
