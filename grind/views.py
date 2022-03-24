@@ -501,12 +501,6 @@ class AddItem(UpdateView):
                     c.coding = c.coding + i.coding
                     c.energy = c.energy + i.energy
                     c.endurance = c.endurance + i.endurance
-                    # resets all penalties to 0 for new day
-                    c.energy_penalty = c.energy_penalty + i.energy_penalty
-                    c.intellect_penalty = c.intellect_penalty + i.intellect_penalty
-                    c.charm_penalty = c.charm_penalty + i.charm_penalty
-                    c.coding_penalty = c.coding_penalty + i.coding_penalty
-                    c.endurance_penalty = c.endurance_penalty + i.endurance_penalty
                     c.money = c.money - i.price
                     c.save()
                     if i.permanent:
