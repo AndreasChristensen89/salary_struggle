@@ -25,7 +25,7 @@
                 <div class="menuLink lead d-none" id="drinkButton" aria-label="">Drink</div>
             </li>
             <li>
-                <div class="menuLink lead d-none" id="converse" aria-label="">Converse</div>
+                <div class="menuLink lead d-none" id="converse" aria-label="">Chat</div>
             </li>
         </ul>
 
@@ -42,15 +42,19 @@
         <hr>
         <h3 class="h3 text-light text-center">Level {{ character.charm|add:2 }}</h3>
         <hr>
-        <h3 class="h3 text-danger text-center">Hangover penalty: 20 less energy tomorrow</h3>
+        <h3 class="h3 text-danger text-center" id="drink-pen">Hangover penalty: 20 less energy tomorrow</h3>
     </h1>
 </div>
 
 <div class="loading-overlay">
-    <h1 class="text-light logo-font loading-icon">
+    <h1 class="text-light logo-font loading-icon text-white" id="overlay-converse">
         <span class="icon">
-            <i class="fal fa-comments-alt"></i>
+            <i class="far fa-comments text-danger"></i>
         </span>
+
+        <h2 class="h2 text-light text-center">You got into an argument!</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">No effect, just frustration</h3>
     </h1>
 </div>
 
