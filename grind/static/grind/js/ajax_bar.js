@@ -21,12 +21,12 @@ $("#drinkButton").click(function() {
                     money = money-1000;
 
                     $('.overview').fadeToggle(100);
-                    $(".loading-overlay").eq(1).fadeToggle(100);
+                    $(".loading-overlay").eq(0).fadeToggle(100);
 
                     setTimeout(() => { 
                         $('.overview').fadeToggle(100);
                         $(".loading-overlay").eq(0).fadeToggle(100);
-                    }, 100000);
+                    }, 3000);
                 } else {
                     $("#drinkButton").addClass("bg-danger");
                     setTimeout(() => { 

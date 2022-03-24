@@ -50,26 +50,10 @@
             <i class="fas fa-bed"></i>
         </span>
         {% if character.energy_penalty > 0%}
-        <h3 class="h3 text-light text-center">Energy penalty of {{character.energy_penalty}} applied</h3>
-        <h2 class="h2 text-light text-center">Energy level now: {{ 100|sub:character.energy_penalty }}</h3>
+        <h3 class="h3 text-danger text-center">Energy penalty of {{character.energy_penalty}} applied</h3>
+        <h2 class="h2 text-light text-center">Energy restored to: {{ 100|sub:character.energy_penalty }}</h3>
         {% else %}
         <h2 class="h2 text-light text-center">Energy fully restored</h2>
-        {% endif %}
-        {% if character.intellect_penalty > 0%}
-        <h2 class="h2 text-light text-center">Intellect penalty of {{character.intellect_penalty}} applied</h2>
-        <h3 class="h3 text-light text-center">Intellect now: {{ character.intellect|sub:character.energy_penalty }}</h3>
-        {% endif %}
-        {% if character.charm_penalty > 0%}
-        <h2 class="h2 text-light text-center">Charm penalty of {{character.charm_penalty}} applied</h2>
-        <h3 class="h3 text-light text-center">Charm now: {{ character.charm|sub:character.charm_penalty }}</h3>
-        {% endif %}
-        {% if character.coding_penalty > 0%}
-        <h2 class="h2 text-light text-center">Coding penalty of {{character.coding_penalty}} applied</h2>
-        <h3 class="h3 text-light text-center">Coding now: {{ character.coding|sub:character.coding_penalty }}</h3>
-        {% endif %}
-        {% if character.endurance_penalty > 0%}
-        <h2 class="h2 text-light text-center">Endurance penalty of {{character.endurance_penalty}} applied</h2>
-        <h3 class="h3 text-light text-center">Endurance now: {{ character.endurance|sub:character.endurance_penalty }}</h3>
         {% endif %}
         <hr>
         <h2 class="h2 text-light text-center">Starting day {{character.day}}</h2>
