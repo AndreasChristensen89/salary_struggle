@@ -69,7 +69,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="timer-row">
         <div class="col-10 mx-auto text-center mt-5">
           <h2 class="h2" id="timer">Get ready!</h2>
         </div>
@@ -77,7 +77,20 @@
 
       <div class="row">
         <div class="col-10 mx-auto text-center mt-1">
-          <p class="lead" id="question-text">Question</h2>
+          <p class="lead font-weight-bold" id="question-text">Question</h2>
+        </div>
+      </div>
+
+      <div class="d-none">
+        <p id="answer-intellect"></p>
+        <p id="answer-charm"></p>
+        <p id="answer-coding"></p>
+        <p id="answer-wild"></p>
+      </div>
+
+      <div class="row answer-buttons mt-5 hide" id="bubble-row">
+        <div class="col-10 mx-auto text-center mt-1">
+          <p class="hide" id="bubble"></p>
         </div>
       </div>
 
@@ -130,16 +143,28 @@
           
         </div>
 
-        <div class="row answer-buttons hide">
-          <div class="col-10 mx-auto text-center mt-1">
-            <button aria-label="Answer Button charm" id="answer-charm-btn" class="btn border col-12 answer-btn" value="charm">Answer 1</button>
-            <button aria-label="Answer Button intellect" id="answer-intellect-btn" class="btn border col-12 answer-btn" value="intellect">Answer 2</button>
-            <button aria-label="Answer Button coding" id="answer-coding-btn" class="btn border col-12 answer-btn" value="coding">Answer 3</button>
+        <div class="row mt-3 fixed-bottom my-5 answer-buttons hide" id="skill-answers">
+          <div class="col-10 mx-auto text-center mt-3">
+            <h4 class="h4 text center">Choose your approach</h4>
+          </div>
+          <div class="col-10 text-center mx-auto">
+            <button aria-label="Charm Button" id="answer-charm-btn" class="btn border m-2 col-3 skill-btn" value="charm">Charm</button>
+            <button aria-label="Intellect Button" id="answer-intellect-btn" class="btn border m-2 col-3 skill-btn" value="intellect">Intellect</button>
+            <button aria-label="Coding Button" id="answer-coding-btn" class="btn border m-2 col-3 skill-btn" value="coding">Coding</button>
           </div>
         </div>
+
+        <!-- <div class="row answer-buttons hide">
+          <div class="col-10 text-center mx-auto mt-2">
+            <button aria-label="Charm Answer" class="btn border my-1 answer-btn col-8" id="answer-charm-btn" value="charm"></button>
+            <button aria-label="Intellect Answer" class="btn border my-1 answer-btn col-8" id="answer-intellect-btn" value="intellect"></button>
+            <button aria-label="Coding Answer" class="btn border my-1 answer-btn col-8" id="answer-coding-btn" value="coding"></button>
+          </div>
+        </div> -->
+
       </div>
 
-      <div class="row mt-3 hide">
+      <!-- <div class="row mt-3 hide">
         <div class="col-10 text-center mx-auto">
           <button aria-label="Charm Button" id="charm-btn" class="btn btn-danger m-2 col-10 chance-btn" value="charm">Charm him</button>
           <div class="col-12 hide" id="alternative-charm">
@@ -157,7 +182,7 @@
           <button aria-label="Next Question" id="next-question" class="greyscale"><i class="fas fa-arrow-right"></i></button>
         </div>
         </div>
-      </div>
+      </div> -->
     </section>
   
     <div class="d-none">

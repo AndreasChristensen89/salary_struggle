@@ -123,20 +123,20 @@ const hrQuestions = [
   const hardCodingQuestions = [
     {
       question: "Do you think we'll actually be better off with you in our team?",
-      a: "I'll take you to the stars.",
-      b: "It's the inevitable outcome. I've done the math.",
-      c: "I've seen your code. I can do better.",
+      a: "Rest assured I will put my entire being into this role",
+      b: "It's the inevitable outcome. I've done the math",
+      c: "I've gone through your code and I know how to break it",
     },
     {
       question: "You think you're better than me?",
-      a: "Only if you let me.",
-      b: '"Better" is subjective and irrelevant to this interview',
-      c: "My coding has rarely been outmatched.",
+      a: "Only if you let me",
+      b: 'I have no reason to believe so at the moment',
+      c: "My coding is good, but since you have more experience... ",
     },
     {
-      question: "You last chance to give me something good to end this interview with.",
-      a: "Go with me and I'll make your dreams come true.",
+      question: "Last chance to give me something good to end this interview with.",
+      a: "Hire me and I'll make your dreams come true.",
       b: "No need. I've already deduced that you need me.",
-      c: "My skills speak for themselves, Q.E.D.",
+      c: "I live and breathe for coding. You'll benefit from having me.",
     },
   ];

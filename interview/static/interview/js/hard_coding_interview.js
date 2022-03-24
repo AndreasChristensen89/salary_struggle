@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#introduction").addClass("hide");
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
-            $(".chance-btn").click(attemptSkill);
+            // $(".chance-btn").click(attemptSkill);
             $(".number-btn").click(passNumber);
             $("#submit-number-btn").click(passNumberAnswer);
             $(".code-btn").click(passCode);
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 url: "/interview/reset-energy/",
                 headers: {'X-CSRFToken': csrf},
                 success: function(){
-                    $("#energy").text(0);
+                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
                     energy = 0;
                     } 
             });
@@ -62,6 +62,7 @@ var timeleft = 0;
 var time = 8;
 
 
+// copies value of number-buttons, or deletes last char if delete
 function passCode(event) {
     let selectedAction = event.target.value;
     let length = $("#answer-code").html().length;
@@ -75,6 +76,9 @@ function passCode(event) {
         }
 }
 
+// gets the number from the button-value
+// adds the number to the text, replacing the intro text
+// if delete is passed deletes last char if length > 0
 function passNumber(event) {
     let selectedAction = event.target.value;
     let length = $("#answer-text").html().length;
@@ -90,6 +94,7 @@ function passNumber(event) {
     }
 }
 
+// calculates if answer in text matches multiplication-answer
 function passNumberAnswer() {
     let int1 = $("#question-text").html().slice(8, 9);
     let int2 = $("#question-text").html().slice(12);
@@ -97,7 +102,7 @@ function passNumberAnswer() {
     console.log(rightAnswer);
     console.log($("#answer-text").html());
 
-    if ($("#answer-text").html() == rightAnswer) {
+    if ($("#answer-text").text() == rightAnswer) {
         setImpress("+", 3);
     } else {
         setImpress("-", 3);
@@ -106,7 +111,9 @@ function passNumberAnswer() {
     buildQuestions();
 }
 
-
+// checks for illegal characters in first and last char
+// checks for double operator symbols
+// uses stringCalculator to calculate text as math
 function passCodeAnswer() {
     let str = $("#answer-code").html();
     let firstChar = $("#answer-code").html().slice(0, 1);
@@ -143,7 +150,7 @@ function stringCalculator(fn) {
     return new Function('return ' + fn)();
 }
 
-
+// runs timer, calls next question if time out
 function timer() {
     setInterval(function(){
         if(timeleft >= time){
@@ -158,9 +165,17 @@ function timer() {
     }, 1000);
 }
 
-
+// tests if chosen skill is sufficient
+// resets timer and next question
 function attemptSkill(event) {
+    // get the skill
     let skill = event.target.value;
+    // disable answer buttons
+    $(".skill-btn").prop("disabled", true);
+
+    $("#bubble").text($(`#answer-${skill}`).text())
+    $("#bubble").removeClass("hide");
+
     let charSkill = parseInt($(`#char-${skill}`).html());
     let intSkill = parseInt($(`#interw-${skill}`).html());
 
@@ -175,20 +190,26 @@ function attemptSkill(event) {
     buildQuestions();
 }
 
+// builds the next question
+// changes setup at question 6, 10, finishes at 12
+// at question 10 set timeleft to -1 to stop timer
 function buildQuestions() {
     if (currentQuestion > 12) {
         $(".answer-btn").prop("disabled",true);
         finishInterview();
     } else if (currentQuestion > 9) {
-        timeleft = 0;
+        time = -1;
         questionSet = hardCodingQuestions;
         console.log(questionCount);
+        $("#timer-row").addClass("hide");
         $(".answer-buttons").removeClass("hide");
         $("#code-buttons").addClass("hide");
-        $("#question-text").html(questionSet[questionCount].question);
-        $("#answer-charm-btn").html(questionSet[questionCount].a);
-        $("#answer-intellect-btn").html(questionSet[questionCount].b);
-        $("#answer-coding-btn").html(questionSet[questionCount].c);
+        $("#question-text").text(questionSet[questionCount].question);
+        $("#answer-intellect").text(questionSet[questionCount].a);
+        $("#answer-charm").text(questionSet[questionCount].b);
+        $("#answer-coding").text(questionSet[questionCount].c);
+        $("#bubble-row").removeClass("hide");
+        $("#bubble").removeClass("hide");
         questionCount++;
     } else if (currentQuestion < 6) {
         timeleft = 0;
@@ -210,6 +231,7 @@ function buildQuestions() {
     }
 }
 
+// double function
 function checkAnswer(event) {
     let skill = event.target.value;
     let charSkill = parseInt($(`#char-${skill}`).html());
