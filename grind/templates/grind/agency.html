@@ -14,13 +14,13 @@
 
     {% if character.level == 1 %}
     <div class="row text-center level-one">
-        <div class="col-10 col-md-8 col-lg-4 mx-auto">
-            <h3 class="bg-white h3">Ask this guy for an interview</h3>
+        <div class="mx-auto">
+            <h3 class="bg-white h3 rounded" id="recruiter-sign">Mr Recruiter</h3>
         </div>
     </div>
     <div class="row answer-buttons d-none" id="passed">
-        <div class="col-10 mx-auto text-center mt-1">
-          <p id="bubble">
+        <div class="col-10 mx-auto text-center mb-2">
+          <p id="bubble-agency">
               I think we might be able to set you up with an interview. Come back later and we'll see if we have anything for you.
           </p>
         </div>
@@ -51,7 +51,7 @@
     {% elif character.level == 2 %}
 
     <div class="row mb-5 text-center d-none" id="hrInterviewLink">
-        <div class="col-8 mx-auto">
+        <div class="col-5 mx-auto">
             <a id="HRInterview" href="{% url 'interview:hr_interview' %}">
                 <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start HR interview</h3>
             </a>
@@ -59,12 +59,12 @@
     </div>
 
     <div class="row answer-buttons d-none" id="introHrInterview">
-        <div class="col-10 mx-auto text-center mt-1">
+        <div class="col-10 mx-auto text-center mb-2">
           <p id="bubble-agency"></p>
         </div>
     </div>
 
-    <button id="next-hint" class="border rounded btn col-4 mx-auto d-none" aria-label="Next hint button">Next</button>
+    <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none" aria-label="Next hint button">Next</button>
 
     <div class="row" id="hint-row">
         <div class="col-12 text-center">

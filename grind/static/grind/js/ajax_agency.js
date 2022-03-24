@@ -23,7 +23,7 @@ $(".ask-interview").click(function() {
         'skill': skill
     },
     success: function(){
-        if (energy == 100) {
+        if (energy >= 100) {
             if (parseInt($(`#${skill}`).text()) >= randomNumber && level == 1) {
                 success();
             } else {
@@ -47,7 +47,7 @@ $("#agency_combine").click(function() {
         'random_number': randomNumber,
     },
     success: function(){
-        if (energy == 100) {
+        if (energy >= 100) {
             if (intellect+coding+charm >= randomNumber && level == 1) {
                 success();
             } else {
@@ -75,13 +75,13 @@ function success() {
 
     $(".level-one").addClass("hide");
     $("#passed").removeClass("d-none");
-    $('#bubble').css('opacity', '1');
+    $('#bubble-agency').css('opacity', '1');
     $('.action').off();
 
 }
 
 function fail() {
-    $("#energy").text("0");
+    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
     energy = 0;
 
     $('.overview').fadeToggle(100);

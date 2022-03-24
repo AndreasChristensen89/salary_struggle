@@ -425,7 +425,7 @@ class AgencySkill(UpdateView):
             print(c.charm >= random_number)
             print(c.coding >= random_number)
         
-            if c.energy == 100:
+            if c.energy >= 100:
                 # Update Active Character
                 if skill == "intellect" and c.intellect >= random_number:
                     c.level = c.level + 1
@@ -461,7 +461,7 @@ class AgencyCombine(UpdateView):
             c = ActiveCharacter.objects.get(user=self.request.user)
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
-            if c.energy == 100:
+            if c.energy >= 100:
                 # Update Active Character
                 if (c.intellect + c.charm + c.coding) >= random_number:
                     c.level = c.level + 1
