@@ -16,37 +16,38 @@ $("#apply").click(function() {
     type: "POST",
     url: "/grind/apply-job/",
     headers: {'X-CSRFToken': csrf},
-    data: {
-        'random_number': randomNumber
-    },
     success: function(){
         if (energy >= (60-endurance)) {
-            if (charm >= randomNumber) {
-                $("#energy").text(energy - (60-endurance));
-                $('.overview').fadeToggle(100);
-                $('#loading-overlay').fadeToggle(100);
-                $("#apply").addClass("hide");
+            if (charm >= 20) {
                 $("#passed").removeClass("hide");
 
-                setTimeout(() => {
-                    $('.overview').fadeToggle(100);
-                    $('#loading-overlay').fadeToggle(100);
-                }, 1500);
-            } else {
-                $("#energy").text(energy - (60-endurance));
-                $("#apply").addClass("bg-danger");
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(0).fadeToggle(100);
 
-                setTimeout(() => {
-                    $("#apply").addClass("hide");
-                    $("#rejected").removeClass("hide");
-                }, 1000);
+                setTimeout(() => { 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(0).fadeToggle(100);
+                }, 5000);
+            } else {
+                $("#rejected").removeClass("hide");
                 
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(1).fadeToggle(100);
+
+                setTimeout(() => { 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(1).fadeToggle(100);
+                }, 3000);
             }
+            $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
+            energy = energy-(60-endurance);
         } else {
-            $("#apply").addClass("bg-danger");
-            setTimeout(() => {
-                $("#apply").removeClass("bg-danger");
-            }, 800);
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }
 
         }
@@ -63,21 +64,26 @@ $("#work").click(function() {
     headers: {'X-CSRFToken': csrf},
     success: function(){
         if (energy >= (60-endurance)) {
-            $("#work").addClass("bg-success");
             $("#money").text(money + salary);
             $("#energy").text(energy - (60 - endurance));
 
             money = money + salary;
             energy = energy - (60 - endurance);
 
-            setTimeout(() => {
-                $("#work").removeClass("bg-success");
-            }, 800);
-        } else {
-            $("#work").addClass("bg-danger");
+            $('.overview').fadeToggle(100);
+            $(".loading-overlay").eq(0).fadeToggle(100);
+
             setTimeout(() => { 
-                $("#work").removeClass("bg-danger");
-            }, 800);
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(0).fadeToggle(100);
+            }, 3000);
+        } else {
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }   
     }
     }); 

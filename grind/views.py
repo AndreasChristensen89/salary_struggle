@@ -532,11 +532,9 @@ class ApplyJob(UpdateView):
         if self.request.is_ajax():
             # Obtain Active Character
             c = ActiveCharacter.objects.get(user=self.request.user)
-            # receive random number
-            random_number = json.loads(self.request.POST['random_number'])
             # Update Active Character
             if c.energy >= (60-c.endurance):
-                if c.charm >= random_number:
+                if c.charm >= 20:
                     c.has_job = True
                     c.energy = c.energy - (60-c.endurance)
                     c.save()

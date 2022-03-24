@@ -1,58 +1,102 @@
 {% extends "grind/game_base.html" %}
 {% load static %}
+{% load mathfilters %}
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100">
-    <div class="row py-5 text-center">
-        <div class="col">
-            <h2>Call Center</h2>
-        </div>
-    </div>
+<div class="h-100 overview" id="bar-background">
+    <div class="text-center" id="bar-background-img">
 
-    <div class="row">
-        <a class="col-3 position-absolute" href="{% url 'grind:downtown' %}">
-            <i class="fa-solid fa-circle-arrow-left">Back</i>
-        </a>
-    </div>
-    
-    <div class="row py-5">
+        <div class="row">
+            <a class="col-2 text-center m-3 rounded" href="{% url 'grind:downtown' %}">
+                <i class="fas fa-arrow-left text-info return-arrow"></i>
+            </a>
+        </div>
+
         {% if not character.has_job %}
 
-            <div class="col-8 border text-center mx-auto" id="apply">
-                <h3 class="lead">Ask for a job</h3>
-                <p class="text-muted">Odds: charm to 20</p>
-            </div>
+        <button class="action" aria-label="Opens and closes the menu">
+            <span class="menuIcon material-icons" aria-hidden="true">
+                Actions
+            </span>
+            <span class="xIcon material-icons d-none" aria-hidden="true">
+                Close
+            </span>
+        </button>
+        <ul class="menu rounded">
+            <li>
+                <div class="menuLink lead d-none" id="apply" aria-label="">Ask for a job</div>
+            </li>
+        </ul>
 
-            <div class="col-8 text-center mx-auto hide" id="rejected">
-                <h3 class="lead">Get lost kid. You need to work on your self-presentation.</h3>
-            </div>
-
-            <div class="col-8 text-center mx-auto hide" id="passed">
-                <h3 class="lead">Alright, Kiddo, get your butt ready to work. Come back later and you can start.</h3>
-            </div>
-        
-        {% else %}
-
-        <div class="col-6 card mx-auto text-center" id="work">
-            <div class="card-body rounded-top">
-                <h5 class="card-title">Work</h5>
-                <p class="card-text round">Pay: charm * ¥200</p>
-            </div>
+        <div class="col-6 rounded text-center mx-auto bg-warning lead border border-dark hide" id="rejected">
+            <h3 class="lead">Get lost kid. You need to work on your self-presentation.</h3>
         </div>
 
-        {% endif %}
+        <div class="col-6 rounded text-center mx-auto bg-success lead border border-dark hide" id="passed">
+            <h3 class="lead">Alright, Kiddo, get your butt ready to work. Come back later and you can start.</h3>
+        </div>
+
+    
     </div>
 </div>
 
-<div id="loading-overlay">
-    <h1 class="text-light logo-font loading-icon">
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
         <span class="icon">
-            <h2 class="h2 text-light">You've got a part-time job </h2><i class="fas fa-plus"></i>
+            <i class="fas fa-plus"></i>
         </span>
+
+        <h2 class="h2 text-light text-center">You've got a part-time job</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Pay is <i class="fas fa-yen-sign ml-1"></i>100 times your charm</h3>
     </h1>
-    
 </div>
+
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-thumbs-down"></i>
+        </span>
+
+        <h2 class="h2 text-danger text-center">The manager tells you to get lost</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">You need 20 charm to get a job here</h3>
+    </h1>
+</div>
+    
+    {% else %}
+
+    <button class="action" aria-label="Opens and closes the menu">
+        <span class="menuIcon material-icons" aria-hidden="true">
+            Actions
+        </span>
+        <span class="xIcon material-icons d-none" aria-hidden="true">
+            Close
+        </span>
+    </button>
+    <ul class="menu rounded">
+        <li>
+            <div class="menuLink lead d-none" id="work" aria-label="">Work</div>
+        </li>
+    </ul>
+</div>
+</div>
+
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-plus"></i>
+        </span>
+            
+        <h2 class="h2 text-light text-center">You've made {{ 100|mul:character.charm }}<i class="fas fa-yen-sign ml-1"></i></h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Energy cost: {{ 60|sub:character.endurance }}</h3>
+    </h1>
+</div>
+
+{% endif %}
+
 {% endif %}
 {% csrf_token %}
 {% endblock %}
@@ -60,4 +104,5 @@
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'grind/js/ajax_call_center.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}

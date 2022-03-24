@@ -608,6 +608,7 @@ To do list:
 - Change checkout page resign for items
 - Create messages in game
 - In conversation overlay, penalty hide is removed a bit too early
+- Implement action bar on all pages
 
 
 
