@@ -15,7 +15,7 @@
     {% if character.level == 1 %}
     <div class="row text-center level-one">
         <div class="col-10 col-md-8 col-lg-4 mx-auto">
-            <h3 class="bg-white h3">Ask for interview</h3>
+            <h3 class="bg-white h3">Ask this guy for an interview</h3>
         </div>
     </div>
     <div class="row answer-buttons d-none" id="passed">
@@ -33,7 +33,7 @@
             Close
         </span>
     </button>
-    <ul class="menu rounded" id="menu-bg">
+    <ul class="menu rounded" id="menu-dif">
         <li>
             <div class="menuLink lead d-none ask-interview" value="intellect" id="agency_intellect" aria-label="">Use intellect</div>
         </li>
@@ -44,7 +44,7 @@
             <div class="menuLink lead d-none ask-interview" value="coding" id="agency_coding" aria-label="">Use coding</div>
         </li>
         <li>
-            <div class="menuLink lead d-none ask-interview" id="agency_combine" aria-label="">Combine skills</div>
+            <div class="menuLink lead d-none" id="agency_combine" aria-label="">Combine skills</div>
         </li>
     </ul>
 
@@ -178,14 +178,31 @@
     </div>
 </div>
 {% endif %}
-<div id="loading-overlay">
-    <h1 class="text-light logo-font loading-icon">
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
         <span class="icon">
-            <h2 class="h2 text-light">Level up! </h2><i class="fas fa-plus"></i>
+            <i class="fas fa-plus"></i>
         </span>
+        
+        <h2 class="h2 text-light text-center">Level up!</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">First interview is now available</h3>
     </h1>
-    
 </div>
+
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-thumbs-down"></i>
+        </span>
+        
+        <h2 class="h2 text-danger text-center">He's not impressed</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Your morale took a heavy hit</h3>
+        <h3 class="h3 text-light text-center">Energy depleted</h3>
+    </h1>
+</div>
+
 {% csrf_token %}
 {% endblock %}
 

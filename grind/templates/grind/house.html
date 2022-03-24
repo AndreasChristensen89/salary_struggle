@@ -29,7 +29,7 @@
                 Close
             </span>
         </button>
-        <ul class="menu rounded" id="menu-bg">
+        <ul class="menu rounded" id="menu-dif">
             <li>
                 <div class="menuLink lead d-none" id="sleep" aria-label="">Sleep</div>
             </li>
@@ -56,7 +56,7 @@
         <h2 class="h2 text-light text-center">Energy fully restored</h2>
         {% endif %}
         <hr>
-        <h2 class="h2 text-light text-center">Starting day {{character.day}}</h2>
+        <h2 class="h2 text-light text-center">Starting day {{ character.day|add:1 }}</h2>
     </h1>
 </div>
 
@@ -69,6 +69,7 @@
         <h2 class="h2 text-light text-center">Coding increased</h2>
         <hr>
         <h3 class="h3 text-light text-center">Level {{ character.coding|add:1 }}</h3>
+        <h3 class="h3 text-light text-center">Energy cost: {{ 40|sub:character.endurance }}</h3>
     </h1>
 </div>
 

@@ -6,7 +6,7 @@ function moveMenu() {
     if ( $(".menu").hasClass("menuDown")) {
         $(".menu").removeClass("menuDown");
         $(".menuLink").addClass("d-none");
-        // $(".menu").attr('id', 'menu-bg');
+        // $(".menu").attr('id', 'menu-dif');
         $(".xIcon").removeClass("d-block");
         $(".xIcon").addClass("d-none");
         $(".menuIcon").addClass("d-block");

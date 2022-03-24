@@ -280,17 +280,9 @@ class Sleep(UpdateView):
             if c.energy < 100:
                 # subtracts penalties from the day
                 c.energy = 100-c.energy_penalty
-                c.intellect = c.intellect-c.intellect_penalty
-                c.charm = c.charm-c.charm_penalty
-                c.coding = c.coding-c.coding_penalty
-                c.endurance = c.endurance-c.endurance_penalty
                 c.day = c.day+1
                 # resets all penalties to 0 for new day
                 c.energy_penalty = 0
-                c.intellect_penalty = 0
-                c.charm_penalty = 0
-                c.coding_penalty = 0
-                c.endurance_penalty = 0
                 c.save()
             return HttpResponse(200)
         else:
@@ -432,19 +424,21 @@ class AgencySkill(UpdateView):
             print(c.intellect >= random_number)
             print(c.charm >= random_number)
             print(c.coding >= random_number)
-            # Update Active Character
-            if skill == "intellect" and c.intellect >= random_number:
-                c.level = c.level + 1
-                c.save()
-            elif skill == "charm" and c.charm >= random_number:
-                c.level = c.level + 1
-                c.save()
-            elif skill == "coding" and c.coding >= random_number:
-                c.level = c.level + 1
-                c.save()
-            else:
-                c.energy = 0
-                c.save()
+        
+            if c.energy == 100:
+                # Update Active Character
+                if skill == "intellect" and c.intellect >= random_number:
+                    c.level = c.level + 1
+                    c.save()
+                elif skill == "charm" and c.charm >= random_number:
+                    c.level = c.level + 1
+                    c.save()
+                elif skill == "coding" and c.coding >= random_number:
+                    c.level = c.level + 1
+                    c.save()
+                else:
+                    c.energy = 0
+                    c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -467,13 +461,14 @@ class AgencyCombine(UpdateView):
             c = ActiveCharacter.objects.get(user=self.request.user)
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
-            # Update Active Character
-            if (c.intellect + c.charm + c.coding) >= random_number:
-                c.level = c.level + 1
-                c.save()
-            else:
-                c.energy = 0
-                c.save()
+            if c.energy == 100:
+                # Update Active Character
+                if (c.intellect + c.charm + c.coding) >= random_number:
+                    c.level = c.level + 1
+                    c.save()
+                else:
+                    c.energy = 0
+                    c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)

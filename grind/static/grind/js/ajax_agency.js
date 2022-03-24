@@ -23,11 +23,15 @@ $(".ask-interview").click(function() {
         'skill': skill
     },
     success: function(){
-        if (parseInt($(`#${skill}`).text()) >= randomNumber && level == 1) {
-            success();
+        if (energy == 100) {
+            if (parseInt($(`#${skill}`).text()) >= randomNumber && level == 1) {
+                success();
+            } else {
+                fail(skill);
+            } 
         } else {
-            fail(skill);
-        } 
+            console.log("Not enough energy");
+        }     
     }
     }); 
 });
@@ -43,10 +47,15 @@ $("#agency_combine").click(function() {
         'random_number': randomNumber,
     },
     success: function(){
-        if (intellect+coding+charm >= randomNumber) {
-            success();
+        if (energy == 100) {
+            if (intellect+coding+charm >= randomNumber && level == 1) {
+                success();
+            } else {
+                fail();
+            }
+            
         } else {
-            fail("combine");
+            console.log("Not enough energy");
         } 
     }
     }); 
@@ -57,24 +66,30 @@ function success() {
     level++;
 
     $('.overview').fadeToggle(100);
-    $('#loading-overlay').fadeToggle(100);
+    $(".loading-overlay").eq(0).fadeToggle(100);
+
+    setTimeout(() => { 
+        $('.overview').fadeToggle(100);
+        $(".loading-overlay").eq(0).fadeToggle(100);
+    }, 2500);
+
     $(".level-one").addClass("hide");
     $("#passed").removeClass("d-none");
     $('#bubble').css('opacity', '1');
     $('.action').off();
 
-    setTimeout(() => {
-        $('.overview').fadeToggle(100);
-        $('#loading-overlay').fadeToggle(100);
-    }, 2000);
 }
 
-function fail(skill) {
-    $(`#agency_${skill}`).addClass("bg-danger");
+function fail() {
     $("#energy").text("0");
     energy = 0;
 
-    setTimeout(() => {
-        $(`#agency_${skill}`).removeClass("bg-danger");
-    }, 800);
+    $('.overview').fadeToggle(100);
+    $(".loading-overlay").eq(1).fadeToggle(100);
+
+    setTimeout(() => { 
+        $('.overview').fadeToggle(100);
+        $(".loading-overlay").eq(1).fadeToggle(100);
+    }, 2500);
+
 }

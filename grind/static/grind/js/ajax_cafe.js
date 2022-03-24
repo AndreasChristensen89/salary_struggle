@@ -23,37 +23,39 @@ $("#study").click(function() {
     success: function(){
         if (energy-(60-endurance) >= 0) {
             if (randomNumber <= 2) {
-                $("#study").addClass("bg-success");
                 $("#intellect").text(intellect + 2);
                 $("#coding").text(coding + 2);
-                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
+                
                     
                 intellect = intellect + 2;
                 coding = coding + 2;
-                energy = energy-(60-endurance);
+                
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(0).fadeToggle(100);
 
-                setTimeout(() => { 
-                    $("#study").removeClass("bg-success");
-                }, 800);
+            setTimeout(() => { 
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(0).fadeToggle(100);
+            }, 2500);
             } else {
-                $("#study").addClass("bg-warning");
                 $("#intellect").text(intellect+1);
                 $("#coding").text(coding+1);
-                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
                     
                 intellect = intellect + 1;
                 coding = coding + 1;
-                energy = energy-(60-endurance);
+
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(1).fadeToggle(100);
 
                 setTimeout(() => { 
-                    $("#study").removeClass("bg-warning");
-                }, 800);
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(1).fadeToggle(100);
+                }, 2500);
             }
+            $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
+            energy = energy-(60-endurance);
         } else {
-            $("#study").addClass("bg-danger");
-            setTimeout(() => { 
-                $("#study").removeClass("bg-danger");
-            }, 800);
+            console.log("Not enough energy");
         }   
     }
     }); 

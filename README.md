@@ -607,6 +607,7 @@ To do list:
 - Business + SEO criteria
 - Change checkout page resign for items
 - Create messages in game
+- In conversation overlay, penalty hide is removed a bit too early
 
 
 

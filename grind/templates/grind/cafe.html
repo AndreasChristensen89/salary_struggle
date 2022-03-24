@@ -23,7 +23,7 @@
                 Close
             </span>
         </button>
-        <ul class="menu rounded" id="menu-bg">
+        <ul class="menu rounded">
             <li>
                 <div class="menuLink lead d-none" id="study" aria-label="">Study</div>
             </li>
@@ -31,11 +31,30 @@
     </div>
 </div>
 
-<div id="loading-overlay">
-    <h1 class="text-light logo-font loading-icon">
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
         <span class="icon">
-            <i class="fas fa-bed"></i>
+            <i class="fas fa-book-open"></i>
         </span>
+        
+        <h2 class="h2 text-light text-center">Coding and intellect increased</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Coding: {{ character.coding|add:2 }}</h3>
+        <h3 class="h3 text-light text-center">Intellect: {{ character.intellect|add:2 }}</h3>
+    </h1>
+</div>
+
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white" id="overlay-converse">
+        <span class="icon">
+            <i class="fas fa-book-open text-danger"></i>
+        </span>
+
+        <h2 class="h2 text-danger text-center">You met some friends and got distracted</h2>
+        <h2 class="h2 text-danger text-center">Half effect!</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Coding: {{ character.coding|add:1 }}</h3>
+        <h3 class="h3 text-light text-center">Intellect: {{ character.intellect|add:1 }}</h3>
     </h1>
 </div>
 {% endif %}
