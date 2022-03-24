@@ -499,7 +499,8 @@ class AddItem(UpdateView):
                     c.intellect = c.intellect + i.intellect
                     c.charm = c.charm + i.charm
                     c.coding = c.coding + i.coding
-                    c.energy = c.energy + i.energy
+                    if c.energy <= 180:
+                        c.energy = c.energy + i.energy
                     c.endurance = c.endurance + i.endurance
                     c.money = c.money - i.price
                     c.save()

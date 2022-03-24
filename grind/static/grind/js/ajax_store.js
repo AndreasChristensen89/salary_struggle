@@ -28,39 +28,50 @@ $(".item-buy").click(function() {
             let increase = parseInt($(`#item${itemID}stat`).text());
             // name of the stat
             let element = $(`#item${itemID}stat`).attr("value");
-            // the current stat level
-            let curr_number = parseInt($(`#${element}`).text());
-            $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + price}`);
-            money = money - price;
-            // Adds stat to old stat
-            if (element == "energy") {
-                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${curr_number + increase}`);
+
+            if (element == "energy" && energy > 180) {
+                $("#game-message").text("That's enough energy for one day");
+                $("#game-message-container").removeClass("d-none");
+
+                setTimeout(() => { 
+                    $("#game-message-container").addClass("d-none");
+                }, 1500);
             } else {
-                $(`#${element}`).text(curr_number + increase);
-            }
+                // the current stat level
+                let curr_number = parseInt($(`#${element}`).text());
+                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + price}`);
+                money = money - price;
+                // Adds stat to old stat
+                if (element == "energy") {
+                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${curr_number + increase}`);
+                    energy += 20;
+                } else {
+                    $(`#${element}`).text(curr_number + increase);
+                }
 
-            // if item is permanent disable click and add "Owned"
-            if (permanent == "True") {
-                let curr_html = $(`#item${itemID}`).html();
-                $(`#item${itemID}`).html(curr_html + " <strong>Owned</strong>");
-                $(`#item${itemID}`).off("click");
+                // if item is permanent disable click and add "Owned"
+                if (permanent == "True") {
+                    let curr_html = $(`#item${itemID}`).html();
+                    $(`#item${itemID}`).html(curr_html + " <strong>Owned</strong>");
+                    $(`#item${itemID}`).off("click");
 
-                $('#itemPermanent').removeClass("hide");
-            }
-            let name = $(`#itemName${itemID}`).text();
-            $("#itemBought").text(`You bought the ${name}`);
-            $("#itemEffect").text(`Your ${element} went up with ${increase}`)
-            $('.overview').fadeToggle(100);
-            $(".loading-overlay").fadeToggle(100);
-
-            setTimeout(() => { 
+                    $('#itemPermanent').removeClass("hide");
+                }
+                let name = $(`#itemName${itemID}`).text();
+                $("#itemBought").text(`You bought the ${name}`);
+                $("#itemEffect").text(`Your ${element} went up with ${increase}`)
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").fadeToggle(100);
-                if (permanent) {
-                    $('#itemPermanent').addClass("hide");
-                }
-            }, 3000);
 
+                setTimeout(() => { 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").fadeToggle(100);
+                    if (permanent) {
+                        $('#itemPermanent').addClass("hide");
+                    }
+                }, 3000);
+            }
+            
         } else {
             $(`#item${itemID}`).addClass("bg-danger");
             setTimeout(() => {
