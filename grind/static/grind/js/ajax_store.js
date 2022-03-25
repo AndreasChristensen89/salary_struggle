@@ -58,8 +58,11 @@ $(".item-buy").click(function() {
                     $('#itemPermanent').removeClass("hide");
                 }
                 let name = $(`#itemName${itemID}`).text();
+                let elementSlice = element.slice(1);
+                let firstCharElement = element.charAt(0).toUpperCase();
+                element = firstCharElement + elementSlice;
                 $("#itemBought").text(`You bought the ${name}`);
-                $("#itemEffect").text(`Your ${element} went up with ${increase}`)
+                $("#itemEffect").text(`${element} + ${increase}`)
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").fadeToggle(100);
 
