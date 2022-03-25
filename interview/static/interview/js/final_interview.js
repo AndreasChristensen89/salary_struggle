@@ -119,8 +119,6 @@ function attemptSkill(event) {
         $("#bubble").animate({
             opacity: 0
         }, "medium");
-        currentQuestion++;
-        questionCount++;
         $("#question-text").animate({
             opacity: 0
         }, "medium");
@@ -138,10 +136,8 @@ function timer() {
             timeleft = 0;
             $("#answer-text").html("");
             $("#answer-code").html("");
-            currentQuestion++;
-            questionCount++;
             buildQuestions();
-        } else if (currentQuestion > 14) {
+        } else if (currentQuestion == 21) {
             clearInterval(timer);
         }
 
@@ -233,6 +229,11 @@ function passCodeAnswer() {
       }
 }
 
+// calculates the math in a string
+function stringCalculator(fn) {
+    return new Function('return ' + fn)();
+}
+
 
 function buildQuestions() {
     if (questionCount == 20) {
@@ -242,6 +243,8 @@ function buildQuestions() {
     // updates html question number
     $("#question").html(currentQuestion);
     questionSet = finalInterviewQuestions;
+    currentQuestion++;
+    questionCount++;
 
     if (currentQuestion < 7) {
         // if there's an answer we hide skills and reveal questions
@@ -262,12 +265,13 @@ function buildQuestions() {
         setTimeout(() => {
             $(".answer-btn").animate({opacity: 1}, "slow");
         }, 500);
-    } else if (currentQuestion < 14) {
+    } else if (currentQuestion <= 14) {
         timeleft = 0;
         $("#bubble-row").addClass("hide");
         $("#math-section").removeClass("hide");
         $("#question-answers").addClass("hide");
         $("#timer-row").removeClass("hide");
+        // start timer only at first question
         if (currentQuestion == 7) {
             setTimeout(() => {
                 timer();
@@ -277,6 +281,13 @@ function buildQuestions() {
         let randInt1 = Math.floor(Math.random() * 10) + 1;
         let randInt2 = Math.floor(Math.random() * 10) + 1;
         $("#question-text").html(`What is ${randInt1} * ${randInt2}`);
+    } else if (currentQuestion <= 20) {
+        timeleft = 0;
+        time = 12;
+        $("#number-buttons").addClass("hide");
+        $("#code-buttons").removeClass("hide");
+        let randCode = Math.floor(Math.random() * 20) + 5;
+        $("#question-text").html(`Create a statement that results in ${randCode}`);
     }
 }
 
@@ -319,8 +330,6 @@ function checkAnswer(event) {
     }
 
     setTimeout(() => {
-        currentQuestion++;
-        questionCount++;
         $("#question-text").animate({opacity: 0}, "medium");
         $(".answer-btn").animate({opacity: 0}, "medium");
     }, 1500);
