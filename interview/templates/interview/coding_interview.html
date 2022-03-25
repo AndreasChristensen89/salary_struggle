@@ -121,6 +121,7 @@
       <div id="interw-charm">{{interviewer.coldness}}</div>
       <div id="interw-intellect">{{interviewer.intellect}}</div>
       <div id="interw-coding">{{interviewer.coding}}</div>
+      <div id="interw-impress">{{interviewer.impress_lvl}}</div>
     </div>
 
     <!----------------- End section --------------------->
@@ -134,14 +135,14 @@
   
       <div class="row pt-3 ending-success">
         <div class="col-10 mx-auto text-center top-text-interview">
-             <p class="lead">Your level went up! Check out the agency for your next step</p>
+             <p class="lead">Your level went up! Check out the agency anytime for your next step</p>
         </div>
       </div>
 
       <div class="row pt-2">
         <div class="col-10 mx-auto text-center">
-          <a href="{% url 'interview:interview_success' %}">
-              <h3 class="h3">Level up and continue</h3>
+          <a href="{% url 'grind:house' %}">
+              <h3 class="h3">Head home and rest up</h3>
           </a>
         </div>
       </div>

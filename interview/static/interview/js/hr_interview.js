@@ -25,32 +25,37 @@ document.addEventListener('DOMContentLoaded', function () {
             $(".answer-btn").click(checkAnswer);
             buildQuestions();
 
-            // Sends an ajax request to reset player's energy.
-            // Done in order to prevent players from reloading windom an resetting interview
-            // Energy is needed to start interview
-
-            // get the CSRF token
-            const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            // remove the token from the DOM
-            document.querySelector('[name=csrfmiddlewaretoken]').remove();
-            
-            var energy = parseInt($("#energy").text());
-            $.ajax({
-                type: "POST",
-                url: "/interview/reset-energy/",
-                headers: {'X-CSRFToken': csrf},
-                success: function(){
-                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
-                    energy = 0;
-                    } 
-            });
         }
         });
+});
+
+// Sends an ajax request to reset player's energy.
+// Done in order to prevent players from reloading windom an resetting interview
+// Energy is needed to start interview
+
+// get the CSRF token
+const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+// remove the token from the DOM
+document.querySelector('[name=csrfmiddlewaretoken]').remove();
+
+var energy = parseInt($("#energy").text());
+$.ajax({
+    type: "POST",
+    url: "/interview/reset-energy/",
+    headers: {
+        'X-CSRFToken': csrf
+    },
+    success: function () {
+        $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
+        energy = 0;
+    }
 });
 
 var currentQuestion = 1;
 var questionCount = 0;
 var questionSet = {};
+var finalScore = 1;
+var neededScore = parseInt($("#interw-impress").text());
 
 function attemptSkill(event) {
     // get the skill
@@ -207,18 +212,21 @@ function setImpress(plusMinus, integer) {
     
     let impress_nbr = parseInt($("#impression").html());
     if (plusMinus == "+") {
+        finalScore += integer;
         $("#impression").html(impress_nbr + integer);
         $("#impression").addClass("text-success").animate({fontSize: '2em', fontWeight: '900'}, "medium");
         setTimeout(() => { 
             $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-success");
             }, 800);
     } else if (impress_nbr - integer < 0) {
+        finalScore = 0;
         $("#impression").html("0");
         $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
         setTimeout(() => { 
             $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-danger");
             }, 800);
     } else {
+        finalScore -= integer;
         $("#impression").html(impress_nbr - integer);
         $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
         setTimeout(() => { 
@@ -241,12 +249,16 @@ function calculateOutcome(charSkill, intSkill) {
 }
 
 function finishInterview() {
-    let finalScore = parseInt($("#impression").html());
-    let neededScore = parseInt($("#impress-level").html());
     $("#question-game-area").animate({opacity: 0}, "slow");
     setTimeout(() => { $("#question-game-area").addClass("hide"); }, 2000);
 
     if (finalScore >= neededScore) {
+        $.ajax({
+            type: "POST",
+            url: "/interview/interview-success/",
+            headers: {'X-CSRFToken': csrf},
+        });
+
         setTimeout(() => { $("#ending-success").removeClass("hide"); }, 2000);
         setTimeout(() => { $("#ending-success").animate({opacity: 1}, "medium"); }, 2000);
     } else {

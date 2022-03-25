@@ -359,6 +359,7 @@ After the intro of the interviews the JavaScript code creates an ajax request th
 This is done for two reasons:
 * Players could otherwise easily restart the interview and retry with no penalty - you need full energy to start an interview
 * Interviews are meant to be special and exhaustive, and the player will need to be at full power
+At the end of the interview the code sends another ajax call if the player was successful. This is to avoid cheating, otherwise players could simply enter the link to level up.
 
 ## Limit
 Players are bound by the stats of their character in terms of choices. Each day is limited by the energy the character has, which can be extended with the use of items
