@@ -6,23 +6,28 @@ from profiles.models import Profile, ActiveCharacter
 from codex.models import Interviewer
 from django.views.generic import UpdateView
 from django.http import HttpResponse
+from django.views.generic import UpdateView
 
 
-@login_required
-def success_interview(request):
-    """ Update view to add more charm """
+class SuccessInterview(UpdateView):
+    """ Update view to add one level """
 
-    profile = get_object_or_404(Profile, user=request.user)
-
-    if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
-        return redirect(reverse('profiles:profile'))
-
-    character = get_object_or_404(ActiveCharacter, user=request.user)
-
-    ActiveCharacter.objects.filter(user=request.user).update(level=character.level+1)
-
-    return redirect(reverse('grind:house'))
+    def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
+        if self.request.is_ajax():
+            # Obtain Active Character
+            c = ActiveCharacter.objects.get(user=self.request.user)
+            # Update Active Character
+            c.level = c.level+1
+            c.save()
+            return HttpResponse(200)
+        else:
+            return HttpResponse(400)
 
 
 @login_required

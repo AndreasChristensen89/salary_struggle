@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#introduction").addClass("hide");
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
-            // $(".chance-btn").click(attemptSkill);
             $(".number-btn").click(passNumber);
             $("#submit-number-btn").click(passNumberAnswer);
             $(".code-btn").click(passCode);
@@ -32,26 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#question-text").animate({opacity: 1}, "medium");
             buildQuestions();
             timer();
-
-            // Sends an ajax request to reset player's energy.
-            // Done in order to prevent players from reloading windom an resetting interview
-            // Energy is needed to start interview
-
-            // get the CSRF token
-            const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            // remove the token from the DOM
-            document.querySelector('[name=csrfmiddlewaretoken]').remove();
-            
-            var energy = parseInt($("#energy").text());
-            $.ajax({
-                type: "POST",
-                url: "/interview/reset-energy/",
-                headers: {'X-CSRFToken': csrf},
-                success: function(){
-                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
-                    energy = 0;
-                    } 
-            });
         }
         });
 });
@@ -61,8 +40,49 @@ var questionSet = {};
 var timeleft = 0;
 var time = 8;
 
+// Sends an ajax request to reset player's energy.
+// Done in order to prevent players from reloading windom an resetting interview
+// Energy is needed to start interview
 
-// copies value of number-buttons, or deletes last char if delete
+// get the CSRF token
+const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+// remove the token from the DOM
+document.querySelector('[name=csrfmiddlewaretoken]').remove();
+
+var energy = parseInt($("#energy").text());
+$.ajax({
+    type: "POST",
+    url: "/interview/reset-energy/",
+    headers: {
+        'X-CSRFToken': csrf
+    },
+    success: function () {
+        $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`);
+        energy = 0;
+    }
+});
+
+// runs timer, calls next question if time out
+function timer() {
+    var timer = setInterval(function(){
+        if(timeleft >= time){
+            setImpress("-", 3);
+            timeleft = 0;
+            $("#answer-text").html("");
+            $("#answer-code").html("");
+            buildQuestions();
+        } else if (currentQuestion > 9) {
+            clearInterval(timer);
+        }
+
+        $("#timer").html(time - timeleft);
+        timeleft++;
+    }, 1000);
+    
+}
+
+
+// copies value of number-buttons to text, or deletes last char if delete
 function passCode(event) {
     let selectedAction = event.target.value;
     let length = $("#answer-code").html().length;
@@ -111,9 +131,9 @@ function passNumberAnswer() {
     buildQuestions();
 }
 
-// checks for illegal characters in first and last char
-// checks for double operator symbols
-// uses stringCalculator to calculate text as math
+// Checks if answer is correct, calls StringCalculator
+// Checks for illegal characters in first and last char
+// Checks for double operator symbols
 function passCodeAnswer() {
     let str = $("#answer-code").html();
     let firstChar = $("#answer-code").html().slice(0, 1);
@@ -150,46 +170,6 @@ function stringCalculator(fn) {
     return new Function('return ' + fn)();
 }
 
-// runs timer, calls next question if time out
-function timer() {
-    setInterval(function(){
-        if(timeleft >= time){
-            setImpress("-", 3);
-            timeleft = 0;
-            $("#answer-text").html("");
-            $("#answer-code").html("");
-            buildQuestions();
-        }
-        $("#timer").html(time - timeleft);
-        timeleft++;
-    }, 1000);
-}
-
-// tests if chosen skill is sufficient
-// resets timer and next question
-function attemptSkill(event) {
-    // get the skill
-    let skill = event.target.value;
-    // disable answer buttons
-    // $(".skill-btn").prop("disabled", true);
-
-    // $("#bubble").text($(`#answer-${skill}`).text())
-    // $("#bubble").removeClass("hide");
-
-    let charSkill = parseInt($(`#char-${skill}`).html());
-    let intSkill = parseInt($(`#interw-${skill}`).html());
-
-    let randomNumber = Math.floor(Math.random() * intSkill) + 1;
-
-    if (randomNumber <= charSkill) {
-        setImpress("+", 3);
-    } else {
-        setImpress("-", 3);
-    }
-    timeleft = 0;
-    buildQuestions();
-}
-
 // builds the next question
 // changes setup at question 6, 10, finishes at 12
 // at question 10 set timeleft to -1 to stop timer
@@ -198,7 +178,6 @@ function buildQuestions() {
         $(".answer-btn").prop("disabled",true);
         finishInterview();
     } else if (currentQuestion > 9) {
-        timeleft = -120;
         questionSet = hardCodingQuestions;
         console.log(questionCount);
         $("#timer-row").addClass("hide");
@@ -227,14 +206,10 @@ function buildQuestions() {
         $("#question-text").html(`Create a statement that results in ${randCode}`);
         time = 12;
     }
-
-    if (currentQuestion == 20) {
-        $(".answer-btn").prop("disabled",true);
-        finishInterview();
-    }
 }
 
-// double function
+// Checks if skill chosen is sufficient
+// Compares to interviewers level
 function checkAnswer(event) {
     let skill = event.target.value;
 
@@ -264,15 +239,11 @@ function checkAnswer(event) {
     }, 1000);
 
     setTimeout(() => {
-        $("#bubble").animate({
-            opacity: 0
-        }, "medium");
+        $("#bubble").animate({opacity: 0}, "medium");
         currentQuestion++;
         questionCount++;
         console.log(questionCount);
-        $("#question-text").animate({
-            opacity: 0
-        }, "medium");
+        $("#question-text").animate({opacity: 0}, "medium");
     }, 2500);
     setTimeout(() => {
         if (questionCount == questionSet.length) {
@@ -312,25 +283,23 @@ function setImpress(plusMinus, integer) {
     currentQuestion++;
     $("#question").html(currentQuestion);
 }
-  
 
-function calculateOutcome(charSkill, intSkill) {
-    let randomNumber = Math.floor(Math.random() * (intSkill - 1 + 1) + 1);
-
-    if (randomNumber <= charSkill) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
+// Compares final score to needed score
+// If enough then win screen, otherwise fail screen
 function finishInterview() {
+    
     let finalScore = parseInt($("#impression").html());
     let neededScore = parseInt($("#impress-level").html());
     $("#question-game-area").animate({opacity: 0}, "slow");
     setTimeout(() => { $("#question-game-area").addClass("hide"); }, 1500);
 
     if (finalScore >= neededScore) {
+        $.ajax({
+            type: "POST",
+            url: "/interview/interview-success/",
+            headers: {'X-CSRFToken': csrf},
+        });
+
         setTimeout(() => { $("#ending-success").removeClass("hide"); }, 1500);
         setTimeout(() => { $("#ending-success").animate({opacity: 1}, "medium"); }, 1500);
     } else {
