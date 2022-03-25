@@ -39,7 +39,7 @@ $(".item-buy").click(function() {
             } else {
                 // the current stat level
                 let curr_number = parseInt($(`#${element}`).text());
-                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + price}`);
+                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money - price}`);
                 money = money - price;
                 // Adds stat to old stat
                 if (element == "energy") {
@@ -78,10 +78,12 @@ $(".item-buy").click(function() {
             }
             
         } else {
-            $(`#item${itemID}`).addClass("bg-danger");
-            setTimeout(() => {
-                $(`#item${itemID}`).removeClass("bg-danger");
-            }, 800);
+            $("#game-message").text("Not enough money");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }
         }
     }); 

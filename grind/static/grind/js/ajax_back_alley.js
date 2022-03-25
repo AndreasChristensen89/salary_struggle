@@ -5,12 +5,14 @@ document.querySelector('[name=csrfmiddlewaretoken]').remove();
 
 var intellect = parseInt($("#intellect").text());
 var energy = parseInt($("#energy").text());
+var energyPenalty = parseInt($("#energyPenalty").text());
 var coding = parseInt($("#coding").text());
 var endurance = parseInt($("#endurance").text());
 var money = parseInt($("#money").text());
 
 $("#fight").click(function() {
     let randomNumber = Math.floor(Math.random() * 10) + 1;
+    console.log(randomNumber);
     
     $.ajax({
     type: "POST",
@@ -20,35 +22,44 @@ $("#fight").click(function() {
         'random_number': randomNumber
     },
     success: function(){
-        if (energy-(60-endurance) >= 0) {
-            if (randomNumber >= 5) {
-                $("#endurance").text(endurance + 3);
-                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
-                    
-                endurance = endurance + 3;
-                energy = energy-(60-endurance);
+        if (energyPenalty < 50) {
+            if (energy-(60-endurance) >= 0) {
+                if (randomNumber >= 5) {
+                    $("#endurance").text(endurance + 3);
+                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
+                        
+                    endurance = endurance + 3;
+                    energy = energy-(60-endurance);
 
-                $('.overview').fadeToggle(100);
-                $(".loading-overlay").eq(0).fadeToggle(100);
-
-                setTimeout(() => { 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(0).fadeToggle(100);
-                }, 3000);
-            } else {
-                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`); 
-                energy = 0;
 
-                $('.overview').fadeToggle(100);
-                $(".loading-overlay").eq(1).fadeToggle(100);
+                    setTimeout(() => { 
+                        $('.overview').fadeToggle(100);
+                        $(".loading-overlay").eq(0).fadeToggle(100);
+                    }, 3000);
+                } else {
+                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`); 
+                    energy = 0;
 
-                setTimeout(() => { 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(1).fadeToggle(100);
-                }, 3000);
+
+                    setTimeout(() => { 
+                        $('.overview').fadeToggle(100);
+                        $(".loading-overlay").eq(1).fadeToggle(100);
+                    }, 3000);
+                }
+            } else {
+                $("#game-message").text("Not enough energy");
+                $("#game-message-container").removeClass("d-none");
+
+                setTimeout(() => { 
+                    $("#game-message-container").addClass("d-none");
+                }, 1500);
             }
         } else {
-            $("#game-message").text("Not enough energy");
+            $("#game-message").text("Your body is too messed up to fight");
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 
@@ -70,7 +81,7 @@ $("#gamble").click(function() {
         'random_number': randomNumber
     },
     success: function(){
-        if (money >= 100) {
+        if (money >= 1000) {
             if (randomNumber == 1) {
                 $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + 2000}`);      
                 money = money + 2000
@@ -95,7 +106,7 @@ $("#gamble").click(function() {
                 }, 3000);
             }
         } else {
-            $("#game-message").text("Not enough money");
+            $("#game-message").text("You're too poor. Get a job.");
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 
