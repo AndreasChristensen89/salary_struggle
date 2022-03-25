@@ -56,7 +56,7 @@ class Leaderboard(models.Model):
         Uses stats and combines them into one number
         """
         score = 0
-        score += active_char.day
+        score += (30 - active_char.day) * 3
         score += active_char.intellect
         score += active_char.charm
         score += active_char.coding
