@@ -58,11 +58,13 @@ $(".item-buy").click(function() {
                     $('#itemPermanent').removeClass("hide");
                 }
                 let name = $(`#itemName${itemID}`).text();
-                let elementSlice = element.slice(1);
-                let firstCharElement = element.charAt(0).toUpperCase();
-                element = firstCharElement + elementSlice;
+                // capitalise first char in element
+                element = element.charAt(0).toUpperCase() + element.slice(1);
+                // add text to overlay
                 $("#itemBought").text(`You bought the ${name}`);
                 $("#itemEffect").text(`${element} + ${increase}`)
+
+                // show overlay
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").fadeToggle(100);
 

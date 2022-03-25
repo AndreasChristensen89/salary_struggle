@@ -64,8 +64,8 @@ $("#work").click(function() {
     headers: {'X-CSRFToken': csrf},
     success: function(){
         if (energy >= (60-endurance)) {
-            $("#money").text(money + salary);
-            $("#energy").text(energy - (60 - endurance));
+            $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + salary}`);
+            $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
 
             money = money + salary;
             energy = energy - (60 - endurance);
