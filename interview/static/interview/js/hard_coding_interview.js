@@ -82,7 +82,6 @@ function timer() {
     
 }
 
-
 // copies value of number-buttons to text, or deletes last char if delete
 function passCode(event) {
     let selectedAction = event.target.value;

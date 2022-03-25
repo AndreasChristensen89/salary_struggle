@@ -6,4 +6,5 @@ app_name = 'leaderboard'
 
 urlpatterns = [
     path('', views.leaderboard, name='leaderboard'),
+    path('winning-page/', views.winning_page, name='winning_page'),
 ]

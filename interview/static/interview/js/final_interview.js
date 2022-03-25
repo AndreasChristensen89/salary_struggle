@@ -63,45 +63,52 @@ function attemptSkill(event) {
     let skill = event.target.value;
     // disable answer buttons
     $(".skill-btn").prop("disabled", true);
-    $(".answer-btn").prop("disabled", true);
-    // hide answers choices
-    $("#question-answers").animate({opacity: "0"}, 500);
-    setTimeout(() => {
-        $("#question-answers").addClass("hide");
-    }, 500);
-    
     // set bubble text to answer and display it
-    setTimeout(() => {
-        $("#bubble").text($(`#answer-${skill}`).text())
-        $("#bubble-row").removeClass("hide");
-        $("#bubble").removeClass("hide");
-    }, 500);
+    $("#bubble").text($(`#answer-${skill}`).text())
+    $("#bubble").removeClass("hide");
 
-    // else get char and interviewer's skill level
-    let charSkill = parseInt($(`#char-${skill}`).html());
-    let intSkill = parseInt($(`#interw-${skill}`).html());
-    console.log(`Character ${skill} level: ${charSkill}`);
-    console.log(`Interviewer ${skill} level ${intSkill}`);
+    // 40% chance of winning if "wild" is chosen
+    if (skill == "wild") {
+        setTimeout(() => {
+            $("#bubble").animate({
+                opacity: 1
+            }, "medium");
+        }, 200);
 
-    // generate random number
-    let randomNumber = Math.floor(Math.random() * intSkill) + 1;
+        setTimeout(() => {
+            if (calculateOutcome(4, 10)) {
+                setImpress("+", 5);
+            } else {
+                setImpress("-", 5);
+            }
+        }, 1000);
+    } else {
+        // else get char and interviewer's skill level
+        let charSkill = parseInt($(`#char-${skill}`).html());
+        let intSkill = parseInt($(`#interw-${skill}`).html());
+        console.log(`Character ${skill} level: ${charSkill}`);
+        console.log(`Interviewer ${skill} level ${intSkill}`);
 
-    console.log(`random number: ${randomNumber}`);
-    console.log("");
+        // generate random number
+        let randomNumber = Math.floor(Math.random() * intSkill) + 1;
 
-    setTimeout(() => {
-        $("#bubble").animate({
-            opacity: 1
-        }, "medium");
-    }, 500);
+        console.log(`random number: ${randomNumber}`);
+        console.log("");
 
-    setTimeout(() => {
-        if (randomNumber <= charSkill) {
-            setImpress("+", 3);
-        } else {
-            setImpress("-", 3);
-        }
-    }, 2000);
+        setTimeout(() => {
+            $("#bubble").animate({
+                opacity: 1
+            }, "medium");
+        }, 200);
+
+        setTimeout(() => {
+            if (randomNumber <= charSkill) {
+                setImpress("+", 3);
+            } else {
+                setImpress("-", 3);
+            }
+        }, 1000);
+    }
 
     setTimeout(() => {
         $("#bubble").animate({
@@ -113,36 +120,35 @@ function attemptSkill(event) {
         $("#question-text").animate({
             opacity: 0
         }, "medium");
-    }, 4000);
+    }, 2500);
     setTimeout(() => {
         if (questionCount == questionSet.length) {
             finishInterview();
         } else {
             buildQuestions();
             $(".skill-btn").prop("disabled", false);
-            $(".answer-btn").prop("disabled", false);
         }
-    }, 5000);
+    }, 3500);
 }
 
 function buildQuestions() {
     $("#question").html(currentQuestion);
-    questionSet = codingQuestions;
-    console.log(questionSet[questionCount].answer);
-    // extract next question
+    questionSet = finalInterviewQuestions;
+    if (questionSet[questionCount].answer.length != 0) {
+        if (questionCount < questionSet.length) {
+            $("#skill-answers").addClass("hide");
+            $("#bubble-row").addClass("hide");
+            $("#question-answers").removeClass("hide");
+        }
+    } else {
+        $("#question-text").html(questionSet[questionCount].question);
+    }
     $("#question-text").html(questionSet[questionCount].question);
-    $("#bubble-row").addClass("hide");
-    $("#question-answers").removeClass("hide");
-
-    $("#question-text").html(questionSet[questionCount].question);
-    $("#answer-a").html(questionSet[questionCount].a);
-    $("#answer-b").html(questionSet[questionCount].b);
-    $("#answer-c").html(questionSet[questionCount].c);
-    $("#answer-charm").html(questionSet[questionCount].charm);
-    $("#answer-intellect").html(questionSet[questionCount].intellect);
-    $("#answer-coding").html(questionSet[questionCount].coding);
+    $("#answer-intellect").html(questionSet[questionCount].a);
+    $("#answer-charm").html(questionSet[questionCount].b);
+    $("#answer-coding").html(questionSet[questionCount].c);
+    $("#answer-wild").html(questionSet[questionCount].d);
     $("#question-text").animate({opacity: 1}, "slow");
-    $("#question-answers").animate({opacity: "1"}, 500);
     setTimeout(() => {
         $(".answer-btn").animate({opacity: 1}, "slow");
     }, 500);
@@ -151,9 +157,6 @@ function buildQuestions() {
 // checks the answer is not skill
 function checkAnswer(event) {
 
-    $(".skill-btn").prop("disabled", true);
-    $(".answer-btn").prop("disabled", true);
-    
     let answer = event.target.value;
     console.log(answer);
         
@@ -166,6 +169,22 @@ function checkAnswer(event) {
         setTimeout(() => {
             $(event.target).removeClass("bg-success")
         }, 1000);
+    } 
+    else if (answer == "wild") 
+    {
+        if (calculateOutcome(4, 10)) {
+            $("#answer-wild").addClass("bg-success")
+            setImpress("+", 5);
+            setTimeout(() => {
+                $("#answer-wild").removeClass("bg-success")
+            }, 1000);
+        } else {
+            setImpress("-", 5);
+            $("#answer-wild").addClass("bg-danger")
+            setTimeout(() => {
+                $("#answer-wild").removeClass("bg-danger")
+            }, 1000);
+        }
     } else {
         setImpress("-", 3);
         $(event.target).addClass("bg-danger")
@@ -187,7 +206,6 @@ function checkAnswer(event) {
         } else {
             buildQuestions();
             $(".skill-btn").prop("disabled", false);
-            $(".answer-btn").prop("disabled", false);
         }
     }, 2500);
 }
