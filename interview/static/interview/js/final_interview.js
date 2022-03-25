@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#head-intro").addClass("hide");
             $(".interviewer-presentation").removeClass("hide");
         } else {
-
+            $(".number-btn").click(passNumber);
+            $("#submit-number-btn").click(passNumberAnswer);
+            $(".code-btn").click(passCode);
+            $("#submit-code-btn").click(passCodeAnswer);
             $("#introduction").addClass("hide");
             $("#next-button").addClass("hide");
             $("#question-game-area").removeClass("hide");
@@ -56,6 +59,8 @@ var questionCount = 0;
 var questionSet = {};
 var finalScore = 1;
 var neededScore = parseInt($("#interw-impress").text());
+var timeleft = 0;
+var time = 8;
 
 // checks the answer if answer is a skill
 function attemptSkill(event) {
@@ -116,45 +121,166 @@ function attemptSkill(event) {
         }, "medium");
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({
             opacity: 0
         }, "medium");
     }, 2500);
+
     setTimeout(() => {
-        if (questionCount == questionSet.length) {
-            finishInterview();
-        } else {
-            buildQuestions();
-            $(".skill-btn").prop("disabled", false);
-        }
+        buildQuestions();
     }, 3500);
 }
 
+function timer() {
+    var timer = setInterval(function(){
+        if(timeleft >= time){
+            setImpress("-", 3);
+            timeleft = 0;
+            $("#answer-text").html("");
+            $("#answer-code").html("");
+            currentQuestion++;
+            questionCount++;
+            buildQuestions();
+        } else if (currentQuestion > 14) {
+            clearInterval(timer);
+        }
+
+        $("#timer").html(time - timeleft);
+        timeleft++;
+    }, 1000);
+}
+
+// copies value of number-buttons to text, or deletes last char if delete
+function passCode(event) {
+    let selectedAction = event.target.value;
+    let length = $("#answer-code").html().length;
+
+    if (selectedAction === "delete") {
+        if (length > 0) {
+            $("#answer-code").html($("#answer-code").html().slice(0, -1));
+        }
+    } else {
+            $("#answer-code").html($("#answer-code").html() + selectedAction);
+        }
+}
+
+// gets the number from the button-value
+// adds the number to the text, replacing the intro text
+// if delete is passed deletes last char if length > 0
+function passNumber(event) {
+    let selectedAction = event.target.value;
+    let length = $("#answer-text").html().length;
+
+    if ($("#answer-text").html() == "Hurry! Use the buttons!") {
+        $("#answer-text").html(selectedAction);
+    } else if (selectedAction === "delete") {
+        if (length > 0) {
+        $("#answer-text").html($("#answer-text").html().slice(0, -1));
+        }
+    } else {
+        $("#answer-text").html($("#answer-text").html() + selectedAction);
+    }
+}
+
+// calculates if answer in text matches multiplication-answer
+function passNumberAnswer() {
+    let int1 = $("#question-text").html().slice(8, 9);
+    let int2 = $("#question-text").html().slice(12);
+    let rightAnswer = int1 * int2;
+    console.log(rightAnswer);
+    console.log($("#answer-text").html());
+
+    if ($("#answer-text").text() == rightAnswer) {
+        setImpress("+", 3);
+    } else {
+        setImpress("-", 3);
+    }
+    $("#answer-text").html("");
+    buildQuestions();
+}
+
+// Checks if answer is correct, calls StringCalculator
+// Checks for illegal characters in first and last char
+// Checks for double operator symbols
+function passCodeAnswer() {
+    let str = $("#answer-code").html();
+    let firstChar = $("#answer-code").html().slice(0, 1);
+    let lastChar = $("#answer-code").html().slice(-1);
+    let button = $("#submit-code-btn");
+    let correctAnswer = $("#question-text").html().slice(-2);
+    
+    if (firstChar == "*" || firstChar == "+" || firstChar == "-") {
+        button.addClass("bg-danger");
+        setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
+    } else if (lastChar == "*" || lastChar == "+" || lastChar == "-") {
+        button.addClass("bg-danger");
+        setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
+    } else if (str.includes("--") || str.includes("++") || str.includes("**")) {
+        button.addClass("bg-danger");
+        setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
+    } else {
+        console.log(stringCalculator(str));
+        console.log(correctAnswer.trim());
+        console.log(stringCalculator(str) == correctAnswer.trim());
+        
+        if (stringCalculator(str) == correctAnswer.trim()) {
+            setImpress("+", 3);
+        } else {
+        setImpress("-", 3);
+        }
+    $("#answer-code").html("");
+    buildQuestions();
+      }
+}
+
+
 function buildQuestions() {
+    if (questionCount == 20) {
+        finishInterview();
+    }
+    
+    // updates html question number
     $("#question").html(currentQuestion);
     questionSet = finalInterviewQuestions;
-    if (questionSet[questionCount].answer.length != 0) {
-        if (questionCount < questionSet.length) {
+
+    if (currentQuestion < 7) {
+        // if there's an answer we hide skills and reveal questions
+        if (questionSet[questionCount].answer.length != 0) {
             $("#skill-answers").addClass("hide");
             $("#bubble-row").addClass("hide");
             $("#question-answers").removeClass("hide");
         }
-    } else {
-        $("#question-text").html(questionSet[questionCount].question);
+        
+        $("#question-text").text(questionSet[questionCount].question);
+        $("#question-text").animate({opacity: 1}, "slow");
+        $("#answer-intellect").text(questionSet[questionCount].a);
+        $("#answer-charm").text(questionSet[questionCount].b);
+        $("#answer-coding").text(questionSet[questionCount].c);
+        $("#answer-wild").text(questionSet[questionCount].d);
+        $("#question-text").animate({opacity: 1}, "slow");
+        $(".skill-btn").prop("disabled", false);
+        setTimeout(() => {
+            $(".answer-btn").animate({opacity: 1}, "slow");
+        }, 500);
+    } else if (currentQuestion < 14) {
+        timeleft = 0;
+        $("#bubble-row").addClass("hide");
+        $("#math-section").removeClass("hide");
+        $("#question-answers").addClass("hide");
+        $("#timer-row").removeClass("hide");
+        if (currentQuestion == 7) {
+            setTimeout(() => {
+                timer();
+            }, 1500);
+        }
+        $("#question-text").animate({opacity: 1}, "slow");
+        let randInt1 = Math.floor(Math.random() * 10) + 1;
+        let randInt2 = Math.floor(Math.random() * 10) + 1;
+        $("#question-text").html(`What is ${randInt1} * ${randInt2}`);
     }
-    $("#question-text").html(questionSet[questionCount].question);
-    $("#answer-intellect").html(questionSet[questionCount].a);
-    $("#answer-charm").html(questionSet[questionCount].b);
-    $("#answer-coding").html(questionSet[questionCount].c);
-    $("#answer-wild").html(questionSet[questionCount].d);
-    $("#question-text").animate({opacity: 1}, "slow");
-    setTimeout(() => {
-        $(".answer-btn").animate({opacity: 1}, "slow");
-    }, 500);
 }
 
-// checks the answer is not skill
+// checks the answer if not skill
 function checkAnswer(event) {
 
     let answer = event.target.value;
@@ -170,8 +296,7 @@ function checkAnswer(event) {
             $(event.target).removeClass("bg-success")
         }, 1000);
     } 
-    else if (answer == "wild") 
-    {
+    else if (answer == "wild") {
         if (calculateOutcome(4, 10)) {
             $("#answer-wild").addClass("bg-success")
             setImpress("+", 5);
@@ -196,17 +321,11 @@ function checkAnswer(event) {
     setTimeout(() => {
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({opacity: 0}, "medium");
         $(".answer-btn").animate({opacity: 0}, "medium");
     }, 1500);
     setTimeout(() => {
-        if (questionCount == questionSet.length) {
-            finishInterview();
-        } else {
-            buildQuestions();
-            $(".skill-btn").prop("disabled", false);
-        }
+        buildQuestions();
     }, 2500);
 }
 

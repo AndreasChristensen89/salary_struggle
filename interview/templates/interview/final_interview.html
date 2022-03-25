@@ -56,6 +56,7 @@
     <!-- Question Section -->
     <section class="hide" id="question-game-area">
 
+      <!-- overview with questions number and impress level   -->
       <div class="row">
         <div class="col text-center mx-auto">
           <ul class="list-inline">
@@ -69,18 +70,28 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-10 mx-auto text-center mt-1">
-          <p class="lead font-weight-bold" id="question-text">Question</h2>
+      <!-- timer -->
+      <div class="row hide" id="timer-row">
+        <div class="col-10 mx-auto text-center mt-5">
+          <h2 class="h2" id="timer">Get ready!</h2>
         </div>
       </div>
 
+      <!-- question-text -->
+      <div class="row">
+        <div class="col-10 mx-auto text-center mt-1">
+          <p class="lead font-weight-bold" id="question-text"></h2>
+        </div>
+      </div>
+
+      <!-- speech bubble -->
       <div class="row answer-buttons mt-5" id="bubble-row">
         <div class="col-10 mx-auto text-center mt-1">
           <p class="hide" id="bubble"></p>
         </div>
       </div>
 
+      <!-- row with answers, if correct answer needed -->
       <div class="row mt-3 my-5 hide" id="question-answers">
         <div class="col-10 mx-auto text-center mt-3">
           <h4 class="h4 text center">Choose your answer</h4>
@@ -93,6 +104,7 @@
         </div>
       </div>
 
+      <!-- row with skill answers, if no skill answer needed -->
       <div class="row mt-3 fixed-bottom my-5" id="skill-answers">
         <div class="col-10 mx-auto text-center mt-3">
           <h4 class="h4 text center">Choose your approach</h4>
@@ -104,6 +116,59 @@
           <button aria-label="Coding Button" id="wild-btn" class="btn border m-2 col-3 skill-btn" value="wild">Wild</button>
         </div>
       </div>
+
+      <!-- rows with math buttons, for calculation questions -->
+      <div class="row answer-buttons hide" id="math-section">
+        <div class="col-10 mx-auto text-center mt-1" id="number-buttons">
+            <p class="col-12 lead" id="answer-text">Hurry! Use the buttons!</p>
+          <button aria-label="Number button 0" id="number0-btn" class="btn border col-2 number-btn" value="0">0</button>
+          <button aria-label="Number button 1" id="number1-btn" class="btn border col-2 number-btn" value="1">1</button>
+          <button aria-label="Number button 2" id="number2-btn" class="btn border col-2 number-btn" value="2">2</button>
+          <button aria-label="Number button 3" id="number3-btn" class="btn border col-2 number-btn" value="3">3</button>
+          <button aria-label="Number button 4" id="number4-btn" class="btn border col-2 number-btn" value="4">4</button>
+          <button aria-label="Number button 5" id="number5-btn" class="btn border col-2 number-btn" value="5">5</button>
+          <button aria-label="Number button 6" id="number6-btn" class="btn border col-2 number-btn" value="6">6</button>
+          <button aria-label="Number button 7" id="number7-btn" class="btn border col-2 number-btn" value="7">7</button>
+          <button aria-label="Number button 8" id="number8-btn" class="btn border col-2 number-btn" value="8">8</button>
+          <button aria-label="Number button 9" id="number9-btn" class="btn border col-2 number-btn" value="9">9</button>
+          <hr>
+          <button aria-label="Delete button" id="delete-btn" class="btn border col-4 bg-danger number-btn" value="delete">Delete</button>
+          <button aria-label="Submit button" id="submit-number-btn" class="btn border bg-success col-4" value="submit">Submit</button>
+      </div>
+      <div class="col-10 mx-auto text-center mt-1 hide" id="code-buttons">
+       <p class="col-12 lead" id="answer-code"></p>
+       <hr>
+
+       <div class="row pt-2">
+         <div class="col-12">
+          <button aria-label="Code button +" id="codeplus-btn" class="btn border col-3 code-btn" value="+">+</button>
+          <button aria-label="Code button -" id="codeminus-btn" class="btn border col-3 code-btn" value="-">-</button>
+          <button aria-label="Code button *" id="codemulti-btn" class="btn border col-3 code-btn" value="*">*</button>
+         </div>
+       </div>
+
+        <div class="row pt-2">
+          <div class="col-12">
+            <button aria-label="Code button 1" id="code1-btn" class="btn border col-2 code-btn mx-1" value="1">1</button>
+            <button aria-label="Code button 2" id="code2-btn" class="btn border col-2 code-btn mx-1" value="2">2</button>
+            <button aria-label="Code button 3" id="code3-btn" class="btn border col-2 code-btn mx-1" value="3">3</button>
+            <button aria-label="Code button 4" id="code4-btn" class="btn border col-2 code-btn mx-1" value="4">4</button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-12">
+            <button aria-label="Delete button" id="delete-btn" class="btn mx-auto text-center border col-4 bg-danger code-btn" value="delete">Delete</button>
+            <button aria-label="Submit button" id="submit-code-btn" class="btn mx-auto text-center border bg-success col-4" value="submit">Submit</button>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
     </section>
   
     <div class="d-none">

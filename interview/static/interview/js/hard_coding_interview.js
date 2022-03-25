@@ -79,7 +79,6 @@ function timer() {
         $("#timer").html(time - timeleft);
         timeleft++;
     }, 1000);
-    
 }
 
 // copies value of number-buttons to text, or deletes last char if delete
@@ -179,7 +178,6 @@ function buildQuestions() {
         finishInterview();
     } else if (currentQuestion > 9) {
         questionSet = hardCodingQuestions;
-        console.log(questionCount);
         $("#timer-row").addClass("hide");
         $(".answer-buttons").removeClass("hide");
         $("#code-buttons").addClass("hide");

@@ -595,6 +595,7 @@ To do list:
 - Test new views - DONE
 - Finish leaderboard set limit top 10 - DONE
 - Redesign intro page - DONE
+- Implement action bar on all pages - DONE
 
 
 - Design more characters
@@ -603,9 +604,9 @@ To do list:
 - Redesign product, item, and interviewer detail pages
 - Business + SEO criteria
 - Change checkout page resign for items
-- Create messages in game
+- Create messages in game - needs z-index
 - In conversation overlay, penalty hide is removed a bit too early
-- Implement action bar on all pages
+- Finish final interview
 
 
 
