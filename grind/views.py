@@ -326,15 +326,15 @@ class BarDrink(UpdateView):
         """
         if self.request.is_ajax():
             # Obtain Active Character
-            character = ActiveCharacter.objects.get(user=self.request.user)
+            c = ActiveCharacter.objects.get(user=self.request.user)
             # Update Active Character
-            if character.energy >= 40-character.endurance:
-                if character.money > 1000:
-                    character.charm = character.charm + 2
-                    character.energy = character.energy - (40-character.endurance)
-                    character.money = character.money-1000
-                    character.energy_penalty = character.energy_penalty+20
-                    character.save()
+            if c.energy >= 40-c.endurance and c.energy_penalty > 100:
+                if c.money > 1000:
+                    c.charm = c.charm + 2
+                    c.energy = c.energy - (40-c.endurance)
+                    c.money = c.money-1000
+                    c.energy_penalty = c.energy_penalty+20
+                    c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -586,7 +586,7 @@ class Fight(UpdateView):
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
             # Update Active Character
-            if c.energy >= (60-c.endurance):
+            if c.energy >= (60-c.endurance) and c.energy_penalty < 100:
                 if random_number >= 5:
                     c.energy = c.energy - (60-c.endurance)
                     c.endurance = c.endurance + 3

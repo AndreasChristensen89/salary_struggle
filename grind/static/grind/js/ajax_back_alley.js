@@ -22,31 +22,38 @@ $("#fight").click(function() {
     success: function(){
         if (energy-(60-endurance) >= 0) {
             if (randomNumber >= 5) {
-                $("#fight").addClass("bg-success");
                 $("#endurance").text(endurance + 3);
-                $("#energy").text(energy-(60-endurance));
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
                     
                 endurance = endurance + 3;
                 energy = energy-(60-endurance);
 
-                setTimeout(() => { 
-                    $("#fight").removeClass("bg-success");
-                }, 800);
-            } else {
-                $("#fight").addClass("bg-warning");
-                $("#energy").text(0);
-                    
-                energy = 0;
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(0).fadeToggle(100);
 
                 setTimeout(() => { 
-                    $("#fight").removeClass("bg-warning");
-                }, 800);
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(0).fadeToggle(100);
+                }, 3000);
+            } else {
+                $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`); 
+                energy = 0;
+
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(1).fadeToggle(100);
+
+                setTimeout(() => { 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(1).fadeToggle(100);
+                }, 3000);
             }
         } else {
-            $("#fight").addClass("bg-danger");
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
             setTimeout(() => { 
-                $("#fight").removeClass("bg-danger");
-            }, 800);
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }   
     }
     }); 
@@ -63,25 +70,38 @@ $("#gamble").click(function() {
         'random_number': randomNumber
     },
     success: function(){
-        if (randomNumber == 1) {
-            $("#gamble").addClass("bg-success");
-            $("#money").text(money + 2000);
-                    
-            money = money + 2000
+        if (money >= 100) {
+            if (randomNumber == 1) {
+                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + 2000}`);      
+                money = money + 2000
 
-            setTimeout(() => { 
-                $("#gamble").removeClass("bg-success");
-            }, 800);
-        } else {
-            $("#gamble").addClass("bg-warning");
-            $("#money").text(money - 1000);
-                    
-            money = money - 1000
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(2).fadeToggle(100);
 
-            setTimeout(() => { 
-                $("#gamble").removeClass("bg-warning");
-            }, 800);
+                setTimeout(() => { 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(2).fadeToggle(100);
+                }, 3000);
+            } else {
+                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money - 1000}`); 
+                money = money - 1000
+
+                $('.overview').fadeToggle(100);
+                $(".loading-overlay").eq(3).fadeToggle(100);
+
+                setTimeout(() => { 
+                    $('.overview').fadeToggle(100);
+                    $(".loading-overlay").eq(3).fadeToggle(100);
+                }, 3000);
             }
+        } else {
+            $("#game-message").text("Not enough money");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }
+    }
     }); 
 });

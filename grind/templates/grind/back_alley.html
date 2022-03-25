@@ -3,36 +3,84 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-5">
-    <div class="row">
-        <div class="col text-center">
-            <h1 class="h1">Back Alley</h1>
-        </div>
-    </div>
+<div class="h-100 overview" id="">
+    <div class="text-center" id="">
 
-    <div class="row">
-        <a class="col-3 position-absolute" href="{% url 'grind:downtown' %}">
-            <i class="fa-solid fa-circle-arrow-left">Back</i>
-        </a>
+        <div class="row">
+            <a class="col-2 text-center m-3 rounded" href="{% url 'grind:downtown' %}">
+                <i class="fas fa-arrow-left text-info return-arrow"></i>
+            </a>
+        </div>
+
+        <button class="action" aria-label="Opens and closes the menu">
+            <span class="menuIcon material-icons" aria-hidden="true">
+                Actions
+            </span>
+            <span class="xIcon material-icons d-none" aria-hidden="true">
+                Close
+            </span>
+        </button>
+        <ul class="menu rounded">
+            <li>
+                <div class="menuLink lead d-none" id="fight" aria-label="">Fight</div>
+            </li>
+            <li>
+                <div class="menuLink lead d-none" id="gamble" aria-label="">Gamble</div>
+            </li>
+        </ul>
+
     </div>
+</div>
     
-    <div class="row py-5">
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-fist-raised"></i>
+        </span>
+        
+        <h2 class="h2 text-light text-center">You won the fight!</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Endurance +3</h3>
+    </h1>
+</div>
 
-        <div class="col-8 card mx-auto text-center" id="fight">
-            <div class="card-body rounded-top">
-                <h5 class="card-title">Fight</h5>
-                <p class="card-text round">Odds: 50/50</p>
-            </div>
-        </div>
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-user-injured text-danger"></i>
+        </span>
+        
+        <h2 class="h2 text-light text-center">You lost!</h2>
+        <hr>
+        <h3 class="h3 text-danger text-center">Endurance depleted</h3>
+        <h3 class="h3 text-danger text-center">Energy penalty: 50</h3>
+    </h1>
+</div>
 
-        <div class="col-8 card mx-auto text-center" id="gamble">
-            <div class="card-body rounded-top">
-                <h5 class="card-title">Gamble on horses</h5>
-                <p class="card-text round">Odds: 1 to 2</p>
-            </div>
-        </div>
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-yen-sign"></i>
+        </span>
+        
+        <h2 class="h2 text-light text-center">Lucky you!</h2>
+        <hr>
+        <h3 class="h3 text-light text-center">Winnings: <i class="fas fa-yen-sign"></i>2000</h3>
 
-    </div>
+    </h1>
+</div>
+
+<div class="loading-overlay">
+    <h1 class="text-light logo-font loading-icon text-white">
+        <span class="icon">
+            <i class="fas fa-sad-tear"></i>
+        </span>
+        
+        <h2 class="h2 text-light text-center">Bye bye, money!</h2>
+        <hr>
+        <h3 class="h3 text-danger text-center">You lost <i class="fas fa-yen-sign"></i>1000</h3>
+
+    </h1>
 </div>
 {% endif %}
 {% csrf_token %}
@@ -41,4 +89,5 @@
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'grind/js/ajax_back_alley.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}
