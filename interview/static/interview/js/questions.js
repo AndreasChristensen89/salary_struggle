@@ -115,7 +115,7 @@ const hrQuestions = [
       c: "return @a * b",
       answer: "a",
       charm: "You know, it would be an honor to work with you",
-      intellect: "The company has bigger isuues that returning integers",
+      intellect: "The company has bigger issues that returning integers",
       coding: "Easy, it goes like this.",
     },
   ];

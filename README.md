@@ -489,10 +489,6 @@ Integer stats, all set to default start values:
 - coding = 1
 - endurance = 1
 - energy = 100
-- intellect penalty = 0
-- charm penalty = 0
-- coding penalty = 0
-- endurance penalty = 0
 - energy penalty = 0
 
 - Has job: BooleanField - set to False. True if character gets a part time job

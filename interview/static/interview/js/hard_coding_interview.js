@@ -286,17 +286,29 @@ function checkAnswer(event) {
 
 }
 
+// animates and updates the impress integer
 function setImpress(plusMinus, integer) {
+    
     let impress_nbr = parseInt($("#impression").html());
     if (plusMinus == "+") {
         $("#impression").html(impress_nbr + integer);
-    } else if (impress_nbr - integer >= 0) {
-        $("#impression").html(impress_nbr - integer);
-    } else {
+        $("#impression").addClass("text-success").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        setTimeout(() => { 
+            $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-success");
+            }, 800);
+    } else if (impress_nbr - integer < 0) {
         $("#impression").html("0");
+        $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        setTimeout(() => { 
+            $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-danger");
+            }, 800);
+    } else {
+        $("#impression").html(impress_nbr - integer);
+        $("#impression").addClass("text-danger").animate({fontSize: '2em', fontWeight: '900'}, "medium");
+        setTimeout(() => { 
+            $("#impression").animate({fontSize: '1.25em', fontWeight: '300'}, "medium").removeClass("text-danger");
+        }, 800);
     }
-    $("#impression").animate({fontSize: '2em', fontWeight: '900', color: '"#fff"'}, "medium");
-    $("#impression").animate({fontSize: '1.25em', fontWeight: '300', color: 'black'}, "medium");
     currentQuestion++;
     $("#question").html(currentQuestion);
 }

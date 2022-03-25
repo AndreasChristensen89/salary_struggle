@@ -83,8 +83,8 @@ $("#gamble").click(function() {
     success: function(){
         if (money >= 1000) {
             if (randomNumber == 1) {
-                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + 2000}`);      
-                money = money + 2000
+                $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + 1500}`);      
+                money = money + 1500
 
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(2).fadeToggle(100);

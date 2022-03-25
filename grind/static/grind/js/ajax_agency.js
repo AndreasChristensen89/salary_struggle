@@ -30,7 +30,12 @@ $(".ask-interview").click(function() {
                 fail(skill);
             } 
         } else {
-            console.log("Not enough energy");
+            $("#game-message").text("Not enough energy");
+            $("#game-message-container").removeClass("d-none");
+
+            setTimeout(() => { 
+                $("#game-message-container").addClass("d-none");
+            }, 1500);
         }     
     }
     }); 

@@ -328,7 +328,7 @@ class BarDrink(UpdateView):
             # Obtain Active Character
             c = ActiveCharacter.objects.get(user=self.request.user)
             # Update Active Character
-            if c.energy >= 40-c.endurance and c.energy_penalty > 100:
+            if c.energy >= 40-c.endurance and c.energy_penalty <= 80:
                 if c.money > 1000:
                     c.charm = c.charm + 2
                     c.energy = c.energy - (40-c.endurance)
@@ -389,13 +389,11 @@ class CafeStudy(UpdateView):
                 if random_number <= 2:
                     c.intellect = c.intellect + 2
                     c.coding = c.coding + 2
-                    c.energy = c.energy - (60-c.endurance)
-                    c.save()
                 else:
                     c.intellect = c.intellect + 1
                     c.coding = c.coding + 1
-                    c.energy = c.energy - (60-c.endurance)
-                    c.save()
+                c.energy = c.energy - (60-c.endurance)
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -429,16 +427,13 @@ class AgencySkill(UpdateView):
                 # Update Active Character
                 if skill == "intellect" and c.intellect >= random_number:
                     c.level = c.level + 1
-                    c.save()
                 elif skill == "charm" and c.charm >= random_number:
                     c.level = c.level + 1
-                    c.save()
                 elif skill == "coding" and c.coding >= random_number:
                     c.level = c.level + 1
-                    c.save()
                 else:
                     c.energy = 0
-                    c.save()
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -465,10 +460,9 @@ class AgencyCombine(UpdateView):
                 # Update Active Character
                 if (c.intellect + c.charm + c.coding) >= random_number:
                     c.level = c.level + 1
-                    c.save()
                 else:
                     c.energy = 0
-                    c.save()
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -494,8 +488,8 @@ class AddItem(UpdateView):
             i = get_object_or_404(Item, id=item_id)
             # Update Active Character
             if c.money >= i.price:
+                # Checks if char owns item
                 if i not in c.items.all():
-                    # subtracts penalties from the day
                     c.intellect = c.intellect + i.intellect
                     c.charm = c.charm + i.charm
                     c.coding = c.coding + i.coding
@@ -504,6 +498,7 @@ class AddItem(UpdateView):
                     c.endurance = c.endurance + i.endurance
                     c.money = c.money - i.price
                     c.save()
+                    # additional save if permanent
                     if i.permanent:
                         c.items.add(i)
                         c.save()
@@ -531,11 +526,8 @@ class ApplyJob(UpdateView):
             if c.energy >= (60-c.endurance):
                 if c.charm >= 20:
                     c.has_job = True
-                    c.energy = c.energy - (60-c.endurance)
-                    c.save()
-                else:
-                    c.energy = c.energy - (60-c.endurance)
-                    c.save()
+                c.energy = c.energy - (60-c.endurance)
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -590,11 +582,10 @@ class Fight(UpdateView):
                 if random_number >= 5:
                     c.energy = c.energy - (60-c.endurance)
                     c.endurance = c.endurance + 3
-                    c.save()
                 else:
                     c.energy = 0
                     c.energy_penalty = c.energy_penalty + 50
-                    c.save()
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
@@ -620,11 +611,10 @@ class Gamble(UpdateView):
             # Update Active Character
             if c.money >= 1000:
                 if random_number == 1:
-                    c.money = c.money + 2000
-                    c.save()
+                    c.money = c.money + 1500
                 else:
                     c.money = c.money - 1000
-                    c.save()
+                c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
