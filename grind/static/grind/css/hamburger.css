@@ -3,8 +3,6 @@
     z-index: 100;
     bottom: 1rem;
     right: 1rem;
-    width: 70px;
-    height: 70px;
     border: black solid 1px;
     background: white;
     cursor: pointer;
@@ -18,10 +16,7 @@
 
 .menu {
     position: fixed;
-    bottom: 88px;
     right: 1rem;
-    width: 70px;
-    height: 200px;
     background-color: #f8f9fa;
     transform: translateX(200%);
     transition: transform 0.3s;
@@ -47,8 +42,80 @@ li {
 
 .menuLink:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
-.material-icons {
-    font-size: 14pt;
+@media (min-width: 1800px) {
+    .action {
+        top: 1000px;
+        right: 25%;
+        height: 150px;
+        width: 150px;
+    }
+
+    .menu {
+        top: 700px;
+        right: 25%;
+        width: 150px;
+        height: 200px;
+    }
+
+    .menuDown {
+        transform: translateY(0);
+    }
+
+    #large-bg {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1800px) {
+    .action {
+        height: 150px;
+        width: 150px;
+    }
+
+    .menu {
+        width: 150px;
+        height: 200px;
+        bottom: 10rem;
+    }
+
+    .material-icons {
+        font-size: 25pt;
+    }
+}
+
+@media (max-width: 1200px) {
+    .action {
+        height: 100px;
+        width: 100px;
+    }
+
+    .menu {
+        width: 100px;
+        height: 200px;
+        bottom: 8rem;
+    }
+
+    .material-icons {
+        font-size: 20pt;
+    }
+}
+
+@media (max-width: 768px) {
+    .action {
+        height: 70px;
+        width: 70px;
+    }
+
+    .material-icons {
+        font-size: 14pt;
+    }
+
+    .menu {
+        width: 70px;
+        height: 200px;
+        bottom: 6rem;
+    }
 }

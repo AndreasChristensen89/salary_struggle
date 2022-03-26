@@ -6,19 +6,22 @@ function moveMenu() {
     if ( $(".menu").hasClass("menuDown")) {
         $(".menu").removeClass("menuDown");
         $(".menuLink").addClass("d-none");
-        // $(".menu").attr('id', 'menu-dif');
+
         $(".xIcon").removeClass("d-block");
         $(".xIcon").addClass("d-none");
         $(".menuIcon").addClass("d-block");
         $(".menuIcon").removeClass("d-none");
+        setTimeout(() => {
+            $(".menu").attr('id', 'large-bg');
+        }, 300);
     } else {
         $(".menu").addClass("menuDown");
         $(".menuLink").removeClass("d-none");
-        // $(".menu").removeAttr('id');
         $(".xIcon").removeClass("d-none");
         $(".xIcon").addClass("d-block");
         $(".menuIcon").addClass("d-none");
         $(".menuIcon").removeClass("d-block");
+        $(".menu").removeAttr('id', 'large-bg');
     }
 }
 

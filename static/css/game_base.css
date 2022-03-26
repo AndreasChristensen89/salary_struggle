@@ -338,7 +338,67 @@ body {
     opacity: 0;
 }
 
+.game-background-large {
+    display: none;
+}
+
 /* --------------------------- media queries ------------------------------ */
+@media (min-width: 1800px) {
+    
+    body {
+        background-color: #e3d9ca;
+    }
+
+    #house-background {
+        display: none;
+    }
+
+    .game-background-large {
+        display: unset;
+    }
+
+    #house-background-img {
+        background-image: url(/media/backgrounds/house_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1500px;
+        width: 2000px;
+    }
+}
+
+@media (max-width: 1800px) {
+    #house-background-img {
+        background-image: url(/media/backgrounds/house_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1300px;
+        background-position-y: -50%;
+    }
+}
+
+@media (max-width: 1600px) {
+    #enter-grind {
+        background-image: url(/media/backgrounds/background-enter.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 1500px;
+        max-height: 75%;
+    }
+
+    #enter-link {
+        max-width: 300px;
+        font-size: 30pt;
+    }
+
+    #house-background-img {
+        background-image: url(/media/backgrounds/house_horizontal.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 1300px;
+        background-position-y: -25%;
+    }
+}
+
 
 @media (max-width: 1200px) {
     
@@ -346,8 +406,13 @@ body {
         background-image: url(/media/backgrounds/background-enter.png);
         background-size: cover;
         background-repeat: no-repeat;
-        height: 320px;
-        max-height: 50%;
+        height: 1200px;
+        max-height: 70%;
+    }
+
+    #enter-link {
+        max-width: 200px;
+        font-size: 30pt;
     }
     
     #house-background-img {
@@ -385,18 +450,31 @@ body {
         height: 100%
     }
 
+
     .action-btns {
         margin-bottom: 15%;
     }
 }
 
 @media (max-width: 768px) {
+    #enter-grind {
+        background-image: url(/media/backgrounds/background-enter.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 1200px;
+        max-height: 60%;
+    }
+
+    #enter-link {
+        max-width: 10px;
+        font-size: 20pt;
+    }
+    
     #house-background-img {
         background-image: url(/media/backgrounds/house-mobile.png);
         background-size: contain;
         background-repeat: no-repeat;
-        height: 1200px;
-        width: 100vw;
+        height: 1000px;
     }
 
     #city-background-img {
