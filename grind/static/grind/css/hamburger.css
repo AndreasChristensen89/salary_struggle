@@ -47,26 +47,27 @@ li {
 
 @media (min-width: 1800px) {
     .action {
-        top: 1000px;
+        top: 800px;
         right: 25%;
         height: 150px;
         width: 150px;
     }
 
     .menu {
-        top: 700px;
+        top: 500px;
         right: 25%;
         width: 150px;
         height: 200px;
+        opacity: 0;
     }
 
     .menuDown {
         transform: translateY(0);
     }
 
-    #large-bg {
+    /* #large-bg {
         opacity: 0;
-    }
+    } */
 }
 
 @media (max-width: 1800px) {

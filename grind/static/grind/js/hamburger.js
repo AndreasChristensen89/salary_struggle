@@ -11,9 +11,7 @@ function moveMenu() {
         $(".xIcon").addClass("d-none");
         $(".menuIcon").addClass("d-block");
         $(".menuIcon").removeClass("d-none");
-        setTimeout(() => {
-            $(".menu").attr('id', 'large-bg');
-        }, 300);
+        $(".menu").animate({opacity: "0"}, 300);
     } else {
         $(".menu").addClass("menuDown");
         $(".menuLink").removeClass("d-none");
@@ -21,7 +19,7 @@ function moveMenu() {
         $(".xIcon").addClass("d-block");
         $(".menuIcon").addClass("d-none");
         $(".menuIcon").removeClass("d-block");
-        $(".menu").removeAttr('id', 'large-bg');
+        $(".menu").animate({opacity: "1.0"}, 300);
     }
 }
 
