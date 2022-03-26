@@ -65,9 +65,10 @@ li {
         transform: translateY(0);
     }
 
-    /* #large-bg {
-        opacity: 0;
-    } */
+    .material-icons {
+        font-size: 25pt;
+    }
+
 }
 
 @media (max-width: 1800px) {

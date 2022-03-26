@@ -195,12 +195,11 @@ body {
     height: 100%;
 } */
 
-/* #bar-background-img {
-    background-image: url(/media/bar_background_mobile.png);
+#bar-background-img {
+    background-image: url(/media/backgrounds/bar_horizontal.png);
     background-size: contain;
     background-repeat: no-repeat;
-    height: 100%;
-} */
+}
 
 #store-items {
     max-height: 400px;
@@ -364,6 +363,11 @@ body {
         height: 1500px;
         width: 2000px;
     }
+
+    .all-game-bg-img {
+        height: 1500px;
+        width: 2000px;
+    }
 }
 
 @media (max-width: 1800px) {
@@ -371,6 +375,11 @@ body {
         background-image: url(/media/backgrounds/house_horizontal.png);
         background-size: contain;
         background-repeat: no-repeat;
+        height: 1300px;
+        background-position-y: -50%;
+    }
+
+    .all-game-bg-img {
         height: 1300px;
         background-position-y: -50%;
     }
@@ -397,6 +406,11 @@ body {
         height: 1300px;
         background-position-y: -40%;
     }
+
+    .all-game-bg-img {
+        height: 1300px;
+        background-position-y: -40%;
+    }
 }
 
 
@@ -414,6 +428,10 @@ body {
         max-width: 200px;
         font-size: 30pt;
     }
+
+    .all-game-bg-img {
+        height: 100%;
+    }
     
     #house-background-img {
         background-image: url(/media/backgrounds/house_horizontal.png);
@@ -422,12 +440,9 @@ body {
         height: 100%;
     }
 
-    #bar-background-img {
-        background-image: url(/media/backgrounds/bar_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
+    /* #bar-background-img {
         height: 100%
-    }
+    } */
 
     #city-background-img {
         background-image: url(/media/backgrounds/city_backgrond_horizontal.png);
@@ -469,6 +484,10 @@ body {
         max-width: 10px;
         font-size: 20pt;
     }
+
+    .all-game-bg-img {
+        height: 1000px;
+    }
     
     #house-background-img {
         background-image: url(/media/backgrounds/house-mobile.png);
@@ -485,13 +504,10 @@ body {
         width: 100vw;
     }
 
-    #bar-background-img {
-        background-image: url(/media/backgrounds/bar_background_mobile.png);
-        background-size: contain;
-        background-repeat: no-repeat;
+    /* #bar-background-img {
         height: 1200px;
         width: 100vw;
-    }
+    } */
 
     #cafe-background-img {
         background-image: url(/media/backgrounds/cafe_mobile.png);
