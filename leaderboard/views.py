@@ -2,13 +2,15 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from leaderboard.models import Leaderboard
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from profiles.models import Profile, ActiveCharacter
+from django.contrib import messages
 
 
 def leaderboard(request):
     """ A view to return the leaderboard page """
 
-    board = Leaderboard.objects.all()
+    board = Leaderboard.objects.all().order_by('-score')
 
     context = {
         'leaderboard': board,
@@ -40,3 +42,22 @@ def winning_page(request):
     }
 
     return render(request, 'leaderboard/winning_page.html', context)
+
+
+@login_required
+def calculate_leaderboard_spot(request):
+    """
+    View that calculates if player made it to top 10
+    Create entry if so
+    If not redirects to home
+    """
+    c = ActiveCharacter.objects.get(user=request.user)
+
+    check = Leaderboard.leaderboard_check(c)
+
+    if check:
+        messages.success(request, "You made it to the leaderboard! Congratulations")
+        return redirect(reverse('leaderboard:leaderboard'))
+    elif check:
+        messages.info(request, "Unfortunately, you didn't make the top 10")
+        return redirect(reverse('home:index'))

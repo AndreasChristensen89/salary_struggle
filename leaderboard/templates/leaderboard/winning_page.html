@@ -12,60 +12,55 @@
 <div class="row">
     <div class="col-12 py-5 mx-auto text-center">
         <h1 class="h1">Nice!</h1>
-        <h2 class="h2"> You managed to land a job!</h2>
+        <h2 class="h2"> You made it through!</h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col-6 border mx-auto text-center">
-    <div class="col-12 mx-auto text-center">
-        <h3 class="h3">Here are your final stats</h3>
-        <hr>
+        <div class="col-12 mx-auto text-center">
+            <h3 class="h3">Here are your final stats</h3>
+            <hr>
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+        <p class="leader">Day finished: <strong>{{character.day}}</strong></p> 
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+            <p class="leader">Charm level: <strong>{{character.charm}}</strong></p>
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+            <p class="leader">Intellect level: <strong>{{character.intellect}}</strong></p>
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+            <p class="leader">Coding level: <strong>{{character.coding}}</strong></p>
+        </div>
+
+        <div class="col-10 mx-auto text-center">
+            <p class="leader">Endurance level: <strong>{{character.endurance}}</strong></p>
+        </div>
+
+        <div class="col-10 mx-auto text-center">
+            <p class="leader">Money: <strong>{{character.money}}</strong></p>
+        </div>
     </div>
 
-    <div class="col-12 mx-auto text-center">
-       <p class="leader">Day finished: <strong>{{character.day}}</strong></p> 
-    </div>
-
-    <div class="col-12 mx-auto text-center">
-        <p class="leader">Charm level: <strong>{{character.charm}}</strong></p>
-    </div>
-
-    <div class="col-12 mx-auto text-center">
-        <p class="leader">Intellect level: <strong>{{character.intellect}}</strong></p>
-    </div>
-
-    <div class="col-12 mx-auto text-center">
-        <p class="leader">Coding level: <strong>{{character.coding}}</strong></p>
-    </div>
-
-    <div class="col-10 mx-auto text-center">
-        <p class="leader">Endurance level: <strong>{{character.endurance}}</strong></p>
-    </div>
 </div>
 
-</div>
 
-{% if leaderboard_spot %}
 <div class="row my-5">
     <div class="col-10 text-center mx-auto">
-        <h2 class="h3">You made it to the top 10 of the leaderboard!</h3>
+        <h2 class="h3">Top 10 - did you make it?</h3>
     </div>
-    <div class="col-10 text-center mx-auto">
-        <a href="">Post my score</a>
-        <a href="{% url 'profiles:profile' %}">Return to profile</a>
+    <div class="col-10 text-center mx-auto my-4">
+        <a class="btn btn-primary" href="{% url 'leaderboard:calculate_spot' %}">Post result</a>
     </div>
-</div>
-{% else %}
-<div class="row my-5">
-    <div class="col-10 text-center mx-auto">
-        <h2 class="h3">Unfortunately you didn't make it to the leaderboard</h3>
-    </div>
-    <div class="col-10 text-center mx-auto my-3">
-        <h4 class="h4">Why not have another go at the game?</h4>
-        <a class="my-5" href="{% url 'profiles:profile' %}"><u>Return to profile</u></a>
+    <div class="col-10 text-center mx-auto my-4">
+        <a class="btn btn-info" href="{% url 'profiles:profile' %}">Don't post</a>
     </div>
 </div>
 </div>
-{% endif %}
 {% endblock %}

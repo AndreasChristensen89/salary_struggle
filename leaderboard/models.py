@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 class Leaderboard(models.Model):
@@ -61,6 +62,10 @@ class Leaderboard(models.Model):
         score += active_char.charm
         score += active_char.coding
         score += active_char.endurance
+        if active_char.money < 1000:
+            score += active_char.money
+        else:
+            score += active_char.money / 1000
 
         return score
 
@@ -72,10 +77,14 @@ class Leaderboard(models.Model):
         If more than 10 then compares to 9th entry and replaces if higher
         """
 
-        current_leaderboard = cls.objects.sort_leaderboard()
+        current_leaderboard = Leaderboard.objects.all().order_by('-score')
         score = cls.calculate_score(active_char)
 
-        if len(current_leaderboard) >= 10:
+        if len(Leaderboard.objects.filter(
+                user=active_char.user,
+                score=score)) > 0:
+            return (False, score)
+        elif len(current_leaderboard) >= 10:
             if current_leaderboard[9].score > score:
                 return (False, score)
             current_leaderboard[9].delete()
