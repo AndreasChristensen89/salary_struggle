@@ -4,56 +4,101 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="h-100 overview" id="city-background">
-    <div class="text-center" id="city-background-img">
-    
-        <div class="row fixed-bottom" id="city-links">
-            <div class="col-3 rounded mx-auto text-center">
-                <a href="{% url 'grind:bar' %}">
-                    <div class="border rounded city-link d-flex justify-content-center">
-                        <p class="h5">Bar</h5>
-                        <i class="fas fa-beer"></i>
-                    </div>
-                </a>
-            </div>
+    <div class="text-center fixed-bottom" id="city-background-img"></div>
 
-            <div class="col-3 rounded mx-auto text-center">
-                <a href="{% url 'grind:cafe' %}">
-                    <div class="border rounded city-link">
-                        <h5 class="h5">Cafe</h5>
-                        <i class="fas fa-coffee"></i>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-3 rounded mx-auto text-center">
-                <a href="{% url 'grind:agency' %}">
-                    <div class="border rounded city-link">
-                        <h5 class="h5">Agency</h5>
-                        <i class="fas fa-users"></i>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-4 rounded mx-auto text-center mt-2">
-                <a href="{% url 'grind:downtown' %}">
-                    <div class="border rounded city-link">
-                        <h5 class="h5">Downtown</h5>
-                        <i class="fas fa-city"></i>
-                    </div>
-                </a>
-            </div>
-        
-            <div class="col-4 rounded mx-auto text-center mt-2">
-                <a href="{% url 'grind:house' %}">
-                    <div class="border rounded city-link">
-                        <h5 class="h5">House</h5>
-                        <i class="fas fa-house-user"></i>
-                    </div>
-                </a>
+        <div class="row pt-5">
+            <div class="col-10 mx-auto text-center">
+                <h2 class="h2">Where to go?</h2>
             </div>
         </div>
-    </div>
-        
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:bar' %}">
+                <h5 class="h5">Bar <i class="fas fa-beer"></i></h5>
+            </a>
+        </div>
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:cafe' %}">
+                <h5 class="h5">Cafe <i class="fas fa-coffee"></i></h5>
+            </a>
+        </div>
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:agency' %}">
+                <h5 class="h5">Agency <i class="fas fa-users"></i></h5>
+            </a>
+        </div>
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:downtown' %}">
+                <h5 class="h5">Downtown <i class="fas fa-city"></i></h5>
+            </a>
+        </div>
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:house' %}">
+                <h5 class="h5">Home <i class="fas fa-house-user"></i></h5>
+            </a>
+        </div>
+
 </div>
+
+<!-- for larger screens  -->
+
+<div class="h-100 overview game-background-large">
+    <div class="col-10 mx-auto mt-5 all-game-bg-img" id="city-background-img">
+
+        <div class="row py-5">
+            <div class="col-10 mx-auto text-center">
+                <h2 class="h2">Where to go?</h2>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <a class="col-4 col-md-3 rounded mx-auto text-center" href="{% url 'grind:bar' %}">
+                <div class="border rounded city-link">
+                    <h5 class="h5">Bar</h5>
+                    <i class="fas fa-beer"></i>
+                </div>
+            </a>
+
+            <a class="col-4 col-md-3 rounded mx-auto text-center" href="{% url 'grind:cafe' %}">
+                <div class="border rounded city-link">
+                    <h5 class="h5">Cafe</h5>
+                    <i class="fas fa-coffee"></i>
+                </div>
+            </a>
+
+            <a class="col-4 col-md-3 rounded mx-auto text-center" href="{% url 'grind:agency' %}">
+                <div class="border rounded city-link">
+                    <h5 class="h5">Agency</h5>
+                    <i class="fas fa-users"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="row mt-3">
+
+            <a class="col-3 rounded mx-auto text-center mt-2" href="{% url 'grind:downtown' %}">
+                <div class="border rounded city-link">
+                    <h5 class="h5">Downtown</h5>
+                    <i class="fas fa-city"></i>
+                </div>
+            </a>
+
+            <a class="col-3 rounded mx-auto text-center mt-2" href="{% url 'grind:house' %}">
+                <div class="border rounded city-link">
+                    <h5 class="h5">House</h5>
+                    <i class="fas fa-house-user"></i>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
 {% endif %}
 {% endblock %}

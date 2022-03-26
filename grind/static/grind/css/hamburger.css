@@ -18,17 +18,17 @@
     position: fixed;
     right: 1rem;
     background-color: #f8f9fa;
-    transform: translateX(200%);
-    transition: transform 0.3s;
+    min-height: 260px;
+    opacity: 0;
     list-style: none;
     z-index: 1;
     border: 1px solid black;
     box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
-.menuDown {
+/* .menuDown {
     transform: translateY(0);
-}
+} */
 
 li {
     padding: 1rem 0;
@@ -47,7 +47,7 @@ li {
 
 @media (min-width: 1800px) {
     .action {
-        top: 800px;
+        top: 850px;
         right: 25%;
         height: 150px;
         width: 150px;
@@ -58,7 +58,6 @@ li {
         right: 25%;
         width: 150px;
         height: auto;
-        opacity: 0;
     }
 
     .menuDown {
@@ -67,6 +66,10 @@ li {
 
     .material-icons {
         font-size: 25pt;
+    }
+
+    .menuLink {
+        font-size: 20pt;
     }
 
 }
@@ -86,6 +89,10 @@ li {
     .material-icons {
         font-size: 25pt;
     }
+
+    .menuLink {
+        font-size: 20pt;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -103,6 +110,7 @@ li {
     .material-icons {
         font-size: 20pt;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -119,5 +127,9 @@ li {
         width: 70px;
         height: auto;
         bottom: 6rem;
+    }
+
+    .menuLink {
+        font-size: 14pt;
     }
 }
