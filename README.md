@@ -434,6 +434,7 @@ Fields:
 ### 3. Leaderboard - store object for each entry in leaderboard
 Fields:
 - User: ForeignKey - gets user connected to character
+- Score - uses class method to calculate score
 - Submission Date: DateTimeField - registers time of submission
 - Character Intellect - gets intellect from character
 - Character Charm - gets charm from character
@@ -444,9 +445,10 @@ Fields:
 
 Has a classmethod active_char_to_leaderboard which takes the character as a parameter, creates an empty entry, adds in all fields from character, and saves the cls entry.
 
-Has a classmethod calculate_score that adds all intellect, coding, charm, endurance, and day, from the ActiceCharacter model.
+Has a classmethod calculate_score that adds all intellect, coding, charm, endurance, day, and money from the ActiceCharacter model. Day is subtracted from 30, which is the end day, resulting in higher number the fewer days. Days is the most valuable integer, so it's multiplied by three. Money is divided by 1000 to limit score.
 
-Has a classmethod leaderboard_check to see if score is in top 10, and if so then adds the score
+Has a classmethod leaderboard_check to see if score is in top 10, and if so then adds the score.
+First checks for double entry, same user and same score. Same user may get same score, but this is unlikely and I decided to not include these since board is limited to 10 entries.
 
 ### 4. Order - stores objects for each order
 Fields

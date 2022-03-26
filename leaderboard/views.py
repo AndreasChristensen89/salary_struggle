@@ -25,7 +25,6 @@ def winning_page(request):
 
     profile = get_object_or_404(Profile, user=request.user)
     character = get_object_or_404(ActiveCharacter, user=request.user)
-    leaderboard_spot = False
 
     if not profile.active_char:
         messages.error(request, 'Active character needed')
@@ -37,11 +36,7 @@ def winning_page(request):
         messages.error(request, 'Level not high enough')
         return redirect(reverse('profiles:profile'))
 
-    context = {
-        'leaderboard_spot': leaderboard_spot
-    }
-
-    return render(request, 'leaderboard/winning_page.html', context)
+    return render(request, 'leaderboard/winning_page.html')
 
 
 @login_required
@@ -58,6 +53,6 @@ def calculate_leaderboard_spot(request):
     if check:
         messages.success(request, "You made it to the leaderboard! Congratulations")
         return redirect(reverse('leaderboard:leaderboard'))
-    elif check:
+    else:
         messages.info(request, "Unfortunately, you didn't make the top 10")
         return redirect(reverse('home:index'))
