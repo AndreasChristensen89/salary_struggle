@@ -57,7 +57,7 @@ li {
         top: 500px;
         right: 25%;
         width: 150px;
-        height: 200px;
+        height: auto;
         opacity: 0;
     }
 
@@ -79,7 +79,7 @@ li {
 
     .menu {
         width: 150px;
-        height: 200px;
+        height: auto;
         bottom: 10rem;
     }
 
@@ -96,7 +96,7 @@ li {
 
     .menu {
         width: 100px;
-        height: 200px;
+        height: auto;
         bottom: 8rem;
     }
 
@@ -117,7 +117,7 @@ li {
 
     .menu {
         width: 70px;
-        height: 200px;
+        height: auto;
         bottom: 6rem;
     }
 }

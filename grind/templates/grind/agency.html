@@ -36,7 +36,7 @@
             Close
         </span>
     </button>
-    <ul class="menu rounded" id="menu-dif">
+    <ul class="menu rounded text-center">
         <li>
             <div class="menuLink lead d-none ask-interview" value="intellect" id="agency_intellect" aria-label="">Use intellect</div>
         </li>
@@ -187,9 +187,198 @@
 
     {% endif %}
 
+    </div>
+</div>
+
+<!-- for larger screens -->
+
+<div class="h-100 overview game-background-large">
+    <div class="col-10 mx-auto mt-5 all-game-bg-img" id="agency-background-img">
+
+        <div class="row">
+            <a class="text-center" href="{% url 'grind:city' %}">
+                <div class="col-2 text-center m-3 rounded">
+                    <i class="fas fa-arrow-left text-info return-arrow"></i>
+                </div>
+
+            </a>
+        </div>
+
+        {% if character.level == 1 %}
+    <div class="row text-center level-one">
+        <div class="mx-auto">
+            <h3 class="bg-white h3 rounded" id="recruiter-sign">Mr Recruiter</h3>
+        </div>
+    </div>
+    <div class="row answer-buttons d-none" id="passed">
+        <div class="col-10 mx-auto text-center mb-2">
+          <p id="bubble-agency">
+              I think we might be able to set you up with an interview. Come back later and we'll see if we have anything for you.
+          </p>
+        </div>
+    </div>
+    <button class="action" aria-label="Opens and closes the menu">
+        <span class="menuIcon material-icons" aria-hidden="true">
+            Actions
+        </span>
+        <span class="xIcon material-icons d-none" aria-hidden="true">
+            Close
+        </span>
+    </button>
+    <ul class="menu rounded text-center">
+        <li>
+            <div class="menuLink lead d-none ask-interview" value="intellect" id="agency_intellect" aria-label="">Use intellect</div>
+        </li>
+        <li>
+            <div class="menuLink lead d-none ask-interview" value="charm" id="agency_charm" aria-label="">Use charm</div>
+        </li>
+        <li>
+            <div class="menuLink lead d-none ask-interview" value="coding" id="agency_coding" aria-label="">Use coding</div>
+        </li>
+        <li>
+            <div class="menuLink lead d-none" id="agency_combine" aria-label="">Combine skills</div>
+        </li>
+    </ul>
+
+    {% elif character.level == 2 %}
+
+        {% if character.energy >= 100 %}
+        <div class="row mb-5 text-center d-none" id="interviewLink">
+            <div class="col-5 mx-auto">
+                <a id="HRInterview" href="{% url 'interview:hr_interview' %}">
+                    <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start HR interview</h3>
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <div class="row mb-5 text-center d-none" id="interviewLink">
+            <div class="col-5 mx-auto">
+                <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+            </div>
+        </div>
+        {% endif %}
+
+    <div class="row answer-buttons d-none" id="introInterview">
+        <div class="col-10 mx-auto text-center mb-2">
+          <p id="bubble-agency"></p>
+        </div>
+    </div>
+
+    <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none" aria-label="Next hint button">Next</button>
+
+    <div class="row" id="hint-row">
+        <div class="col-12 text-center">
+            <button aria-label="Hint nutton" value="0" class="btn hint-btn"><i class="fas fa-comment text-primary"></i></button>
+        </div>
+    </div>
+
+        <button aria-label="Next hint button" id="next-hint" class="border btn col-4 mx-auto hide bg-primary">Next</button>
+
+    {% elif character.level == 3 %}
+        {% if character.energy >= 100 %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <a id="HRInterview" href="{% url 'interview:coding_interview' %}">
+                        <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start coding interview</h3>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+                </div>
+            </div>
+        {% endif %}
+    
+
+        <div class="row answer-buttons d-none" id="introInterview">
+            <div class="col-10 mx-auto text-center mb-2">
+              <p id="bubble-agency"></p>
+            </div>
+        </div>
+    
+        <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none" aria-label="Next hint button">Next</button>
+    
+        <div class="row" id="hint-row">
+            <div class="col-12 text-center">
+                <button aria-label="Hint nutton" value="1" class="btn hint-btn"><i class="fas fa-comment text-primary"></i></button>
+            </div>
+        </div>
+
+    {% elif character.level == 4 %}
+        {% if character.energy >= 100 %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <a id="HRInterview" href="{% url 'interview:coding_difficult_interview' %}">
+                        <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start interview</h3>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+                </div>
+            </div>
+        {% endif %}
+    
+
+        <div class="row answer-buttons d-none" id="introInterview">
+            <div class="col-10 mx-auto text-center mb-2">
+                <p id="bubble-agency"></p>
+            </div>
+        </div>
+
+        <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none"
+            aria-label="Next hint button">Next</button>
+
+        <div class="row" id="hint-row">
+            <div class="col-12 text-center">
+                <button aria-label="Hint nutton" value="2" class="btn hint-btn">
+                    <i class="fas fa-comment text-primary"></i>
+                </button>
+            </div>
+        </div>
+        
+    {% elif character.level == 5 %}
+        {% if character.energy >= 100 %}
+        <div class="row mb-5 text-center d-none" id="interviewLink">
+            <div class="col-5 mx-auto">
+                <a id="HRInterview" href="{% url 'interview:final_interview' %}">
+                    <h3 class="h3 rounded border border-black text-dark bg-info" id="hr-animation">Start Final Interview</h3>
+                </a>
+            </div>
+        </div>
+        {% else %}
+            <div class="row mb-5 text-center d-none" id="interviewLink">
+                <div class="col-5 mx-auto">
+                    <h3 class="h3 rounded border border-black text-dark bg-warning">Need 100 <i class="fas fa-bolt mx-1"></i> for interview</h3>
+                </div>
+            </div>
+        {% endif %}
+    <div class="row answer-buttons d-none" id="introInterview">
+        <div class="col-10 mx-auto text-center mb-2">
+            <p id="bubble-agency"></p>
+        </div>
+    </div>
+
+    <button id="next-hint" class="border rounded btn col-2 mx-auto bg-white d-none"
+        aria-label="Next hint button">Next</button>
+
+    <div class="row" id="hint-row">
+        <div class="col-12 text-center">
+            <button aria-label="Hint nutton" value="3" class="btn hint-btn">
+                <i class="fas fa-comment text-primary"></i>
+            </button>
+        </div>
+    </div>
+
+    {% endif %}
 
     </div>
 </div>
+
 
 {% endif %}
 <div class="loading-overlay">
