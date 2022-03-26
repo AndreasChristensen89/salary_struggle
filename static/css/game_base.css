@@ -10,6 +10,7 @@ body {
     height: 100%;
     margin: 0;
     overflow: hidden;
+    background-color: black;
 }
 
 .message-container {
@@ -177,28 +178,8 @@ body {
     margin-bottom: 20%;
 }
 
-/* #enter-grind {
-    background-image: url(/media/backgrounds/background-enter.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 320px;
-} */
-
 #house-background {
     background-color: #e3d9ca;
-}
-
-/* #house-background-img {
-    background-image: url(/media/backgrounds/house-mobile.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100%;
-} */
-
-#bar-background-img {
-    background-image: url(/media/backgrounds/bar_horizontal.png);
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 #store-items {
@@ -212,9 +193,8 @@ body {
 
 #agency-background-img {
     background-image: url(/media/agency-background-mobile.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100%;
+    /* background-size: contain;
+    background-repeat: no-repeat; */
 }
 
 #agency-background {
@@ -343,12 +323,20 @@ body {
 
 /* --------------------------- media queries ------------------------------ */
 @media (min-width: 1800px) {
-    
-    body {
-        background-color: #e3d9ca;
-    }
 
     #house-background {
+        display: none;
+    }
+
+    #bar-background {
+        display: none;
+    }
+
+    #cafe-background {
+        display: none;
+    }
+
+    #agency-background {
         display: none;
     }
 
@@ -358,13 +346,23 @@ body {
 
     #house-background-img {
         background-image: url(/media/backgrounds/house_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 1500px;
-        width: 2000px;
+    }
+
+    #agency-background-img {
+        background-image: url(/media/backgrounds/agency_horizontal.png);
+    }
+
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_horizontal.png);
+    }
+
+    #cafe-background-img {
+        background-image: url(/media/backgrounds/cafee_horizontal.png);
     }
 
     .all-game-bg-img {
+        background-size: contain;
+        background-repeat: no-repeat;
         height: 1500px;
         width: 2000px;
     }
@@ -373,13 +371,23 @@ body {
 @media (max-width: 1800px) {
     #house-background-img {
         background-image: url(/media/backgrounds/house_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 1300px;
-        background-position-y: -50%;
+    }
+
+    #cafe-background-img {
+        background-image: url(/media/backgrounds/cafee_horizontal.png);
+    }
+
+    #agency-background-img {
+        background-image: url(/media/backgrounds/agency_horizontal.png);
+    }
+
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_horizontal.png);
     }
 
     .all-game-bg-img {
+        background-size: contain;
+        background-repeat: no-repeat;
         height: 1300px;
         background-position-y: -50%;
     }
@@ -401,13 +409,23 @@ body {
 
     #house-background-img {
         background-image: url(/media/backgrounds/house_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 1300px;
-        background-position-y: -40%;
+    }
+
+    #agency-background-img {
+        background-image: url(/media/backgrounds/agency_horizontal.png);
+    }
+
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_horizontal.png);
+    }
+
+    #cafe-background-img {
+        background-image: url(/media/backgrounds/cafee_horizontal.png);
     }
 
     .all-game-bg-img {
+        background-size: contain;
+        background-repeat: no-repeat;
         height: 1300px;
         background-position-y: -40%;
     }
@@ -430,19 +448,18 @@ body {
     }
 
     .all-game-bg-img {
-        height: 100%;
+        height: 575px;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
     
     #house-background-img {
         background-image: url(/media/backgrounds/house_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 100%;
     }
 
-    /* #bar-background-img {
-        height: 100%
-    } */
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_horizontal.png);
+    }
 
     #city-background-img {
         background-image: url(/media/backgrounds/city_backgrond_horizontal.png);
@@ -453,16 +470,10 @@ body {
 
     #agency-background-img {
         background-image: url(/media/backgrounds/agency_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 100%
     }
 
     #cafe-background-img {
         background-image: url(/media/backgrounds/cafee_horizontal.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 100%
     }
 
 
@@ -487,13 +498,12 @@ body {
 
     .all-game-bg-img {
         height: 1000px;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
     
     #house-background-img {
         background-image: url(/media/backgrounds/house-mobile.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 1000px;
     }
 
     #city-background-img {
@@ -504,24 +514,15 @@ body {
         width: 100vw;
     }
 
-    /* #bar-background-img {
-        height: 1200px;
-        width: 100vw;
-    } */
+    #bar-background-img {
+        background-image: url(/media/backgrounds/bar_background_mobile.png);
+    }
 
     #cafe-background-img {
         background-image: url(/media/backgrounds/cafe_mobile.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 1200px;
-        width: 100vw;
     }
 
     #agency-background-img {
         background-image: url(/media/backgrounds/agency-background-mobile.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 1300px;
-        width: 100vw;
     }
 }

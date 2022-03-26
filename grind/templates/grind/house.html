@@ -10,7 +10,7 @@
 {% if user.is_authenticated %}
 
 <div class="h-100 overview" id="house-background">
-    <div class="text-center" id="house-background-img">
+    <div class="text-center all-game-bg-img" id="house-background-img">
 
         <div class="row">
             <a class="text-center" href="{% url 'grind:city' %}">
@@ -45,7 +45,7 @@
 </div>
 
 <div class="h-100 overview game-background-large">
-    <div class="col-10 border border-black mx-auto mt-5" id="house-background-img">
+    <div class="col-10 mx-auto mt-5 all-game-bg-img" id="house-background-img">
 
         <div class="row">
             <a class="text-center" href="{% url 'grind:city' %}">
@@ -63,7 +63,7 @@
                     Close
                 </span>
             </button>
-            <ul class="menu rounded" id="large-bg">
+            <ul class="menu rounded text-center" id="large-bg">
                 <li>
                     <div class="menuLink lead d-none" id="sleep" aria-label="">Sleep</div>
                 </li>
