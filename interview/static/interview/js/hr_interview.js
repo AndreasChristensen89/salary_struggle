@@ -58,6 +58,7 @@ var finalScore = 1;
 var neededScore = parseInt($("#interw-impress").text());
 
 function attemptSkill(event) {
+    $("#.skill-answers").animate({opacity: "0"}, 300);
     // get the skill
     let skill = event.target.value;
     // disable answer buttons
@@ -119,6 +120,7 @@ function attemptSkill(event) {
         $("#question-text").animate({
             opacity: 0
         }, "medium");
+        $("#.skill-answers").animate({opacity: "1"}, 300);
     }, 2500);
     setTimeout(() => {
         if (questionCount == questionSet.length) {

@@ -16,12 +16,13 @@
 }
 
 .icon {
-  font-size: 50pt;
+  font-size: 35pt;
 }
 
-#introduction {
+
+/* #introduction {
   height: 65%;
-}
+} */
 
 .top-text-interview {
   height: 100px;
@@ -46,11 +47,24 @@
   
 }
 
+@media (max-width: 1200px) {
+
+  #hr-img {
+    height: 265px;
+    width: 160px;
+  }
+  
+}
+
 @media (max-width: 768px) {
 
   #hr-img {
-    height: 170px;
-    width: 100px;
+    height: 19vh;
+    width: 15vh;
+  }
+
+  .interviewer-presentation {
+    height: 50px;
   }
   
 }
