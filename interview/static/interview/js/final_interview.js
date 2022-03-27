@@ -64,6 +64,7 @@ var time = 8;
 
 // checks the answer if answer is a skill
 function attemptSkill(event) {
+    $("#skill-answers").animate({opacity: "0"}, 300);
     // get the skill
     let skill = event.target.value;
     // disable answer buttons
@@ -264,6 +265,7 @@ function buildQuestions() {
         $(".skill-btn").prop("disabled", false);
         setTimeout(() => {
             $(".answer-btn").animate({opacity: 1}, "slow");
+            $("#skill-answers").animate({opacity: "1"}, 300);
         }, 500);
     } else if (currentQuestion <= 14) {
         timeleft = 0;
@@ -287,7 +289,7 @@ function buildQuestions() {
         $("#number-buttons").addClass("hide");
         $("#code-buttons").removeClass("hide");
         let randCode = Math.floor(Math.random() * 20) + 5;
-        $("#question-text").html(`Create a statement that results in ${randCode}`);
+        $("#question-text").html(`Produce ${randCode}`);
     }
 }
 

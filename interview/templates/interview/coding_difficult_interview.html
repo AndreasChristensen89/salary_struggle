@@ -30,7 +30,7 @@
 
     <div class="row mt-5 hide" id="interviewer">
       <div class="col-10 text-center mx-auto">
-        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="third-intw-img">
+        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="Picture of third interviewer" id="third-intw-img">
       </div>
     </div>
 
@@ -56,6 +56,7 @@
     <!-- Question Section -->
     <section class="hide" id="question-game-area">
 
+      <!-- overview with questions number and impress level   -->
       <div class="row">
         <div class="col text-center mx-auto">
           <ul class="list-inline">
@@ -69,12 +70,14 @@
         </div>
       </div>
 
+      <!-- timer -->
       <div class="row" id="timer-row">
         <div class="col-10 mx-auto text-center">
           <h2 class="h2" id="timer">Get ready!</h2>
         </div>
       </div>
 
+      <!-- question-text -->
       <div class="row">
         <div class="col-10 mx-auto text-center mt-1">
           <p class="lead font-weight-bold" id="question-text">Question</h2>
@@ -88,12 +91,14 @@
         <p id="answer-wild"></p>
       </div>
 
+      <!-- speech bubble -->
       <div class="row answer-buttons mt-5 hide" id="bubble-row">
         <div class="col-10 mx-auto text-center mt-1">
           <p class="hide" id="bubble"></p>
         </div>
       </div>
 
+      <!-- row with numbers from 1-10 for calculation questions -->
       <div class="row answer-buttons">
           <div class="col-10 col-lg-6 mx-auto text-center mt-1" id="number-buttons">
               <p class="col-12 lead" id="answer-text">Hurry! Use the buttons!</p>
@@ -115,6 +120,7 @@
          <p class="col-12 lead" id="answer-code"></p>
          <hr>
 
+         <!-- math operator buttons -->
          <div class="row pt-2">
            <div class="col-12">
             <button aria-label="Code button +" id="codeplus-btn" class="btn border col-3 code-btn" value="+">+</button>
@@ -123,6 +129,7 @@
            </div>
          </div>
 
+         <!-- for math produce questions -->
           <div class="row pt-2">
             <div class="col-12">
               <button aria-label="Code button 1" id="code1-btn" class="btn border col-2 code-btn mx-1" value="1">1</button>
@@ -133,7 +140,7 @@
           </div>
 
           <hr>
-
+          <!-- delete & submit buttons for math produce questions -->
           <div class="row">
             <div class="col-12">
               <button aria-label="Delete button" id="delete-btn" class="btn mx-auto text-center border col-4 bg-danger code-btn" value="delete">Delete</button>
@@ -143,6 +150,7 @@
           
         </div>
 
+        <!-- skill buttons for skill questions -->
         <div class="row mt-3 fixed-bottom my-5 answer-buttons hide third-intw-skills" id="skill-answers">
           <div class="col-10 mx-auto text-center mt-3">
             <h4 class="h4 text center">Choose your approach</h4>
@@ -157,7 +165,8 @@
       </div>
 
     </section>
-  
+    
+    <!-- Backend values to JS -->
     <div class="d-none">
       <div id="char-charm">{{character.charm}}</div>
       <div id="char-intellect">{{character.intellect}}</div>
@@ -173,6 +182,7 @@
 
     <!----------------- End section --------------------->
 
+    <!-- success -->
     <section class="hide" id="ending-success">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
@@ -196,6 +206,7 @@
       
     </section>
 
+    <!-- fail -->
     <section class="hide" id="ending-fail">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">

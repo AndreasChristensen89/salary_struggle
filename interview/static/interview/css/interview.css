@@ -85,7 +85,7 @@
   }
 
   #question-text {
-    font-size: 12pt;
+    font-size: 18pt;
   }
 
   .third-intw-skills {
@@ -95,6 +95,28 @@
   #third-intw-img {
     height: 40vh;
     width: 25vh;
+  }
+
+  #final-intw-img {
+    height: 46vh;
+    width: 50vh;
+  }
+
+  #coding-img {
+    height: 42vh;
+    width: 23vh;
+  }
+
+  .boss-intro{
+    font-size: 2.25rem;
+  }
+
+  .boss-answer {
+    width: 60%;
+  }
+
+  .final-intw-wild {
+    width: 40%;
   }
   
 }
@@ -126,6 +148,20 @@
     height: 26vh;
     width: 15vh;
   }
+
+  .final-intw-wild {
+    width: 120px;
+  }
+
+  #final-intw-img {
+    height: 33vh;
+    width: 35vh;
+  }
+
+  #coding-img {
+    height: 42vh;
+    width: 23vh;
+  }
   
 }
 
@@ -150,6 +186,20 @@
 
   #submit-code-btn {
     height: 33px;
+  }
+
+  #final-intw-img {
+    height: 26vh;
+    width: 30vh;
+  }
+
+  #coding-img {
+    height: 26vh;
+    width: 18vh;
+  }
+
+  .final-intw-wild {
+    width: 120px;
   }
   
 }

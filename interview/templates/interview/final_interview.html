@@ -12,11 +12,11 @@
   <section id="introduction">
     <div class="row pt-3 intro">
         <div class="col-10 mx-auto text-center">
-             <h1 class="display-3">Welcome to the final interview</h1>
+             <h1 class="h1">Welcome to the final interview</h1>
         </div>
     </div>
 
-    <div class="row pt-3 intro-interviewer hide" id="head-intro">
+    <!-- <div class="row pt-3 intro-interviewer hide" id="head-intro">
       <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">Here's the big boss</h1>
       </div>
@@ -26,28 +26,28 @@
       <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">{{interviewer.name}}</h1>
       </div>
-    </div>
+    </div> -->
 
-    <div class="row pt-5 hide" id="interviewer">
+    <div class="row mt-5 hide" id="interviewer">
       <div class="col-10 text-center mx-auto">
-        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="hr-img">
+        <img class="img-fluid" src="{{ interviewer.image.url }}" alt="Picture of the big boss" id="final-intw-img">
       </div>
     </div>
 
     <div class="row pt-3 intro-interviewer hide">
       <div class="col-10 mx-auto text-center">
-           <p class="lead">Best of luck!</p>
+           <p class="lead boss-intro">Best of luck!</p>
       </div>
     </div>
 
     <div class="row pt-3 hide interviewer-presentation">
       <div class="col-10 mx-auto text-center">
-           <p class="lead">{{interviewer.intro}}</p>
+           <p class="lead boss-intro">{{interviewer.intro}}</p>
       </div>
     </div>
   </section>
 
-    <div class="row pt-3" id="next-button">
+    <div class="row mt-5" id="next-button">
       <button class="btn mx-auto icon" id="next-comment">
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </button>
@@ -72,7 +72,7 @@
 
       <!-- timer -->
       <div class="row hide" id="timer-row">
-        <div class="col-10 mx-auto text-center mt-5">
+        <div class="col-10 mx-auto text-center">
           <h2 class="h2" id="timer">Get ready!</h2>
         </div>
       </div>
@@ -93,14 +93,14 @@
 
       <!-- row with answers, if correct answer needed -->
       <div class="row mt-3 my-5 hide" id="question-answers">
-        <div class="col-10 mx-auto text-center mt-3">
+        <!-- <div class="col-10 mx-auto text-center mt-3">
           <h4 class="h4 text center">Choose your answer</h4>
-        </div>
+        </div> -->
         <div class="col-10 text-center mx-auto mt-2">
-          <button aria-label="Answer Intellect" class="btn border my-3 answer-btn col-8" id="answer-intellect" value="a"></button>
-          <button aria-label="Answer Charm" class="btn border my-3 answer-btn col-8" id="answer-charm" value="b"></button>
-          <button aria-label="Answer Coding" class="btn border my-3 answer-btn col-8" id="answer-coding" value="c"></button>
-          <button aria-label="Answer Wild" class="btn border my-3 answer-btn col-8" id="answer-wild" value="wild"></button>
+          <button aria-label="Answer Intellect" class="btn border my-3 answer-btn col-8 boss-answer" id="answer-intellect" value="a"></button>
+          <button aria-label="Answer Charm" class="btn border my-3 answer-btn col-8 boss-answer" id="answer-charm" value="b"></button>
+          <button aria-label="Answer Coding" class="btn border my-3 answer-btn col-8 boss-answer" id="answer-coding" value="c"></button>
+          <button aria-label="Answer Wild" class="btn border my-3 answer-btn final-intw-wild" id="answer-wild" value="wild"></button>
         </div>
       </div>
 
@@ -119,7 +119,7 @@
 
       <!-- rows with math buttons, for calculation questions -->
       <div class="row answer-buttons hide" id="math-section">
-        <div class="col-10 mx-auto text-center mt-1" id="number-buttons">
+        <div class="col-10 col-md-6 mx-auto text-center mt-1" id="number-buttons">
             <p class="col-12 lead" id="answer-text">Hurry! Use the buttons!</p>
           <button aria-label="Number button 0" id="number0-btn" class="btn border col-2 number-btn" value="0">0</button>
           <button aria-label="Number button 1" id="number1-btn" class="btn border col-2 number-btn" value="1">1</button>
@@ -135,7 +135,7 @@
           <button aria-label="Delete button" id="delete-btn" class="btn border col-4 bg-danger number-btn" value="delete">Delete</button>
           <button aria-label="Submit button" id="submit-number-btn" class="btn border bg-success col-4" value="submit">Submit</button>
       </div>
-      <div class="col-10 mx-auto text-center mt-1 hide" id="code-buttons">
+      <div class="col-10 col-md-6 mx-auto text-center mt-1 hide" id="code-buttons">
        <p class="col-12 lead" id="answer-code"></p>
        <hr>
 
@@ -189,7 +189,7 @@
     <section class="hide" id="ending-success">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Yes! You actually did it!</h1>
+               <h1 class="h1">Yes! You actually did it!</h1>
           </div>
       </div>
   
@@ -212,7 +212,7 @@
     <section class="hide" id="ending-fail">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Damn, this could have gone better.</h1>
+               <h1 class="h1">Damn, this could have gone better.</h1>
           </div>
       </div>
   
