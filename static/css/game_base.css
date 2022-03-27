@@ -425,6 +425,12 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .city-margin {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
     .hint-btn {
         font-size: 18pt;
     }
@@ -466,5 +472,12 @@ body {
 
     #agency-background-img {
         background-image: url(/media/backgrounds/agency-background-mobile.png);
+    }
+}
+
+@media (max-width: 320px) {
+    .city-margin {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }

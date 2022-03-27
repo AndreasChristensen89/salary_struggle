@@ -576,7 +576,7 @@ If payment failed it will send a failed message to Stripe
 - Cannot test create_new_character properly. Won't reset according to test
 - Cannot make product form pass in test with correct input
 - Don't know how to test add_item view and adjust_bag view.
-
+- Downtown background picture has a grey top, don't know where it's coming from. It only comes with this picture
 
 To do list:
 - Include endurance in energy drawn - DONE
