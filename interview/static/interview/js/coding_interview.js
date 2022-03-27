@@ -59,6 +59,8 @@ var neededScore = parseInt($("#interw-impress").text());
 
 // checks the answer if answer is a skill
 function attemptSkill(event) {
+    $("#question-answers").animate({opacity: "0"}, 300);
+    $("#skill-answers").animate({opacity: "0"}, 300);
     // get the skill
     let skill = event.target.value;
     // disable answer buttons
@@ -121,6 +123,8 @@ function attemptSkill(event) {
             buildQuestions();
             $(".skill-btn").prop("disabled", false);
             $(".answer-btn").prop("disabled", false);
+            $("#question-answers").animate({opacity: "1"}, 300);
+            $("#skill-answers").animate({opacity: "1"}, 300);
         }
     }, 5000);
 }
@@ -150,7 +154,7 @@ function buildQuestions() {
 
 // checks the answer is not skill
 function checkAnswer(event) {
-
+    $("#skill-answers").animate({opacity: "0"}, 300);
     $(".skill-btn").prop("disabled", true);
     $(".answer-btn").prop("disabled", true);
     
@@ -188,6 +192,7 @@ function checkAnswer(event) {
             buildQuestions();
             $(".skill-btn").prop("disabled", false);
             $(".answer-btn").prop("disabled", false);
+            $("#skill-answers").animate({opacity: "1"}, 300);
         }
     }, 2500);
 }

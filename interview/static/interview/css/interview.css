@@ -20,9 +20,9 @@
 }
 
 
-/* #introduction {
-  height: 65%;
-} */
+.code-skills {
+  bottom: 50px;
+}
 
 .top-text-interview {
   height: 100px;
@@ -53,6 +53,18 @@
     height: 265px;
     width: 160px;
   }
+
+  .code-skills {
+    bottom: 100px;
+  }
+
+  .answer-btn {
+    width: 120px;
+  }
+
+  .code-answer {
+    height: 250px;
+  }
   
 }
 
@@ -70,14 +82,26 @@
   .answer-btn {
     width: 84px;
   }
+
+  .code-answer {
+    height: 250px;
+  }
   
 }
 
-@media (max-width: 320px) {
+@media (max-width: 361px) {
 
   .answer-btn {
     font-size: 9pt;
     width: 84px;
+  }
+
+  .code-answer {
+    height: 120px;
+  }
+
+  .code-skills {
+    bottom: 0;
   }
   
 }

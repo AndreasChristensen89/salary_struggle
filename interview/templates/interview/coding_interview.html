@@ -12,11 +12,11 @@
   <section id="introduction">
     <div class="row pt-3 intro">
         <div class="col-10 mx-auto text-center">
-             <h1 class="display-3">Welcome to the coding interview</h1>
+             <h1 class="h1">Welcome to the coding interview</h1>
         </div>
     </div>
 
-    <div class="row pt-3 intro-interviewer hide" id="head-intro">
+    <!-- <div class="row pt-3 intro-interviewer hide" id="head-intro">
       <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">Here's your interviewer</h1>
       </div>
@@ -26,9 +26,9 @@
       <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">{{interviewer.name}}</h1>
       </div>
-    </div>
+    </div> -->
 
-    <div class="row pt-5 hide" id="interviewer">
+    <div class="row mt-3 hide" id="interviewer">
       <div class="col-10 text-center mx-auto">
         <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="hr-img">
       </div>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="row pt-3 hide interviewer-presentation">
+    <div class="row pt-3 hide interviewer-presentation mb-5">
       <div class="col-10 mx-auto text-center">
            <p class="lead">{{interviewer.intro}}</p>
       </div>
@@ -87,13 +87,13 @@
 
       <div class="row hide" id="question-answers">
         <div class="col-10 text-center mx-auto mt-2">
-          <button aria-label="Answer A" class="btn border my-1 answer-btn col-8" id="answer-a" value="a"></button>
-          <button aria-label="Answer B" class="btn border my-1 answer-btn col-8" id="answer-b" value="b"></button>
-          <button aria-label="Answer C" class="btn border my-1 answer-btn col-8" id="answer-c" value="c"></button>
+          <button aria-label="Answer A" class="btn border my-3 answer-btn col-4 col-md-8 code-answer" id="answer-a" value="a"></button>
+          <button aria-label="Answer B" class="btn border my-3 answer-btn col-4 col-md-8 code-answer" id="answer-b" value="b"></button>
+          <button aria-label="Answer C" class="btn border my-3 answer-btn col-4 col-md-8 code-answer" id="answer-c" value="c"></button>
         </div>
       </div>
 
-      <div class="row mt-3 fixed-bottom my-5" id="skill-answers">
+      <div class="row mt-3 fixed-bottom mt-5 code-skills" id="skill-answers">
         <div class="col-10 mx-auto text-center mt-3">
           <h4 class="h4 text center">Skills</h4>
         </div>
@@ -129,7 +129,7 @@
     <section class="hide" id="ending-success">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Sweet, you pulled through!</h1>
+               <h1 class="h1">Sweet, you pulled through!</h1>
           </div>
       </div>
   
@@ -152,7 +152,7 @@
     <section class="hide" id="ending-fail">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Damn, this could have gone better.</h1>
+               <h1 class="h1">Damn, this could have gone better.</h1>
           </div>
       </div>
   
