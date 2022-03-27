@@ -55,7 +55,7 @@ $("#study").click(function() {
             $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
             energy = energy-(60-endurance);
         } else {
-            $("#game-message").text("Not enough energy");
+            $("#game-message").text(`You need ${60-endurance} energy`);
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 

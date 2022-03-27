@@ -70,7 +70,7 @@ $("#homeCharm").click(function() {
                     $(".loading-overlay").eq(2).fadeToggle(100);
                 }, 1500);
             } else {
-                $("#game-message").text("Not enough energy");
+                $("#game-message").text(`You need ${40-endurance} energy`);
                 $("#game-message-container").removeClass("d-none");
 
                 setTimeout(() => { 
@@ -105,7 +105,7 @@ $("#homeStudy").click(function() {
                 }, 1500);
 
             } else {
-                $("#game-message").text("Not enough energy");
+                $("#game-message").text(`You need ${40-endurance} energy`);
                 $("#game-message-container").removeClass("d-none");
 
                 setTimeout(() => { 

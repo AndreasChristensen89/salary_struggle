@@ -10,7 +10,6 @@ body {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    background-color: black;
 }
 
 .message-container {
@@ -67,6 +66,7 @@ body {
     color: white;
     width: 50%;
     box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    z-index: 99999;
 
     animation-name: element-move;
     animation-duration: 0.5s;
@@ -242,7 +242,7 @@ body {
     background-color: #615b59;
 }
 
-#hint-btn {
+.hint-btn {
     font-size: 32pt;
 }
 
@@ -425,6 +425,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .hint-btn {
+        font-size: 18pt;
+    }
+    
     #enter-grind {
         background-image: url(/media/backgrounds/background-enter.png);
         background-size: cover;

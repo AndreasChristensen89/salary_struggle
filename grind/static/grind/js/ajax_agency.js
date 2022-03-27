@@ -30,7 +30,7 @@ $(".ask-interview").click(function() {
                 fail(skill);
             } 
         } else {
-            $("#game-message").text("Not enough energy");
+            $("#game-message").text("You need 100 energy");
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 
@@ -60,7 +60,7 @@ $("#agency_combine").click(function() {
             }
             
         } else {
-            $("#game-message").text("Not enough energy");
+            $("#game-message").text("You need 100 energy");
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 

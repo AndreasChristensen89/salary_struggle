@@ -51,7 +51,7 @@ $("#fight").click(function() {
                     }, 3000);
                 }
             } else {
-                $("#game-message").text("Not enough energy");
+                $("#game-message").text(`You need ${60-endurance} energy`);
                 $("#game-message-container").removeClass("d-none");
 
                 setTimeout(() => { 

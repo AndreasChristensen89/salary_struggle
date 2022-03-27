@@ -3,20 +3,21 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="h-100 overview" id="background-fill">
-    <div class="text-center fixed-bottom" id="enter-grind"></div>
+<div class="h-100 overview" id="city-background">
+    <div class="text-center fixed-bottom" id="city-background-img"></div>
 
-            <div class="col text-center">
-                <h1 class="display-4 pt-2" id="enter-headline">Salary Struggle</h1>
-            </div>
+    <div class="col text-center">
+        <h1 class="display-4 pt-2" id="enter-headline">Salary Struggle</h1>
+    </div>
 
-        <div class="row mt-5">
-            <a class="col-12" href="{% url 'grind:house' %}">
-                <div class="col-10 mx-auto text-center" id="enter-link">
-                    Enter
-                </div>
-            </a>
+    <div class="row mt-5">
+        <a class="col-12" href="{% url 'grind:house' %}">
+            <div class="col-10 mx-auto text-center" id="enter-link">
+                Enter
             </div>
+        </a>
+    </div>
+
 </div>
 
 {% endif %}

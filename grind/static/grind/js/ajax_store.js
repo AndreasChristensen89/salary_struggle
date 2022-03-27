@@ -74,11 +74,11 @@ $(".item-buy").click(function() {
                     if (permanent) {
                         $('#itemPermanent').addClass("hide");
                     }
-                }, 3000);
+                }, 2000);
             }
             
         } else {
-            $("#game-message").text("Not enough money");
+            $("#game-message").html(`You need <i class="fas fa-yen-sign"></i>${price}`);
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 

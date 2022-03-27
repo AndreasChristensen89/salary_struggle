@@ -23,11 +23,6 @@
   height: 65%;
 }
 
-#hr-img {
-  height: 170px;
-  width: 100px;
-}
-
 .top-text-interview {
   height: 100px;
 }
@@ -40,3 +35,23 @@
 #answer-code {
   min-height: 30px;
 }
+
+
+@media (min-width: 768px) {
+
+  #hr-img {
+    height: 215px;
+    width: 150px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+
+  #hr-img {
+    height: 170px;
+    width: 100px;
+  }
+  
+}
+

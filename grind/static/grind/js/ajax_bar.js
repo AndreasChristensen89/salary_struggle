@@ -30,7 +30,7 @@ $("#drinkButton").click(function() {
                         $(".loading-overlay").eq(0).fadeToggle(100);
                     }, 3000);
                 } else {
-                    $("#game-message").text("Not enough money");
+                    $("#game-message").text('You need 1000 <i class="fas fa-yen-sign ml-1"></i>');
                     $("#game-message-container").removeClass("d-none");
 
                     setTimeout(() => { 
@@ -40,7 +40,7 @@ $("#drinkButton").click(function() {
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 energy = energy-(40-endurance);
             } else {
-                $("#game-message").text("Not enough energy");
+                $("#game-message").text(`You need ${40-endurance} energy`);
                 $("#game-message-container").removeClass("d-none");
 
                 setTimeout(() => { 
@@ -90,7 +90,7 @@ $("#converse").click(function() {
             $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
             energy = energy-(40-endurance);
         } else {
-            $("#game-message").text("Not enough energy");
+            $("#game-message").text(`You need ${40-endurance} energy`);
             $("#game-message-container").removeClass("d-none");
 
             setTimeout(() => { 
