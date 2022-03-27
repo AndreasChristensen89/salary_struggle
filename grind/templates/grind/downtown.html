@@ -3,53 +3,38 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container h-100 mt-3">
-    <div class="row">
-        <div class="col text-center">
-            <h1 class="h1">Downtown</h1>
-        </div>
-    </div>
+<div class="h-100 overview" id="downtown-background">
+    <div class="text-center all-game-bg-img" id="downtown-background-img">
 
-    <div class="row">
-        <a class="col-3 position-absolute" href="{% url 'grind:city' %}">
-            <i class="fas fa-arrow-left"></i>
-        </a>
-    </div>
-
-    <div class="row pt-5">
-        <div class="col-6 border rounded mx-auto text-center">
-            <a href="{% url 'grind:store' %}">
-                <div class="col-12 rounded">
-                    <h5 class="h5">Store</h5>
-                    <p">Buy items</p>
+        <div class="row">
+            <a class="text-center" href="{% url 'grind:city' %}">
+                <div class="col-2 text-center m-3 rounded">
+                    <i class="fas fa-arrow-left text-white btn return-arrow"></i>
                 </div>
+
             </a>
         </div>
-    </div>
-        
-    <div class="row pt-2">
-        <div class="col-6 border rounded mx-auto text-center">
-            <a href="{% url 'grind:call-center' %}">
-                <div class="col-12 rounded">
-                    <h5 class="h5">Call Center</h5>
-                    <p>Work part time</p>
-                </div>
-            </a>
-        </div>
-    </div>
 
-    <div class="row pt-2">
-        <div class="col-6 border rounded mx-auto text-center">
-            <a href="{% url 'grind:back-alley' %}">
-                <div class="col-12 rounded">
-                    <h5 class="h5">Back Alley</h5>
-                    <p>Get your hands dirty</p>
-                </div>
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:store' %}">
+                <h3 class="h3">Bar <i class="fas fa-beer"></i></h3>
             </a>
         </div>
-    </div>
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:call-center' %">
+                <h3 class="h3">Call Center <i class="fas fa-coffee"></i></h3>
+            </a>
+        </div>
+
+        <div class="row my-3">
+            <a class="col-10 col-sm-8 col-md-6 rounded mx-auto text-center city-link my-3" href="{% url 'grind:back-alley' %}">
+                <h3 class="h3">Back Alley <i class="fas fa-users"></i></h3>
+            </a>
+        </div>
 
     </div>
 </div>
+
 {% endif %}
 {% endblock %}

@@ -212,6 +212,10 @@ body {
     background-image: url(/media/backgrounds/agency_horizontal.png);
 }
 
+#downtown-background-img {
+    background-image: url(/media/backgrounds/downtown_repeat.png);
+}
+
 #store-items {
     max-height: 400px;
     overflow-y: auto;
@@ -232,6 +236,10 @@ body {
 
 #cafe-background {
     background-color: #c2c2c2;
+}
+
+#downtown-background {
+    background-color: #615b59;
 }
 
 #hint-btn {
