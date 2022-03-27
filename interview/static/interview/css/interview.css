@@ -91,6 +91,11 @@
   .third-intw-skills {
     bottom: 100px;
   }
+
+  #third-intw-img {
+    height: 40vh;
+    width: 25vh;
+  }
   
 }
 
@@ -115,6 +120,11 @@
 
   .code-skills {
     bottom: 50px;
+  }
+
+  #third-intw-img {
+    height: 26vh;
+    width: 15vh;
   }
   
 }

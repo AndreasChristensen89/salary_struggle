@@ -609,6 +609,7 @@ To do list:
 - Create messages in game - needs z-index
 - In conversation overlay, penalty hide is removed a bit too early
 - Finish final interview
+- Clean grind code, doubles not used anymore
 
 
 NOTE:
