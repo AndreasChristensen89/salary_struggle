@@ -69,3 +69,14 @@
   
 }
 
+@media (max-width: 320px) {
+
+  .answer-btn {
+    font-size: 9pt;
+    width: 84px;
+  }
+  
+}
+
+
+

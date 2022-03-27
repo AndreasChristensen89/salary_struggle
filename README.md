@@ -611,4 +611,8 @@ To do list:
 - Finish final interview
 
 
+NOTE:
+Game runs best on screens that are minimum 320 * 480px 
+
+
 

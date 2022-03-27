@@ -40,10 +40,10 @@ const hrQuestions = [{
   },
   {
     question: "What's the name of our company?",
-    a: "A.S Herman Spectrum",
+    a: "Data Specs",
     b: "Cisco Media",
     c: "Data Drifters",
-    d: "Never mind the name, I'll succeed anywhere.",
+    d: "Whatever, I'll succeed anywhere.",
     answer: "c",
   },
   {
