@@ -12,23 +12,23 @@
   <section id="introduction">
     <div class="row pt-3 intro">
         <div class="col-10 mx-auto text-center">
-             <h1 class="display-3">Welcome to your third interview</h1>
+             <h1 class="h1">Welcome to your third interview</h1>
         </div>
     </div>
 
-    <div class="row pt-3 intro-interviewer hide" id="head-intro">
+    <!-- <div class="row pt-3 intro-interviewer hide" id="head-intro">
       <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">Here's your interviewer</h1>
       </div>
-    </div>
+    </div> -->
 
-    <div class="row pt-3 interviewer-presentation hide">
+    <!-- <div class="row pt-3 interviewer-presentation hide">
       <div class="col-10 mx-auto text-center top-text-interview">
            <h1 class="display-4">{{interviewer.name}}</h1>
       </div>
-    </div>
+    </div> -->
 
-    <div class="row pt-5 hide" id="interviewer">
+    <div class="row mt-5 hide" id="interviewer">
       <div class="col-10 text-center mx-auto">
         <img class="img-fluid" src="{{ interviewer.image.url }}" alt="" id="hr-img">
       </div>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="row pt-3 hide interviewer-presentation">
+    <div class="row pt-3 hide interviewer-presentation mb-5">
       <div class="col-10 mx-auto text-center">
            <p class="lead">{{interviewer.intro}}</p>
       </div>
@@ -70,7 +70,7 @@
       </div>
 
       <div class="row" id="timer-row">
-        <div class="col-10 mx-auto text-center mt-5">
+        <div class="col-10 mx-auto text-center">
           <h2 class="h2" id="timer">Get ready!</h2>
         </div>
       </div>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="row answer-buttons">
-          <div class="col-10 mx-auto text-center mt-1" id="number-buttons">
+          <div class="col-10 col-lg-6 mx-auto text-center mt-1" id="number-buttons">
               <p class="col-12 lead" id="answer-text">Hurry! Use the buttons!</p>
             <button aria-label="Number button 0" id="number0-btn" class="btn border col-2 number-btn" value="0">0</button>
             <button aria-label="Number button 1" id="number1-btn" class="btn border col-2 number-btn" value="1">1</button>
@@ -111,7 +111,7 @@
             <button aria-label="Delete button" id="delete-btn" class="btn border col-4 bg-danger number-btn" value="delete">Delete</button>
             <button aria-label="Submit button" id="submit-number-btn" class="btn border bg-success col-4" value="submit">Submit</button>
         </div>
-        <div class="col-10 mx-auto text-center mt-1 hide" id="code-buttons">
+        <div class="col-10 col-lg-6 mx-auto text-center mt-1 hide" id="code-buttons">
          <p class="col-12 lead" id="answer-code"></p>
          <hr>
 
@@ -143,7 +143,7 @@
           
         </div>
 
-        <div class="row mt-3 fixed-bottom my-5 answer-buttons hide" id="skill-answers">
+        <div class="row mt-3 fixed-bottom my-5 answer-buttons hide third-intw-skills" id="skill-answers">
           <div class="col-10 mx-auto text-center mt-3">
             <h4 class="h4 text center">Choose your approach</h4>
           </div>
@@ -176,7 +176,7 @@
     <section class="hide" id="ending-success">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Sweet, you pulled through!</h1>
+               <h1 class="h1">Sweet, you pulled through!</h1>
           </div>
       </div>
   
@@ -199,7 +199,7 @@
     <section class="hide" id="ending-fail">
       <div class="row pt-3 ending-success">
           <div class="col-10 mx-auto text-center">
-               <h1 class="display-4">Damn, this could have gone better.</h1>
+               <h1 class="h1">Damn, this could have gone better.</h1>
           </div>
       </div>
   

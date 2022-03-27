@@ -613,6 +613,7 @@ To do list:
 
 NOTE:
 Game runs best on screens that are minimum 320 * 480px 
+Microsoft Lumia 550, JioPhone 2
 
 
 

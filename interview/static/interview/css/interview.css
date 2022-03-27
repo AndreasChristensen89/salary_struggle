@@ -47,7 +47,7 @@
   
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 599px) {
 
   #hr-img {
     height: 265px;
@@ -64,6 +64,32 @@
 
   .code-answer {
     height: 250px;
+  }
+
+  .code-btn,
+  .number-btn {
+    height: 35px;
+    font-size: 12pt;
+  }
+
+  #submit-code-btn,
+  #submit-number-btn {
+    height: 35px;
+    font-size: 12pt;
+  }
+
+  #answer-text,
+  #answer-code {
+    font-size: 12pt;
+    min-height: 50px;
+  }
+
+  #question-text {
+    font-size: 12pt;
+  }
+
+  .third-intw-skills {
+    bottom: 100px;
   }
   
 }
@@ -86,6 +112,10 @@
   .code-answer {
     height: 250px;
   }
+
+  .code-skills {
+    bottom: 50px;
+  }
   
 }
 
@@ -102,6 +132,14 @@
 
   .code-skills {
     bottom: 0;
+  }
+
+  .code-btn {
+    height: 33px;
+  }
+
+  #submit-code-btn {
+    height: 33px;
   }
   
 }

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#submit-number-btn").click(passNumberAnswer);
             $(".code-btn").click(passCode);
             $("#submit-code-btn").click(passCodeAnswer);
-            $("#answer-text").animate({fontWeight: '900'}, "medium");
+            $("#answer-text").animate({fontWeight: '600'}, "medium");
             $("#answer-text").animate({fontWeight: '300'}, "medium");
             $("#answer-charm-btn").click(checkAnswer);
             $("#answer-intellect-btn").click(checkAnswer);
@@ -189,6 +189,7 @@ function buildQuestions() {
         $("#bubble").removeClass("hide");
         setTimeout(() => {
             $("#question-text").animate({opacity: 1}, "slow");
+            $("#skill-answers").animate({opacity: "1"}, 300);
         }, 500);
         questionCount++;
     } else if (currentQuestion < 6) {
@@ -201,7 +202,7 @@ function buildQuestions() {
         $("#number-buttons").addClass("hide");
         $("#code-buttons").removeClass("hide");
         let randCode = Math.floor(Math.random() * 20) + 5;
-        $("#question-text").html(`Create a statement that results in ${randCode}`);
+        $("#question-text").html(`Produce ${randCode}`);
         time = 12;
     }
 }
@@ -209,6 +210,7 @@ function buildQuestions() {
 // Checks if skill chosen is sufficient
 // Compares to interviewers level
 function checkAnswer(event) {
+    $("#skill-answers").animate({opacity: "0"}, 300);
     let skill = event.target.value;
 
     $(".skill-btn").prop("disabled", true);
