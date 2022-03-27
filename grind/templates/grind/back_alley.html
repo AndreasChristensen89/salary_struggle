@@ -3,12 +3,16 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="h-100 overview" id="">
-    <div class="text-center" id="">
+
+<div class="h-100 overview" id="back-alley-background">
+    <div class="text-center all-game-bg-img" id="back-alley-background-img">
 
         <div class="row">
-            <a class="col-2 text-center m-3 rounded" href="{% url 'grind:downtown' %}">
-                <i class="fas fa-arrow-left text-info return-arrow"></i>
+            <a class="text-center" href="{% url 'grind:downtown' %}">
+                <div class="col-2 text-center m-3 rounded">
+                    <i class="fas fa-arrow-left text-white btn return-arrow"></i>
+                </div>
+
             </a>
         </div>
 
@@ -28,6 +32,39 @@
                 <div class="menuLink lead" id="gamble" aria-label="">Gamble</div>
             </li>
         </ul>
+
+    </div>
+</div>
+
+<!-- for larger screens  -->
+
+<div class="h-100 overview game-background-large">
+    <div class="col-10 mx-auto mt-5 all-game-bg-img" id="back-alley-background-img">
+
+        <div class="row">
+            <a class="text-center" href="{% url 'grind:city' %}">
+                <div class="col-2 text-center m-3 rounded">
+                    <i class="fas fa-arrow-left text-white btn return-arrow"></i>
+                </div>
+
+            </a>
+        </div>
+            <button class="action" aria-label="Opens and closes the menu">
+                <span class="menuIcon material-icons" aria-hidden="true">
+                    Actions
+                </span>
+                <span class="xIcon material-icons d-none" aria-hidden="true">
+                    Close
+                </span>
+            </button>
+            <ul class="menu rounded text-center" id="large-bg">
+                <li>
+                    <div class="menuLink lead" id="fight" aria-label="">Fight</div>
+                </li>
+                <li>
+                    <div class="menuLink lead" id="gamble" aria-label="">Gamble</div>
+                </li>
+            </ul>
 
     </div>
 </div>
