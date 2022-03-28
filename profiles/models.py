@@ -46,7 +46,7 @@ class ActiveCharacter(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.IntegerField(default=1)
     day = models.IntegerField(default=1)
-    money = models.IntegerField(default=20000)
+    money = models.IntegerField(default=10000)
     intellect = models.IntegerField(default=1)
     charm = models.IntegerField(default=1)
     coding = models.IntegerField(default=1)
