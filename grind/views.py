@@ -183,12 +183,12 @@ def store_page(request):
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
 
-    items = Item.objects.all()
-    character_items = character.items.all()
+    # items = Item.objects.all()
+    # character_items = character.items.all()
 
     context = {
-        'items': items,
-        'character_items': character_items,
+        # 'items': items,
+        # 'character_items': character_items,
         'no_bag_display': True,
     }
 
@@ -485,24 +485,24 @@ class AddItem(UpdateView):
             # Obtain Active Character
             c = ActiveCharacter.objects.get(user=self.request.user)
             # receive item
-            item_id = json.loads(self.request.POST['item_id'])
-            i = get_object_or_404(Item, id=item_id)
-            # Update Active Character
-            if c.money >= i.price:
-                # Checks if char owns item
-                if i not in c.items.all():
-                    c.intellect = c.intellect + i.intellect
-                    c.charm = c.charm + i.charm
-                    c.coding = c.coding + i.coding
-                    if c.energy <= 180:
-                        c.energy = c.energy + i.energy
-                    c.endurance = c.endurance + i.endurance
-                    c.money = c.money - i.price
-                    c.save()
-                    # additional save if permanent
-                    if i.permanent:
-                        c.items.add(i)
-                        c.save()
+            # item_id = json.loads(self.request.POST['item_id'])
+            # i = get_object_or_404(Item, id=item_id)
+            # # Update Active Character
+            # if c.money >= i.price:
+            #     # Checks if char owns item
+            #     if i not in c.items.all():
+            #         c.intellect = c.intellect + i.intellect
+            #         c.charm = c.charm + i.charm
+            #         c.coding = c.coding + i.coding
+            #         if c.energy <= 180:
+            #             c.energy = c.energy + i.energy
+            #         c.endurance = c.endurance + i.endurance
+            #         c.money = c.money - i.price
+            #         c.save()
+            #         # additional save if permanent
+            #         if i.permanent:
+            #             c.items.add(i)
+            #             c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)
