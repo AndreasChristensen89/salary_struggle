@@ -46,19 +46,8 @@ You do not need to implement this fix right now while you are doing the walkthro
 
 Video is: The shopping bag: the shopping bag
 
-Speech bubble: https://codepen.io/rikschennink/pen/mjywQb
-
-Installed django-countries for the dropdown box in the form
 
 Installed mathfilter for subtracting endurance from energy needed
-
-Current idea for interview questions:
-    - Question 1 is the intellectual answer
-    - Question 2 is the charming/humanizing answer
-    - Question 3 is the code-based answer
-    - Question 4 is wild, and is a risk. More payoff, higher risk.
-
-    - Some questions have correct answers, while others are a matter of the taste of the interviewer
 
 
 # Features
@@ -72,28 +61,40 @@ All applications have been tested using TestCase. Forms, models, views, and addi
 ## TestCase
 When testing the current database was not able to create testing databases, and I had to comment it out and un-comment the other database using sqlite3 in settings.py
 ### Applications
-#### Contact
+#### Codex
 * Test_views - 2 tests, both pass. One for code 200.
 * Test_forms - 7 tests, all pass. Test wrong input and required fields.
 
-#### Homepage
+#### Grind
 * Test_views - 2 tests, passes. Tests for code 200.
 
-#### Menu
+#### Home
 * Test_models - 2 tests, both pass. Test to create objects with both models, Meals and Category.
 * Test_views - 2 test, passes. Tests for code 200.
 
-#### Reservations
+#### Interview
 * Test_booking. 29 tests, all pass. Testing each function in reservations.bookings.py. Checking if functions use input from models properly. For many tests I created specific tables to have multiple options to return, checking if correct ones are returned with correct priority. Had to create opening hours, bookings details, users, and tables for most of the tests. For certain tests I started for loops to test function calls with increasing number of guests, and then running self.assert... for each iteration.
 * Test_views - 15 tests, all pass. Tested views for code 200 and correct template use. For many of them I had to create a user, at times a superuser, and log in. For the booking view I logged in and posted a correct form and then checked if a booking had been made.
 * Test_forms - 18 tests, all pass. Tested forms for errors for wrong input, all fields should be there, which ones are required, minus values, wrong types, not enough tables, enough tables but one with certain method, opening hours, past booking
 * Test_models - 7 tests, all pass. Tested if object could be made, if default fields are automatically set, if slugs are generated and unique, if model properties work (booking latest_cancellation and is_due_date).
 
-#### Restaurant
+#### Leaderboard
 * Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
 Browser Testing
 
-## Media Queries
+#### Premium
+* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
+Browser Testing
+
+#### Profiles
+* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
+Browser Testing
+
+#### Shop
+* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
+Browser Testing
+
+## Shopping Bag
 Media queries have been done using bootstrap's class system. Chrome Developer Tools was used for testing all media queries for additional CSS.
 
 * Test on Firefox, no problems detected.
@@ -195,30 +196,41 @@ Icons and script were taken from https://fontawesome.com/, as well as Google's f
 
 # Credits
 ## Pictures
-Image was compressed using the webpage https://tinypng.com/ Afterwards it was converted to webp using https://cloudconvert.com/png-to-webp.
+Images were compressed using the webpage https://tinypng.com/
 
 Picture credits from freepik
 
+<a href="https://www.freepik.com/photos/women-work">Women work photo created by drobotdean - www.freepik.com</a>
+picture of artist
+
+<a href='https://www.freepik.com/vectors/invitation'>Invitation vector created by freepik - www.freepik.com</a>
+Premium membership
+
 ## Text content
-Content was all formulated by myself, but for the menu I took inspiration from various websites with food, descriptions etc.
+Content was all formulated by myself, but for the menu I took inspiration from other game I have played in my youth.
 
 ## Coding help
 * For help with various issues Django, css etc. I often resorted to https://stackoverflow.com/ as well as the official documentation for Django.
 * For help with syntax reminders I often used https://www.w3schools.com/, as well as various pages giving advice on Django
 * For general best practice I used Code Institute's Slack community.
-* For CSS and Bootstrap I used https://stackoverflow.com/ as well as Bootstrap Documentation.
+* For Django, CSS, Bootstrap, JS, and Python I used https://stackoverflow.com/ as well as Bootstrap and Django Documentation.
 * General comments from family and peers for what CSS looked the best.
 * I looked up other booking system to get inspiration for how it could be set up.
+* Speech bubble in agency and interviews: https://codepen.io/rikschennink/pen/mjywQb
 
 ## Design
 For design of the different pages I didn't use other sources of information other than my previous projects.
 I decided to redesign the entire site thus making it a lot more minimal. Inspiration came from my family.
-No wireframes were used
 
 # User stories
 For user stories I used Github's Projects -> User Stories. Kanban board. I created 18 stories and implemented them one by one. Some others were deleted, and some were changed along the way. The ones that are there now are:
 
 # UX
+
+## Wireframes
+Wireframes were used in the beginning to give an idea of what I wanted the game to look like. These are the first designs which were changed quite a bit along the way.
+
+
 User acceptance criteria
 ## What are the goals for a first-time visitor?
 
@@ -230,9 +242,9 @@ User acceptance criteria
     * 
 * Easily understand how to get started and to set up
     * 
-* Easily understand how to make a booking
+* Easily understand how to start the game
     * 
-* Understand how to access bookings
+* Understand how to access profile page
     * 
 * Give good feedback
     * 
@@ -351,12 +363,14 @@ Users can freely play the game until level three. At level one the users can onl
 # Game
 ## Objective
 The player has 30 days to get a job, which is done by passing four interviews. The player needs to build up stats to increase the odds of passing the increasingly difficult interviews.
-The player have several locations to perform actions in
+The player have several locations to perform actions in, which are listed in locations.
 
 ## Stats
 Intellect, charm, and coding are used in relation to interviews, but endurance is only used to measure energy needed for each task. Endurance is always subtracted from the energy costs.
 Player starts with 10000 in money, and can use money on items. Money can increase by working part time.
 Player starts on day 1, and finishes the latest on day 30.
+
+All stats are updated via ajax calls
 
 ## Locations
 
@@ -375,9 +389,10 @@ Player starts on day 1, and finishes the latest on day 30.
     - If the recruiter is convinced then action bar is removed, and from here the agency only serves as a place to access interviews.
     - Accessing an interview takes 100 energy.
     - Every time an interview is passed the dialogue changes, and another interview becomes available
+
 ### Downtown
 - Store
-    - Here the player can purchase items to increases stats. Some items are permanent and can only be bought once. Others can be bought as many times as the player wishes. However, energy stats cannot surpass 200
+    - Here the player can purchase items to increases stats. Some items are permanent and can only be bought once, which is attached to the player as a m2m field. Others can be bought as many times as the player wishes. However, energy stats cannot surpass 200
 - Back Alley
     - Fight: 60 energy. Odds are 50%. If the player wins endurance goes up with 3. If they lose energy is depleted and an energy penalty is 50 is applied. Energy penalty cannot surpass 100.
     - Gamble: Odds are 1 to 2. If win then player gains 1500, but loses 1000 if not.
@@ -391,6 +406,8 @@ This is done for two reasons:
 * Interviews are meant to be special and exhaustive, and the player will need to be at full power
 At the end of the interview the code sends another ajax call if the player was successful. This is to avoid cheating, otherwise players could simply enter the link to level up.
 
+It is set up so that admin can create more characters and create randomness in terms of who the player will face. Each interview picks a random interviewer at a specific level. On deployment there is only one interviewer per level.
+
 Players are met with questions which take different forms.
 
 - Skill questions: Questions that only allow skill usage and is based on luck, unless the skill level is higher than the opponents, in which case they will always win.
@@ -403,8 +420,8 @@ Players often have a "wild" option, which is a crazy answer. This aways has a 40
 
 Each level of interview has a different impress level, which is the number of points needed to pass.
 
-## Limit
-Players are bound by the stats of their character in terms of choices. Each day is limited by the energy the character has, which can be extended with the use of items
+## Game Limits
+Players are bound by the stats of their character in terms of choices. Each day is limited by the energy the character has, which can be extended with the use of items. Player is also limited in terms of money. I have chosen 10000 to be a starting point, so that the player has a little help, but not too much.
 
 # Django
 ## Django Apps
@@ -619,6 +636,10 @@ If payment failed it will send a failed message to Stripe
 - Cannot make product form pass in test with correct input
 - Don't know how to test add_item view and adjust_bag view.
 - Downtown background picture has a grey top, don't know where it's coming from. It only comes with this picture
+
+# Installed
+## Mathfilter
+Mathfilter was installed in order to do calculation for the character in relation to ajax js updates.
 
 To do list:
 - Include endurance in energy drawn - DONE
