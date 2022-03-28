@@ -19,7 +19,7 @@ class Interviewer(models.Model):
     coldness = models.IntegerField(default=1, null=False, blank=False)
     coding = models.IntegerField(default=1, null=False, blank=False)
     impress_lvl = models.IntegerField(default=1, null=False, blank=False)
-    image = models.ImageField(null=False, blank=False)
+    image = models.ImageField(null=True, blank=True)
     paid = models.BooleanField(default=False)
     level = models.IntegerField(default=InterviewerLevel.LOW, choices=InterviewerLevel.choices)
     intro = models.TextField(null=False, blank=False, default="")
@@ -43,7 +43,7 @@ class Item(models.Model):
     endurance = models.IntegerField(default=0)
     energy_penalty = models.IntegerField(default=0)
     permanent = models.BooleanField(default=False)
-    image = models.ImageField(null=False, blank=False)
+    image = models.ImageField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
