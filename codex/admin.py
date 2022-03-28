@@ -17,15 +17,15 @@ class InterviewerAdmin(admin.ModelAdmin):
     ordering = ('level',)
 
 
-class ItemAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'charm',
-        'intellect',
-        'coding',
-        'energy',
-    )
+# class ItemAdmin(admin.ModelAdmin):
+#     list_display = (
+#         'name',
+#         'charm',
+#         'intellect',
+#         'coding',
+#         'energy',
+#     )
 
 
 admin.site.register(Interviewer, InterviewerAdmin)
-admin.site.register(Item, ItemAdmin)
+admin.site.register(Item)

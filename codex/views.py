@@ -67,12 +67,12 @@ def interviewer_index(request):
 
 def item_details(request, item_id):
     """ A view to return the item details page """
-    item = False
-    # item = get_object_or_404(Item, pk=item_id)
 
-    # context = {
-    #     'item': item,
-    # }
+    item = get_object_or_404(Item, pk=item_id)
+
+    context = {
+        'item': item,
+    }
 
     return render(request, 'codex/item_details.html', context)
 
