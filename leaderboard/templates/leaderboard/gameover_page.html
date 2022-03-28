@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="container-header"></div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="row">
+    <div class="col-12 py-5 mx-auto text-center">
+        <h1 class="h1">Damn!</h1>
+        <h2 class="h2"> You didn't make it..</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6 border mx-auto text-center">
+        <div class="col-12 mx-auto text-center">
+            <h3 class="h3">Here are your final stats</h3>
+            <hr>
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+        <p class="leader">Day finished: <strong>{{character.day}}</strong></p> 
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+            <p class="leader">Charm level: <strong>{{character.charm}}</strong></p>
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+            <p class="leader">Intellect level: <strong>{{character.intellect}}</strong></p>
+        </div>
+
+        <div class="col-12 mx-auto text-center">
+            <p class="leader">Coding level: <strong>{{character.coding}}</strong></p>
+        </div>
+
+        <div class="col-10 mx-auto text-center">
+            <p class="leader">Endurance level: <strong>{{character.endurance}}</strong></p>
+        </div>
+
+        <div class="col-10 mx-auto text-center">
+            <p class="leader">Money: <strong>{{character.money}}</strong></p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row my-5">
+    <div class="col-10 text-center mx-auto">
+        <h2 class="h3">The character is no longer accessible</h3>
+    </div>
+    <div class="col-10 text-center mx-auto my-4">
+        <a class="btn btn-primary" href="{% url 'profiles:profile' %}">Restart Character</a>
+    </div>
+    <div class="col-10 text-center mx-auto my-4">
+        <a class="btn btn-info" href="{% url 'home:index' %}">Home page</a>
+    </div>
+</div>
+</div>
+{% endblock %}

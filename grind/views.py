@@ -22,6 +22,8 @@ def intro(request):
     elif not profile.paid and character.level > 1:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     return render(request, 'grind/intro.html')
 
@@ -39,6 +41,8 @@ def enter_game(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     return render(request, 'grind/enter_grind.html')
 
@@ -56,6 +60,8 @@ def city(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -77,6 +83,8 @@ def bar_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -98,6 +106,8 @@ def cafe_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -119,6 +129,8 @@ def downtown_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -140,6 +152,8 @@ def house_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -161,6 +175,8 @@ def agency_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -182,6 +198,8 @@ def store_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     items = Item.objects.all()
     character_items = character.items.all()
@@ -208,6 +226,8 @@ def call_center_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -229,6 +249,8 @@ def back_alley_page(request):
     elif not profile.paid and character.level >= 3:
         messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
+    elif character.day > 30:
+        return redirect(reverse('leaderboard:gameover_page'))
 
     context = {
         'no_bag_display': True,
@@ -552,7 +574,7 @@ class Work(UpdateView):
             # calculate salary
             salary = c.charm * 100
             # Update Active Character
-            if c.energy >= (60-c.endurance):
+            if c.energy >= (60-c.endurance) and c.has_job:
                 c.money = c.money + salary
                 c.energy = c.energy - (60-c.endurance)
                 c.save()

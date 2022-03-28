@@ -335,6 +335,7 @@ Admin credentials given on submission
 ## Must have settings...
 Profile model and ActiveCharacter model is connected via the views.
 This means that admin cannot delete an active character connected to a user without having set the active_char of the profile to False.
+The product "Premium Membership" must exist for profile page to work. The product is essential to have as users need to be able to purchase membership
 
 # Setup explanation
 ## Premium Membership
@@ -345,14 +346,43 @@ When users buy the premium membership the view code accesses the profile and set
 I decided to only have the user be able to have one character at a time. As the game is reasonably short and with the oppotunity to reach the leaderboard it would seem too messy to deal with multiple characters.
 
 ## Free and Premium
-
+Users can freely play the game until level three. At level one the users can only upgrade stats, at level two they can participate in the first interview. If they succeed this interview they will be level three, and this is where the views will redirect them. From there they will not be able to continue. If they want they can restart the character and play the same, but they will not be able to use the game once their character reaches level 3. They will receive a django message once this barrier is met.
 
 # Game
 ## Objective
+The player has 30 days to get a job, which is done by passing four interviews. The player needs to build up stats to increase the odds of passing the increasingly difficult interviews.
+The player have several locations to perform actions in
 
 ## Stats
+Intellect, charm, and coding are used in relation to interviews, but endurance is only used to measure energy needed for each task. Endurance is always subtracted from the energy costs.
+Player starts with 10000 in money, and can use money on items. Money can increase by working part time.
+Player starts on day 1, and finishes the latest on day 30.
 
 ## Locations
+
+### City
+- House - this is the player's home
+    - Practice: Increases charm, low payoff but risk free
+    - Study: 40 energy. Increase coding, low payoff but risk free
+    - Sleep: 40 energy. Replenishes energy, adds potential energy penalties, passes 1 day
+- Bar
+    - Drink: 40 energy. Increases charm by two, no risk, but gives 20 energy penalty due to hangover. Energy penalty cannot surpass 100.
+    - Converse: 40 energy. Increases charm by two, but risk of getting into argument which gives no reward
+- Cafe
+    - Study: 60 energy. Increases coding and intellect by 2, but runs the risk of meeting friends which gives half rewards
+- Agency
+    - Convince recruiter. The player has the choice of using intellect, charm, coding, or a combination of all to convince him to set the player up with an interview. The odds are skill-level to 20, if combination then all skills combined to 60.
+    - If the recruiter is convinced then action bar is removed, and from here the agency only serves as a place to access interviews.
+    - Accessing an interview takes 100 energy.
+    - Every time an interview is passed the dialogue changes, and another interview becomes available
+### Downtown
+- Store
+    - Here the player can purchase items to increases stats. Some items are permanent and can only be bought once. Others can be bought as many times as the player wishes. However, energy stats cannot surpass 200
+- Back Alley
+    - Fight: 60 energy. Odds are 50%. If the player wins endurance goes up with 3. If they lose energy is depleted and an energy penalty is 50 is applied. Energy penalty cannot surpass 100.
+    - Gamble: Odds are 1 to 2. If win then player gains 1500, but loses 1000 if not.
+- Call center
+    - Players can apply for a part time. This costs 60 energy. If charm is at least 20 they will get the job and from there on they can work. Work is 60 energy, and pay is 100 * their charm level.
 
 ## Interviews
 After the intro of the interviews the JavaScript code creates an ajax request that resets the energy of the character.
@@ -360,6 +390,18 @@ This is done for two reasons:
 * Players could otherwise easily restart the interview and retry with no penalty - you need full energy to start an interview
 * Interviews are meant to be special and exhaustive, and the player will need to be at full power
 At the end of the interview the code sends another ajax call if the player was successful. This is to avoid cheating, otherwise players could simply enter the link to level up.
+
+Players are met with questions which take different forms.
+
+- Skill questions: Questions that only allow skill usage and is based on luck, unless the skill level is higher than the opponents, in which case they will always win.
+- Answer questions: Questions that have a correct answer.
+- Mix questions: Questions that have a correct answer, but where players can also use skills to get out of the question.
+- Multiply questions: Players have to type in correct answer to a multiplication problem
+- Produce questions: Players have to produce a result using operators and limited numbers, e.g. 4*4+2 == 18
+
+Players often have a "wild" option, which is a crazy answer. This aways has a 40% chance of succeess, and the wager is 5 points. All other questions wager 3 points. Players cannot go beneath 0.
+
+Each level of interview has a different impress level, which is the number of points needed to pass.
 
 ## Limit
 Players are bound by the stats of their character in terms of choices. Each day is limited by the energy the character has, which can be extended with the use of items

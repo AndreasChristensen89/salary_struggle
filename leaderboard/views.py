@@ -20,6 +20,27 @@ def leaderboard(request):
 
 
 @login_required
+def gameover_page(request):
+    """ A view to return the winning page """
+
+    profile = get_object_or_404(Profile, user=request.user)
+    if profile.active_char:
+        character = get_object_or_404(ActiveCharacter, user=request.user)
+
+    if not profile.active_char:
+        messages.error(request, 'Active character needed')
+        return redirect(reverse('profiles:profile'))
+    elif not profile.paid:
+        messages.error(request, 'Upgrade to premium to get full access')
+        return redirect(reverse('profiles:profile'))
+    elif not character.day > 30:
+        messages.error(request, 'Your character run is still ongoing')
+        return redirect(reverse('profiles:profile'))
+
+    return render(request, 'leaderboard/gameover_page.html')
+
+
+@login_required
 def winning_page(request):
     """ A view to return the winning page """
 
