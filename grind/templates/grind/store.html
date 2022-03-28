@@ -56,62 +56,6 @@
     </div>
 </div>
 
-<!-- for larger screens -->
-
-
-<div class="h-100 overview game-background-large">
-    <div class="col-10 mx-auto mt-5 all-game-bg-img" id="bar-background-img">
-
-        <div class="row">
-            <a class="text-center" href="{% url 'grind:city' %}">
-                <div class="col-2 text-center m-3 rounded">
-                    <i class="fas fa-arrow-left text-white btn return-arrow"></i>
-                </div>
-            </a>
-        </div>
-
-        <div class="row">
-
-            <div class="col-8 mx-auto text-center" id="store-items">
-                <hr>
-                {% for item in items %}
-                {% if item in character_items %}
-                <p>{{item.name}} - ¥{{item.price}} <strong>Owned</strong></p>
-                {% else %}
-                <p class="item-buy" permanent={{item.permanent}} value={{item.id}} price={{item.price}}
-                    id="item{{item.id}}">{{item.name}} - ¥{{item.price}}</p>
-                {% endif %}
-                <p class="text-muted d-inline">
-                    {% if item.intellect > 0 %}
-                    Intellect: 
-                    </p>
-                    <p class="text-muted d-inline" value="intellect" id="item{{item.id}}stat">{{item.intellect}}</p>
-                    {% elif item.charm > 0 %}
-                    Charm: 
-                    </p>
-                    <p class="text-muted d-inline" value="charm" id="item{{item.id}}stat">{{item.charm}}</p>
-                    {% elif item.coding > 0 %}
-                    Coding: 
-                    </p>
-                    <p class="text-muted d-inline" value="coding" id="item{{item.id}}stat">{{item.coding}}</p>
-                    {% elif item.energy > 0 %}
-                    Energy: 
-                    </p>
-                    <p class="text-muted d-inline" value="energy" id="item{{item.id}}stat">{{item.energy}}</p>
-                    {% elif item.endurance > 0 %}
-                    Endurance: 
-                    </p>
-                    <p class="text-muted d-inline" value="endurance" id="item{{item.id}}stat">{{item.endurance}}</p>
-                    {% endif %}
-                    <p class="d-none" id="itemName{{item.id}}">{{item.name}}</p>
-                <hr>
-                {% endfor %}
-            </div>
-        </div>
-
-    </div>
-</div>
-
 
 <div class="loading-overlay">
     <h1 class="text-light logo-font loading-icon text-white">

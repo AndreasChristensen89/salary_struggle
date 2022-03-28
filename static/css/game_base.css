@@ -125,7 +125,7 @@ body {
 
 #recruiter-sign {
     width: 200px;
-    height: 40px;
+    height: 75px;
     box-shadow: -1px 16px 6px 6px rgb(0 0 0 / 22%);
 }
 
@@ -159,10 +159,18 @@ body {
 }
 
 .return-arrow {
-    font-size: 25pt;
-    /* box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2); */
-    /* border: 1px solid black; */
-    background-color: black;
+    font-size: 6vw;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    border: 1px solid black;
+    background-color: #50a3b7;
+    /* position: absolute;
+    top: 32vh;
+    left: 100%; */
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .place {
@@ -185,7 +193,22 @@ body {
 .city-link {
     z-index: 1;
     color: white;
-    background-color: rgb(69 72 75);
+    background-color: rgb(69 72 75 / 50%);
+}
+
+.city-link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.hover:hover {
+    transform: translateY(-7px);
+    transition: all 0.3s ease 0s;
+}
+
+.hover:not(:hover) {
+    transform: translateY(0px);
+    transition: all 0.3s ease 0s;
 }
 
 #house-background {
@@ -426,6 +449,10 @@ body {
 
 @media (max-width: 768px) {
 
+    .return-arrow {
+        font-size: 10vw;
+    }
+
     .city-margin {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -472,6 +499,12 @@ body {
 
     #agency-background-img {
         background-image: url(/media/agency_background_mobile.png);
+    }
+}
+
+@media (max-width: 385px) {
+    #bubble-agency {
+        font-size: 1em;
     }
 }
 

@@ -20,6 +20,7 @@ $("#apply").click(function() {
         if (energy >= (60-endurance)) {
             if (charm >= 20) {
                 $("#passed").removeClass("hide");
+                $('.action-row').addClass("hide");
 
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(0).fadeToggle(100);

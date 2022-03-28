@@ -18,7 +18,7 @@
         {% if character.level == 1 %}
     <div class="row text-center level-one">
         <div class="mx-auto">
-            <h3 class="bg-white h3 rounded" id="recruiter-sign">Mr Recruiter</h3>
+            <h3 class="h3 rounded bg-dark text-white" id="recruiter-sign">Convince him using your...</h3>
         </div>
     </div>
     <div class="row answer-buttons d-none" id="passed">
@@ -28,30 +28,17 @@
           </p>
         </div>
     </div>
-    <button class="action" aria-label="Opens and closes the menu">
-        <span class="menuIcon material-icons" aria-hidden="true">
-            Actions
-        </span>
-        <span class="xIcon material-icons d-none" aria-hidden="true">
-            Close
-        </span>
-    </button>
-    <ul class="menu rounded text-center">
-        <h3>Use:</h3>
 
-        <li>
-            <div class="menuLink lead ask-interview" value="intellect" id="agency_intellect" aria-label="">Intellect</div>
-        </li>
-        <li>
-            <div class="menuLink lead ask-interview" value="charm" id="agency_charm" aria-label="">Charm</div>
-        </li>
-        <li>
-            <div class="menuLink lead ask-interview" value="coding" id="agency_coding" aria-label="">Coding</div>
-        </li>
-        <li>
-            <div class="menuLink lead" id="agency_combine" aria-label="">Combine</div>
-        </li>
-    </ul>
+    <div class="row fixed-bottom agency-action-row">
+
+        <div class=" col-10 col-lg-8 mx-auto">
+            <span class="btn mx-3 border border-dark ask-interview action-buttons hover" value="intellect" id="agency_intellect">Intellect</span>
+            <span class="btn mx-3 border border-dark ask-interview action-buttons hover" value="charm" id="agency_charm">Charm</span>
+            <span class="btn mx-3 border border-dark ask-interview action-buttons hover" value="coding" id="agency_coding">Coding</span>
+            <span class="btn mx-3 border border-dark ask-interview action-buttons hover" id="agency_combine">Combine</span>
+        </div>   
+
+    </div>
 
     {% elif character.level == 2 %}
 
@@ -226,5 +213,4 @@
     {{ block.super }}
     <script type="text/javascript" src="{% static 'grind/js/agency.js' %}"></script>
     <script type="text/javascript" src="{% static 'grind/js/ajax_agency.js' %}"></script>
-    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}

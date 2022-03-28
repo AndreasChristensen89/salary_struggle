@@ -40,10 +40,6 @@ body {
     background-size: contain;
 }
 
-/* #grey-bg {
-    background-color: grey;
-} */
-
 #contact-bg {
     background-color: #439A86;
 }
@@ -77,16 +73,28 @@ body {
     bottom: 0px;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #62bcca;
+    background-color: #395169;
+}
+
+.profile-div {
+    height: 400px;
 }
 
 #restart-char {
     margin-bottom: 30px;
-    background-color: #df717b;
+    background-color: #395169;
 }
 
-#user-info-div {
-    min-height: 330px;
+#profile-char {
+    background-color: #679dd8;
+}
+
+#profile-user {
+    background-color: #70b5c0;
+}
+
+#profile-orders {
+    background-color: #70b67d;
 }
 
 #upgrade-link {
@@ -439,6 +447,18 @@ a.category-badge > span.badge:hover {
 }
 
 /* --------------------------- media queries ------------------------------ */
+
+@media (max-width: 1138px) {
+    #user-edit-btn {
+        bottom: 43px;
+    }
+}
+
+@media (max-width: 768px) {
+    #user-edit-btn {
+        bottom: 0px;
+    }
+}
 
 @media (min-width: 766px) {
     .item-img {

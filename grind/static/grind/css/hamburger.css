@@ -1,3 +1,17 @@
+.action-buttons {
+    font-size: 26pt;
+    background-color: #567887;
+    color: white;
+}
+
+.action-row {
+    bottom: 20vw;
+}
+
+.agency-action-row {
+    bottom: 20%
+}
+
 .action {
     position: fixed;
     z-index: 100;

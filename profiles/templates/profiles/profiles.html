@@ -37,7 +37,7 @@
 
         
         <div class="row mb-4">
-            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto border rounded">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto rounded profile-div" id="profile-char">
                 {% if profile.active_char %}
                 <h3 class="h3 my-3 text-center">Your Character</h3>
                         <p>Level {{ character.level }}</p>
@@ -51,7 +51,7 @@
                         <p>Has job: Yes</p>
                     {% endif %}
                     <a href="{% url 'profiles:confirm_new_char' %}">
-                        <div class="col mx-auto text-center lead border border-black rounded profile-btn" id="restart-char">
+                        <div class="col mx-auto text-center text-white lead border border-black rounded profile-btn" id="restart-char">
                             Restart
                         </div>
                     </a>
@@ -64,28 +64,28 @@
                 {% endif %}
             </div>
 
-            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto border rounded position-relative" id="user-info-div">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto rounded position-relative profile-div" id="profile-user">
                 <h3 class="h3 my-3 text-center">User information</h3>
                 
-                <ul class="list-group my-2">
+                <ul class="list-group my-2 p-4">
                     <li class="list-group-item">First Name: {{user.first_name}}</li>
                     <li class="list-group-item">Last Name: {{user.last_name}}</li>
                     <li class="list-group-item">Email: {{user.email}}</li>
                 </ul>
 
                 <a class="lead" href="{% url 'profiles:update_profile' %}">
-                    <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn lead" id="user-edit-btn">
+                    <div class="col mx-auto text-center text-white border border-black rounded mb-3 profile-btn lead" id="user-edit-btn">
                         Edit
                     </div>
                 </a>
 
             </div>
 
-            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto border rounded">
+            <div class="col-10 col-md-5 col-lg-3 p-4 mb-5 text-center mx-auto rounded profile-div" id="profile-orders">
                 <h3 class="h3 my-3 text-center">Order History</h3>
                 {% if orders %}
                 <div class="order-history table-responsive">
-                    <table class="table table-sm table-borderless">
+                    <table class="table table-sm table-borderless bg-white rounded">
                         <thead>
                             <tr>
                                 <th>Number</th>

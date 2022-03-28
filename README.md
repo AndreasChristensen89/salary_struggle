@@ -198,6 +198,9 @@ Icons and script were taken from https://fontawesome.com/, as well as Google's f
 ## Pictures
 Images were compressed using the webpage https://tinypng.com/
 
+Philosophy Book
+https://www.clipartmax.com/middle/m2K9A0b1i8H7N4A0_9-photos-of-cartoon-open-book-book-clipart/
+
 Picture credits from freepik
 
 <a href="https://www.freepik.com/photos/women-work">Women work photo created by drobotdean - www.freepik.com</a>

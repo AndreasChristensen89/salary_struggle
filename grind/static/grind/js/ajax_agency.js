@@ -86,6 +86,7 @@ function success() {
     $(".level-one").addClass("hide");
     $("#passed").removeClass("d-none");
     $('#bubble-agency').css('opacity', '1');
+    $('.agency-action-row').addClass('d-none');
     $('.action').off();
 
 }

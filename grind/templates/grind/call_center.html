@@ -15,19 +15,13 @@
 
         {% if not character.has_job %}
 
-        <button class="action" aria-label="Opens and closes the menu">
-            <span class="menuIcon material-icons" aria-hidden="true">
-                Actions
-            </span>
-            <span class="xIcon material-icons d-none" aria-hidden="true">
-                Close
-            </span>
-        </button>
-        <ul class="menu rounded">
-            <li>
-                <div class="menuLink lead" id="apply" aria-label="">Ask for a job</div>
-            </li>
-        </ul>
+        <div class="row fixed-bottom action-row">
+
+            <div class=" col-10 col-lg-8 mx-auto">
+                <span class="btn mx-3 border border-dark action-buttons hover" id="apply">Ask for a job</span>
+            </div>   
+
+        </div>
 
         <div class="col-6 rounded text-center mx-auto bg-warning lead border border-dark hide" id="rejected">
             <h3 class="lead">Get lost kid. You need to work on your self-presentation.</h3>
@@ -67,19 +61,15 @@
     
     {% else %}
 
-    <button class="action" aria-label="Opens and closes the menu">
-        <span class="menuIcon material-icons" aria-hidden="true">
-            Actions
-        </span>
-        <span class="xIcon material-icons d-none" aria-hidden="true">
-            Close
-        </span>
-    </button>
-    <ul class="menu rounded">
-        <li>
-            <div class="menuLink lead" id="work" aria-label="">Work</div>
-        </li>
-    </ul>
+
+    <div class="row fixed-bottom action-row">
+
+        <div class=" col-10 col-lg-8 mx-auto">
+            <span class="btn mx-3 border border-dark action-buttons hover" id="work">Work</span>
+        </div>   
+
+    </div>
+
 </div>
 </div>
 
@@ -104,5 +94,4 @@
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'grind/js/ajax_call_center.js' %}"></script>
-    <script type="text/javascript" src="{% static 'grind/js/hamburger.js' %}"></script>
 {% endblock %}
