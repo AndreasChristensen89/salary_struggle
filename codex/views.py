@@ -6,30 +6,30 @@ from .models import Interviewer, Item
 def items_index(request):
     """ A view to return the items page """
     
-    items = Item.objects.all()
-    sort = None
-    direction = None
+    # items = Item.objects.all()
+    # sort = None
+    # direction = None
 
-    if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                items = items.annotate(lower_name=Lower('name'))
+    # if request.GET:
+    #     if 'sort' in request.GET:
+    #         sortkey = request.GET['sort']
+    #         sort = sortkey
+    #         if sortkey == 'name':
+    #             sortkey = 'lower_name'
+    #             items = items.annotate(lower_name=Lower('name'))
 
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            items = items.order_by(sortkey)
+    #         if 'direction' in request.GET:
+    #             direction = request.GET['direction']
+    #             if direction == 'desc':
+    #                 sortkey = f'-{sortkey}'
+    #         items = items.order_by(sortkey)
 
-    current_sorting = f'{sort}_{direction}'
+    # current_sorting = f'{sort}_{direction}'
     
-    context = {
-        'items': items,
-        'current_sorting': current_sorting,
-    }
+    # context = {
+    #     'items': items,
+    #     'current_sorting': current_sorting,
+    # }
 
     return render(request, 'codex/items.html', context)
 

@@ -25,6 +25,7 @@ def intro(request):
 
     return render(request, 'grind/intro.html')
 
+
 @login_required
 def enter_game(request):
     """ Delete a product from the store """
