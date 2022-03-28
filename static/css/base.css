@@ -1,4 +1,8 @@
-html {
+#test-bg {
+    background-color: black;
+}
+
+/* html {
     height: 100%;
 }
 
@@ -115,10 +119,10 @@ body {
 .hover:not(:hover) {
     transform: translateY(0px);
     transition: all 0.3s ease 0s;
-}
+} */
 
 /* From walkthrough project */
-.icon {
+/* .icon {
     align-items: center;
     display: inline-flex;
     justify-content: center;
@@ -129,71 +133,71 @@ body {
 #bag-return-btn {
     height: 2rem;
     width: 2rem;
-}
+} */
 
 /* From walkthrough project */
-.main-logo-link {
+/* .main-logo-link {
     width: fit-content;
-}
+} */
 
 /* From walkthrough project */
-.shop-now-button {
+/* .shop-now-button {
     background: black;
     color: white;
     min-width: 260px;
-}
+} */
 
 /* From walkthrough project */
-.btn-black {
+/* .btn-black {
     background: black;
     color: white;
-}
+} */
 
 /* From walkthrough project */
-.btt-button {
+/* .btt-button {
     height: 42px;
     width: 42px;
     position: fixed;
     bottom: 10px;
     right: 10px;
-}
+} */
 
 /* Shopping bag */
-.bag-item-img {
+/* .bag-item-img {
     height: 120px;
     width: 100px;
-}
+} */
 
 /* order details page  */
 
-.order-details {
+/* .order-details {
     overflow-x: auto;
-}
+} */
 
 /* From walkthrough project */
-.btt-link,
+/* .btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
-}
+} */
 
 /* From walkthrough project */
-.btn-outline-black {
+/* .btn-outline-black {
     background: white;
     color: black !important;
     border: 1px solid black;
-}
+} */
 
 /* From walkthrough project */
-.btn-outline-black:hover,
+/* .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
     background: black;
     color: white !important;
-}
+} */
 
 /* From walkthrough project */
-.shop-now-button:hover,
+/* .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
 .btn-black:hover,
@@ -201,29 +205,29 @@ body {
 .btn-black:focus {
     background: #222;
     color: white;
-}
+} */
 
 /* From walkthrough project */
-.text-black {
+/* .text-black {
     color: #000 !important;
-}
+} */
 
 /* From walkthrough project */
-.border-black {
+/* .border-black {
     border: 1px solid black !important;
-}
+} */
 
 /* From walkthrough project */
-.bg-black {
+/* .bg-black {
     background: #000 !important;
-}
+} */
 
-.product-img {
+/* .product-img {
     height: 120px;
     width: 120px;
-}
+} */
 
-#small-width {
+/* #small-width {
     width: 200px;
 }
 
@@ -259,31 +263,31 @@ body {
 .interviewer-height {
     height: 300px;
     max-width: 300px;
-}
+} */
 
 /* From walkthrough project */
-a.category-badge > span.badge:hover {
+/* a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
-}
+} */
 
 /* From walkthrough project */
-.btt-button {
+/* .btt-button {
     height: 42px;
     width: 42px;
     position: fixed;
     bottom: 10px;
     right: 10px;
-}
+} */
 
 /* From walkthrough project */
-.btt-link,
+/* .btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
-}
+} */
 
-.footer {
+/* .footer {
     background-color: #4e5970;
 }
 
@@ -304,10 +308,10 @@ a.category-badge > span.badge:hover {
 
 .toast.show {
     display: contents;
-}
+} */
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
-.arrow-up {
+/* .arrow-up {
     width: 0; 
     height: 0; 
     border-left: 4px solid transparent;
@@ -316,10 +320,10 @@ a.category-badge > span.badge:hover {
     position: absolute;
     top: -10px;
     right: 36px;
-}
+} */
 
 /* Convenience classes - colors copied from Bootstrap */
-.arrow-primary {
+/* .arrow-primary {
     border-bottom-color: #007bff !important;
 }
 
@@ -355,13 +359,13 @@ a.category-badge > span.badge:hover {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
-}
+} */
 
 /* Allauth form formatting */
 
-.allauth-form-content p {
-    margin-top: 1.5rem; /* mt-4 */
-    color: #6c757d; /* text-secondary */
+/* .allauth-form-content p {
+    margin-top: 1.5rem;
+    color: #6c757d;
 }
 
 .allauth-form-content input {
@@ -374,11 +378,10 @@ a.category-badge > span.badge:hover {
 
 .allauth-form-content input::placeholder {
     color: #aab7c4;
-}
+} */
 
-.allauth-form-content button,
+/* .allauth-form-content button,
 .allauth-form-content input[type='submit'] {
-	/* btn */
 	display: inline-block;
     color: #fff;
     text-align: center;
@@ -391,11 +394,10 @@ a.category-badge > span.badge:hover {
     padding: .375rem .75rem;
     border-radius: 0.25rem;
 
-    /* standard bootstrap btn transitions */
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+} */
 
-.allauth-form-content button:hover,
+/* .allauth-form-content button:hover,
 .allauth-form-content input[type='submit']:hover {	
 	color: #fff;
     background-color: rgb(82, 112, 136);
@@ -403,16 +405,16 @@ a.category-badge > span.badge:hover {
 }
 
 .allauth-form-content a {
-	color: #17a2b8; /* text-info */
+	color: #17a2b8;
 }
 
 .btn-file {
     position: relative;
     overflow: hidden;
-}
+} */
 
 /* All input lives in a field now, so user can simply click the image */
-.btn-file input[type="file"] {
+/* .btn-file input[type="file"] {
     position: absolute;
     top: 0;
     right: 0;
@@ -420,9 +422,9 @@ a.category-badge > span.badge:hover {
     min-height: 100%;
     opacity: 0;
     cursor: pointer;
-}
+} */
 
-.custom-checkbox .custom-control-label::before {
+/* .custom-checkbox .custom-control-label::before {
     border-radius: 0;
     border-color: #dc3545;
 }
@@ -431,11 +433,11 @@ a.category-badge > span.badge:hover {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
-}
+} */
 
 /* --------------------------- media queries ------------------------------ */
 
-@media (min-width: 766px) {
+/* @media (min-width: 766px) {
     .item-img {
         max-width: 200px;
         max-height: 300px
@@ -470,4 +472,4 @@ a.category-badge > span.badge:hover {
         max-height: 300px;
         text-align: center!important;
     }
-}
+} */
