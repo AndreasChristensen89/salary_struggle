@@ -35,9 +35,14 @@ body {
 #hero-background {
     background-image: url(/media/index_background.jpg);
     background-color: #000;
-    height: 570px;
+    height: 600px;
     width: 100%;
+    background-size: contain;
 }
+
+/* #grey-bg {
+    background-color: grey;
+} */
 
 #contact-bg {
     background-color: #439A86;
@@ -457,6 +462,12 @@ a.category-badge > span.badge:hover {
         max-width: 250px;
         max-height: 300px;
         text-align: center!important;
+    }
+}
+
+@media (max-width: 860px) {
+    #hero-background {
+        background-size: cover;
     }
 }
 
