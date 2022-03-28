@@ -12,13 +12,13 @@ from .models import ActiveCharacter
 
 @login_required
 def profile(request):
-    """ 
+    """
     A view to return the profile page
     Premium membership in context in order to provide link in template,
     in case admin deletes and create a new => new id for product
     """
     user_profile = get_object_or_404(Profile, user=request.user)
-    membership = Product.objects.get(name="Premium Membership")
+    membership = get_object_or_404(Product, name="Premium Membership")
 
     orders = user_profile.orders.all()
     template = 'profiles/profiles.html'
