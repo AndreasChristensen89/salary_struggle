@@ -19,8 +19,9 @@ def profile(request):
     """
     user_profile = get_object_or_404(Profile, user=request.user)
     membership = get_object_or_404(Product, name="Premium Membership")
-
-    orders = user_profile.orders.all()
+    orders = False
+    if len(user_profile.orders.all()) > 0:
+        orders = user_profile.orders.all()
     template = 'profiles/profiles.html'
     context = {
         'orders': orders,
