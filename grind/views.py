@@ -604,7 +604,7 @@ class Fight(UpdateView):
             if c.energy >= 60 and c.energy_penalty <= 50:
                 if c.endurance <= 21:
                     if random_number >= 5:
-                        c.energy = c.energy - (60-c.endurance)
+                        c.energy = c.energy - 60
                         c.endurance = c.endurance + 3
                     else:
                         c.energy = 0

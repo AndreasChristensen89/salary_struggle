@@ -137,6 +137,10 @@ li {
         font-size: 14pt;
     }
 
+    .action-buttons {
+        font-size: 18pt;
+    }
+
     .menu {
         width: 70px;
         height: auto;
