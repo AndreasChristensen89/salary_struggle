@@ -31,3 +31,5 @@ urlpatterns = [
     path('shop/', include('shop.urls')),
     path('', include('home.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'home.views.custom_page_not_found_view'

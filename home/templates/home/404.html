@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="container-header"></div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="row">
+    
+    <div class="col-12 py-5 mx-auto text-center">
+        <h1 class="h1">
+            Whoops. Looks like this site doesn't exist.
+        </h1>
+    </div>
+
+    <div class="col-12 py-5 mx-auto text-center">
+        <h2 class="h2"><a href="{% url 'home:index' %}">Here</a> is a link back to the home page</h2>
+    </div>
+</div>
+
+</div>
+{% endblock %}

@@ -100,3 +100,10 @@ def contact_logged_in(request):
     form = ContactFormLoggedin()
 
     return render(request, "home/contact_login.html", {'form': form})
+
+
+def custom_page_not_found_view(request, exception):
+    """
+    View that renders 404 page
+    """
+    return render(request, "home/404.html", {})

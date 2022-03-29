@@ -355,7 +355,7 @@ Admin credentials given on submission
 
 ## Must have settings...
 Profile model and ActiveCharacter model is connected via the views.
-This means that admin cannot delete an active character connected to a user without having set the active_char of the profile to False.
+<!-- This means that admin cannot delete an active character connected to a user without having set the active_char of the profile to False. -->
 The product "Premium Membership" must exist for profile page to work. The product is essential to have as users need to be able to purchase membership
 
 # Setup explanation
@@ -368,6 +368,28 @@ I decided to only have the user be able to have one character at a time. As the 
 
 ## Free and Premium
 Users can freely play the game until level three. At level one the users can only upgrade stats, at level two they can participate in the first interview. If they succeed this interview they will be level three, and this is where the views will redirect them. From there they will not be able to continue. If they want they can restart the character and play the same, but they will not be able to use the game once their character reaches level 3. They will receive a django message once this barrier is met.
+
+# E-commerce
+## Business rationale
+The rational for creating this site is to allow a game designer to publish their work and generate renevue through single access purchases. The content is simple, and the premium access is therefore not set too high in terms of price. It is light-hearted in animation style and content and does not inspire high prices. If the users like the content they are able to purchase additional products related to the game, which is another source of income for the creator. The products offered are not high in maintenance as they are digital, does not need to be printed, and can be sent directly via email. The number of customers are expected to be low, so this setup of personaly handling orders can likely be easily sustained.
+
+## Business type
+The business is a B2C type that aims at non-businesses
+
+### Who is the customer?
+The customers are everyday people. There is drinking involved in the game so the target audience is mature. THe nature of the game might be best suited for a younger generation, but can ultimately be enjoyed by everyone.
+
+### What will they buy?
+The customers are first are foremost expected to buy the premium access to the game. The idea of the shop is to add an extra source of revenue in case the customers are intrigued by the game, giving them the option of getting behind the scenes art/personal content from the creator. In this sense, all products, except for the premium membership, are secondary.
+
+### How will they pay
+Customers will pay with credit card. Stripe payment is set up and working.
+
+### What is being sold?
+Products are digital so shipping details are not included in the process. Products will come in form of access to the game and PDF files / similar format
+
+### How is the payment made?
+Payment is a single payment and does not involve subscriptions.
 
 # Game
 ## Objective
