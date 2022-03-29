@@ -23,11 +23,11 @@
         <div class="row mb-4">
             <div class="col-12 text-center">
                 {% if profile.paid %}
-                <h3 class="display-5 mb-2">Premium Member</h3>
+                <h3 class="display-5 bg-info text-white mx-auto mb-2 border rounded" id="premium-member">Premium Member</h3>
                 {% else %}
-                <h3 class="display-5 mb-2">Free Member</h3>
+                <h3 class="display-5 mx-auto mb-2 rounded bg-warning" id="free-member">Free Member</h3>
                 <a class="lead" href="{% url 'shop:product_details' membership.id %}">
-                    <div class="col mx-auto text-center border border-black rounded" id="upgrade-link">
+                    <div class="col mx-auto text-center border border-black rounded my-5" id="upgrade-link">
                         Upgrade to Premium
                     </div>
                 </a>
@@ -37,7 +37,7 @@
 
         
         <div class="row mb-4">
-            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto rounded profile-div" id="profile-char">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 text-center mx-auto rounded first-div profile-div" id="profile-char">
                 {% if profile.active_char %}
                 <h3 class="h3 my-3 text-center">Your Character</h3>
                         <p>Level {{ character.level }}</p>
@@ -64,7 +64,7 @@
                 {% endif %}
             </div>
 
-            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto rounded position-relative profile-div" id="profile-user">
+            <div class="col-10 col-md-5 col-lg-3 px-2 mb-5 mx-auto rounded position-relative second-div profile-div" id="profile-user">
                 <h3 class="h3 my-3 text-center">User information</h3>
                 
                 <ul class="list-group my-2 p-4">
@@ -81,7 +81,7 @@
 
             </div>
 
-            <div class="col-10 col-md-5 col-lg-3 p-4 mb-5 text-center mx-auto rounded profile-div" id="profile-orders">
+            <div class="col-10 col-md-5 col-lg-3 p-4 mb-5 text-center mx-auto rounded third-div profile-div" id="profile-orders">
                 <h3 class="h3 my-3 text-center">Order History</h3>
                 {% if orders %}
                 <div class="order-history table-responsive">

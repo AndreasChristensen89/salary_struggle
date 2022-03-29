@@ -18,8 +18,9 @@
 </div>
 
 <div class="row text-center mb-5">
-    <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 px-2">
-        <h3 class="h3 my-3">What's it about?</h3>
+    <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 p-4 first-div border rounded">
+        <h3 class="h3 my-3">SALARY STRUGGLE?</h3>
+        <hr>
         <p>
             Salary Struggle is a game made for everyone who enjoys a fun little challenge.
             The game is largely luck based, but there are definitely strategies to help you get ahead.
@@ -27,16 +28,18 @@
             will get you on the leaderboard
         </p>
     </div>
-    <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 px-2">
-        <h3 class="h3 my-3">The game setting</h3>
+    <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 p-4 second-div border rounded">
+        <h3 class="h3 my-3">GAME SETTING</h3>
+        <hr>
         <p>
             The game takes place in a fictional city, lightly inspired by Tokyo, where you play as an unfortunate
             soul who has piles of debt. The only way forward is to get a job as a self taught
             programmer within 30 days. This is no easy task, and you need more than coding skills to make it.
         </p>
     </div>
-    <div class="col-10 col-md-5 col-lg-4 mx-auto my-3 px-2">
-        <h3 class="h3 my-3">Gameplay</h3>
+    <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 p-4 third-div border rounded">
+        <h3 class="h3 my-3">GAMEPLAY</h3>
+        <hr>
         <p>
 
             You have 30 days to get a job as a programmer. To succeed you need to pass four interviews. Each day is
@@ -47,14 +50,15 @@
             hangover.
         </p>
     </div>
-    <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 px-2">
+    <div class="col-10 col-md-5 col-lg-5 mx-auto my-3 p-4 border rounded fourth-div">
         <h3 class="h3 my-3">SHOP</h3>
+        <hr>
         <p>
             Check out our online shop with behind the scenes art, as well as the chance to get personalised items
             from the creators themselves.
         </p>
         {% if user.is_authenticated %}
-        <p>Check out our shop <a href="{% url 'shop:all_products' %}"><u>here</u></a></p>
+        <a class="btn btn-success" href="{% url 'shop:all_products' %}">Shop</a>
         {% else %}
         <p>To access our shop head over and <a href="{% url 'account_signup' %}"><u>register</u></a> for an account
             or <a href="{% url 'account_login' %}"><u>login</u></a></p>

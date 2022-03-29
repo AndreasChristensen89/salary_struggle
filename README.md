@@ -73,29 +73,31 @@ When testing the current database was not able to create testing databases, and 
 * Test_views - 2 test, passes. Tests for code 200.
 
 #### Interview
-* Test_booking. 29 tests, all pass. Testing each function in reservations.bookings.py. Checking if functions use input from models properly. For many tests I created specific tables to have multiple options to return, checking if correct ones are returned with correct priority. Had to create opening hours, bookings details, users, and tables for most of the tests. For certain tests I started for loops to test function calls with increasing number of guests, and then running self.assert... for each iteration.
-* Test_views - 15 tests, all pass. Tested views for code 200 and correct template use. For many of them I had to create a user, at times a superuser, and log in. For the booking view I logged in and posted a correct form and then checked if a booking had been made.
-* Test_forms - 18 tests, all pass. Tested forms for errors for wrong input, all fields should be there, which ones are required, minus values, wrong types, not enough tables, enough tables but one with certain method, opening hours, past booking
-* Test_models - 7 tests, all pass. Tested if object could be made, if default fields are automatically set, if slugs are generated and unique, if model properties work (booking latest_cancellation and is_due_date).
+* Test_booking. 29 tests
+* Test_views - 15 tests
+* Test_forms - 18 tests
+* Test_models - 7 tests.
 
 #### Leaderboard
-* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
-Browser Testing
+* Test_models - 3 tests
 
 #### Premium
-* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
-Browser Testing
+* Test_models - 3 tests
 
 #### Profiles
-* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
-Browser Testing
+* Test_models - 3 tests
 
 #### Shop
-* Test_models - 3 tests, all pass. Test if objects can be created and if default values work.
-Browser Testing
+* Test_models - 3 tests
 
-## Shopping Bag
-Media queries have been done using bootstrap's class system. Chrome Developer Tools was used for testing all media queries for additional CSS.
+#### Shopping Bag
+* Test_models - 3 tests
+
+## JS testing
+
+
+## Ux Testing
+Media queries have been done using bootstrap's class system, and additional. Chrome Developer Tools was used for testing all media queries for additional CSS.
 
 * Test on Firefox, no problems detected.
 * Microsoft Edge, no problems detected.
@@ -154,6 +156,7 @@ All links were tested. All external links and internal links work.
 * Migrate changes to new database: python3 manage.py migrate
 
 ## AWS
+AWS is used for this project. An S3 bucket is created for this application, and content is automatically synchronised when deploying to Heroku. 
 
 ## Last settings
 * In Gitpod under settings.py:
@@ -194,6 +197,9 @@ Icons and script were taken from https://fontawesome.com/, as well as Google's f
 * Heroku was used to deploy site
 * AWS was used as cloud service
 
+# Database
+Postgres is used in connection with Heroku for this project
+
 # Credits
 ## Pictures
 Images were compressed using the webpage https://tinypng.com/
@@ -223,7 +229,7 @@ Content was all formulated by myself, but for the menu I took inspiration from o
 
 ## Design
 For design of the different pages I didn't use other sources of information other than my previous projects.
-I decided to redesign the entire site thus making it a lot more minimal. Inspiration came from my family.
+Drawings are my own, but they have taken inspiration from different backgrounds found online.
 
 # User stories
 For user stories I used Github's Projects -> User Stories. Kanban board. I created 18 stories and implemented them one by one. Some others were deleted, and some were changed along the way. The ones that are there now are:

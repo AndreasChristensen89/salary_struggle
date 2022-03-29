@@ -6,6 +6,10 @@ a {
     color: black;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 nav {
     background-color: #222E50;
 }
@@ -63,6 +67,31 @@ body {
     height: 200px;
 }
 
+#premium-member {
+    width: 285px;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+}
+
+#free-member {
+    width: 285px;
+    border: 1px solid #bdae15;
+}
+
+
+@keyframes element-move {
+    from {
+        transform: scale(1.0);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
 .profile-btn {
     width: 175px;
     margin-bottom: 30px;
@@ -76,25 +105,33 @@ body {
     background-color: #395169;
 }
 
-.profile-div {
-    height: 400px;
-}
-
 #restart-char {
     margin-bottom: 30px;
     background-color: #395169;
 }
 
-#profile-char {
-    background-color: #679dd8;
+/* about page and profile */
+.first-div {
+    background-color: #6494AA;
 }
 
-#profile-user {
-    background-color: #70b5c0;
+.second-div {
+    background-color: #E9B872;
 }
 
-#profile-orders {
-    background-color: #70b67d;
+
+.third-div {
+    background-color: #90A959;
+}
+
+.fourth-div {
+    background-color: #A63D40;
+}
+
+/* profile page  */
+
+.profile-div {
+    height: 450px;
 }
 
 #upgrade-link {

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from shop.models import Product
 from .forms import ContactForm, ContactFormLoggedin
 from django.core.mail import send_mail
@@ -9,7 +9,13 @@ from django.contrib import messages
 def index(request):
     """ A view to return the index page """
 
-    return render(request, 'home/index.html')
+    membership = get_object_or_404(Product, name="Premium Membership")
+
+    context = {
+        'membership': membership,
+    }
+
+    return render(request, 'home/index.html', context)
 
 
 def about(request):

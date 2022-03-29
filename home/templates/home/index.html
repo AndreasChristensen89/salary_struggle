@@ -23,7 +23,7 @@
         {% if user.is_authenticated %}
             {% if profile.active_char %}
 
-            <div class="row pt-5 cover-text">
+            <div class="row cover-text">
                 
                 <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded intro-div animation hover">
                     {% if character.day == 1 %}
@@ -50,7 +50,7 @@
             </div>
 
             {% else %}
-            <div class="row pt-5 cover-text">
+            <div class="row cover-text">
 
                 <div class="col-8 col-md-5 col-lg-4 mx-auto text-center text-white border border-white rounded intro-div animation hover my-3">
                     <a href="{% url 'profiles:profile' %}">
@@ -68,7 +68,7 @@
             {% endif %}
 
         {% else %}
-        <div class="row pt-5 cover-text">
+        <div class="row cover-text">
 
             <div class="col-8 col-md-5 col-lg-3 my-2 mx-auto text-center text-white border border-white rounded animation intro-div hover">
                 <a href="{% url 'account_signup' %}">
@@ -88,6 +88,48 @@
 
     </div>
 </div>
+
+{% if not user.is_authenticated %}
+<div class="row">
+    <div class="col-12 mx-auto text-center bg-black text-white p-5">
+        <h3 class="display-4 my-5">Become a self-taught programmer in 30 days...
+        <h3 class="h3">... or become homeless</h3>
+        <h3 class="h3 my-5">It's all up to you!</h3>
+        <h3 class="h3 my-5">Sign up and create a character to play for free</h3>
+        <h3 class="h3 my-5">
+            For the full experience purchase the 
+            <a class="border text-white" href="{% url 'shop:product_details' membership.id %}">Premium Membership</a>
+        </h3>    
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-12 mx-auto text-center bg-black text-white p-5">
+        <h3 class="h3 my-5">Become a self-taught programmer in 30 days...
+        <h3 class="h3">... or become homeless</h3>
+        <h3 class="h3 my-5">It's all up to you!</h3>
+        {% if not profile.active_char %}
+        <h3 class="h3 my-5">Head over to your 
+            <a class="border text-white" href="{% url 'profiles:profile' %}">profile</a> 
+            to start a character
+        </h3>
+        {% else %}
+        <h3 class="h3 my-5">Go get that job!</h3>
+        {% endif %}
+        {% if not profile.paid %}
+        <h3 class="h3 my-5">
+            For the full experience go 
+            <a class="border text-white mx-2" href="{% url 'shop:product_details' membership.id %}">Premium</a>
+        </h3>
+        {% else %}
+        <h3 class="h3 my-5">
+            As a premium member you now have the full experience!
+        </h3>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
 <div class="row">
     {% if user.is_authenticated %}
     <a class="col-6 border border-white intro-content position-relative" id="contact-bg" href="{% url 'home:contact_login' %}">
@@ -100,5 +142,6 @@
         <h3 class="h3 centered">About</h3>
     </a>
 </div>
+
 </div>
 {% endblock %}
