@@ -706,6 +706,11 @@ To do list:
 - Change checkout page resign for items
 - Add that endurance is not added to fight and that max endurance is 24
 - Remove all print and console.log statements
+- Add added specific img dimension in interviewer all and detail page for big boss due to image being wider
+- Add HTML tests
+- Add CSS tests
+- Python PEP8 tests
+- Mention if product is premium membership then different color applied
 
 
 

@@ -14,9 +14,10 @@
 {% block content%}
 <div class="container-fluid">
     <div class="row">
-        <div class="col text-center mt-3">
-            <h2 class="logo-font">Interviewers</h2>
-            <hr class="w-50 mb-1">
+        <div class="col-12 py-5 text-center">
+            <h1 class="h1 mx-auto rounded" id="interviewer-heading">
+                Interviewers
+            </h1>
         </div>
     </div>
 
@@ -46,16 +47,20 @@
                 {% for interviewer in interviewers %}
                 <div class="col-6 col-sm-6 col-md-6 col-lg-4 px-1">
                     <a href="{% url 'codex:interviewer_details' interviewer.id %}">
-                    <div class="card border interviewer-height my-2">
+                    <div class="card border interviewer-height my-2 fourth-div">
                         {% if interviewer.image %}
-                            <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                            {% if interviewer.name == "Big Boss" %}
+                                <img class="card-img-top img-fluid boss-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                            {% else %}
+                                <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                            {% endif %}
                         {% else %}
                             <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
                         {% endif %}
                         <div class="card-body">
                             <p class="lead product-name text-center">{{ interviewer.name }}</p>
                         </div>
-                        <div class="bg-white pt-0 mx-auto text-center">
+                        <div class="pt-0 mx-auto text-center">
                             <div class="row">
                                 <div class="col">
                                     <p>Level {{ interviewer.level }}</p>

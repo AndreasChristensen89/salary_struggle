@@ -14,16 +14,16 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 text-center mx-auto">
                 <hr>
-                <h2 class="logo-font mb-4">Product Management</h2>
+                <h2 class="mb-4">Product Management</h2>
                 <h5 class="text-muted">Add a product</h5>
                 <hr>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mx-auto text-center">
 
                 <form class="form mb-2" method="POST" action="{% url 'shop:add_product' %}" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -34,9 +34,9 @@
                             {{ field }}
                         {% endif %}
                     {% endfor %}
-                    <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'shop:all_products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Product</button>
+                    <div class="">
+                        <a class="btn btn-outline-black rounded" href="{% url 'shop:all_products' %}">Cancel</a>
+                        <button class="btn btn-black rounded" type="submit">Add Product</button>
                     </div>
                 </form>
             

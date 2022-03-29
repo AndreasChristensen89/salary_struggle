@@ -16,9 +16,10 @@
 {% block content%}
 <div class="container-fluid">
     <div class="row">
-        <div class="col text-center mt-3">
-            <h2 class="logo-font">Shop</h2>
-            <hr class="w-50 mb-1">
+        <div class="col-12 py-5 text-center">
+            <h1 class="h1 mx-auto rounded" id="about-heading">
+                Shop
+            </h1>
         </div>
     </div>
     
@@ -44,18 +45,18 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4 px-1">
                     {% endif %}
                         <a href="{% url 'shop:product_details' product.id %}">
-                            <div class="card border product-height my-2 text-center">
+                            <div class='card border product-height my-2 text-center {% if product.name == "Premium Membership" %}second-div{% else %}first-div{% endif %}'>
                                 {% if product.image %}
-                                    <img class="card-img-top img-fluid product-img mx-auto pt-2" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid product-img mx-auto pt-2 rounded" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
-                                    <img class="card-img-top img-fluid product-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid product-img mx-auto pt-2 rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 {% endif %}
 
                                 <div class="card-body">
                                     <p class="lead product-name">{{ product.name }}</p>
                                 </div>
 
-                                <div class="bg-white pt-0 mx-auto">
+                                <div class="pt-0 mx-auto">
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead text-left font-weight-bold">€{{ product.price }}</p>
@@ -75,7 +76,6 @@
 {% endblock %}
 {% endif %}
 
-<!-- Javascript from CI walkthorugh -->
 {% block postloadjs %}
 {{ block.super }}
 

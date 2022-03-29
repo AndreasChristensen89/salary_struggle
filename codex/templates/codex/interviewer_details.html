@@ -22,7 +22,11 @@
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2 my-2">
                 <div class="image-container mx-auto text-center">
                     {% if interviewer.image %}
+                        {% if interviewer.name == "Big Boss" %}
+                        <img class="card-img-top img-fluid big-boss-img" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                        {% else %}
                         <img class="card-img-top img-fluid interviewer-detail-img" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                        {% endif %}
                     {% else %}
                         <img class="card-img-top img-fluid interviewer-detail-img" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewe.name }}">
                     {% endif %}

@@ -135,7 +135,7 @@ body {
 }
 
 .profile-div {
-    height: 460px;
+    height: 500px;
 }
 
 #upgrade-link {
@@ -192,9 +192,18 @@ body {
     background-color: #90A959;
 }
 
-#restart-char {
+#confirm-restart-btn {
+    margin-bottom: 30px;
+    background-color: #A44A3F;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+
+}
+
+#restart-char,
+#cancel-restart {
     margin-bottom: 30px;
     background-color: #395169;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .cover-text {
@@ -365,6 +374,11 @@ body {
     width: 120px;
 }
 
+#items-heading {
+    width: 200px;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
 /* ----------------------------------- interviewer page ----------------------------------- */
 
 .all-interviewer-img {
@@ -377,6 +391,16 @@ body {
     max-width: 300px;
 }
 
+.boss-interviewer-img {
+    height: 215px;
+    width: 215px
+}
+
+#interviewer-heading {
+    width: 250px;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
 /* ----------------------------------- interviewer detail page page ----------------------------------- */
 
 .interviewer-detail-img {
@@ -387,6 +411,11 @@ body {
 /* used for items, interviewers, and products */
 .product-name {
     font-size: 11pt;
+}
+
+.big-boss-img {
+    height: 260px;
+    width: 270px;
 }
 
 

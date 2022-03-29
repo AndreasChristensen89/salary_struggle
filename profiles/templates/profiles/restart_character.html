@@ -18,10 +18,10 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-12 text-center">
-                <hr>
-                <h2 class="h2 font-weight-bold b-4">Restart Character</h2>
-                <hr>
+            <div class="col-10 py-5 pb-2 mx-auto text-center">
+                <h1 class="h1 mx-auto rounded contact-heading">
+                    Restart Character
+                </h1>
             </div>
         </div>
 
@@ -33,8 +33,8 @@
         </div>
 
         <div class="row text-center">
-            <a class="btn btn-primary mx-auto col-3" href="{% url 'profiles:profile' %}">Cancel</a>
-            <a class="btn btn-danger mx-auto col-3" href="{% url 'profiles:new_character' %}">Restart</a>
+            <a class="btn mx-auto col-3 text-white hover" id="cancel-restart" href="{% url 'profiles:profile' %}">Cancel</a>
+            <a class="btn btn-danger mx-auto col-3 hover" id="confirm-restart-btn" href="{% url 'profiles:new_character' %}">Restart</a>
         </div>
     </div>
 {% endblock %}
