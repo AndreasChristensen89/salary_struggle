@@ -18,20 +18,20 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-12 text-center">
-                <hr>
-                <h2 class="logo-font mb-4">Update Profile</h2>
-                <hr>
+            <div class="col-10 py-5 pb-2 mx-auto text-center">
+                <h1 class="h1 mx-auto rounded contact-heading">
+                    Update Profile
+                </h1>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-8 col-lg-6 mx-auto mb-3">
+            <div class="col-10 col-md-5 mx-auto mt-3 mb-5 p-4 first-div border rounded">
               <form id="form" method="post" class="mt-3">
           
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button class="btn border border-black bg-primary text-white my-3" data-toggle="modal" data-target="message" type="submit">Save</button>
+                <button class="btn update-prof-btn text-white my-3" data-toggle="modal" data-target="message" type="submit">Save</button>
           
               </form>
             </div>

@@ -103,23 +103,31 @@ body {
 
 /* ----------------------------------- profile page ----------------------------------- */
 
+#profile-heading {
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
 /* also used on about page */
 .first-div {
     background-color: #6494AA;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 /* also used on about page */
 .second-div {
     background-color: #E9B872;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 /* also used on about page */
 .third-div {
     background-color: #90A959;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .fourth-div {
-    background-color: #A63D40;
+    background-color: #C1BDB3;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .title-height {
@@ -127,15 +135,17 @@ body {
 }
 
 .profile-div {
-    height: 450px;
+    height: 460px;
 }
 
 #upgrade-link {
     width: 215px;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 #premium-member {
-    width: 285px;
+    width: 240px;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 
     animation-name: element-move;
     animation-duration: 0.5s;
@@ -146,6 +156,8 @@ body {
 #free-member {
     width: 285px;
     border: 1px solid #bdae15;
+    background-color: #C46D5E;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 
@@ -162,14 +174,22 @@ body {
 .profile-btn {
     width: 175px;
     margin-bottom: 30px;
+    background-color: #395169;
+    color: white;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 #user-edit-btn {
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     background-color: #395169;
+}
+
+#prof-play-btn {
+    margin-bottom: 30px;
+    background-color: #90A959;
 }
 
 #restart-char {
@@ -194,6 +214,40 @@ body {
         opacity: 1;
         top: 240px;
     }
+}
+/* ----------------------------------- Update Profile page ----------------------------------- */
+
+.update-prof-btn {
+    background-color: #395169;
+    color: white;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+
+/* ----------------------------------- About page ----------------------------------- */
+
+
+#about-heading{
+    width: 200px;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.shop-btn {
+    background-color: #7F7979;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+/* ----------------------------------- Contact pages ----------------------------------- */
+
+.contact-btn {
+    background-color: #7F7979;
+    color: white;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.contact-heading {
+    width: 235px;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 /* ----------------------------------- Shopping cart page ----------------------------------- */

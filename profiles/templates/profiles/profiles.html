@@ -15,7 +15,7 @@
 <div class="container-fluid">
         <div class="row position-relative">
             <div class="col-12 pt-5 text-center title-height">
-                <h2 class="h2 centered">PROFILE</h2>
+                <h2 class="h2 p-3 centered border rouded" id="profile-heading">PROFILE</h2>
             </div>
             <hr>
         </div>
@@ -25,9 +25,9 @@
                 {% if profile.paid %}
                 <h3 class="display-5 bg-info text-white mx-auto mb-2 border rounded" id="premium-member">Premium Member</h3>
                 {% else %}
-                <h3 class="display-5 mx-auto mb-2 rounded bg-warning" id="free-member">Free Member</h3>
+                <h3 class="display-5 mx-auto mb-2 rounded" id="free-member">Free Member</h3>
                 <a class="lead" href="{% url 'shop:product_details' membership.id %}">
-                    <div class="col mx-auto text-center border border-black rounded my-5" id="upgrade-link">
+                    <div class="col mx-auto text-center border border-black rounded my-5 hover" id="upgrade-link">
                         Upgrade to Premium
                     </div>
                 </a>
@@ -50,14 +50,27 @@
                     {% if character.has_job %}
                         <p>Has job: Yes</p>
                     {% endif %}
+                    {% if character.day == 1 %}
+                        <a href="{% url 'grind:intro' %}">
+                            <div class="col mx-auto text-center text-white lead border border-black rounded profile-btn hover" id="prof-play-btn">
+                                Play
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'grind:enter' %}">
+                            <div class="col mx-auto text-center text-white lead border border-black rounded profile-btn hover" id="prof-play-btn">
+                                Play
+                            </div>
+                        </a>
+                    {% endif %}
                     <a href="{% url 'profiles:confirm_new_char' %}">
-                        <div class="col mx-auto text-center text-white lead border border-black rounded profile-btn" id="restart-char">
+                        <div class="col mx-auto text-center text-white lead border border-black rounded profile-btn hover" id="restart-char">
                             Restart
                         </div>
                     </a>
                 {% else %}
                     <a href="{% url 'profiles:new_character' %}">
-                        <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn mt-5 lead">
+                        <div class="col mx-auto text-center border border-black rounded mb-3 profile-btn mt-5 lead hover">
                             Create New Character
                         </div>
                     </a>
@@ -74,7 +87,7 @@
                 </ul>
 
                 <a class="lead" href="{% url 'profiles:update_profile' %}">
-                    <div class="col mx-auto text-center text-white border border-black rounded mb-3 profile-btn lead" id="user-edit-btn">
+                    <div class="col mx-auto text-center text-white border border-black rounded mb-3 profile-btn lead hover" id="user-edit-btn">
                         Edit
                     </div>
                 </a>

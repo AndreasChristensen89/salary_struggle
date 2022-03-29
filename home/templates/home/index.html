@@ -25,7 +25,7 @@
 
             <div class="row cover-text">
                 
-                <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded intro-div animation hover">
+                <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded third-div animation hover">
                     {% if character.day == 1 %}
                     <a href="{% url 'grind:intro' %}">
                     {% else %}
@@ -35,13 +35,13 @@
                     </a>
                 </div>
 
-                <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded intro-div animation hover">
+                <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded first-div animation hover">
                     <a href="{% url 'profiles:profile' %}">
                         <h2 class="h2 text-white">PROFILE</h2>
                     </a>
                 </div>
 
-                <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded intro-div animation hover">
+                <div class="col-8 col-md-5 col-lg-3 mt-3 mx-auto text-center text-white border border-white rounded fourth-div animation hover">
                     <a href="{% url 'shop:all_products' %}">
                         <h2 class="text-white">SHOP</h2>
                     </a>
@@ -52,13 +52,13 @@
             {% else %}
             <div class="row cover-text">
 
-                <div class="col-8 col-md-5 col-lg-4 mx-auto text-center text-white border border-white rounded intro-div animation hover my-3">
+                <div class="col-8 col-md-5 col-lg-4 mx-auto text-center text-white border border-white rounded first-div animation hover my-3">
                     <a href="{% url 'profiles:profile' %}">
                         <h2 class="text-white">PROFILE</h2>
                     </a>
                 </div>
 
-                <div class="col-8 col-md-5 col-lg-4 mx-auto text-center text-white border border-white rounded intro-div animation hover my-3">
+                <div class="col-8 col-md-5 col-lg-4 mx-auto text-center text-white border border-white rounded fourth-div animation hover my-3">
                     <a href="{% url 'shop:all_products' %}">
                         <h2 class="text-white">SHOP</h2>
                     </a>
@@ -70,13 +70,13 @@
         {% else %}
         <div class="row cover-text">
 
-            <div class="col-8 col-md-5 col-lg-3 my-2 mx-auto text-center text-white border border-white rounded animation intro-div hover">
+            <div class="col-8 col-md-5 col-lg-3 my-2 mx-auto text-center text-white border border-white rounded animation first-div hover">
                 <a href="{% url 'account_signup' %}">
                     <h2 class="text-white">REGISTER</h2>
                 </a>
             </div>
 
-            <div class="col-8 col-md-5 col-lg-3 my-2 mx-auto text-center text-white border border-white rounded animation intro-div hover">
+            <div class="col-8 col-md-5 col-lg-3 my-2 mx-auto text-center text-white border border-white rounded animation third-div hover">
                 <a href="{% url 'account_login' %}">
                     <h2 class="text-white">LOGIN</h2>
                 </a>
@@ -92,14 +92,13 @@
 {% if not user.is_authenticated %}
 <div class="row">
     <div class="col-12 mx-auto text-center text-white p-5 index-intro">
-        <h3 class="display-4 my-5">Become a self-taught programmer in 30 days...
+        <h3 class="h3 my-5">Become a self-taught programmer in 30 days...</h3>
         <h3 class="h3">... or become homeless</h3>
         <h3 class="h3 my-5">It's all up to you!</h3>
-        <h3 class="h3 my-5">Sign up and create a character to play for free</h3>
-        <h3 class="h3 my-5">
-            For the full experience purchase the 
-            <a class="border text-white" href="{% url 'shop:product_details' membership.id %}">Premium Membership</a>
-        </h3>    
+        <h3 class="h3 my-5">Sign up and create a character to play the game</h3>
+        <h3 class="h3 my-5 hover">
+            <a class="text-white border p-3" href="{% url 'account_signup' %}">Try it out!</a>
+        </h3>
     </div>
 </div>
 {% else %}
@@ -109,17 +108,16 @@
         <h3 class="h3">... or become homeless</h3>
         <h3 class="h3 my-5">It's all up to you!</h3>
         {% if not profile.active_char %}
-        <h3 class="h3 my-5">Head over to your
-            <a class="border text-white" href="{% url 'profiles:profile' %}">profile</a> 
-            to start a character
+        <h3 class="h3 my-5 hover">
+            <a class="text-white border p-3" href="{% url 'profiles:profile' %}">
+                Head over to your profile to start a character</a>
         </h3>
         {% else %}
         <h3 class="h3 my-5">Go get that job!</h3>
         {% endif %}
         {% if not profile.paid %}
-        <h3 class="h3 my-5">
-            For the full experience go
-            <a class="border text-white" href="{% url 'shop:product_details' membership.id %}">Premium</a>
+        <h3 class="h3 my-5 hover">
+            <a class="text-white border p-3" href="{% url 'shop:product_details' membership.id %}">For the full experience go Premium</a>
         </h3>
         {% else %}
         <h3 class="h3 my-5">
@@ -132,13 +130,13 @@
 
 <div class="row">
     {% if user.is_authenticated %}
-    <a class="col-6 border border-white intro-content position-relative" id="contact-bg" href="{% url 'home:contact_login' %}">
+    <a class="col-6 border border-white intro-content position-relative first-div" href="{% url 'home:contact_login' %}">
     {% else %}
-    <a class="col-6 border border-white intro-content position-relative" id="contact-bg" href="{% url 'home:contact' %}">
+    <a class="col-6 border border-white intro-content position-relative" href="{% url 'home:contact' %}">
     {% endif %}
         <h3 class="h3 text-white centered">Contact</h3>
     </a>
-    <a class="col-6 border border-white text-dark intro-content position-relative" id="about-bg" href="{% url 'home:about' %}">
+    <a class="col-6 border border-white text-dark intro-content position-relative fourth-div" href="{% url 'home:about' %}">
         <h3 class="h3 centered">About</h3>
     </a>
 </div>

@@ -10,9 +10,9 @@
 {% block content %}
 <div class="container-fluid">
 <div class="row">
-    <div class="col-12 py-5 mx-auto text-center">
-        <h1 class="h1">
-            About Salary Struggle
+    <div class="col-12 py-5 text-center">
+        <h1 class="h1 mx-auto rounded" id="about-heading">
+            About
         </h1>
     </div>
 </div>
@@ -58,7 +58,7 @@
             from the creators themselves.
         </p>
         {% if user.is_authenticated %}
-        <a class="btn btn-success" href="{% url 'shop:all_products' %}">Shop</a>
+        <a class="btn shop-btn text-white" href="{% url 'shop:all_products' %}">Shop</a>
         {% else %}
         <p>To access our shop head over and <a href="{% url 'account_signup' %}"><u>register</u></a> for an account
             or <a href="{% url 'account_login' %}"><u>login</u></a></p>
