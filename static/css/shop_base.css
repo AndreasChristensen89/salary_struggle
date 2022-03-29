@@ -10,6 +10,7 @@ a {
 
 a:hover {
     text-decoration: none;
+    color: unset;
 }
 
 nav {
@@ -105,6 +106,7 @@ body {
 
 #profile-heading {
     box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    width: 260px;
 }
 
 /* also used on about page */
@@ -154,7 +156,7 @@ body {
 }
 
 #free-member {
-    width: 285px;
+    width: 260px;
     border: 1px solid #bdae15;
     background-color: #C46D5E;
     box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
@@ -180,10 +182,6 @@ body {
 }
 
 #user-edit-btn {
-    /* position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translate(-50%, -50%); */
     background-color: #395169;
 }
 
@@ -320,12 +318,10 @@ body {
     overflow-x: auto;
 }
 
-/* From walkthrough project */
-/* .btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
-} */
+}
 
 /* ----------------------------------- Checkout page ----------------------------------- */
 
@@ -357,7 +353,7 @@ body {
 
 /* also used for items page */
 .product-height {
-    height: 250px;
+    height: 270px;
     max-width: 300px;
 }
 
@@ -595,21 +591,9 @@ body {
 
 /* --------------------------- media queries ------------------------------ */
 
-@media (max-width: 1138px) {
-    #user-edit-btn {
-        bottom: 43px;
-    }
-}
-
 @media (max-width: 860px) {
     #hero-background {
         background-size: cover;
-    }
-}
-
-@media (max-width: 768px) {
-    #user-edit-btn {
-        bottom: 0px;
     }
 }
 

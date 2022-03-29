@@ -42,7 +42,7 @@
                     {% if product.name == "Premium Membership" and profile.paid %}
                     <div class="d-none">
                     {% else %}
-                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 px-1">
+                    <div class="col-6 mx-auto col-sm-6 col-lg-4 px-1">
                     {% endif %}
                         <a href="{% url 'shop:product_details' product.id %}">
                             <div class='card border product-height my-2 text-center {% if product.name == "Premium Membership" %}second-div{% else %}first-div{% endif %}'>
