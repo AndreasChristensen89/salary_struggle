@@ -711,6 +711,8 @@ To do list:
 - Add CSS tests
 - Python PEP8 tests
 - Mention if product is premium membership then different color applied
+- Mention skip button in intro
+- Clean up css game_base
 
 
 

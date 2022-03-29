@@ -25,7 +25,7 @@ $(".item-buy").click(function() {
     success: function(){
         if (money >= price) {
             // how much the stat increases
-            let increase = parseInt($(`#item${itemID}stat`).text());
+            let increase = parseInt($(`#item${itemID}stat`).attr("increase"));
             // name of the stat
             let element = $(`#item${itemID}stat`).attr("value");
 

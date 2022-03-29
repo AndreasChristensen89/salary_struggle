@@ -219,6 +219,29 @@ a:hover {
     transition: all 0.3s ease 0s;
 }
 
+#call-center-background-img {
+    background-image: url(/media/call_center.png);
+}
+
+#call-center-background {
+    background-color: #b6cad1;
+}
+
+#store-background-img {
+    background-image: url(/media/store_bg.png);
+}
+
+.store-buy-btn {
+    margin-bottom: 30px;
+    background-color: #395169;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    color: white;
+}
+
+#store-background {
+    background-color: #999999;
+}
+
 #house-background {
     background-color: #e3d9ca;
 }
@@ -250,7 +273,8 @@ a:hover {
 #store-items {
     max-height: 400px;
     overflow-y: auto;
-    border: 2px solid black;
+    border: 1px solid black;
+    background-color: #6494AA;
 }
 
 #bar-background {
@@ -390,7 +414,9 @@ a:hover {
 }
 
 .item-height {
-    height: 120px;
+    height: 195px;
+    box-shadow: 0 0.125rem 0.5rem rgb(0 0 0 / 30%), 0 0.0625rem 0.125rem rgb(0 0 0 / 20%);
+    background-color: #3980a1;
 }
 
 .item-line {
@@ -500,6 +526,14 @@ a:hover {
 
     #back-alley-background-img {
         background-image: url(/media/back_alley_repeat.png);
+    }
+
+    #call-center-background-img {
+        background-image: url(/media/call_center_mobile.png);
+    }
+
+    #store-background-img {
+        background-image: url(/media/store_mobile.png);
     }
     
     #house-background-img {

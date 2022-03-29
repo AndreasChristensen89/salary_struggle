@@ -3,8 +3,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="h-100 overview" id="bar-background">
-    <div class="text-center all-game-bg-img" id="bar-background-img">
+<div class="h-100 overview" id="store-background">
+    <div class="text-center all-game-bg-img" id="store-background-img">
 
         <div class="row">
             <a class="text-center" href="{% url 'grind:downtown' %}">
@@ -17,42 +17,31 @@
 
         <div class="row">
 
-            <div class="col-8 col-md-6 col-lg-4 mx-auto text-center rounded bg-white p-3" id="store-items">
+            <div class="col-8 col-md-6 col-lg-4 mx-auto text-center rounded text-white p-3" id="store-items">
                 {% for item in items %}
-                    <div class="div item-height border-bottom p-3">
+                    <div class="div item-height border-bottom p-3 my-3">
                     {% if item in character_items %}
-                        <p class="lead">{{item.name}} - ¥{{item.price}} <strong>Owned</strong></p>
+                        <h3 class="h3">{{item.name}} - <strong>Owned</strong></h3>
                     {% else %}
-                        <p class="lead" id="item{{item.id}}NamePrice">{{item.name}} - ¥{{item.price}}</p>
+                        <h3 class="h3" id="item{{item.id}}NamePrice">{{item.name}}</h3>
                         <div id="item{{item.id}}NotPurchased">
-                            <p class="d-inline">
-
                             {% if item.intellect > 0 %}
-                                Intellect: 
-                                </p>
-                                <p class="d-inline" value="intellect" id="item{{item.id}}stat">{{item.intellect}}</p>
+                                <p class="lead" value="intellect" increase="{{item.intellect}}" id="item{{item.id}}stat">¥{{item.price}} - Intellect: {{item.intellect}}</p>
                             {% elif item.charm > 0 %}
-                                Charm: 
-                                </p>
-                                <p class="d-inline" value="charm" id="item{{item.id}}stat">{{item.charm}}</p>
+                                <p class="d-inline" value="charm" increase="{{item.charm}}" id="item{{item.id}}stat">¥{{item.price}} - Charm: {{item.charm}}</p>
                             {% elif item.coding > 0 %}
-                                Coding: 
-                                </p>
-                                <p class="d-inline" value="coding" id="item{{item.id}}stat">{{item.coding}}</p>
+                                <p class="d-inline" value="coding" increase="{{item.coding}}" id="item{{item.id}}stat">¥{{item.price}} - Coding: {{item.coding}}</p>
                             {% elif item.energy > 0 %}
-                                Energy: 
-                                </p>
-                                <p class="d-inline" value="energy" id="item{{item.id}}stat">{{item.energy}}</p>
+                                <p class="d-inline" value="energy" increase="{{item.energy}}" id="item{{item.id}}stat">¥{{item.price}} - Energy: {{item.energy}}</p>
                             {% elif item.endurance > 0 %}
-                                Endurance: 
-                                </p>
-                                <p class="d-inline" value="endurance" id="item{{item.id}}stat">{{item.endurance}}</p>
+                                <p class="d-inline" value="endurance" increase="{{item.endurance}}" id="item{{item.id}}stat">¥{{item.price}} - Endurance: {{item.endurance}}</p>
                             {% endif %}
 
                             <p class="d-none" id="itemName{{item.id}}">{{item.name}}</p>
-
-                            <button class="item-buy btn btn-primary ml-3" permanent={{item.permanent}} value={{item.id}} price={{item.price}}
-                            id="item{{item.id}}">Buy</button>
+                            <div class="row">
+                                <button class="item-buy mx-auto my-4 btn store-buy-btn" permanent={{item.permanent}} value={{item.id}} price={{item.price}}
+                                id="item{{item.id}}">Buy</button>
+                            </div>
                         </div>
                         
                     {% endif %}
