@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
             $('.intro-text').eq(0).removeClass("hide").animate({opacity: "1.0"}, 1000);
             $("#next-btn").removeClass("hide");
             setTimeout(() => {
+                $("#skip-btn").removeClass("d-none");
                 $("#next-btn").animate({opacity: "1.0"}, "slow");
+                $("#skip-btn").animate({opacity: "1.0"}, "slow");
             }, 2000);
         }, 1000);
     });
@@ -26,6 +28,7 @@ function nextIntro() {
         $(".intro-text").eq(hint).removeClass("hide").animate({opacity: "1"}, "slow");
         if (hint == 12) {
                 $('#next-btn').addClass("hide");
+                $("#skip-btn").addClass("d-none");
             }
         }, 500);
 }

@@ -12,6 +12,10 @@ body {
     overflow: hidden;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .message-container {
     position: fixed;
     top: 73px;
@@ -32,6 +36,10 @@ body {
     position: absolute;
     top: 5px;
     left: 5px;
+}
+
+#skip-btn {
+    opacity: 0;
 }
 
 .item-buy:hover {

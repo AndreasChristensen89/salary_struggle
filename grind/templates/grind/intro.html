@@ -25,6 +25,7 @@
             <p class="lead hide intro-text">Better go work on your skills. Explore a bit.</p>
             <p class="lead hide intro-text">The clock is ticking.</p>
             <p class="lead hide intro-text">Best of luck to you!</p>
+
             <div class="hide intro-text">
                 <h3 class="h3 mb-4">Objectives</h3>
                 <p>- You have 30 days to get a job</p>
@@ -38,6 +39,10 @@
         </div>
 
         <button aria-label="Next hint button" id="next-btn" class="border btn col-4 mx-auto hide">Next</button>
+    </div>
+
+    <div class="row">
+        <a class="btn border mx-auto mt-5 d-none" id="skip-btn" href="{% url 'grind:enter' %}">Skip</a>
     </div>
 
 </div>
