@@ -23,35 +23,44 @@ $("#fight").click(function() {
     },
     success: function(){
         if (energyPenalty < 50) {
-            if (energy-(60-endurance) >= 0) {
-                if (randomNumber >= 5) {
-                    $("#endurance").text(endurance + 3);
-                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
-                        
-                    endurance = endurance + 3;
-                    energy = energy-(60-endurance);
+            if (energy-60 >= 0) {
+                if (endurance <= 21) {
+                    if (randomNumber >= 5) {
+                        $("#endurance").text(endurance + 3);
+                        $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
+                            
+                        endurance = endurance + 3;
+                        energy = energy-(60-endurance);
 
-                    $('.overview').fadeToggle(100);
-                    $(".loading-overlay").eq(0).fadeToggle(100);
-
-                    setTimeout(() => { 
                         $('.overview').fadeToggle(100);
                         $(".loading-overlay").eq(0).fadeToggle(100);
-                    }, 3000);
-                } else {
-                    $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`); 
-                    energy = 0;
 
-                    $('.overview').fadeToggle(100);
-                    $(".loading-overlay").eq(1).fadeToggle(100);
+                        setTimeout(() => { 
+                            $('.overview').fadeToggle(100);
+                            $(".loading-overlay").eq(0).fadeToggle(100);
+                        }, 3000);
+                    } else {
+                        $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`); 
+                        energy = 0;
 
-                    setTimeout(() => { 
                         $('.overview').fadeToggle(100);
                         $(".loading-overlay").eq(1).fadeToggle(100);
-                    }, 3000);
+
+                        setTimeout(() => { 
+                            $('.overview').fadeToggle(100);
+                            $(".loading-overlay").eq(1).fadeToggle(100);
+                        }, 3000);
+                    }
+                } else {
+                    $("#game-message").text("You're too strong. Noone wants to fight you.");
+                    $("#game-message-container").removeClass("d-none");
+
+                    setTimeout(() => { 
+                        $("#game-message-container").addClass("d-none");
+                    }, 1500);
                 }
             } else {
-                $("#game-message").text(`You need ${60-endurance} energy`);
+                $("#game-message").text("Your body is too messed up to fight");
                 $("#game-message-container").removeClass("d-none");
 
                 setTimeout(() => { 

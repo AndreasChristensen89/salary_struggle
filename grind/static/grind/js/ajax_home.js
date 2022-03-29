@@ -57,11 +57,14 @@ $("#homeCharm").click(function() {
         headers: {'X-CSRFToken': csrf},
         success: function(){
             if (energy - (40-endurance) >= 0 ) {
-                $("#charm").text(charm+1);
-                charm = charm+1;
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
+                $("#charm").text(charm+1);
+                charmLvl = $("#charm").text();
+                $("#charm-level").text(`Charm Level: ${charmLvl}`);
+                
                 energy = energy-(40-endurance);
-
+                charm = charm+1;
+                
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(2).fadeToggle(100);
 
@@ -91,9 +94,11 @@ $("#homeStudy").click(function() {
         success: function(){
             if (energy - (40-endurance) >= 0 ) {
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
-                $("#coding").text(coding+1);;
+                $("#coding").text(coding+1);
+                codeLvl = $("#coding").text();
+                $("#coding-level").text(`Coding Level: ${codeLvl}`);
 
-                coding = coding+1;
+                coding += 1;
                 energy = energy- (40-endurance);
 
                 $('.overview').fadeToggle(100);

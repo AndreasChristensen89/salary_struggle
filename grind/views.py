@@ -601,14 +601,15 @@ class Fight(UpdateView):
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
             # Update Active Character
-            if c.energy >= (60-c.endurance) and c.energy_penalty < 50:
-                if random_number >= 5:
-                    c.energy = c.energy - (60-c.endurance)
-                    c.endurance = c.endurance + 3
-                else:
-                    c.energy = 0
-                    c.energy_penalty = c.energy_penalty + 50
-                c.save()
+            if c.energy >= 60 and c.energy_penalty <= 50:
+                if c.endurance <= 21:
+                    if random_number >= 5:
+                        c.energy = c.energy - (60-c.endurance)
+                        c.endurance = c.endurance + 3
+                    else:
+                        c.energy = 0
+                        c.energy_penalty = c.energy_penalty + 50
+                    c.save()
             return HttpResponse(200)
         else:
             return HttpResponse(400)

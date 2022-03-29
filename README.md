@@ -704,6 +704,7 @@ To do list:
 - In conversation overlay, penalty hide is removed a bit too early
 - Finish final interview
 - Clean grind code, doubles not used anymore
+- Endurance max 20, fights always 60 energy - energy percent, stops beging fruitful if limit  -ENERGY DEPDLETED JS
 
 
 NOTE:

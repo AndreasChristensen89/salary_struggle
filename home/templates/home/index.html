@@ -109,7 +109,7 @@
         <h3 class="h3">... or become homeless</h3>
         <h3 class="h3 my-5">It's all up to you!</h3>
         {% if not profile.active_char %}
-        <h3 class="h3 my-5">Head over to your 
+        <h3 class="h3 my-5">Head over to your
             <a class="border text-white" href="{% url 'profiles:profile' %}">profile</a> 
             to start a character
         </h3>
@@ -118,8 +118,8 @@
         {% endif %}
         {% if not profile.paid %}
         <h3 class="h3 my-5">
-            For the full experience go 
-            <a class="border text-white mx-2" href="{% url 'shop:product_details' membership.id %}">Premium</a>
+            For the full experience go
+            <a class="border text-white" href="{% url 'shop:product_details' membership.id %}">Premium</a>
         </h3>
         {% else %}
         <h3 class="h3 my-5">
