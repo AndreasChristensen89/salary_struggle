@@ -1,3 +1,5 @@
+
+/* Used throughout site */
 html {
     height: 100%;
 }
@@ -28,12 +30,42 @@ body {
     font-family: 'Montserrat';
 }
 
+.hover:hover {
+    transform: translateY(-7px);
+    transition: all 0.3s ease 0s;
+}
+
+.hover:not(:hover) {
+    transform: translateY(0px);
+    transition: all 0.3s ease 0s;
+}
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+/* ----------------------------------- index page ----------------------------------- */
+
+/* size of bootstrap navbar */
 .container-header {
     height: 56px;
 }
 
-.title-height {
-    height: 175px;
+/* color to match hero picture */
+.index-intro {
+    background-color: #262c2f;
 }
 
 #hero-background {
@@ -52,6 +84,7 @@ body {
     background-color: #BCD8C1;
 }
 
+/* also used on profile page */
 .centered {
     position: absolute;
     top: 50%;
@@ -65,6 +98,40 @@ body {
 
 .intro-content {
     height: 200px;
+}
+
+
+/* ----------------------------------- profile page ----------------------------------- */
+
+/* also used on about page */
+.first-div {
+    background-color: #6494AA;
+}
+
+/* also used on about page */
+.second-div {
+    background-color: #E9B872;
+}
+
+/* also used on about page */
+.third-div {
+    background-color: #90A959;
+}
+
+.fourth-div {
+    background-color: #A63D40;
+}
+
+.title-height {
+    height: 175px;
+}
+
+.profile-div {
+    height: 450px;
+}
+
+#upgrade-link {
+    width: 215px;
 }
 
 #premium-member {
@@ -110,34 +177,6 @@ body {
     background-color: #395169;
 }
 
-/* about page and profile */
-.first-div {
-    background-color: #6494AA;
-}
-
-.second-div {
-    background-color: #E9B872;
-}
-
-
-.third-div {
-    background-color: #90A959;
-}
-
-.fourth-div {
-    background-color: #A63D40;
-}
-
-/* profile page  */
-
-.profile-div {
-    height: 450px;
-}
-
-#upgrade-link {
-    width: 215px;
-}
-
 .cover-text {
     animation-name: opacity-animation;
     animation-duration: 1.5s;
@@ -157,92 +196,19 @@ body {
     }
 }
 
-.hover:hover {
-    transform: translateY(-7px);
-    transition: all 0.3s ease 0s;
-}
-
-.hover:not(:hover) {
-    transform: translateY(0px);
-    transition: all 0.3s ease 0s;
-}
-
-/* From walkthrough project */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-}
+/* ----------------------------------- Shopping cart page ----------------------------------- */
 
 #bag-return-btn {
     height: 2rem;
     width: 2rem;
 }
 
-/* From walkthrough project */
-.main-logo-link {
-    width: fit-content;
-}
-
-/* From walkthrough project */
-.shop-now-button {
-    background: black;
-    color: white;
-    min-width: 260px;
-}
-
-/* From walkthrough project */
 .btn-black {
     background: black;
     color: white;
 }
 
-/* From walkthrough project */
-.btt-button {
-    height: 42px;
-    width: 42px;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-}
-
-/* Shopping bag */
-.bag-item-img {
-    height: 120px;
-    width: 100px;
-}
-
-/* order details page  */
-
-.order-details {
-    overflow-x: auto;
-}
-
-/* From walkthrough project */
-.btt-link,
-.update-link,
-.remove-item {
-    cursor: pointer;
-}
-
-/* From walkthrough project */
-.btn-outline-black {
-    background: white;
-    color: black !important;
-    border: 1px solid black;
-}
-
-/* From walkthrough project */
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: black;
-    color: white !important;
-}
-
-/* From walkthrough project */
+/* also used in shop */
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -253,57 +219,103 @@ body {
     color: white;
 }
 
+.bag-item-img {
+    height: 120px;
+    width: 100px;
+}
+
+
+/* .main-logo-link {
+    width: fit-content;
+} */
+
+
+/* .shop-now-button {
+    background: black;
+    color: white;
+    min-width: 260px;
+} */
+
 /* From walkthrough project */
-.text-black {
-    color: #000 !important;
+
+
+/* From walkthrough project */
+/* .btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+} */
+
+/* Shopping bag */
+
+
+/* ----------------------------------- Checkout success page ----------------------------------- */
+
+.order-details {
+    overflow-x: auto;
 }
 
 /* From walkthrough project */
-.border-black {
-    border: 1px solid black !important;
+/* .btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+} */
+
+/* ----------------------------------- Checkout page ----------------------------------- */
+
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    border: 1px solid black;
 }
 
-/* From walkthrough project */
-.bg-black {
-    background: #000 !important;
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
 }
+
+/* ----------------------------------- Products page ----------------------------------- */
 
 .product-img {
     height: 120px;
     width: 120px;
 }
 
-#small-width {
-    width: 200px;
-}
-
+/* also used in items and interviewers page */
 .filter {
     width: 30vw;
     max-width: 50vw;
 }
+
+/* also used for items page */
+.product-height {
+    height: 250px;
+    max-width: 300px;
+}
+
+/* ----------------------------------- Product details page ----------------------------------- */
+
+#small-width {
+    width: 200px;
+}
+
+/* ----------------------------------- items page ----------------------------------- */
 
 .all-item-img {
     height: 120px;
     width: 120px;
 }
 
-.interviewer-detail-img {
-    height: 260px;
-    width: 150px;
-}
+/* ----------------------------------- interviewer page ----------------------------------- */
 
 .all-interviewer-img {
     height: 215px;
     width: 130px
-}
-
-.product-name {
-    font-size: 11pt;
-}
-
-.product-height {
-    height: 250px;
-    max-width: 300px;
 }
 
 .interviewer-height {
@@ -311,32 +323,49 @@ body {
     max-width: 300px;
 }
 
-/* From walkthrough project */
-a.category-badge > span.badge:hover {
-    background: #212529 !important;
-    color: #fff !important;
+/* ----------------------------------- interviewer detail page page ----------------------------------- */
+
+.interviewer-detail-img {
+    height: 260px;
+    width: 150px;
 }
 
+/* used for items, interviewers, and products */
+.product-name {
+    font-size: 11pt;
+}
+
+
 /* From walkthrough project */
-.btt-button {
+/* a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+} */
+
+
+/* .btt-button {
     height: 42px;
     width: 42px;
     position: fixed;
     bottom: 10px;
     right: 10px;
-}
+} */
 
-/* From walkthrough project */
-.btt-link,
+
+/* .btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
-}
+} */
 
+
+/* ----------------------------------- Footer ----------------------------------- */
 .footer {
     background-color: #4e5970;
 }
 
+
+/* ----------------------------------- messages ----------------------------------- */
 .message-container {
     position: fixed;
     top: 56px;
@@ -357,7 +386,7 @@ a.category-badge > span.badge:hover {
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
-.arrow-up {
+/* .arrow-up {
     width: 0; 
     height: 0; 
     border-left: 4px solid transparent;
@@ -366,10 +395,10 @@ a.category-badge > span.badge:hover {
     position: absolute;
     top: -10px;
     right: 36px;
-}
+} */
 
 /* Convenience classes - colors copied from Bootstrap */
-.arrow-primary {
+/* .arrow-primary {
     border-bottom-color: #007bff !important;
 }
 
@@ -399,19 +428,19 @@ a.category-badge > span.badge:hover {
 
 .arrow-dark {
     border-bottom-color: #343a40 !important;
-}
+} */
 
-.bag-notification-wrapper {
+/* .bag-notification-wrapper {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
-}
+} */
 
-/* Allauth form formatting */
+/* ----------------------------------- allauth form ----------------------------------- */
 
 .allauth-form-content p {
-    margin-top: 1.5rem; /* mt-4 */
-    color: #6c757d; /* text-secondary */
+    margin-top: 1.5rem;
+    color: #6c757d;
 }
 
 .allauth-form-content input {
@@ -428,7 +457,6 @@ a.category-badge > span.badge:hover {
 
 .allauth-form-content button,
 .allauth-form-content input[type='submit'] {
-	/* btn */
 	display: inline-block;
     color: #fff;
     text-align: center;
@@ -441,7 +469,6 @@ a.category-badge > span.badge:hover {
     padding: .375rem .75rem;
     border-radius: 0.25rem;
 
-    /* standard bootstrap btn transitions */
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
@@ -461,7 +488,7 @@ a.category-badge > span.badge:hover {
     overflow: hidden;
 }
 
-/* All input lives in a field now, so user can simply click the image */
+/* All input becomes one field, so user can simply click the image */
 .btn-file input[type="file"] {
     position: absolute;
     top: 0;
@@ -488,6 +515,12 @@ a.category-badge > span.badge:hover {
 @media (max-width: 1138px) {
     #user-edit-btn {
         bottom: 43px;
+    }
+}
+
+@media (max-width: 860px) {
+    #hero-background {
+        background-size: cover;
     }
 }
 
@@ -519,12 +552,6 @@ a.category-badge > span.badge:hover {
         max-width: 250px;
         max-height: 300px;
         text-align: center!important;
-    }
-}
-
-@media (max-width: 860px) {
-    #hero-background {
-        background-size: cover;
     }
 }
 
