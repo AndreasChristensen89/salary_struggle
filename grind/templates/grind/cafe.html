@@ -34,10 +34,10 @@
             <i class="fas fa-book-open"></i>
         </span>
         
-        <h2 class="h2 text-light text-center">Coding and intellect increased</h2>
+        <h2 class="h2 text-light text-center">Coding+2 and intellect+2</h2>
         <hr>
-        <h3 class="h3 text-light text-center">Coding: {{ character.coding|add:2 }}</h3>
-        <h3 class="h3 text-light text-center">Intellect: {{ character.intellect|add:2 }}</h3>
+        <h3 class="h3 text-light text-center" id="coding-win-increase"></h3>
+        <h3 class="h3 text-light text-center" id="intellect-win-increase"></h3>
     </h1>
 </div>
 
@@ -47,11 +47,11 @@
             <i class="fas fa-book-open text-danger"></i>
         </span>
 
-        <h2 class="h2 text-danger text-center">You met some friends and got distracted</h2>
+        <h2 class="h2 text-danger text-center">You got distracted!</h2>
         <h2 class="h2 text-danger text-center">Half effect!</h2>
         <hr>
-        <h3 class="h3 text-light text-center">Coding: {{ character.coding|add:1 }}</h3>
-        <h3 class="h3 text-light text-center">Intellect: {{ character.intellect|add:1 }}</h3>
+        <h3 class="h3 text-light text-center" id="coding-fail-increase"></h3>
+        <h3 class="h3 text-light text-center" id="intellect-fail-increase"></h3>
     </h1>
 </div>
 {% endif %}

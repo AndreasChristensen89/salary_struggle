@@ -21,13 +21,25 @@ $("#sleep").click(function() {
         success: function(){
             if (energy < 100) {
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${100-energyPenalty}`);
-                $("#day").html(`<i class="far fa-calendar-alt"></i> ${day+1}`);
 
-                // applying energy penalty, if any
+                if (energyPenalty == 0) {
+                    $("#energy-full").removeClass("d-none");
+                    $("#energy-full").text("Energy fully restored")
+                } else {
+                    $("#energy-penalty").removeClass("d-none");
+                    $("#energy-restored").removeClass("d-none");
+                    $("#energy-penalty").html(`Energy penalty of ${energyPenalty} applied`);
+                    $("#energy-restored").html(`Energy restored to ${100-energyPenalty}`);
+                }
+
+                // subtracting energy penalty, if any
                 energy = 100-energyPenalty;
+
+                $("#day").html(`<i class="far fa-calendar-alt"></i> ${day+1}`);
                 day++;
 
                 // resetting penalty
+                $("#energyPenalty").text(0);
                 energyPenalty = 0;
 
                 $('.overview').fadeToggle(100);
@@ -36,7 +48,12 @@ $("#sleep").click(function() {
                 setTimeout(() => { 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(0).fadeToggle(100);
+                    $("#energy-full").addClass("d-none");
+                    $("#energy-penalty").addClass("d-none");
+                    $("#energy-restored").addClass("d-none");
                 }, 4000);
+                console.log(energyPenalty);
+                console.log($("#energyPenalty").text());
             } else {
                 $("#game-message").text("Already full energy");
                 $("#game-message-container").removeClass("d-none");
@@ -61,7 +78,7 @@ $("#homeCharm").click(function() {
                 $("#charm").text(charm+1);
                 charmLvl = $("#charm").text();
                 $("#charm-level").text(`Charm Level: ${charmLvl}`);
-                
+
                 energy = energy-(40-endurance);
                 charm = charm+1;
                 

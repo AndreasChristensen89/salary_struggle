@@ -692,19 +692,20 @@ To do list:
 - Finish leaderboard set limit top 10 - DONE
 - Redesign intro page - DONE
 - Implement action bar on all pages - DONE
+- Endurance max 20, fights always 60 energy - DONE
+- Clean grind code, doubles not used anymore - DONE
+- Finish final interview - DONE
+- Design more characters - NOT GOING TO
+- Make ending to game - good + fail - DONE
+- Create messages in game - needs z-index - DONE
 
 
-- Design more characters
-- Finish final interview
-- Make ending to game - good + fail
 - Redesign product, item, and interviewer detail pages
 - Business + SEO criteria
 - Change checkout page resign for items
-- Create messages in game - needs z-index
 - In conversation overlay, penalty hide is removed a bit too early
-- Finish final interview
-- Clean grind code, doubles not used anymore
-- Endurance max 20, fights always 60 energy - energy percent, stops beging fruitful if limit  -ENERGY DEPDLETED JS
+
+
 
 
 NOTE:

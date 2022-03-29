@@ -39,12 +39,12 @@
         <span class="icon">
             <i class="fas fa-bed"></i>
         </span>
-        {% if character.energy_penalty > 0%}
-        <h3 class="h3 text-danger text-center">Energy penalty of {{character.energy_penalty}} applied</h3>
-        <h2 class="h2 text-light text-center">Energy restored to: {{ 100|sub:character.energy_penalty }}</h3>
-        {% else %}
-        <h2 class="h2 text-light text-center">Energy fully restored</h2>
-        {% endif %}
+
+        <h3 class="h3 text-danger text-center d-none" id="energy-penalty"></h3>
+        <h2 class="h2 text-light text-center d-none" id="energy-restored"></h3>
+
+        <h2 class="h2 text-light text-center d-none" id="energy-full"></h2>
+
         <hr>
         <h2 class="h2 text-light text-center">Starting day {{ character.day|add:1 }}</h2>
     </h1>

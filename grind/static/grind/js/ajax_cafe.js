@@ -23,8 +23,12 @@ $("#study").click(function() {
     success: function(){
         if (energy-(60-endurance) >= 0) {
             if (randomNumber <= 2) {
-                $("#intellect").text(intellect + 2);
-                $("#coding").text(coding + 2);
+                $("#coding").text(coding+2);
+                $("#intellect").text(intellect+2);
+                codingLvl = $("#coding").text();
+                intellectLvl = $("#intellect").text();
+                $("#coding-win-increase").html(`Coding: ${codingLvl}`);
+                $("#intellect-win-increase").html(`Intellect: ${intellectLvl}`);
                 
                     
                 intellect = intellect + 2;
@@ -36,10 +40,14 @@ $("#study").click(function() {
             setTimeout(() => { 
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(0).fadeToggle(100);
-            }, 2500);
+            }, 3000);
             } else {
                 $("#intellect").text(intellect+1);
                 $("#coding").text(coding+1);
+                codingLvl = $("#coding").text();
+                intellectLvl = $("#intellect").text();
+                $("#coding-fail-increase").html(`Coding: ${codingLvl}`);
+                $("#intellect-fail-increase").html(`Intellect: ${intellectLvl}`);
                     
                 intellect = intellect + 1;
                 coding = coding + 1;
@@ -50,7 +58,7 @@ $("#study").click(function() {
                 setTimeout(() => { 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(1).fadeToggle(100);
-                }, 2500);
+                }, 3000);
             }
             $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
             energy = energy-(60-endurance);
