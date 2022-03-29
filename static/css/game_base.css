@@ -201,7 +201,8 @@ a:hover {
 .city-link {
     z-index: 1;
     color: white;
-    background-color: rgb(69 72 75 / 50%);
+    background-color: rgb(69 72 75 / 80%);
+    box-shadow: 0 0.125rem 0.5rem rgb(0 0 0 / 30%), 0 0.0625rem 0.125rem rgb(0 0 0 / 20%);
 }
 
 .city-link:hover {
