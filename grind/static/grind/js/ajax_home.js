@@ -3,6 +3,7 @@ const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
 // remove the token from the DOM
 document.querySelector('[name=csrfmiddlewaretoken]').remove();
 
+// setting stat variables from backend via template
 var charm = parseInt($("#charm").text());
 var intellect = parseInt($("#intellect").text());
 var money = parseInt($("#money").text());
@@ -36,6 +37,7 @@ $("#sleep").click(function() {
                 energy = 100-energyPenalty;
 
                 $("#day").html(`<i class="far fa-calendar-alt"></i> ${day+1}`);
+                $("#next-day").text(`Starting day ${day+1}`);
                 day++;
 
                 // resetting penalty

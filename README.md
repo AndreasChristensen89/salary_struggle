@@ -698,12 +698,14 @@ To do list:
 - Design more characters - NOT GOING TO
 - Make ending to game - good + fail - DONE
 - Create messages in game - needs z-index - DONE
+- In conversation overlay, penalty hide is removed a bit too early - DONE
 
 
 - Redesign product, item, and interviewer detail pages
 - Business + SEO criteria
 - Change checkout page resign for items
-- In conversation overlay, penalty hide is removed a bit too early
+- Add that endurance is not added to fight and that max endurance is 24
+- Remove all print and console.log statements
 
 
 

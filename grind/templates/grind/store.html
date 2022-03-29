@@ -17,38 +17,46 @@
 
         <div class="row">
 
-            <div class="col-8 col-md-6 col-lg-4 mx-auto text-center rounded bg-white pt-3" id="store-items">
+            <div class="col-8 col-md-6 col-lg-4 mx-auto text-center rounded bg-white p-3" id="store-items">
                 {% for item in items %}
-                {% if item in character_items %}
-                <p>{{item.name}} - ¥{{item.price}} <strong>Owned</strong></p>
-                {% else %}
-                <p class="item-buy" permanent={{item.permanent}} value={{item.id}} price={{item.price}}
-                    id="item{{item.id}}">{{item.name}} - ¥{{item.price}}</p>
-                {% endif %}
-                <p class="d-inline">
-                    {% if item.intellect > 0 %}
-                    Intellect: 
-                    </p>
-                    <p class="d-inline" value="intellect" id="item{{item.id}}stat">{{item.intellect}}</p>
-                    {% elif item.charm > 0 %}
-                    Charm: 
-                    </p>
-                    <p class="d-inline" value="charm" id="item{{item.id}}stat">{{item.charm}}</p>
-                    {% elif item.coding > 0 %}
-                    Coding: 
-                    </p>
-                    <p class="d-inline" value="coding" id="item{{item.id}}stat">{{item.coding}}</p>
-                    {% elif item.energy > 0 %}
-                    Energy: 
-                    </p>
-                    <p class="d-inline" value="energy" id="item{{item.id}}stat">{{item.energy}}</p>
-                    {% elif item.endurance > 0 %}
-                    Endurance: 
-                    </p>
-                    <p class="d-inline" value="endurance" id="item{{item.id}}stat">{{item.endurance}}</p>
+                    <div class="div item-height border-bottom p-3">
+                    {% if item in character_items %}
+                        <p class="lead">{{item.name}} - ¥{{item.price}} <strong>Owned</strong></p>
+                    {% else %}
+                        <p class="lead" id="item{{item.id}}NamePrice">{{item.name}} - ¥{{item.price}}</p>
+                        <div id="item{{item.id}}NotPurchased">
+                            <p class="d-inline">
+
+                            {% if item.intellect > 0 %}
+                                Intellect: 
+                                </p>
+                                <p class="d-inline" value="intellect" id="item{{item.id}}stat">{{item.intellect}}</p>
+                            {% elif item.charm > 0 %}
+                                Charm: 
+                                </p>
+                                <p class="d-inline" value="charm" id="item{{item.id}}stat">{{item.charm}}</p>
+                            {% elif item.coding > 0 %}
+                                Coding: 
+                                </p>
+                                <p class="d-inline" value="coding" id="item{{item.id}}stat">{{item.coding}}</p>
+                            {% elif item.energy > 0 %}
+                                Energy: 
+                                </p>
+                                <p class="d-inline" value="energy" id="item{{item.id}}stat">{{item.energy}}</p>
+                            {% elif item.endurance > 0 %}
+                                Endurance: 
+                                </p>
+                                <p class="d-inline" value="endurance" id="item{{item.id}}stat">{{item.endurance}}</p>
+                            {% endif %}
+
+                            <p class="d-none" id="itemName{{item.id}}">{{item.name}}</p>
+
+                            <button class="item-buy btn btn-primary ml-3" permanent={{item.permanent}} value={{item.id}} price={{item.price}}
+                            id="item{{item.id}}">Buy</button>
+                        </div>
+                        
                     {% endif %}
-                    <p class="d-none" id="itemName{{item.id}}">{{item.name}}</p>
-                <hr>
+                    </div>
                 {% endfor %}
             </div>
         </div>

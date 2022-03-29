@@ -18,12 +18,16 @@ $("#drinkButton").click(function() {
             if (energy >= (40-endurance)) {
                 if (money >= 1000) {
                     $("#charm").text(charm+2);
+                    charmLvl = $("#charm").text();
                     $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money-1000}`);
-                    charm = charm+2;
-                    money = money-1000;
+                    
+                    $("#charm-increase").text(`Charm level: ${charmLvl}`)
 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(0).fadeToggle(100);
+
+                    money = money-1000;
+                    charm = charm+2;
 
                     setTimeout(() => { 
                         $('.overview').fadeToggle(100);
@@ -67,6 +71,9 @@ $("#converse").click(function() {
         if (energy >= (40-endurance)) {
             if (randomNumber <= 2) {
                 $("#charm").text(charm+2);
+                charmLvl = $("#charm").text();
+                $("#charm-increase").text(`Charm level: ${charmLvl}`)
+
                 charm = charm+2;
 
                 $('.overview').fadeToggle(100);
@@ -76,8 +83,10 @@ $("#converse").click(function() {
                 setTimeout(() => { 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(0).fadeToggle(100);
-                    $('#drink-pen').removeClass('d-none');
                 }, 2500);
+                setTimeout(() => {
+                    $('#drink-pen').removeClass('d-none');
+                }, 2700);
             } else {
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(1).fadeToggle(100);

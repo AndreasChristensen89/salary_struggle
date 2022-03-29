@@ -27,14 +27,17 @@ $("#fight").click(function() {
                 if (endurance <= 21) {
                     if (randomNumber >= 5) {
                         $("#endurance").text(endurance + 3);
-                        $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(60-endurance)}`);
+                        $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-60}`);
                             
                         endurance = endurance + 3;
-                        energy = energy-(60-endurance);
+                        energy = energy-60;
+
+                        $("#endurance-increase").text(`Endurance: ${endurance}`);
 
                         $('.overview').fadeToggle(100);
                         $(".loading-overlay").eq(0).fadeToggle(100);
 
+                        // shows the first overlay
                         setTimeout(() => { 
                             $('.overview').fadeToggle(100);
                             $(".loading-overlay").eq(0).fadeToggle(100);
@@ -42,7 +45,8 @@ $("#fight").click(function() {
                     } else {
                         $("#energy").html(`<i class="fas fa-bolt mx-1"></i> 0`); 
                         energy = 0;
-
+                        
+                        // shows the second overlay
                         $('.overview').fadeToggle(100);
                         $(".loading-overlay").eq(1).fadeToggle(100);
 

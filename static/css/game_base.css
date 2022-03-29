@@ -381,6 +381,15 @@ body {
     display: none;
 }
 
+.item-height {
+    height: 120px;
+}
+
+.item-line {
+    position: absolute;
+    bottom: 0;
+}
+
 /* --------------------------- media queries ------------------------------ */
 @media (min-width: 1600px) {
 

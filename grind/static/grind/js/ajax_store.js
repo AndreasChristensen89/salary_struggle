@@ -51,15 +51,18 @@ $(".item-buy").click(function() {
 
                 // if item is permanent disable click and add "Owned"
                 if (permanent == "True") {
-                    let curr_html = $(`#item${itemID}`).html();
-                    $(`#item${itemID}`).html(curr_html + " <strong>Owned</strong>");
+                    let curr_html = $(`#item${itemID}NamePrice`).html();
+                    $(`#item${itemID}NotPurchased`).addClass("d-none");
+                    $(`#item${itemID}NamePrice`).html(curr_html + " <strong>Owned</strong>");
                     $(`#item${itemID}`).off("click");
 
                     $('#itemPermanent').removeClass("hide");
                 }
                 let name = $(`#itemName${itemID}`).text();
+
                 // capitalise first char in element
                 element = element.charAt(0).toUpperCase() + element.slice(1);
+
                 // add text to overlay
                 $("#itemBought").text(`You bought the ${name}`);
                 $("#itemEffect").text(`${element} + ${increase}`)
