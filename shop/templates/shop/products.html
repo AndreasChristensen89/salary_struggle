@@ -47,9 +47,9 @@
                         <a href="{% url 'shop:product_details' product.id %}">
                             <div class='card border product-height my-2 text-center {% if product.name == "Premium Membership" %}second-div{% else %}first-div{% endif %}'>
                                 {% if product.image %}
-                                    <img class="card-img-top img-fluid product-img mx-auto mt-2 rounded" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid product-img mx-auto mt-2 rounded" src="{{ product.image.url }}" alt="Picture of the {{ product.name }} from the shop">
                                 {% else %}
-                                    <img class="card-img-top img-fluid product-img mx-auto mt-2 rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid product-img mx-auto mt-2 rounded" src="{{ MEDIA_URL }}noimage.png" alt="Replacement picture of the {{ product.name }} from the shop">
                                 {% endif %}
 
                                 <div class="card-body">

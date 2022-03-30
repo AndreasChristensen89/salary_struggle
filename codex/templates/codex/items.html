@@ -47,9 +47,9 @@
                     <a href="{% url 'codex:item_details' item.id %}">
                     <div class="card border product-height my-2 second-div">
                         {% if item.image %}
-                            <img class="card-img-top img-fluid all-item-img mx-auto mt-2 rounded" src="{{ item.image.url }}" alt="{{ item.name }}">
+                            <img class="card-img-top img-fluid all-item-img mx-auto mt-2 rounded" src="{{ item.image.url }}" alt="Picture of the {{ item.name }} item from Salary Struggle">
                         {% else %}
-                            <img class="card-img-top img-fluid all-item-img mx-auto mt-2 rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+                            <img class="card-img-top img-fluid all-item-img mx-auto mt-2 rounded" src="{{ MEDIA_URL }}noimage.png" alt="Replacement picture of the {{ item.name }} from Salary Struggle">
                         {% endif %}
                         <div class="card-body">
                             <p class="lead product-name text-center">{{ item.name }}</p>

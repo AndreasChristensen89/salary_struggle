@@ -23,12 +23,12 @@
                 <div class="image-container mx-auto text-center">
                     {% if interviewer.image %}
                         {% if interviewer.name == "Big Boss" %}
-                        <img class="card-img-top img-fluid big-boss-img" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                        <img class="card-img-top img-fluid big-boss-img" src="{{ interviewer.image.url }}" alt="Picture of the big boss from Salary Struggle's final interview">
                         {% else %}
-                        <img class="card-img-top img-fluid interviewer-detail-img" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                        <img class="card-img-top img-fluid interviewer-detail-img" src="{{ interviewer.image.url }}" alt="Picture of {{ interviewer.name }} from Salary Struggle's interview {{interviewer.level}}">
                         {% endif %}
                     {% else %}
-                        <img class="card-img-top img-fluid interviewer-detail-img" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewe.name }}">
+                        <img class="card-img-top img-fluid interviewer-detail-img" src="{{ MEDIA_URL }}noimage.png" alt="Replacement picture of {{ interviewer.name }} from Salary Struggle's interview {{interviewer.level}}">
                     {% endif %}
                 </div>
             </div>

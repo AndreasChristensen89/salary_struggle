@@ -713,6 +713,8 @@ To do list:
 - Mention if product is premium membership then different color applied
 - Mention skip button in intro
 - Clean up css game_base
+- No links to other websites with high quality
+- images alt's added via template tags from the backend
 
 
 

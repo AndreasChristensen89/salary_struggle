@@ -50,12 +50,12 @@
                     <div class="card border interviewer-height my-2 fourth-div">
                         {% if interviewer.image %}
                             {% if interviewer.name == "Big Boss" %}
-                                <img class="card-img-top img-fluid boss-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                                <img class="card-img-top img-fluid boss-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.image.url }}" alt="Picture of the big boss from Salary Struggle's final interview">
                             {% else %}
-                                <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="{{ interviewer.name }}">
+                                <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ interviewer.image.url }}" alt="Picture of {{ interviewer.name }} from Salary Struggle's interview {{interviewer.level}}">
                             {% endif %}
                         {% else %}
-                            <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="{{ interviewer.name }}">
+                            <img class="card-img-top img-fluid all-interviewer-img mx-auto pt-2" src="{{ MEDIA_URL }}noimage.png" alt="Replacement picture of {{ interviewer.name }} from Salary Struggle's interview {{interviewer.level}}">
                         {% endif %}
                         <div class="card-body">
                             <p class="lead product-name text-center">{{ interviewer.name }}</p>
