@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from allauth.account.views import PasswordChangeView, PasswordResetView
 from django.views import generic
 from premium.models import Order
 from shop.models import Product

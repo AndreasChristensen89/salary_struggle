@@ -50,8 +50,10 @@ Video is: The shopping bag: the shopping bag
 Installed mathfilter for subtracting endurance from energy needed
 
 
-# Features
-Existing Features:
+# Pages
+## Common styling
+Headers have been given some box shadow as well as border.
+All divs have been given colors that are not too bright, as well as box shadows.
 
 ## Navbar
 Navbar comes right from bootstraps documentation.
@@ -65,13 +67,23 @@ Has links to register, login, contact page, about page, and the leaderboard
 * ![Navbar - logged out mobile](/media/readme_pics/navbar_logged_out_mobile.JPG)
 On mobile screen the navbar becomes a hamburger setup that can be unfolded
 
-## Navbar logged in regular user
+### Navbar logged in regular user
 * ![Navbar - logged out mobile](/media/readme_pics/navbar_logged_in_laptop.JPG)
 If the profile has a character it will have a link to play. Otherwise there is game info (items, interviewers, leaderboard) shop, info (contact page, about page), account (profile, log out)
 
-## Navbar logged in - hamburger
+### Navbar logged in - hamburger
 * ![Navbar - logged out mobile](/media/readme_pics/navbar_open_admin_mobile.JPG)
 Navbar on logged in will have the shopping cart in the bottom
+
+## Footer
+The footer appears on all sites, except for the in the game. It has links to social media as well as a link to sign up for the lewsletter. The styling remains the same on all screen sizes.
+* ![Footer](/media/readme_pics/footer.JPG)
+
+## Subscribe page
+The footer redirect the user there. Mailchimp has been used to embed this code, which includes their CSS and JS. The header says "Subscribe" and underneath in smaller letter are "to our newsletter"
+
+* ![subscribe - laptop](/media/readme_pics/subscribe_laptop.JPG)
+* ![subscribe - mobile](/media/readme_pics/subscribe_mobile.JPG)
 
 ## Index page
 The index page shows a white, black, and grey background forming a stylish and simple looking city overview.
@@ -95,14 +107,217 @@ On mobile divs stack on top of each other, other content simply squeeze together
 * ![Index - logged out bottom mobile](/media/readme_pics/index_logged_out_bottom_mobile.JPG)
 
 ### Index page logged in normal user
-#### no character
+#### no character laptop
 Users logged in but with no character will see two divs on the hero-background - one for profile, and one for the shop
 * ![Index - logged in no character top laptop](/media/readme_pics/index_logged_in_no_char_top_laptop.JPG)
 In the middle section they will see two links, one to the profile for them to create a character, the other to sign up for premium membership
 * ![Index - logged in no character bottom laptop](/media/readme_pics/index_logged_in_no_char_bottom_laptop.JPG)
 
 #### no character mobile
- ![Index - logged in no character laptop](/media/readme_pics/index_logged_in_no_char_top_laptop.JPG)
+On mobile the divs are on top of each other
+ ![Index - logged in no character top mobile](/media/readme_pics/index_logged_in_no_char_top_mobile.JPG)
+ The text in the middle section is more together
+ ![Index - logged in no character middle mobile](/media/readme_pics/index_logged_in_no_char_middle_mobile.JPG)
+
+ #### with character laptop
+When users have added a character they see three divs on the hero-image, one link to start the game, one to profile, and one to the shop.
+* ![Index - logged in with character top laptop](/media/readme_pics/index_logged_in_with_char_top_laptop.JPG)
+In the middle section the users no longer have the link to the profile, but only the link to premium membership
+* ![Index - logged in with character top laptop](/media/readme_pics/index_logged_in_with_char_bottom_laptop.JPG)
+
+#### with character mobile
+For mobile users the three divs are stacked on top of each other
+* ![Index - logged in with character top mobile](/media/readme_pics/index_logged_in_with_char_top_mobile.JPG)
+In the middle section the content is more together
+* ![Index - logged in with character top mobile](/media/readme_pics/index_logged_in_with_char_bottom_mobile.JPG)
+
+#### paid and character laptop
+Users that have a character and the premium status will see the same links in the top section
+In the lower section links are gone and have no been replaced with an affirming sentence
+* ![Index - logged in with character and paid top laptop](/media/readme_pics/index_logged_in_with_char_paid_bottom_laptop.JPG)
+
+#### paid and character mobile
+Lower section change is closer together
+* ![Index - logged in with character and paid top mobile](/media/readme_pics/index_logged_in_with_char_paid_bottom_mobile.JPG)
+
+## About page
+### laptop
+Users will see three divs in blue yellow and green with game information. The first one has general info about the game, the second describes the game setting, and the third describes the gameplay and the objectives.
+* ![About - top laptop](/media/readme_pics/about_top_laptop.JPG)
+
+In the bottom users will see a div about the shop, telling users to sign up to enter and supplying a link to register
+* ![About - logged out bottom laptop](/media/readme_pics/about_bottom_logged_out_laptop.JPG)
+
+For user that are logged in this will be a direct link to the shop
+* ![About - logged in bottom laptop](/media/readme_pics/about_bottom_laptop.JPG)
+### mobile
+The divs on mobile will be stacked on top of each other, taking up almost all screen width.
+* ![About - top mobile](/media/readme_pics/about_top_mobile.JPG)
+* ![About - bottom mobile](/media/readme_pics/about_bottom_logged_out_mobile.JPG)
+* ![About - logged in bottom mobile](/media/readme_pics/about_bottom_mobile.JPG)
+
+## Contact pages
+There are two contact pages, one for logged in users and one for logged out users.
+The design is simple, using the blue from the profile div in contrast with the white background.
+Send button will send an email to salarystruggle@gmail.com as well as a confirmation email to the user that confirms that the message was received.
+
+### logged in
+#### laptop
+For users that are logged in there is only one field: messages. The other information wil be taken from the user.
+* ![Contact - logged in laptop](/media/readme_pics/contac_logged_in_laptop.JPG)
+
+#### mobile
+Same setup, simply closer together
+* ![Contact - logged in mobile](/media/readme_pics/contact_logged_in_mobile.JPG)
+
+### logged out
+#### laptop
+For users that are not logged in a different form is rendered, and there are three fields: name, email, and message
+* ![Contact - logged in mobile](/media/readme_pics/contact_logged_out_laptop.JPG)
+
+#### mobile
+Same setup as logged in
+* ![Contact - logged in mobile](/media/readme_pics/contact_logged_out_mobile.JPG)
+
+## Allauth
+The application makes use of the allauth templates for there. Base styling from the base.html file in allauth/accounts have been added. Content is centered, sign in button is bootstrap's primary blue color, and back button is transparent. Placeholder text is muted. "forgot password" links are bootstrap's info color, and there are border around input fields.
+* ![allauth - login laptop](/media/readme_pics/sign_in_laptop.JPG)
+* ![allauth - login mobile](/media/readme_pics/sign_up_mobile.JPG)
+* ![allauth - register laptop](/media/readme_pics/sign_up_laptop.JPG)
+* ![allauth - register mobile](/media/readme_pics/sign_up_mobile.JPG)
+
+## Shop
+### All products
+The shop has a filter where users are able to sort by price, descending and ascending. Filter text will change to "reset" if sorting is currently applied, which resets it.
+Template uses a for loop to generate the products, which extract the information from the Product model.
+All products are shown as bootstrap's cards and given box shadow. Inside the divs is the product picture, which is also rounded and with box shadow. Underneath the picture is the product title, and in the bottom is the price.  Premium membership is given a golden color as the only product.
+
+For laptops three products is the maximum per row.
+* ![shop - all products laptop](/media/readme_pics/shop_laptop.JPG)
+
+On mobile two products is the maximum per row.
+* ![shop - all products laptop](/media/readme_pics/shop_mobile.JPG)
+
+### Product details
+#### Regular user
+##### laptop
+To the left the users will see the rounded product picture. To the right there is the product title, underneath is the price in smaller font, underneath the product description.
+Users can increment and decrement the quantity to be added. The red decrement button will deactivate on 1 and lower it's brightness, and the blue increment button will so similar on 99.
+
+
+Underneath is an arrow icon with light border to return to the shop, and a black "add" button what will add the quantity of the specific product to the shopping bag.
+* ![product details regular user laptop](/media/readme_pics/product_details_laptop.JPG)
+##### mobile
+
+On mobile the picture is at the top of the screen. Underneath is the rest: product title, price, description, increment/decrement buttons, add button, and return button.
+* ![product details regular user mobile](/media/readme_pics/product_details_mobile.JPG)
+
+#### Admin
+Admin sees the same as the user, with the exception of an edit and delete button underneath the increment and decrement buttons.
+Edit will take the admin to the edit page, but the delete button will straight away delete the product.
+
+* ![product details admin laptop](/media/readme_pics/product_details_admin_laptop.JPG)
+* ![product details admin mobile](/media/readme_pics/product_details_mobile.JPG)
+
+#### adding product to shopping bag
+Adding a product to the shopping bag will update the shopping back icon. Also, a message will display to confirm the addition.
+
+* ![Add to shopping bag laptop](/media/readme_pics/add_to_shopping_bag.JPG)
+
+#### Premium membership details
+Premium membership is rendered different since it's not in anyone's interest to add several of them. Therefore the increment and decrement buttons are not present for its details page, and 1 will automatically be added. In case the user attempts to add other they will be redirected back with a warning message.
+
+* ![Premium details page laptop](/media/readme_pics/premium_details_laptop.JPG)
+* ![Premium details page mobile](/media/readme_pics/premium_details_mobile.JPG)
+
+### Add product
+Admin has access to this page via link in the navbar. Design is simple, content is centered. Fields are SKU (will be auto generated if no input), name, name, description, and price. Users can upload a picture to add. If a picture is chosen it will display in red letters "Image will be set to xxxxx". Underneath are the cancel and add buttons.
+
+* ![Add product admin laptop](/media/readme_pics/add_product_laptop.JPG)
+* ![Add product admin mobile](/media/readme_pics/add_product_mobile.JPG)
+### Edit Product
+Admin has access to this page via the product detail page. It has the same design as the add product page, with the difference in the image. The current image is shown, and admin can tick a box to remove the picture, which will then be removed when update is finalised. If another picture is uploaded, similar to on the add product page, this picture will take over.
+
+* ![Edit product admin laptop](/media/readme_pics/edit_product_laptop.JPG)
+* ![Edit product admin mobiel](/media/readme_pics/edit_product_laptop.JPG)
+
+## Codex
+This can be found under game info, more precisely as Interviewer and Items
+
+### All interviewers
+This page shares the same design as the shop page, with the exception of the grey background color on the cards. It uses the template for loop to generate the setup from the backend.
+The picture for the boss has different styling due to the character needing more width.
+Under the interviewer picture is their name, and in the bottom is their level
+
+Like the shop, three divs per row
+* ![All interviewers - laptop](/media/readme_pics/interviewers_laptop.JPG)
+
+Similar to the shop, two divs per row
+* ![All interviewers - mobile](/media/readme_pics/interviewers_mobile.JPG)
+
+### Interviewer details
+Shares the design of the product details. Picture are to the left and have white backgrounds that blend into the body background. To the right are the interviewers name. Underneath are their level, and under that all of their stats. Their stats are not written but instead represented by icons. Underneath is the interviewer's description.
+
+* ![Interviewer details - laptop](/media/readme_pics/interviewers_details_laptop.JPG)
+
+* ![Interviewer details - mobile](/media/readme_pics/interviewers_details_mobile.JPG)
+
+### All Items
+Items shares the design of the interviewers page, except for the orange color.
+
+Maximum three items per row for laptop
+* ![All item laptop](/media/readme_pics/items_laptop.JPG)
+
+Maximum two item per row for moile
+* ![All item mobile](/media/readme_pics/items_mbile.JPG)
+
+### Item details
+Shares the design of the interviewer details. Will only show the specific stat boost the item gives, e.g. it will not show values that are set to 0.
+* ![Item details laptop](/media/readme_pics/items_details_laptop.JPG)
+
+* ![Item details laptop](/media/readme_pics/items_details_mobile.JPG)
+
+
+## Profile
+The profile page contains the profile's character, if any, the User information, as well as the order history.
+It's divided into three divs. All divs have border shadows and are dimmed version of blue, yellow and green. The heading is "Profile" with box-shadow and border. Underneath the heading it will display whether or not the user is a free user or a premium member. If the user is free it will say "free member" with a red background, and if the user is premium it wil say "Premium Member" with a bright background. Also, the div will animate to expand twice to put attention to it.
+
+User information shows the first name, last name, and email attached to the user. The edit button will take the user to the edit-user page.
+
+If user has not yet created a character the div will be empty, except for the dark button "create new character", which will create a character.
+
+In order history, if no orders are placed, it will simply say "No order placed" in muted text. If there are orders a white box will appear showing a dense summary: Number, Date, and Total. Each of these will contain a link to the order details.
+
+### no character
+
+* ![Profile page no character laptop ](/media/readme_pics/profile_with_char_laptop.JPG)
+
+* ![Profile page no character mobile ](/media/readme_pics/profile_no_char_mobile.JPG)
+
+### with character
+
+* ![Profile page character laptop ](/media/readme_pics/profile_with_char_laptop.JPG)
+
+* ![Profile page character laptop ](/media/readme_pics/product_details_mobile.JPG)
+
+## Update Character
+If a user decides to reset their character they will be redirected to a confirmation page.
+Design is simple. Heading with box shadow "Restart Character". Underneath the user is reminded that this decision is permanent and that no progress will be saved.
+Under that are two buttons "Cancel" and "Restart" in dark colors, blue and red respectively, with box shadow.
+The restart button will call the view to remove the current character, create a new and assign it to the profile.
+
+* ![Reset Character confirmation page laptop ](/media/readme_pics/restart_char_laptop.JPG)
+
+* ![Reset Character confirmation page laptop ](/media/readme_pics/restart_char_mobile.JPG)
+
+## Update User
+The "Edit" button from the user information div on the profile page direct the user to this page
+
+* ![Update User information laptop](/media/readme_pics/update_profile_laptop.JPG)
+
+* ![Update User information mobile](/media/readme_pics/update_profile_mobile.JPG)
+
+
 
 
 
