@@ -22,6 +22,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7_dtp.css" rel="stylesheet" type="text/css">
     {% endblock %}
 
     {% block extra_css %}
@@ -216,7 +217,7 @@
 
     {% block content %}
     {% endblock%}
-
+    
     <footer class="footer mt-auto py-3">
         <p class="m-0 text-center text-white">MADE BY DRE</p>
         <p class="m-0 text-center text-white">Follow me: 
@@ -227,7 +228,10 @@
           <a href="https://github.com/AndreasChristensen89?tab=repositories" aria-label="Visit my Github page (opens in a new tab)"
           target="_blank" rel="noopener"><i class="fab fa-github mx-3 text-white" aria-hidden="true"></i></a>
           <a href="https://instagram.com" aria-label="Visit our instagram page (opens in a new tab)"
-          target="_blank" rel="noopener"><i class="fab fa-instagram-square mx-3 text-white" aria-hidden="true"></i></a></p>
+          target="_blank" rel="noopener"><i class="fab fa-instagram-square mx-3 text-white" aria-hidden="true"></i></a>
+          <p class="text-white mx-auto text-center">Subscribe for our Newletter <a class="text-white" href="{% url 'home:newsletter' %}"><u>Here</u></a></p>
+        </p>
+        
     </footer>
 
     {% block postloadjs %}
@@ -239,6 +243,27 @@
           let alert = new bootstrap.Alert(messages);
           alert.close();
       }, 3000);
+    </script>
+    <!-- mailchips scripts -->
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function ($) {
+            window.fnames = new Array();
+            window.ftypes = new Array();
+            fnames[0] = 'EMAIL';
+            ftypes[0] = 'email';
+            fnames[1] = 'FNAME';
+            ftypes[1] = 'text';
+            fnames[2] = 'LNAME';
+            ftypes[2] = 'text';
+            fnames[3] = 'ADDRESS';
+            ftypes[3] = 'address';
+            fnames[4] = 'PHONE';
+            ftypes[4] = 'phone';
+            fnames[5] = 'BIRTHDAY';
+            ftypes[5] = 'birthday';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
     </script>
     {% endblock %}
 

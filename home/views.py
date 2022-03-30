@@ -107,3 +107,11 @@ def custom_page_not_found_view(request, exception):
     View that renders 404 page
     """
     return render(request, "home/404.html", {})
+
+
+def news_letter(request):
+    """
+    Returns the newsletter view code
+    """
+
+    return render(request, "home/newsletter.html")

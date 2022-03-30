@@ -672,6 +672,16 @@ If payment failed it will send a failed message to Stripe
 ## Mathfilter
 Mathfilter was installed in order to do calculation for the character in relation to ajax js updates.
 
+# Future features to implement
+## Game settings
+Game settings needs to be adjusted as players find ways to exploit loopholes
+
+## Additional Characters
+The game is set up to include multiple interviewers for each level. New characters can easily be added, but their stats needs to be balanced properly to avoid imbalance in the game
+
+## Additional Items
+There is no limit to how many items can be added, so additional items should be implemented. Also, certain items could be restricted to certain levels/stats levels. Others could be hidden, and others could be available only after having completed the game.
+
 To do list:
 - Include endurance in energy drawn - DONE
 - Make all items in shop digital so no address is needed - DONE
@@ -715,6 +725,10 @@ To do list:
 - Clean up css game_base
 - No links to other websites with high quality
 - images alt's added via template tags from the backend
+- Mention leaderboard add has a flaw in that user can leave page and miss out on possibility of adding score. Users may not know the correct URL for accessing the post link
+- Test email works for purchases on deployed site
+- All all products and items to deployed site
+- Explain why this type of marketing was used
 
 
 

@@ -34,3 +34,11 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home/contact_login.html')
         self.assertTemplateUsed(response, 'base.html')
+
+    def test_newsletter_page(self):
+        """ Test index page """
+
+        response = self.client.get('/newsletter/')
+        self.assertEqual(response.status_code, 200)
+        # self.assertTemplateUsed(response, 'home/newsletter.html')
+        self.assertTemplateUsed(response, 'base.html')
