@@ -311,12 +311,56 @@ The restart button will call the view to remove the current character, create a 
 * ![Reset Character confirmation page laptop ](/media/readme_pics/restart_char_mobile.JPG)
 
 ## Update User
-The "Edit" button from the user information div on the profile page direct the user to this page
+The "Edit" button from the user information div on the profile page direct the user to this page.
+Header reads "Update Profile", has white background and box shadow. Underneath is a blue div with five white fields. The fields are Username, First name, Last name, Email, and password. At the bottom is a link to change passwords.  At the bottom is a dark "save" button
 
 * ![Update User information laptop](/media/readme_pics/update_profile_laptop.JPG)
 
 * ![Update User information mobile](/media/readme_pics/update_profile_mobile.JPG)
 
+### Change password
+Design is similar to the other allauth. Content centered, and update button matching the edit and save button from the profile and user edit-page
+
+* ![Update User password laptop](/media/readme_pics/change_password_laptop.JPG)
+
+* ![Update User password mobile](/media/readme_pics/change_password_mobile.JPG)
+
+## Order history
+When user access one of the order from the order history they are redirected to the same page as when user have just made a purchase. However, the upper content is slightly different as it can see from a variable that the user came from the profile, and not the checkout.
+
+
+## Shopping bag
+User always has access to the shopping bag via the navbar.
+
+The heading says shopping bag and is followed underneath by rows of the products that were added to the bag.
+Each row is one specific product, and it show a small product picture on the left side. Following to the right come the product title together with the SKU and price per item, then the price, then the quantity, and finally the subtotal.
+The quantity can be changed in the shopping bag. It displays the number, along with two buttons "+" and "-", which can increment and decrease the quantity. Once a number has been chosen the user can press update, and the page will reload with the updates amount. Two different forms are used, one for mobile, and one for laptop. This was implemented to solve an issue with JS where in increment and decrease buttons would not work properly. There is also a red remove button, which will directly remove the product, no matter the quantity, from the shopping bag.
+
+Premium Membership, however, has this increment/decrease feature disabled since users should only buy one of it. It still has the remove button.
+
+There are also buttons for recure checkout, as well as a button that takes the user back to the store.
+
+* ![Shopping bag laptop](/media/readme_pics/shopping_bag_laptop.JPG)
+
+On mobile the secure checkout button is on op, which makes it easier for users to checkout, since they don't have the overview of a laptop.
+* ![Shopping bag mobile](/media/readme_pics/shopping_bag_mobile.JPG)
+
+## Checkout
+The checkout page is accessed when the user presses the "SECURE CHECKOUT" button in the shopping bag. This is where the user gives their credit card information and finishes up the order.
+Header read "payment" to make it clear what this page is about.
+Underneath are two columns, one to the right with user information. If the user has given their information in their profile already, the full name will be prefilled, and email will always be prefilled. However, the user can change this information as they like, the order does not need to have the profile's email and name, only the actualy user id will be connected to the order.
+To the left of this is a short summary of what is in the shopping cart. The images are shown, the titles, the quantities, the subtotals, and the total.
+
+Underneath is a Stripe element, which is where the user gives their credit card information. For this project a credit card code of 424242... will work. When the user accesses this page a payment intent was made to stripe, and stripe is now ready to receive the payment. This is done by pressing the blue "Finish order" button at the bottom. Underneath the button is a notice in red writing that let's the user know how much the card will be charged. Lastly, in case the user wants to change anything, or cancel, there is a return button at the bottom left.
+
+* ![Checkout laptop](/media/readme_pics/checkout_page_laptop.JPG)
+
+* ![Checkout mobile](/media/readme_pics/checkout_page_mobile.JPG)
+
+### Payment Overlay
+When users click the "Finish Order" button from the shopping bag the overlay is triggered. Users are the directed to the success page in case payment went through.
+
+* ![Finishing order laptop](/media/readme_pics/finishing_order.JPG)
 
 
 

@@ -552,6 +552,12 @@ body {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+#password-change-btn {
+    background-color: #395169;
+    color: white;
+    box-shadow: 0 0.125rem 0.5rem rgb(0 0 0 / 30%), 0 0.0625rem 0.125rem rgb(0 0 0 / 20%);
+}
+
 .allauth-form-content button:hover,
 .allauth-form-content input[type='submit']:hover {	
 	color: #fff;
