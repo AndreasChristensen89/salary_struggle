@@ -53,6 +53,58 @@ Installed mathfilter for subtracting endurance from energy needed
 # Features
 Existing Features:
 
+## Navbar
+Navbar comes right from bootstraps documentation.
+The navbar has three versions: logged out, logged in as normal user, logged in as superuser. Certain links will be present according to the profile status. Shopping cart is present on all except for users not logged in
+
+## Navbar logged out
+* ![Navbar - logged out laptop](/media/readme_pics/navbar_logged_out_laptop.JPG)
+Has links to register, login, contact page, about page, and the leaderboard
+
+### Navbar mobile logged out
+* ![Navbar - logged out mobile](/media/readme_pics/navbar_logged_out_mobile.JPG)
+On mobile screen the navbar becomes a hamburger setup that can be unfolded
+
+## Navbar logged in regular user
+* ![Navbar - logged out mobile](/media/readme_pics/navbar_logged_in_laptop.JPG)
+If the profile has a character it will have a link to play. Otherwise there is game info (items, interviewers, leaderboard) shop, info (contact page, about page), account (profile, log out)
+
+## Navbar logged in - hamburger
+* ![Navbar - logged out mobile](/media/readme_pics/navbar_open_admin_mobile.JPG)
+Navbar on logged in will have the shopping cart in the bottom
+
+## Index page
+The index page shows a white, black, and grey background forming a stylish and simple looking city overview.
+On this hero-background is where all major links to the site will be, more specifically Login, Register, Play, Profile, and Shop. These differs depending on the user, and the status of their profile. THe title says: Salary Struggle, and underneath a line, then a smaller header that reads "The quest for a job". 
+
+The middle section has a black background with uppercase writings about the game. This is meant as light advertising/introduction. There are also links to the profile page, and to upgrade to premium membership. The content changes according to the user.
+
+The lower section consists of two divs with links to the contact page and the about page. The link to the contact page is different if the user is logged in.
+
+### Index page logged out
+#### laptop
+* ![Index - logged out laptop](/media/readme_pics/index_logged_out_laptop.JPG)
+Users not logged in will see two divs for login and register
+
+* ![Index - logged out bottom laptop](/media/readme_pics/index_bottom_logged_out_laptop.JPG)
+At the bottom users will see a hint to sign up and create a character, which is followed by a link
+#### mobile
+On mobile divs stack on top of each other, other content simply squeeze together
+* ![Index - logged out top mobile](/media/readme_pics/index_logged_out_top_mobile.JPG)
+* ![Index - logged out middle mobile](/media/readme_pics/index_logged_out_middle_mobile.JPG)
+* ![Index - logged out bottom mobile](/media/readme_pics/index_logged_out_bottom_mobile.JPG)
+
+### Index page logged in normal user
+#### no character
+Users logged in but with no character will see two divs on the hero-background - one for profile, and one for the shop
+* ![Index - logged in no character top laptop](/media/readme_pics/index_logged_in_no_char_top_laptop.JPG)
+In the middle section they will see two links, one to the profile for them to create a character, the other to sign up for premium membership
+* ![Index - logged in no character bottom laptop](/media/readme_pics/index_logged_in_no_char_bottom_laptop.JPG)
+
+#### no character mobile
+ ![Index - logged in no character laptop](/media/readme_pics/index_logged_in_no_char_top_laptop.JPG)
+
+
 
 # Testing
 ## Django testing
