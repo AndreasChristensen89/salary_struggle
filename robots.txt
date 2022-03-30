@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://salary-struggle.herokuapp.com/sitemap.xml
