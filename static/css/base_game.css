@@ -4,6 +4,10 @@
     border: none;
 }
 
+li {
+    padding: 1rem 0;
+}
+
 /* To prevent scrolling */
 html,
 body {
@@ -80,6 +84,20 @@ a:hover {
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+.action-buttons {
+    font-size: 26pt;
+    background-color: #567887;
+    color: white;
+}
+
+.action-row {
+    bottom: 20vw;
+}
+
+.agency-action-row {
+    bottom: 20%
 }
 
 .custom-toast {
