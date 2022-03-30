@@ -25,10 +25,13 @@ def cache_checkout_data(request):
     """
 
     try:
-        pid = request.POST.get('client_secret').split('_secret')[0]     # payment intent id
+        # payment intent id
+        pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={     # here we add the meta data
-            'bag': json.dumps(request.session.get('bag', {})),  # json dump of their shopping bag
+        # add the meta data
+        stripe.PaymentIntent.modify(pid, metadata={
+            # json dump of their shopping bag
+            'bag': json.dumps(request.session.get('bag', {})),
             'username': request.user,
         })
         return HttpResponse(status=200)
@@ -85,7 +88,8 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
 
-            return redirect(reverse('premium:checkout_success', args=[order.order_number]))
+            return redirect(reverse('premium:checkout_success',
+                                    args=[order.order_number]))
         else:
             messages.error(request, 'There was an error in the form. \
                 Please double check the input.')

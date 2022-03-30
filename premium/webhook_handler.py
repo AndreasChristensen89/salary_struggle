@@ -54,51 +54,44 @@ class StripeWHookHandler:
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
 
-        # Clean data in the shipping details
-        # for field, value in shipping_details.address.items():
-        #     if value == "":
-        #         shipping_details.address[field] = None  # Need Null in the DB
-
-        # Update profile information if save_info was checked
-        profile = None  # allows anonymous users to check out
+        profile = None
         username = intent.metadata.username
-        if username != 'AnonymousUser':     # -> know they're authenticated
+        if username != 'AnonymousUser':
             profile = Profile.objects.get(user__username=username)
 
-        order_exists = False    # first we assume that order doesn't exist
-        attempt = 1     # If the view is slow for some reason, we introduce some delay 
+        order_exists = False
+        attempt = 1
         while attempt <= 5:
             try:
-                order = Order.objects.get(  # Try to get the order with the info from the payment intent
-                    full_name__iexact=billing_details.name,    # iexact to find exact match but case insentitve
+                order = Order.objects.get(
+                    full_name__iexact=billing_details.name,
                     email__iexact=billing_details.email,
                     user_profile=profile,
                     order_total=order_total,
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                order_exists = True # if order is found we set this to true...
+                order_exists = True
                 break
             except Order.DoesNotExist:
                 attempt += 1
-                time.sleep(1)   # Will look for the order 5 times over 5 seconds, before giving up and creating the order itself
-        if order_exists:    # ... and return a 200 response if it exist
+                time.sleep(1)
+        if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
-                status=200) # At this point we know the order has been created by the wh, so we return a response to Stripe
-        else:   # ... otherwise we'll create the order
+                status=200)
+        else:
             order = None
             try:
-                order = Order.objects.create(   # we don't have a form to save, so we use order.create instead
+                order = Order.objects.create(
                     full_name=billing_details.name,
                     user_profile=profile,
                     email=billing_details.email,
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                # code taken from view that creates the order, but bag.items is changed...
-                for item_id, item_data in json.loads(bag).items():  # ... to json version from the payment intent
+                for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderItem(
                         order=order,
@@ -109,12 +102,12 @@ class StripeWHookHandler:
                     if product.name == "Premium Membership":
                         profile.paid = True
                         profile.save()
-            except Exception as e:  # delete the order if it was created
+            except Exception as e:
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                    status=500)     # return 500 error, which will cause Stripe to try again later
+                    status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',

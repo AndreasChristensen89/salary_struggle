@@ -518,7 +518,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests, given winning outcome, endurance upgraded,
         energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 

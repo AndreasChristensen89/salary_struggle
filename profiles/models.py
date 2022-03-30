@@ -52,7 +52,8 @@ class ActiveCharacter(models.Model):
     energy = models.IntegerField(default=100)
     energy_penalty = models.IntegerField(default=0)
     has_job = models.BooleanField(default=False)
-    items = models.ManyToManyField(Item, related_name='character_items', blank=True)
+    items = models.ManyToManyField(Item, related_name='character_items',
+                                   blank=True)
 
     def __str__(self):
         return f"{self.user.username} - Level {self.level}"
@@ -66,17 +67,17 @@ class ActiveCharacter(models.Model):
         # Update character in case there is a character to replace
         if ActiveCharacter.objects.filter(user=user).exists():
             ActiveCharacter.objects.filter(user=user).delete()
-        
+
         # Create ActiveCharacter object and save
         new_character = {}
         new_character["user"] = user
 
         entry = cls(**new_character)
         entry.save()
-        
+
         # Update profile to set active character
         user_profile = Profile.objects.get(user=user)
         user_profile.active_char = True
         user_profile.save()
-        
+
         return entry

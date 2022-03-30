@@ -9,9 +9,10 @@ class TestLeaderboardModel(TestCase):
 
     def test_leaderboard_object_exists(self):
         """ test if object is created """
-        
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        
+
+        user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                        'johnpassword')
+
         self.client.login(username='john', password='johnpassword')
         Leaderboard.objects.create(
             user=user,
@@ -29,7 +30,8 @@ class TestLeaderboardModel(TestCase):
         """
         Tests if entry is made
         """
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                        'johnpassword')
         character = ActiveCharacter.create_new_character(user)
 
         Leaderboard.active_char_to_leaderboard(character, 100)
@@ -41,7 +43,8 @@ class TestLeaderboardModel(TestCase):
         Tests if score is calculated.
         Unchanged character will give 101.0
         """
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                        'johnpassword')
         character = ActiveCharacter.create_new_character(user)
 
         score = Leaderboard.calculate_score(character)

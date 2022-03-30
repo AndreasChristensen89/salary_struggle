@@ -11,7 +11,8 @@ class TestViews(TestCase):
         """
         Tests shopping bag page
         """
-        User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        User.objects.create_user('john', 'lennon@thebeatles.com',
+                                 'johnpassword')
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/shopping_bag/')
         self.assertEqual(response.status_code, 200)

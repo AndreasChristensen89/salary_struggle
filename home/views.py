@@ -45,12 +45,13 @@ def contact(request):
                 "Salary Struggle team",
                 'Hello ' + form.cleaned_data['name'] +
                 ', thank you for getting in touch.' '\n\n'
-                'We received this message from you:\n\n"'
-                + form.cleaned_data['message'] + '"\n\n'
+                'We received this message from you:\n\n"' +
+                form.cleaned_data['message'] + '"\n\n'
                 'We will get back to you as soon as possible \n\n'
                 'Best regards,\nThe Salary Struggle team',
                 settings.EMAIL_HOST_USER,
-                [form.cleaned_data['email_address'], 'salarystruggle@gmail.com'],
+                [form.cleaned_data['email_address'],
+                 'salarystruggle@gmail.com'],
                 fail_silently=False
             )
 
@@ -83,8 +84,8 @@ def contact_logged_in(request):
                 "Salary Struggle team",
                 'Hello ' + request.user.first_name +
                 ', thank you for getting in touch.' '\n\n'
-                'We received this message from you:\n\n"'
-                + form.cleaned_data['message'] + '"\n\n'
+                'We received this message from you:\n\n"' +
+                form.cleaned_data['message'] + '"\n\n'
                 'We will get back to you as soon as possible \n\n'
                 'Best regards,\nThe Salary Struggle team',
                 settings.EMAIL_HOST_USER,

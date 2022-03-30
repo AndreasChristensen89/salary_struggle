@@ -15,8 +15,6 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         """
         Overrides save method to set alphanumeric sku
-        Generate code taken from stackover:
-        https://stackoverflow.com/questions/2511222/efficiently-generate-a-16-character-alphanumeric-string
         """
         if not self.sku:
             sku = ''.join(random.choice(

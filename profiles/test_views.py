@@ -17,7 +17,7 @@ class TestProfileViews(TestCase):
         Product.objects.create(name='Premium Membership', price=1)
         User.objects.create_user('john',
                                  'lennon@thebeatles.com', 'johnpassword')
-        
+
         self.client.login(username='john', password='johnpassword')
 
         response = self.client.get('/profile/')
@@ -30,7 +30,7 @@ class TestProfileViews(TestCase):
 
         new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
                                             'johnpassword')
-        
+
         self.client.login(username='john', password='johnpassword')
 
         ActiveCharacter.create_new_character(user=new_user)
@@ -60,8 +60,8 @@ class TestProfileViews(TestCase):
         """
         Tests if profile is updated
         """
-        user = User.objects.create_user('john',
-                                        'lennon@thebeatles.com', 'johnpassword')
+        user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                        'johnpassword')
         self.client.login(username='john', password='johnpassword')
 
         response = response = self.client.post(

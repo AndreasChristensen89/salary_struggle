@@ -33,7 +33,7 @@ def add_to_bag(request, item_id):
         quantity = int(request.POST.get('quantity'))
         # Check for bag var, if not create dictionary
         bag = request.session.get('bag', {})
-            
+
         if item_id in list(bag.keys()):
             if product.name != "Premium Membership":
                 bag[item_id] += quantity
@@ -62,7 +62,8 @@ def adjust_bag(request, item_id):
 
     if quantity > 0:
         bag[item_id] = quantity
-        messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+        messages.success(request,
+                         f'Updated {product.name} quantity to {bag[item_id]}')
     else:
         bag.pop(item_id)
         messages.success(request,

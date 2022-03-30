@@ -20,34 +20,41 @@ a:hover {
     text-decoration: none;
 }
 
-.message-container {
-    position: fixed;
-    top: 73px;
-    z-index: 99999999;
+.action-buttons {
+    font-size: 26pt;
+    background-color: #567887;
+    color: white;
 }
+
+.action-row {
+    bottom: 20vw;
+}
+
+.hide {
+    display: none;
+  }
+
+  .hover:hover {
+    transform: translateY(-7px);
+    transition: all 0.3s ease 0s;
+}
+
+.hover:not(:hover) {
+    transform: translateY(0px);
+    transition: all 0.3s ease 0s;
+}
+
+/* --------------------- game base --------------------- */
 
 #game-header {
     width: 70%;
     height: 70px;
 }
 
-.game-stat {
-    top: 20px;
-    display: inline-block;
-}
-
 #exit-link {
     position: absolute;
     top: 5px;
     left: 5px;
-}
-
-#skip-btn {
-    opacity: 0;
-}
-
-.item-buy:hover {
-    cursor: pointer;
 }
 
 #exit-icon {
@@ -86,47 +93,10 @@ a:hover {
     animation-direction: alternate;
 }
 
-.action-buttons {
-    font-size: 26pt;
-    background-color: #567887;
-    color: white;
-}
-
-.action-row {
-    bottom: 20vw;
-}
-
-.agency-action-row {
-    bottom: 20%
-}
-
-.custom-toast {
-    overflow: visible;
-}
-
-.toast-capper {
-    height: 5px;
-}
-
-.toast.show {
-    display: contents;
-}
-
-.arrow {
-    height: 10px;
-    width: 10px;
-}
-
-.maintxt {position: relative;}
-.maintxt > img, .overlay-text {position: absolute;}
-
-.hide {
-    display: none;
-  }
-
-#menu-dif {
-    height: unset;
-    width: 120px;
+.message-container {
+    position: fixed;
+    top: 73px;
+    z-index: 99999999;
 }
 
 .loading-overlay {
@@ -149,10 +119,22 @@ a:hover {
     font-size: 80pt;
 }
 
-#recruiter-sign {
-    width: 200px;
-    height: 75px;
-    box-shadow: -1px 16px 6px 6px rgb(0 0 0 / 22%);
+.return-arrow {
+    font-size: 6vw;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    border: 1px solid black;
+    background-color: #50a3b7;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+/* --------------------- intro page--------------------- */
+
+#skip-btn {
+    opacity: 0;
 }
 
 #next-btn {
@@ -184,14 +166,20 @@ a:hover {
     animation-direction: alternate-reverse;
 }
 
-.return-arrow {
-    font-size: 6vw;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-    border: 1px solid black;
-    background-color: #50a3b7;
-    /* position: absolute;
-    top: 32vh;
-    left: 100%; */
+/* --------------------- Enter page--------------------- */
+
+#enter-link {
+    margin: 30px auto;
+    font-size: 21pt;
+    width: 37vw;
+    max-width: 200px;
+    min-width: 100px;
+    background-color: rgb(58 148 50);
+    border-radius: 20px;
+    box-shadow: black 0px 1px 20px 0px;
+    cursor: pointer;
+    color: white;
+    z-index: 99999;
 
     animation-name: element-move;
     animation-duration: 0.5s;
@@ -199,22 +187,73 @@ a:hover {
     animation-direction: alternate-reverse;
 }
 
-.place {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+#enter-headline {
+    z-index: 99999;
+    font-size: 9vh;
 }
 
-#city-background-img {
-    background-image: url(/media/city_repeat.png);
-    background-repeat: repeat;
-    background-size: contain;
-    z-index: 0;
-    height: 40vw;
+/* --------------------- store page--------------------- */
+
+.item-buy:hover {
+    cursor: pointer;
 }
 
-#city-background {
-    background-color: #57bcf2;
+.item-height {
+    height: 195px;
+    box-shadow: 0 0.125rem 0.5rem rgb(0 0 0 / 30%), 0 0.0625rem 0.125rem rgb(0 0 0 / 20%);
+    background-color: #3980a1;
 }
+
+/* --------------------- agency page--------------------- */
+
+.agency-action-row {
+    bottom: 20%
+}
+
+#recruiter-sign {
+    width: 200px;
+    height: 75px;
+    box-shadow: -1px 16px 6px 6px rgb(0 0 0 / 22%);
+}
+
+.hint-btn {
+    font-size: 32pt;
+}
+
+#bubble-agency {
+    max-width: 30em;
+    height: 150px;
+    opacity: 0;
+    background-color: #fff;
+    padding: 1.125em 1.5em;
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    margin: 0 auto;
+}
+
+#hr-animation {
+    box-shadow: -1px 16px 6px 6px rgb(0 0 0 / 22%);
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+#hint-row {
+    position: fixed;
+    right: 0;
+    top: 170px;
+    left: 0;
+    z-index: 1030;
+
+    animation-name: element-move;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+/* --------------------- city page--------------------- */
 
 .city-link {
     z-index: 1;
@@ -228,15 +267,59 @@ a:hover {
     text-decoration: none;
 }
 
-.hover:hover {
-    transform: translateY(-7px);
-    transition: all 0.3s ease 0s;
+/* --------------------- Store page--------------------- */
+
+.store-buy-btn {
+    margin-bottom: 30px;
+    background-color: #395169;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    color: white;
 }
 
-.hover:not(:hover) {
-    transform: translateY(0px);
-    transition: all 0.3s ease 0s;
+#store-items {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid black;
+    background-color: #6494AA;
 }
+
+/* --------------------- Game messages --------------------- */
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 5px;
+}
+
+.toast.show {
+    display: contents;
+}
+
+.arrow {
+    height: 10px;
+    width: 10px;
+}
+
+.maintxt {position: relative;}
+.maintxt > img, .overlay-text {position: absolute;}
+
+
+/* --------------------- game backgrounds--------------------- */
+
+#city-background-img {
+    background-image: url(/media/city_repeat.png);
+    background-repeat: repeat;
+    background-size: contain;
+    z-index: 0;
+    height: 40vw;
+}
+
+#city-background {
+    background-color: #57bcf2;
+}
+
 
 #call-center-background-img {
     background-image: url(/media/call_center.png);
@@ -248,13 +331,6 @@ a:hover {
 
 #store-background-img {
     background-image: url(/media/store_bg.png);
-}
-
-.store-buy-btn {
-    margin-bottom: 30px;
-    background-color: #395169;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-    color: white;
 }
 
 #store-background {
@@ -289,13 +365,6 @@ a:hover {
     background-image: url(/media/downtown_repeat.png);
 }
 
-#store-items {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid black;
-    background-color: #6494AA;
-}
-
 #bar-background {
     background-color: #dea866;
 }
@@ -316,44 +385,6 @@ a:hover {
     background-color: #615b59;
 }
 
-.hint-btn {
-    font-size: 32pt;
-}
-
-.update-button {
-    background-color: rgba(56, 139, 172);
-    color: white;
-}
-
-#background-fill {
-    background-color: #57bcf2;
-    height: 100%;
-}
-
-#enter-headline {
-    z-index: 99999;
-    font-size: 9vh;
-}
-
-#enter-link {
-    margin: 30px auto;
-    font-size: 21pt;
-    width: 37vw;
-    max-width: 200px;
-    min-width: 100px;
-    background-color: rgb(58 148 50);
-    border-radius: 20px;
-    box-shadow: black 0px 1px 20px 0px;
-    cursor: pointer;
-    color: white;
-    z-index: 99999;
-
-    animation-name: element-move;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
-}
-
 @keyframes element-move {
     from {
         transform: scale(1.0);
@@ -364,29 +395,9 @@ a:hover {
     }
 }
 
-#bubble-agency {
-    /* position: relative; */
-    max-width: 30em;
-    height: 150px;
-    opacity: 0;
-    background-color: #fff;
-    padding: 1.125em 1.5em;
-    font-size: 1.25em;
-    border-radius: 1rem;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-    margin: 0 auto;
-}
-
-#hr-animation {
-    box-shadow: -1px 16px 6px 6px rgb(0 0 0 / 22%);
-    animation-name: element-move;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
-}
+/* --------------------- interviews--------------------- */
 
 #bubble {
-    /* position: relative; */
     max-width: 30em;
     opacity: 0;
     background-color: #fff;
@@ -411,36 +422,8 @@ a:hover {
     filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
-#hint-row {
-    position: fixed;
-    right: 0;
-    top: 170px;
-    left: 0;
-    z-index: 1030;
-
-    animation-name: element-move;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
-}
-
 #question-text {
     opacity: 0;
-}
-
-.game-background-large {
-    display: none;
-}
-
-.item-height {
-    height: 195px;
-    box-shadow: 0 0.125rem 0.5rem rgb(0 0 0 / 30%), 0 0.0625rem 0.125rem rgb(0 0 0 / 20%);
-    background-color: #3980a1;
-}
-
-.item-line {
-    position: absolute;
-    bottom: 0;
 }
 
 /* --------------------------- media queries ------------------------------ */

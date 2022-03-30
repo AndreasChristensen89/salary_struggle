@@ -21,7 +21,8 @@ class Interviewer(models.Model):
     impress_lvl = models.IntegerField(default=1, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
     paid = models.BooleanField(default=False)
-    level = models.IntegerField(default=InterviewerLevel.LOW, choices=InterviewerLevel.choices)
+    level = models.IntegerField(default=InterviewerLevel.LOW,
+                                choices=InterviewerLevel.choices)
     intro = models.TextField(null=False, blank=False, default="")
     description = models.TextField(null=True, blank=True)
 

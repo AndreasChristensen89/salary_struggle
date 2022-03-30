@@ -72,7 +72,8 @@ def calculate_leaderboard_spot(request):
     check = Leaderboard.leaderboard_check(c)
 
     if check:
-        messages.success(request, "You made it to the leaderboard! Congratulations")
+        messages.success(request,
+                         "You made it to the leaderboard! Congratulations")
         return redirect(reverse('leaderboard:leaderboard'))
     else:
         messages.info(request, "Unfortunately, you didn't make the top 10")

@@ -33,7 +33,8 @@ class TestViews(TestCase):
         """
         Tests contact page for logged in users
         """
-        User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        User.objects.create_user('john', 'lennon@thebeatles.com',
+                                 'johnpassword')
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/contact-user/')
         self.assertEqual(response.status_code, 200)

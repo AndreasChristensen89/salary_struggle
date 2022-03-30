@@ -44,7 +44,8 @@ class TestNavigationViews(TestCase):
 
         Product.objects.create(name='name', price=1)
 
-        User.objects.create_superuser('superuser', 'superuser@admin.com', 'adminpass')
+        User.objects.create_superuser('superuser', 'superuser@admin.com',
+                                      'adminpass')
         self.client.login(username='superuser', password='adminpass')
         response = self.client.get('/shop/edit/1/')
         self.assertEqual(response.status_code, 200)
@@ -56,7 +57,8 @@ class TestNavigationViews(TestCase):
         Tests Add product page
         """
 
-        User.objects.create_superuser('superuser', 'superuser@admin.com', 'adminpass')
+        User.objects.create_superuser('superuser', 'superuser@admin.com',
+                                      'adminpass')
         self.client.login(username='superuser', password='adminpass')
         response = self.client.get('/shop/add/')
         self.assertEqual(response.status_code, 200)
@@ -70,7 +72,8 @@ class TestNavigationViews(TestCase):
 
         Product.objects.create(name='name', price=1)
 
-        User.objects.create_superuser('superuser', 'superuser@admin.com', 'adminpass')
+        User.objects.create_superuser('superuser', 'superuser@admin.com',
+                                      'adminpass')
         self.client.login(username='superuser', password='adminpass')
         self.client.get('/shop/delete/1/')
         self.assertEqual(Product.objects.count(), 0)

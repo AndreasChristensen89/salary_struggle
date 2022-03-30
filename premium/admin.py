@@ -16,7 +16,7 @@ class OrderAdmin(admin.ModelAdmin):
     Admin class. Readonly fields so that they're not edited.
     Inlines to allow other class to edit
     """
-    
+
     inlines = (OrderItemAdminInline,)
 
     readonly_fields = ('order_number', 'date',

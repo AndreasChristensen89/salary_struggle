@@ -306,7 +306,7 @@ In order history, if no orders are placed, it will simply say "No order placed" 
 
 * ![Profile page character laptop ](/media/readme_pics/profile_with_char_laptop.JPG)
 
-* ![Profile page character laptop ](/media/readme_pics/product_details_mobile.JPG)
+* ![Profile page character laptop ](/media/readme_pics/profile_with_char_mobile.JPG)
 
 ## Update Character
 If a user decides to reset their character they will be redirected to a confirmation page.
@@ -431,7 +431,7 @@ Very simple introduction page that gives a short little intro/mood-setter for th
 The intro screen is only linked to when the player is on day 1. I estimate the skip button to be needed for players trying again.
 
 * ![Game Intro laptop](/media/readme_pics/game_intro_laptop.JPG)
-* ![Game Intro mobile](/media/readme_pics/game_intro_laptop.JPG)
+* ![Game Intro mobile](/media/readme_pics/game_intro_mobile.JPG)
 
 ## Enter
 The background is the same as the city background - a city overview with clear weather and bright colors. There is a green enter button centered that is animated infinitely to expand and shrink slightly. The button has box shadow.
@@ -461,7 +461,7 @@ The background shows a bright room with a tv, a table, a plant, a book shelf, an
 Player can head here to drink or converse. I chose yellow as the dominant color to refer to the color of beer. There is an "inifite" bar desk, tabs, bottles, and a register. The shade effects from the light above gives the feeling of a bar.
 
 * ![Game bar mobile](/media/readme_pics/game_bar_laptop.JPG)
-* ![Game bar mobile](/media/readme_pics/game_back_alley_mobile.JPG)
+* ![Game bar mobile](/media/readme_pics/game_bar_mobile.JPG)
 ## Cafe
 Player can come here to study to increase their coding and intellect. There is only one action, which is study.
 Background is a classic modern cafe. Simple in style, serving cakes, coffee. Colors are a wide variety but kept not too bright.
@@ -481,7 +481,7 @@ Background is drawn to look bright and clean. The recruiter looks calm and non-t
 * ![AGame gency speak laptop](/media/readme_pics/game_agency_interview_link_laptop.JPG)
 
 * ![Game Agency speak laptop](/media/readme_pics/game_agency_speak_mobile.JPG)
-* ![Game Agency speak laptop](/media/readme_pics/game_agency_interview_link_laptop.JPG)
+* ![Game Agency speak laptop](/media/readme_pics/game_agency_interview_link.JPG)
 
 ## Downtown
 No actions are available in the downtown location, the player is only able to go to other locations.
@@ -577,7 +577,7 @@ When testing the current database was not able to create testing databases, and 
 * Tests_views - 1 tests, passes. Tests for code 200 and templates used
 
 ## JS testing
-
+ALl JS files have been tested manually
 
 ## Ux Testing
 Media queries have been done using bootstrap's class system, and additional. Chrome Developer Tools was used for testing all media queries for additional CSS.
@@ -596,11 +596,45 @@ All links were tested. All external links and internal links work.
 
 
 ## Validator Testing
-### PEP8 validator for python:
+## PEP8 validator for python:
+Python code checked using http://pep8online.com/
 
-### W3 Markup Validation Service completed for all HTML pages with no errors.
+### Codex
+All python files checked - no errors
 
-### Jigsaw test CSS file completed with no errors.
+### Grind
+All python files checked - no errors
+
+### Home
+All python files checked - no errors
+
+### Interview
+All python files checked - no errors
+
+### Leaderboard
+All python files checked - no errors
+
+### Premium
+models.py - 1 line too long. It does not affect my code.
+views.py - 1 line too long. It does not affect my code.
+webhook_handler-py - 2 line too long. It does not affect my code.
+webhooks.py 1 line too long. It does not affect my code.
+
+### Profiles
+All python files checked - no errors
+
+### Shop
+widgets.py - 1 line too long. It does not affect my code.
+
+### Shopping_bag
+contexts.py - 1 line too long. It does not affect my code.
+views.py - 1 line too long. It does not affect my code.
+
+## W3 Markup Validation Service completed for all HTML pages with no errors.
+
+### Jigsaw test CSS
+Completed with no errors for all css files.
+https://jigsaw.w3.org/css-validator/
 
 # Starting Django project
 
@@ -709,6 +743,7 @@ Content was all formulated by myself, but for the menu I took inspiration from o
 * General comments from family and peers for what CSS looked the best.
 * I looked up other booking system to get inspiration for how it could be set up.
 * Speech bubble in agency and interviews: https://codepen.io/rikschennink/pen/mjywQb
+* For Product model to generate a 16 character alphanumeric string, code taken from stackoverflow - https://stackoverflow.com/questions/2511222/efficiently-generate-a-16-character-alphanumeric-string
 
 ## Design
 For design of the different pages I didn't use other sources of information other than my previous projects.
@@ -720,7 +755,78 @@ For user stories I used Github's Projects -> User Stories. Kanban board. I creat
 # UX
 
 ## Wireframes
-Wireframes were used in the beginning to give an idea of what I wanted the game to look like. These are the first designs which were changed quite a bit along the way.
+Wireframes were used in the beginning to give an idea of what I wanted the game to look like. These are the first designs which were changed along the way.
+
+### Main page
+Landing page
+* ![Wireframe - landing page](/media/wireframes/wireframes_landing_page.jpg)
+
+Landing page
+* ![Wireframe - landing page](/media/wireframes/wireframes_index_logged_in.jpg)
+
+About page
+* ![Wireframe - landing page](/media/wireframes/wireframes_about_page.jpg)
+
+Profile page
+* ![Wireframe - landing page](/media/wireframes/wireframes_profile_page.jpg)
+
+Items page
+* ![Wireframe - landing page](/media/wireframes/wireframes_items_page.jpg)
+
+### Game
+Downtown
+* ![Wireframe - landing page](/media/wireframes/wireframes_downtown.png)
+
+Bar
+* ![Wireframe - landing page](/media/wireframes/wireframes_bar.png)
+
+Back alley
+* ![Wireframe - landing page](/media/wireframes/wireframes_back_alley.png)
+
+Home
+* ![Wireframe - landing page](/media/wireframes/wireframes_home.png)
+
+Library
+* ![Wireframe - landing page](/media/wireframes/wireframes_library.png)
+
+Store
+* ![Wireframe - landing page](/media/wireframes/wireframes_store.png)
+
+Call Center
+* ![Wireframe - landing page](/media/wireframes/wireframes_call_center.png)
+
+Call center fail
+* ![Wireframe - landing page](/media/wireframes/wireframes_call_center_fail.png)
+
+Call center success
+* ![Wireframe - landing page](/media/wireframes/wireframes_call_center_success.png)
+
+Call center work
+* ![Wireframe - landing page](/media/wireframes/wireframes_call_center_work.png)
+
+Agency
+* ![Wireframe - landing page](/media/wireframes/wireframes_agency.jpg)
+
+Agency fail
+* ![Wireframe - landing page](/media/wireframes/wireframes_agency_fail.jpg)
+
+Agency success
+* ![Wireframe - landing page](/media/wireframes/wireframes_agency_success.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 User acceptance criteria
@@ -889,7 +995,7 @@ The player has 30 days to get a job, which is done by passing four interviews. T
 The player have several locations to perform actions in, which are listed in locations.
 
 ## Stats
-Intellect, charm, and coding are used in relation to interviews, but endurance is only used to measure energy needed for each task. Endurance is always subtracted from the energy costs.
+Intellect, charm, and coding are used in relation to interviews, but endurance is only used to measure energy needed for each task. Endurance is always subtracted from the energy costs, except for when fighting.
 Player starts with 10000 in money, and can use money on items. Money can increase by working part time.
 Player starts on day 1, and finishes the latest on day 30.
 
@@ -917,7 +1023,7 @@ All stats are updated via ajax calls
 - Store
     - Here the player can purchase items to increases stats. Some items are permanent and can only be bought once, which is attached to the player as a m2m field. Others can be bought as many times as the player wishes. However, energy stats cannot surpass 200
 - Back Alley
-    - Fight: 60 energy. Odds are 50%. If the player wins endurance goes up with 3. If they lose energy is depleted and an energy penalty is 50 is applied. Energy penalty cannot surpass 100.
+    - Fight: 60 energy. Odds are 50%. If the player wins endurance goes up with 3. If they lose energy is depleted and an energy penalty is 50 is applied. Energy penalty cannot surpass 100. Endurance can maximum be 24
     - Gamble: Odds are 1 to 2. If win then player gains 1500, but loses 1000 if not.
 - Call center
     - Players can apply for a part time. This costs 60 energy. If charm is at least 20 they will get the job and from there on they can work. Work is 60 energy, and pay is 100 * their charm level.
@@ -1005,9 +1111,6 @@ Fields:
 - Coding: IntegerField - increase in character's coding
 - Energy: IntegerField - increase in character's energy
 - Endurance: IntegerField - increase in character's endurance
-- Intellect Penalty: IntegerField - subtracts this value from intellect after sleep
-- Charm Penalty: IntegerField - subtracts this value from charm after sleep
-- Coding Penalty: IntegerField - subtracts this value from coding after sleep
 - Energy Penalty: IntegerField - subtracts this value from energy after sleep
 - Permanent: BooleanField - If True item is attached to character's m2m Item field
 - Image: ImageField
@@ -1201,11 +1304,11 @@ To do list:
 - Make ending to game - good + fail - DONE
 - Create messages in game - needs z-index - DONE
 - In conversation overlay, penalty hide is removed a bit too early - DONE
+- Business + SEO criteria - DONE
+- Change checkout page resign for items - DONE
 
 
 - Redesign product, item, and interviewer detail pages
-- Business + SEO criteria
-- Change checkout page resign for items
 - Add that endurance is not added to fight and that max endurance is 24
 - Remove all print and console.log statements
 - Add added specific img dimension in interviewer all and detail page for big boss due to image being wider

@@ -34,7 +34,8 @@ class TestProfileForm(TestCase):
             'first_name': ''
             })
         self.assertIn('first_name', form.errors.keys())
-        self.assertEqual(form.errors['first_name'][0], 'This field is required.')
+        self.assertEqual(form.errors['first_name'][0],
+                         'This field is required.')
         self.assertFalse(form.is_valid())
 
     def test_form_with_no_last_name_field(self):
@@ -48,7 +49,8 @@ class TestProfileForm(TestCase):
             'last_name': ''
             })
         self.assertIn('last_name', form.errors.keys())
-        self.assertEqual(form.errors['last_name'][0], 'This field is required.')
+        self.assertEqual(form.errors['last_name'][0],
+                         'This field is required.')
         self.assertFalse(form.is_valid())
 
     def test_form_with_no_email_field(self):

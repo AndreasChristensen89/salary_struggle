@@ -65,14 +65,16 @@ def add_product(request):
         return redirect(reverse('home:index'))
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)     # FILES to capture image of product
+        # FILES to capture image of product
+        form = ProductForm(request.POST, request.FILES)
 
         if form.is_valid():
             product = form.save()
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('shop:product_details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request,
+                           'Failed. Please ensure form is valid.')
     else:
 
         form = ProductForm()
@@ -102,7 +104,8 @@ def edit_product(request, product_id):
             messages.success(request, f'Successfully update {product.name}')
             return redirect(reverse('shop:product_details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update the product. Please ensure that the form is valid.')
+            messages.error(request,
+                           'Failed. Please ensure form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')

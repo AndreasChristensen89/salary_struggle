@@ -1,8 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from profiles.models import Profile
-from .models import Order, OrderItem
-import tempfile
+from .models import Order
 
 
 class TestOrder(TestCase):
@@ -19,4 +18,5 @@ class TestOrder(TestCase):
             email='mosh@email.com',
         )
         self.assertEqual(Order.objects.all().count(), 1)
-        self.assertEqual(len(Order.objects.get(full_name="random guy").order_number), 32)
+        self.assertEqual(len(Order.objects.get(full_name="random guy").
+                         order_number), 32)

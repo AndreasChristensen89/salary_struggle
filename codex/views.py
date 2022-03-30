@@ -5,7 +5,7 @@ from .models import Interviewer, Item
 
 def items_index(request):
     """ A view to return the items page """
-    
+
     items = Item.objects.all()
     sort = None
     direction = None
@@ -25,7 +25,7 @@ def items_index(request):
             items = items.order_by(sortkey)
 
     current_sorting = f'{sort}_{direction}'
-    
+
     context = {
         'items': items,
         'current_sorting': current_sorting,

@@ -17,11 +17,11 @@ def intro(request):
 
     if not profile.active_char:
         messages.error(request,
-                       'You must create a character to enter here')
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level > 1:
         messages.error(request,
-                       'Free version limit reached. Upgrade to premium to get the full experience')
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -37,10 +37,12 @@ def enter_game(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -56,10 +58,12 @@ def city(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -79,10 +83,12 @@ def bar_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -102,10 +108,12 @@ def cafe_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -125,10 +133,12 @@ def downtown_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -148,10 +158,12 @@ def house_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -171,10 +183,12 @@ def agency_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -194,10 +208,12 @@ def store_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -222,10 +238,12 @@ def call_center_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -245,10 +263,12 @@ def back_alley_page(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You need to create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level >= 3:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free limit reached. Go premium for full access')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -441,7 +461,7 @@ class AgencySkill(UpdateView):
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
             skill = self.request.POST['skill']
-        
+
             if c.energy >= 100:
                 # Update Active Character
                 if skill == "intellect" and c.intellect >= random_number:

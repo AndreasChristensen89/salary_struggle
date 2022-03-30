@@ -16,12 +16,8 @@ def shopping_bag_contents(request):
     character = False
     profile = False
 
-    
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
-        # Making character available to all pages for the game
-        # Checking if character exists as admin is able to delete character,
-        # which results in error on every page
         if profile.active_char and ActiveCharacter.objects.filter(user=request.user).exists():
             character = ActiveCharacter.objects.get(user=request.user)
 

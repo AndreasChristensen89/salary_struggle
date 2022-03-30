@@ -36,7 +36,8 @@ class TestContactForm(TestCase):
             'email_address': ''
             })
         self.assertIn('email_address', form.errors.keys())
-        self.assertEqual(form.errors['email_address'][0], 'This field is required.')
+        self.assertEqual(form.errors['email_address'][0],
+                         'This field is required.')
         self.assertFalse(form.is_valid())
 
     def test_form_with_no_message_field(self):
