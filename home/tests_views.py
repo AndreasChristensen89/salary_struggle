@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from shop.models import Product
 
 
 class TestViews(TestCase):
@@ -8,7 +9,11 @@ class TestViews(TestCase):
     """
 
     def test_index_page(self):
-        """ Test index page """
+        """
+        Tests index page
+        """
+
+        Product.objects.create(name="Premium Membership", price=1)
 
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
@@ -36,9 +41,9 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'base.html')
 
     def test_newsletter_page(self):
-        """ Test index page """
+        """ Test newsletter page """
 
         response = self.client.get('/newsletter/')
         self.assertEqual(response.status_code, 200)
-        # self.assertTemplateUsed(response, 'home/newsletter.html')
+        self.assertTemplateUsed(response, 'home/newsletter.html')
         self.assertTemplateUsed(response, 'base.html')
