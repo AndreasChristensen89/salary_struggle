@@ -50,7 +50,7 @@ Video is: The shopping bag: the shopping bag
 Installed mathfilter for subtracting endurance from energy needed
 
 
-# Pages
+# Shop Pages and features
 ## Common styling
 Headers have been given some box shadow as well as border.
 All divs have been given colors that are not too bright, as well as box shadows.
@@ -185,6 +185,14 @@ The application makes use of the allauth templates for there. Base styling from 
 * ![allauth - login mobile](/media/readme_pics/sign_up_mobile.JPG)
 * ![allauth - register laptop](/media/readme_pics/sign_up_laptop.JPG)
 * ![allauth - register mobile](/media/readme_pics/sign_up_mobile.JPG)
+
+## Leaderboard
+The leaderboard can be reached by anyone regardless of user status. The design is very simple: The heading says "Leaderboard", which is then followed underneath by up to 10 entries. Each entry has their ranking and username written in bold, followed by their score. No colors are applied.
+
+* ![Leaderboard laptop](/media/readme_pics/leaderboard_laptop.JPG)
+
+* ![Leaderboard mobile](/media/readme_pics/leaderboard_mobile.JPG)
+
 
 ## Shop
 ### All products
@@ -326,8 +334,15 @@ Design is similar to the other allauth. Content centered, and update button matc
 * ![Update User password mobile](/media/readme_pics/change_password_mobile.JPG)
 
 ## Order history
-When user access one of the order from the order history they are redirected to the same page as when user have just made a purchase. However, the upper content is slightly different as it can see from a variable that the user came from the profile, and not the checkout.
+When user access one of the order from the order history they are redirected to the same page as when user have just made a purchase. However, the upper content is slightly different as it can see from a variable that the user came from the profile, and not the checkout. It will write in past tense "an email was sent to xxxx"
 
+The content of the order is displayed using bootstraps list group, which only displays content according to which field is activated. The fields are: Overview, which has the total, order number, and date, Items, which displays all the items and their quantities, and Contact, which shows the full name and the email of the order.
+
+Below is a button to return to profile
+
+* ![Order history detail laptop](/media/readme_pics/order_history_laptop.JPG)
+
+* ![Order history detail mobile](/media/readme_pics/order_history_mobile.JPG)
 
 ## Shopping bag
 User always has access to the shopping bag via the navbar.
@@ -362,8 +377,161 @@ When users click the "Finish Order" button from the shopping bag the overlay is 
 
 * ![Finishing order laptop](/media/readme_pics/finishing_order.JPG)
 
+## Order Success
+When an order has been processed the user is directed to the order success page.
+This page is the same as the order history, but with two differences: the variable show that the user came from checkout and not profile, so in the bottom the button now says "back to store" instead of profile, and the text at the top thanks the user and says that an email will be sent, instead of past tense.
+
+* ![Order success](/media/readme_pics/order_success_laptop.JPG)
+
+* ![Order success](/media/readme_pics/order_success_mobile.JPG)
+
+## Winning page
+Once the user has completed the game they are directed to the winning page.
+The text at the top congratulates the user on finishing the game, and underneath are the final stats of the character. Underleath is a heading that reads "Top 10 - did you make it?". At this moment it has not been calculated if the user has made it to the top ten, so the user can press the blue "Post results" button underneath to attempt, and if successful, then have their score posted. The bootstrap info-color "don't post" button will take the user back to the main page.
+
+* ![Winning page laptop](/media/readme_pics/winning_page_laptop.JPG)
+
+* ![Winning page mobile](/media/readme_pics/winning_page_mobile.JPG)
+
+## Gameover page
+If the user fails to beat the game in 30 days the game will redirect the user to the gameover page. The design is the same as the winning page, but the message is just opposite.
+
+At the bottom there is a message "This character is no longer accessible" which is referring to that the user will be redirected if they attempt to enter the game with this character active.
+
+The user is then given two options: "Restart character" - this takes the user back to the profile page, and "Homepage" which takes the user to the index page.
+
+* ![Gameover page laptop](/media/readme_pics/gameover_page_laptop.JPG)
+
+* ![Gameover page mobile](/media/readme_pics/gameover_page_mobile.JPG)
+
+# Game pages and feature
+The game features a number of locations the player can travel to and perform actions in.
+
+## Ajax
+Ajax calls have been implemented on each page, except for the city and downtown. The ajax updates the backend without refreshing the page, and implements styling that corresponds to the actions that the backend has made. For example, an activity that requires energy will be updated in the backend and each ajax code has the information beforehand to animate and set the energy value on the html correctly. The JS files collect the variables via django template when the page loads (all the character, interviewer, or Item stats) and uses these variable to calculate how future actions should be animated and set on the HTML (several actions that may be executed by the player without any refresh).
+There are often several different ajax calls on a page, and ajax calls can trigger different overlays by referring to the number of the class (they are all given the class "overlay")
+
+Every time an ajax call is activated a black overlay is displayed. This covers the entire screen and shows an icon corresponding to the outcome of the action, followed by a short remark/fail-statement/success-statement/updates skills/current skill level.
+The overlay is there for about 2,5 to 4 second, depending on the task, and is implemented in order to give clear feedback to the player about what is happening.
+
+If the player does not have enough energy/money/exeeded any limit a message with a red background will be triggered. It is animated to scale up and down two times, and has a short message about what was wrong, for example "You need 60 energy"/"not enough money" etc.
+
+## Common styling
+The background of each location is the same color as the bottom of the background-image. This gives the illusion that the pictures continue. Each background, except for the back-alley has a horizontal and mobile-friendly version. Backgrounds have been drawn to be able to repeat in the x-direction, thus giving the picture more flexibility.
+
+All actions are centered in the background-image, grey-blue colored, white text, and animates tetx-color and position when mouse hovers over them.
+
+The back button is present on all pages, except for the city page. It is set to animate infinite in order to attract attention to it. I implemented this as I found that the button was not always striking enough to new players.
+
+All backgrounds are meant to be minimal. Details should be minimal, and colors should be varied and in general bright. However, colors have at times a greyish tone to them in certain areas to reflect the feeling of a city.
+
+## Intro
+Very simple introduction page that gives a short little intro/mood-setter for them game. It briefly explain the back story as a person talking directly to you. It lists the objectives and links to the enter screen. The transitions are slow and animates using opacity. There is a next button that progresses, and also a skip button that links the plater to the enter screen.
+
+The intro screen is only linked to when the player is on day 1. I estimate the skip button to be needed for players trying again.
+
+* ![Game Intro laptop](/media/readme_pics/game_intro_laptop.JPG)
+* ![Game Intro mobile](/media/readme_pics/game_intro_laptop.JPG)
+
+## Enter
+The background is the same as the city background - a city overview with clear weather and bright colors. There is a green enter button centered that is animated infinitely to expand and shrink slightly. The button has box shadow.
+
+* ![Enter game mobile](/media/readme_pics/game_enter_laptop.JPG)
+* ![Enter game mobile](/media/readme_pics/game_enter_mobile.JPG)
 
 
+## City
+This is the main navigation page. Players can naviate anywhere from here, for certain locations you need to go to downtown first.
+Locations are listed with a black transparent background, and all of them have white text and a white icon next to them that correspond to the location. The background is an overview of a city in bright-colors. The sky is blue and the design is meant to be light-hearted. 
+
+No actions other than transportation are possible on this page.
+
+* ![Game city laptop](/media/readme_pics/game_city_laptop.JPG)
+
+On mobile the pictures scales down and the city line now only covers the bottom. 
+* ![Game city mobile](/media/readme_pics/game_city_mobile.JPG)
+
+## House
+This is where the game start you off, the player's house. Players have three options here: sleep, study, and practice.
+The background shows a bright room with a tv, a table, a plant, a book shelf, and a window with buldings in the background.
+
+* ![Game house laptop](/media/readme_pics/game_house_laptop.JPG)
+* ![Game house mobile](/media/readme_pics/game_house_mobile.JPG)
+## Bar
+Player can head here to drink or converse. I chose yellow as the dominant color to refer to the color of beer. There is an "inifite" bar desk, tabs, bottles, and a register. The shade effects from the light above gives the feeling of a bar.
+
+* ![Game bar mobile](/media/readme_pics/game_bar_laptop.JPG)
+* ![Game bar mobile](/media/readme_pics/game_back_alley_mobile.JPG)
+## Cafe
+Player can come here to study to increase their coding and intellect. There is only one action, which is study.
+Background is a classic modern cafe. Simple in style, serving cakes, coffee. Colors are a wide variety but kept not too bright.
+
+* ![Game cafe mobile](/media/readme_pics/game_cafe_laptop.JPG)
+* ![Game cafe mobile](/media/readme_pics/game_cafe_mobile.JPG)
+
+## Agency
+The agency is the most complicated game page as it changes for each level.
+- First you will have to convince the recruiter to give you an interview with a company. Here you have actions available. If you pass a speech bubble is triggered, and he will tell you to come back. Ajax call upgraded your level. From here on actions are not available on this page.
+- Starting the recruiter will introduce himself and explain about interviews and how they work. He will give an introduction before each interview. The dialogues are stored in the JS file. If you don't have 100 energy a message will appear after the dialogue is over that you need full energy to enter the interviews.
+
+Background is drawn to look bright and clean. The recruiter looks calm and non-threatening.
+
+* ![Game Agency laptop](/media/readme_pics/game_agency_laptop.JPG)
+* ![Game Agency speak laptop](/media/readme_pics/game_agency_speak_laptop.JPG)
+* ![AGame gency speak laptop](/media/readme_pics/game_agency_interview_link_laptop.JPG)
+
+* ![Game Agency speak laptop](/media/readme_pics/game_agency_speak_mobile.JPG)
+* ![Game Agency speak laptop](/media/readme_pics/game_agency_interview_link_laptop.JPG)
+
+## Downtown
+No actions are available in the downtown location, the player is only able to go to other locations.
+Background is blue-grey in tone with red sticking out. There are ads here and there on the buildings, and the city is seen from street view.
+
+* ![Game Downtown laptop](/media/readme_pics/game_downtown_laptop.JPG)
+* ![Game Downtown mobile](/media/readme_pics/game_downtown_mobile.JPG)
+
+## Back-alley
+The player has two actions choices here: fight and gamble.
+The background is pink/red-grey in tone and sets the tone slightly darker. The streets are dirty, and trash can be seen.
+
+* ![Game back-alley laptop laptop](/media/readme_pics/game_back_alley_laptop.JPG)
+* ![Game back-alley laptop mobile](/media/readme_pics/game_back_alley_mobile.JPG)
+
+## Call center
+The player has one action here, but it depends on the status. Of the player does not have a part time job the player can ask for a job. If accepted the player can then work.
+The background is bright in colors and showcases an office set up in cubicle style. All desk are the same and right next to each other.
+
+* ![Call Center](/media/readme_pics/game_call_center_laptop.JPG)
+* ![Call Center](/media/readme_pics/game_call_center_mobile.JPG)
+
+## Store
+The player can buy items here. Items are listed in a scroll bar with blue blocks representing an item. If an item is already owned, in other words a permanent item that was purchased, the buy button will not be present, and the text will instead read "OWNED" after the item title. Each item shows the item title, the price underneath as well as the effect it has on the player. When the overlay is triggered by a purchase it will let the player know if the item is permanent.
+
+* ![Store laptop](/media/readme_pics/game_store_laptop.JPG)
+* ![Store mobile](/media/readme_pics/game_store_mobile.JPG)
+
+# Interviews pages and features
+There are four interviews. The all share the same design: white background, on top there is the question number, and the impress meter. When the player gets a question right the impress number will scale up, turn green, then back to black, and then scale down to normal. If they get it wrong the same will happen, but with red color instead.
+
+The different types of questions are listed further down below in the Game section where I go more into detail about game design and how ajax is implemented.
+
+Each interviews ends with either a success message, congratulating you on having passed it, or a message saying "Damn, this could have gone better".
+
+When a player presses the button to answer a skill question the answer buttons are disabled and animated to disappear. A speech bubble then appears with an answer taken from the JS file with all the questions and answers stored.
+
+
+## Interview 1
+The first interview consists of only skill questions. The interviewer's skill levels are low, and the impress meter is not high, making a win reasonably easy.
+
+## Interview 2
+The second interview has questions with one correct answer, but the player is at the same time able to bluff their way out of each question using skills.
+When the player answers a multiple approach question with a correct answer the opposite row is animated to disappear, and the correct answer lights up in green if correct and red if incorrect. If the player picks a skill, both answer rows are animated to disappear
+
+## Interview 3
+The second interview consists mainly of math questions. The first five are multiplication questions. The next five uses the string calculator to check if the player has produced the correct number, e.g. 4*4 == 16. The last two questions are skills based.
+
+## Interview 4
+The final interview is a mix of all questions, except for the correct+skills questions. Skill gap is set so that players have to get everything right to pass.
 
 # Testing
 ## Django testing
@@ -705,6 +873,15 @@ Products are digital so shipping details are not included in the process. Produc
 
 ### How is the payment made?
 Payment is a single payment and does not involve subscriptions.
+
+## Newsletter
+Mailchimp is implemented in the footer, and any user can sign up for the newsletter.
+
+## Facebook page
+I have chosen to do the mock Facebook page via Balsamiq.
+
+* ![Facebook mock page Salary Struggle](/media/readme_pics/salary-struggle-facebook.png)
+
 
 # Game
 ## Objective
