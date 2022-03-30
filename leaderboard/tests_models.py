@@ -39,14 +39,14 @@ class TestLeaderboardModel(TestCase):
     def test_calculate_score_static_method(self):
         """
         Tests if score is calculated.
-        Unchanged character will give 111
+        Unchanged character will give 101.0
         """
         user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
         character = ActiveCharacter.create_new_character(user)
 
         score = Leaderboard.calculate_score(character)
 
-        self.assertEqual(score, 111)
+        self.assertEqual(score, 101.0)
 
     def test_leaderboard_check_success(self):
         """

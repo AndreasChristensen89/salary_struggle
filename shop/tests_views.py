@@ -12,8 +12,9 @@ class TestNavigationViews(TestCase):
 
     def test_product_page(self):
         """ Test products page """
-
-        Product.objects.create(name='name', price=1)
+        User.objects.create_user('john', 'lennon@thebeatles.com',
+                                 'johnpassword')
+        self.client.login(username='john', password='johnpassword')
 
         response = self.client.get('/shop/')
         self.assertEqual(response.status_code, 200)
@@ -24,6 +25,10 @@ class TestNavigationViews(TestCase):
         """
         Tests product detail page
         """
+
+        User.objects.create_user('john', 'lennon@thebeatles.com',
+                                 'johnpassword')
+        self.client.login(username='john', password='johnpassword')
 
         Product.objects.create(name='name', price=1)
 

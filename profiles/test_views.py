@@ -15,7 +15,8 @@ class TestProfileViews(TestCase):
         """ Test products page """
 
         Product.objects.create(name='Premium Membership', price=1)
-        User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        User.objects.create_user('john',
+                                 'lennon@thebeatles.com', 'johnpassword')
         
         self.client.login(username='john', password='johnpassword')
 
@@ -24,26 +25,43 @@ class TestProfileViews(TestCase):
         self.assertTemplateUsed(response, 'profiles/profiles.html')
         self.assertTemplateUsed(response, 'base.html')
 
-    # def test_restart_character(self):
-    #     """
-    #     Test if character is created
-    #     """
-    #     new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-    #     ActiveCharacter.create_new_character(new_user)
-    #     ActiveCharacter.objects.filter(user=new_user).update(day=10, level=5)
+    def test_confirm_new_char_page(self):
+        """ Test cofirm new character page """
 
-    #     response = self.client.get('/profile/new_character/', follow=True)
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
+        
+        self.client.login(username='john', password='johnpassword')
 
-    #     ActiveCharacter.objects.get(user=new_user).refresh_from_db()
+        ActiveCharacter.create_new_character(user=new_user)
 
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(ActiveCharacter.objects.all().count(), 1)
+        response = self.client.get('/profile/confirm_new_character/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'profiles/restart_character.html')
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_restart_character(self):
+        """
+        Test if character is created
+        """
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
+        self.client.login(username='john', password='johnpassword')
+        ActiveCharacter.create_new_character(new_user)
+        ActiveCharacter.objects.filter(user=new_user).update(day=10, level=5)
+
+        response = self.client.get('/profile/new_character/', follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(ActiveCharacter.objects.filter(day=1).count(), 1)
+        self.assertEqual(ActiveCharacter.objects.filter(day=10).count(), 0)
 
     def test_update_profile(self):
         """
         Tests if profile is updated
         """
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        user = User.objects.create_user('john',
+                                        'lennon@thebeatles.com', 'johnpassword')
         self.client.login(username='john', password='johnpassword')
 
         response = response = self.client.post(

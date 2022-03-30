@@ -62,36 +62,40 @@ All applications have been tested using TestCase. Forms, models, views, and addi
 When testing the current database was not able to create testing databases, and I had to comment it out and un-comment the other database using sqlite3 in settings.py
 ### Applications
 #### Codex
-* Test_views - 2 tests, both pass. One for code 200.
-* Test_forms - 7 tests, all pass. Test wrong input and required fields.
+* Test_views - 4 tests, all pass. Tests for code 200 and templates used
+* Test_models - 3 tests, all pass. Test creation of objects for Item model and Interviewer model
 
 #### Grind
-* Test_views - 2 tests, passes. Tests for code 200.
-
+* Tests_views - 11 tests for navigation pages, all pass. Test for code 200 and templates used
+* Tests_views - 21 tests for ajax calls, all pass. Tests that character model is updating is all the different scenarios. Tests when character succeeds, and when character fails.
+ 
 #### Home
-* Test_models - 2 tests, both pass. Test to create objects with both models, Meals and Category.
-* Test_views - 2 test, passes. Tests for code 200.
+* Test_views - 5 test, all pass. Tests for code 200, templates used.
 
 #### Interview
-* Test_booking. 29 tests
-* Test_views - 15 tests
-* Test_forms - 18 tests
-* Test_models - 7 tests.
+* Tests_views - 4 tests for navigation, all pass. Tests for code 200, templates used
+* Tests_views - 1 test for ajax call, pass. Checks if character level goes up
 
 #### Leaderboard
-* Test_models - 3 tests
+* Test_views - 4 tests, all pass. Tests for code 200, templates used. Tests if score goes on leaderboard if top 10, and if outside top 10 tests if score does not go.
+* Tests_models - 5 tests, all pass. Tests object creation and class methods: if object is created, if score is calculated, if top 10 check is made
 
 #### Premium
-* Test_models - 3 tests
+* Test_models - 1 test, passes. Order model is tested for object creation and class method
+* tests_views - needs passing tests
 
 #### Profiles
-* Test_models - 3 tests
+* Test_views - 4 tests, all pass. Tests for code 200 and templates used. Tests if character restart works, and tests if User can be updated
+* Tests_forms - 6 tests, all pass. Tests forms with different fields not filled in
+* Tests_models = 4 tests, all pass. Tests object creation and tests class methods: remove active char from the Profile form. Tests if Active char sets profile to active_char=True
 
 #### Shop
-* Test_models - 3 tests
+* Test_forms - 4 tests, all pass. Tests forms with different fields not filled in and wrong type
+* Tests_models - 1 test, passes. Tests object creation and automatic SKU generation
+* Tests_views - 5 tests, all pass. Tests for code 200 and templates used. Tests add, edit and delete product pages for admin
 
 #### Shopping Bag
-* Test_models - 3 tests
+* Tests_views - 1 tests, passes. Tests for code 200 and templates used
 
 ## JS testing
 
@@ -729,8 +733,8 @@ To do list:
 - Test email works for purchases on deployed site
 - All all products and items to deployed site
 - Explain why this type of marketing was used
-
-
+- Explain login for which views
+- Explain about contexts from shopping_bag
 
 
 NOTE:

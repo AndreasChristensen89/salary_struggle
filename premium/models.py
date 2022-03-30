@@ -2,9 +2,6 @@ import uuid     # to generate order number
 
 from django.db import models
 from django.db.models import Sum
-from django.conf import settings
-
-from django_countries.fields import CountryField
 
 from shop.models import Product
 from profiles.models import Profile
@@ -26,7 +23,6 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     # original_bag added to keep track of individual bags to avoid duplicates,
     # as customers can purchase the same things multiple times
-
 
     def _generate_order_number(self):
         """

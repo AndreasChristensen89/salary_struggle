@@ -12,7 +12,8 @@ class TestNavigationViews(TestCase):
 
     def test_agency_page(self):
         """ Test agency page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/agency/')
@@ -22,7 +23,8 @@ class TestNavigationViews(TestCase):
 
     def test_back_alley_page(self):
         """ Test back alley page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/back-alley/')
@@ -32,7 +34,8 @@ class TestNavigationViews(TestCase):
 
     def test_bar_page(self):
         """ Test bar page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/bar/')
@@ -42,7 +45,8 @@ class TestNavigationViews(TestCase):
 
     def test_cafe_page(self):
         """ Test cafe page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/cafe/')
@@ -52,7 +56,8 @@ class TestNavigationViews(TestCase):
 
     def test_call_center_page(self):
         """ Test call center page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/call-center/')
@@ -62,7 +67,8 @@ class TestNavigationViews(TestCase):
 
     def test_city_page(self):
         """ Test city page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/city/')
@@ -72,7 +78,8 @@ class TestNavigationViews(TestCase):
 
     def test_downtown_page(self):
         """ Test downtown page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/downtown/')
@@ -82,7 +89,8 @@ class TestNavigationViews(TestCase):
 
     def test_enter_grind_page(self):
         """ Test downtown page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/enter/')
@@ -92,7 +100,8 @@ class TestNavigationViews(TestCase):
 
     def test_house_page(self):
         """ Test house page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/house/')
@@ -102,7 +111,8 @@ class TestNavigationViews(TestCase):
 
     def test_intro_page(self):
         """ Test house page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/intro/')
@@ -112,7 +122,8 @@ class TestNavigationViews(TestCase):
 
     def test_store_page(self):
         """ Test store page """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.get('/grind/store/')
@@ -130,7 +141,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         """
         Tests if charm is upgraded, energy subtracted, and http response given
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.post(
@@ -148,15 +160,12 @@ class TestUpdateCharacterAjaxViews(TestCase):
         penalties applied and reset,
         day progressed
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         ActiveCharacter.objects.filter(user=new_user).update(
             energy=60,
-            energy_penalty=20,
-            charm_penalty=1,
-            coding_penalty=1,
-            intellect_penalty=1,
-            endurance_penalty=1)
+            energy_penalty=20)
 
         self.client.login(username='john', password='johnpassword')
         response = self.client.post(
@@ -166,17 +175,14 @@ class TestUpdateCharacterAjaxViews(TestCase):
         self.assertEqual(response.status_code, 200)
         character = ActiveCharacter.objects.get(user=new_user)
         self.assertTrue(character.energy == 80)
-        self.assertTrue(character.charm == 0)
-        self.assertTrue(character.coding == 0)
-        self.assertTrue(character.intellect == 0)
-        self.assertTrue(character.endurance == 0)
         self.assertTrue(character.day == 2)
 
     def test_study_home_ajax(self):
         """
         Tests if coding is upgraded, energy subtracted, and http response given
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.post(
@@ -193,7 +199,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if energy subtracted, charm upgraded,
         penalty applied, money subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         response = self.client.post(
@@ -203,7 +210,7 @@ class TestUpdateCharacterAjaxViews(TestCase):
         self.assertEqual(response.status_code, 200)
         character = ActiveCharacter.objects.get(user=new_user)
         self.assertTrue(character.energy == 61)
-        self.assertTrue(character.money == 19000)
+        self.assertTrue(character.money == 9000)
         self.assertTrue(character.energy_penalty == 20)
         self.assertTrue(character.charm == 3)
 
@@ -212,7 +219,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if, given winning outcome, charm upgraded,
         energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -232,7 +240,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if, given failing outcome, charm not upgraded,
         energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -252,7 +261,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if, given winning outcome, intellect upgraded,
         coding upgraded, energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -273,7 +283,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if, given failing outcome, intellect not upgraded,
         coding not upgraded, energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -293,7 +304,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         """
         Tests if, given winning outcome, level upgraded
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         ActiveCharacter.objects.filter(user=new_user).update(intellect=15)
@@ -316,7 +328,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if, given failing outcome, level not upgraded,
         energy depleted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         ActiveCharacter.objects.filter(user=new_user).update(intellect=15)
@@ -340,7 +353,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests, given winning outcome, level upgraded,
         energy not changed
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         ActiveCharacter.objects.filter(user=new_user).update(
@@ -358,13 +372,14 @@ class TestUpdateCharacterAjaxViews(TestCase):
         character = ActiveCharacter.objects.get(user=new_user)
         self.assertTrue(character.level == 2)
         self.assertTrue(character.energy == 100)
-    
+
     def test_agency_combine_fail_ajax(self):
         """
         Tests, given winning outcome, level upgraded,
         energy not changed
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         ActiveCharacter.objects.filter(user=new_user).update(
@@ -388,7 +403,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests if permanent item is added to character,
         and money subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         Item.objects.create(name='item', price=100, permanent=True)
         self.client.login(username='john', password='johnpassword')
@@ -405,14 +421,15 @@ class TestUpdateCharacterAjaxViews(TestCase):
         character = ActiveCharacter.objects.get(user=new_user)
         item = Item.objects.get(id=1)
         self.assertTrue(item in character.items.all())
-        self.assertTrue(character.money == 19900)
+        self.assertTrue(character.money == 9900)
 
     def test_add_item_not_permanent_ajax(self):
         """
         Tests if permanent item is not added to character,
         and money subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         Item.objects.create(name='item', price=100)
         self.client.login(username='john', password='johnpassword')
@@ -429,23 +446,21 @@ class TestUpdateCharacterAjaxViews(TestCase):
         character = ActiveCharacter.objects.get(user=new_user)
         item = Item.objects.get(id=1)
         self.assertTrue(item not in character.items.all())
-        self.assertTrue(character.money == 19900)
+        self.assertTrue(character.money == 9900)
 
     def test_apply_job_success_ajax(self):
         """
         Tests, if charm is sufficient, character has_job,
         energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
-        ActiveCharacter.objects.filter(user=new_user).update(charm=15)
-
-        data = {'random_number': 15}
+        ActiveCharacter.objects.filter(user=new_user).update(charm=20)
 
         response = self.client.post(
             '/grind/apply-job/',
-            data,
             **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
         )
 
@@ -459,7 +474,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests, if charm is insufficient, character has_job is False,
         energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
         ActiveCharacter.objects.filter(user=new_user).update(charm=15)
@@ -481,10 +497,12 @@ class TestUpdateCharacterAjaxViews(TestCase):
         """
         Tests if energy subtracted and money increased
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
-        ActiveCharacter.objects.filter(user=new_user).update(charm=10)
+        ActiveCharacter.objects.filter(user=new_user).update(charm=10,
+                                                             has_job=True)
 
         response = self.client.post(
             '/grind/work/',
@@ -493,7 +511,7 @@ class TestUpdateCharacterAjaxViews(TestCase):
         self.assertEqual(response.status_code, 200)
         character = ActiveCharacter.objects.get(user=new_user)
         self.assertTrue(character.energy == 41)
-        self.assertTrue(character.money == 21000)
+        self.assertTrue(character.money == 11000)
 
     def test_fight_success_ajax(self):
         """
@@ -513,7 +531,7 @@ class TestUpdateCharacterAjaxViews(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         character = ActiveCharacter.objects.get(user=new_user)
-        self.assertTrue(character.energy == 41)
+        self.assertTrue(character.energy == 40)
         self.assertTrue(character.endurance == 4)
 
     def test_fight_fail_ajax(self):
@@ -521,7 +539,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         Tests, given winning outcome, endurance upgraded,
         energy subtracted
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -542,7 +561,8 @@ class TestUpdateCharacterAjaxViews(TestCase):
         """
         Tests if winning outcome increases money
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -555,13 +575,14 @@ class TestUpdateCharacterAjaxViews(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         character = ActiveCharacter.objects.get(user=new_user)
-        self.assertTrue(character.money == 22000)
+        self.assertTrue(character.money == 11500)
 
     def test_gamle_fail_ajax(self):
         """
         Tests if winning outcome increases money
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
 
@@ -574,4 +595,4 @@ class TestUpdateCharacterAjaxViews(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         character = ActiveCharacter.objects.get(user=new_user)
-        self.assertTrue(character.money == 19000)
+        self.assertTrue(character.money == 9000)

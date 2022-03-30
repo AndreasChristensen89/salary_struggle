@@ -71,10 +71,15 @@ class TestPassInterviewTestCase(TestCase):
         """
         Tests if character's level goes up
         """
-        new_user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        new_user = User.objects.create_user('john', 'lennon@thebeatles.com',
+                                            'johnpassword')
         ActiveCharacter.create_new_character(new_user)
         self.client.login(username='john', password='johnpassword')
-        response = self.client.get('/interview/interview-success/', follow=True)
-        char = ActiveCharacter.objects.get(user=new_user)
-        self.assertRedirects(response, '/grind/house/')
-        self.assertEqual(char.level, 2)
+
+        response = self.client.post(
+            '/interview/interview-success/',
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=new_user)
+        self.assertTrue(character.level == 2)

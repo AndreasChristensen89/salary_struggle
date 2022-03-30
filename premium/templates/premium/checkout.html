@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 {% for item in bag_items %}
-                    <div class="row border-black border-top border-bottom bg-white text-dark">
+                    <div class="row bg-white text-dark">
                         <div class="col-2 mb-1">
                             <a href="{% url 'shop:product_details' item.product.id %}">
                                 {% if item.product.image %}

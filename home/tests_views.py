@@ -47,3 +47,12 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home/newsletter.html')
         self.assertTemplateUsed(response, 'base.html')
+
+    def test_404_page(self):
+        """
+        Test 404 page
+        """
+        response = self.client.get('/nopage/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home/404.html')
+        self.assertTemplateUsed(response, 'base.html')

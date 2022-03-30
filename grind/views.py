@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.views.generic import UpdateView
 from profiles.models import Profile, ActiveCharacter
 from codex.models import Item
-from .functions import set_energy, validate_user, dice_roll
 import json
 
 
@@ -17,10 +16,12 @@ def intro(request):
     character = get_object_or_404(ActiveCharacter, user=request.user)
 
     if not profile.active_char:
-        messages.error(request, 'You need to create a character before you can enter here')
+        messages.error(request,
+                       'You must create a character to enter here')
         return redirect(reverse('profiles:profile'))
     elif not profile.paid and character.level > 1:
-        messages.error(request, 'Free version limit reached. Upgrade to premium to get the full experience')
+        messages.error(request,
+                       'Free version limit reached. Upgrade to premium to get the full experience')
         return redirect(reverse('profiles:profile'))
     elif character.day > 30:
         return redirect(reverse('leaderboard:gameover_page'))
@@ -440,11 +441,6 @@ class AgencySkill(UpdateView):
             # receive random number
             random_number = json.loads(self.request.POST['random_number'])
             skill = self.request.POST['skill']
-            print(random_number)
-            print(skill)
-            print(c.intellect >= random_number)
-            print(c.charm >= random_number)
-            print(c.coding >= random_number)
         
             if c.energy >= 100:
                 # Update Active Character

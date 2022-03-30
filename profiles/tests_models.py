@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from .models import Profile, ActiveCharacter
 
 
-class TestProfileForm(TestCase):
+class TestProfile(TestCase):
     """ tests to test the profile model """
 
     def test_profile_object_exists(self):
