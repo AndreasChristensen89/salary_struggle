@@ -489,6 +489,7 @@ All applications have been tested using TestCase. Forms, models, views, and addi
 
 ## TestCase
 When testing the current database was not able to create testing databases, and I had to comment it out and un-comment the other database using sqlite3 in settings.py
+
 ### Applications
 #### Codex
 * Test_views - 4 tests, all pass. Tests for code 200 and templates used
@@ -544,6 +545,10 @@ Media queries have been done using bootstrap's class system, and additional. Chr
 * Media query tested on my own tablet, Ipad pro 2018 11" using Safari+Chrome, no issues.
 * General testing with my own laptop, Asus 13 inch using Chrome, no issues.
 All links were tested. All external links and internal links work.
+
+### UX limit
+Game runs best on screens that are minimum 320 * 480px 
+Does not run properly on very small screens; Microsoft Lumia 550 and JioPhone 2
 
 ## Bugs discovered during testing:
 There is a slight issue with the shopping bag on laptop screen, where the content is scrollable on the x-axis.
@@ -854,39 +859,39 @@ Agency success
 ## What are the goals for a first-time visitor?
 
 * Quickly understand that the page is about and make sense of the setup
-    * 
+    * Players immediately notice the calls to login. As they scrool down the first thing they encounter is text mentioning that this is a game, understand that you have to get a job in 30 days, and that you have to sign up to play
 * Be captivated by the content and the imagery
-    * 
+    * The background combined with the play between blue and green of the divs should be a nice view
 * Be able to navigate effortless through the pages
-    * 
+    * All pages link to each other, and no more is more than one link away. The navbar gives a good overview of what the user is allowed to do at this stage
 * Easily understand how to get started and to set up
-    * 
+    * The game immediate calls to register and login
 * Easily understand how to start the game
-    * 
+    * The main page gives a clear indication that the player should visit their profile. If they scroll down the first thing they see is text about the game and a suggestion to start a character.
 * Understand how to access profile page
-    * 
+    * This is hinted by the main divs and also the navbar
 * Give good feedback
-    * 
+    * Users receive messages when they authenticate.
 * Have the application work on all devices.
-    * 
+    * All devices have been tested, and both shop and game work as expected.
 
 ## What are the goals for a returning visitor?
 
 * Instantly/easily remember how to navigate the content
     * I estimate this to be intuitive
 * Easily remember how to access relevant pages
-    * Index has call to action for most common pages, and navbar is always present
+    * Index has call to action for the most common pages, and navbar is always present
 * Easily be able to contact the developer with questions, feedback, any other inquiries
-    * 
+    * Contact page is available on the home page and also easily accessible via the navbar.
 
 ## Strategy
-The purpose of this site is to create a simple site for a restaurant that handles reservations. The site should be simple to use, and information should be easy to find with simple and clear design
+The purpose of this site is to create a game with a simple webshop attached to it. It should be easy to use, and the design should be clear, bright, and intuitvive.
 
 ## Scope
-The scope is limited in functionality but does implement logic to assign tables with reasonable complexity. It could for sure be more complex and specific. Options for handling bookings are limited but should be completely functional.
+The scope is to handle a handful of products that are digital. The game has an easy setup what does not go deep into game mechanics, but keep them at a surface level.
 
 ## Structure
-The flow of the website is simple and should be intuitive for most people. Navbar has everything the user needs to find their way around. In case there is confusion about how the setup works there is a clear path to contact the restaurant both with messages, phones, and their address. On the landing page users are shown the call-to-action links that encourage them to register, and if logged in they are directed to the most common pages.
+The flow of the website is simple and should be intuitive for most people. Navbar has everything the user needs to find their way around. In case there is confusion about how the setup works there is a clear path to contact the site via the contact page. On the landing page users are shown the call-to-action links that encourage them to register, and if logged in they are directed to the most common pages.
 
 ## Surface
 ### Design Choices
@@ -897,13 +902,16 @@ Information should not be detailed but fast to read and understand, and straight
 All pages should share design
 
 #### Color Scheme
-There is a play between bright and dark, and the colors are centered around brown. Bright restaurant background with a wooden feel. White is used to for choices and grey, red, and white signal status. Green is used to signal confirmation. Red is used to signal cancellation or declined. Grey is used for pending. The dark brown background resembles and gives, in my opinion, a nice contrast to the hero-image.
+The colors for the shop are generally bright. The background is white and the divs have green, blue, yellow and grey colors.
+For messages the standard colors have been used via bootstrap. Play buttons are green, edit buttons are blue (including restart character). Each list of objects (items, interviewers, products) have different colors in their lists in order to not be too similar.
+
+On the hero page I find the colors to be a good contrast to the hero image. Also, for the divs the box shadow goes well with the white background.
 
 #### Choice of text
-Lato was the choice. I experimented with a lot of fonts from Google, but in the end Lato was the best in my opinion.
+Montserrat was the choice. I experimented with a lot of fonts from Google, but in the end Montserrat was the best in my opinion.
 
 #### Pictures
-There is only one picture used, which is a wooden bar desk with a blurry background. It is bright and has a brown/wood based theme. I find it relaxing and simple, and hope that others will feel the same way.
+Pictures a taken from freepik, with credits in the readme. All background and characters are drawn by me in Adobe Illustrator.
 
 #### Accessibility
 All non-text elements are marked with aria-labels, and the contrast between background and foreground colors were implemented in color scheme.
@@ -965,8 +973,6 @@ Email is sent when:
 Admin credentials given on submission
 
 ## Must have settings...
-Profile model and ActiveCharacter model is connected via the views.
-<!-- This means that admin cannot delete an active character connected to a user without having set the active_char of the profile to False. -->
 The product "Premium Membership" must exist for profile page to work. The product is essential to have as users need to be able to purchase membership
 
 # Setup explanation
@@ -1385,19 +1391,16 @@ To do list:
 - USER STORIES - DONE
 - Add all products and items to deployed site - DONE
 - Test email works for purchases on deployed site - DONE
-
+- Add added specific img dimension in interviewer all and detail page for big boss due to image being wider - DONE
 
 - images alt's added via template tags from the backend
 - Add that endurance is not added to fight and that max endurance is 24
-- Add added specific img dimension in interviewer all and detail page for big boss due to image being wider
+
 - Add HTML tests
 - No links to other websites with high quality
 - Explain why this type of marketing was used
+- Write introdution in readme
 
-
-NOTE:
-Game runs best on screens that are minimum 320 * 480px 
-Microsoft Lumia 550, JioPhone 2
 
 
 
