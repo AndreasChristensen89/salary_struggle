@@ -968,8 +968,8 @@ Content was all formulated by myself, but for the menu I took inspiration from o
 * I looked up other booking system to get inspiration for how it could be set up.
 * Speech bubble in agency and interviews: https://codepen.io/rikschennink/pen/mjywQb
 * For Product model to generate a 16 character alphanumeric string, code taken from stackoverflow - https://stackoverflow.com/questions/2511222/efficiently-generate-a-16-character-alphanumeric-string
-* A massive thanks to my mentor during this project who guided me in the right direction. I was able to be inspired by his previous project which was also a game.
-* Code institute's walkthrough project for Boutique Ado was used to set up Stripe payment system and the shopping bag, as well as being a heavy inspiration for order models and their.
+* A massive thanks to my mentor during this project who guided me in the right direction. I was able to be inspired by his previous project which was also a game: The setup for characters, leaderboard, class methods were inspired by his design. link to his repository: https://github.com/BAK2K3/CIRPG
+* Code institute's walkthrough project for Boutique Ado was used to set up Stripe payment system and the shopping bag, as well as being a heavy inspiration for order models general flow of payment process.
 
 ## Design
 For design of the different pages I didn't use other sources of information other than my previous projects.
