@@ -39,14 +39,14 @@ The footer appears on all sites, except for the in the game. It has links to soc
 * ![Footer](/media/readme_pics/footer.JPG)
 
 ## Subscribe page
-The footer redirect the user there. Mailchimp has been used to embed this code, which includes their CSS and JS. The header says "Subscribe" and underneath in smaller letter are "to our newsletter"
+The footer redirects the user there. Mailchimp has been used to embed this code, which includes their CSS and JS. The header says "Subscribe" and underneath in smaller letter are "to our newsletter"
 
 * ![subscribe - laptop](/media/readme_pics/subscribe_laptop.JPG)
 * ![subscribe - mobile](/media/readme_pics/subscribe_mobile.JPG)
 
 ## Index page
 The index page shows a white, black, and grey background forming a stylish and simple looking city overview.
-On this hero-background is where all major links to the site will be, more specifically Login, Register, Play, Profile, and Shop. These differs depending on the user, and the status of their profile. THe title says: Salary Struggle, and underneath a line, then a smaller header that reads "The quest for a job". 
+On this hero-background is where all major links to the site will be, more specifically Login, Register, Play, Profile, and Shop. These differs depending on the user, and the status of their profile. The title says: Salary Struggle, and underneath a line, then a smaller header that reads "The quest for a job". 
 
 The middle section has a black background with uppercase writings about the game. This is meant as light advertising/introduction. There are also links to the profile page, and to upgrade to premium membership. The content changes according to the user.
 
@@ -60,7 +60,7 @@ Users not logged in will see two divs for login and register
 * ![Index - logged out bottom laptop](/media/readme_pics/index_bottom_logged_out_laptop.JPG)
 At the bottom users will see a hint to sign up and create a character, which is followed by a link
 #### mobile
-On mobile divs stack on top of each other, other content simply squeeze together
+On mobile divs stack on top of each other, other content simply squeezed together
 * ![Index - logged out top mobile](/media/readme_pics/index_logged_out_top_mobile.JPG)
 * ![Index - logged out middle mobile](/media/readme_pics/index_logged_out_middle_mobile.JPG)
 * ![Index - logged out bottom mobile](/media/readme_pics/index_logged_out_bottom_mobile.JPG)
@@ -92,7 +92,7 @@ In the middle section the content is more together
 
 #### paid and character laptop
 Users that have a character and the premium status will see the same links in the top section
-In the lower section links are gone and have no been replaced with an affirming sentence
+In the lower section links are gone and have been replaced with an affirming sentence
 * ![Index - logged in with character and paid top laptop](/media/readme_pics/index_logged_in_with_char_paid_bottom_laptop.JPG)
 
 #### paid and character mobile
@@ -122,7 +122,7 @@ Send button will send an email to salarystruggle@gmail.com as well as a confirma
 
 ### logged in
 #### laptop
-For users that are logged in there is only one field: messages. The other information wil be taken from the user.
+For users that are logged in there is only one field: messages. The other information will be taken from the user.
 * ![Contact - logged in laptop](/media/readme_pics/contac_logged_in_laptop.JPG)
 
 #### mobile
@@ -198,7 +198,7 @@ Premium membership is rendered different since it's not in anyone's interest to 
 * ![Premium details page mobile](/media/readme_pics/premium_details_mobile.JPG)
 
 ### Add product
-Admin has access to this page via link in the navbar. Design is simple, content is centered. Fields are SKU (will be auto generated if no input), name, name, description, and price. Users can upload a picture to add. If a picture is chosen it will display in red letters "Image will be set to xxxxx". Underneath are the cancel and add buttons.
+Admin has access to this page via link in the navbar. Design is simple, content is centered. Fields are SKU (will be auto generated if no input), name, name, description, and price. Users can upload a picture to add. If a picture is chosen it will display in red letters "Image will be set to xxxxx". Underneath is the cancel and add buttons.
 
 * ![Add product admin laptop](/media/readme_pics/add_product_laptop.JPG)
 * ![Add product admin mobile](/media/readme_pics/add_product_mobile.JPG)
@@ -223,14 +223,14 @@ Similar to the shop, two divs per row
 * ![All interviewers - mobile](/media/readme_pics/interviewers_mobile.JPG)
 
 ### Interviewer details
-Shares the design of the product details. Picture are to the left and have white backgrounds that blend into the body background. To the right are the interviewers name. Underneath are their level, and under that all of their stats. Their stats are not written but instead represented by icons. Underneath is the interviewer's description.
+Shares the design of the product details. Picture are to the left and have white backgrounds that blend into the body background. To the right are the interviewer's name. Underneath is their level, and under that all of their stats. Their stats are not written but instead represented by icons. Underneath is the interviewer's description.
 
 * ![Interviewer details - laptop](/media/readme_pics/interviewers_details_laptop.JPG)
 
 * ![Interviewer details - mobile](/media/readme_pics/interviewers_details_mobile.JPG)
 
 ### All Items
-Items shares the design of the interviewers page, except for the orange color.
+Items shares the design of the interviewer's page, except for the orange color.
 
 Maximum three items per row for laptop
 * ![All item laptop](/media/readme_pics/items_laptop.JPG)
@@ -247,7 +247,7 @@ Shares the design of the interviewer details. Will only show the specific stat b
 
 ## Profile
 The profile page contains the profile's character, if any, the User information, as well as the order history.
-It's divided into three divs. All divs have border shadows and are dimmed version of blue, yellow and green. The heading is "Profile" with box-shadow and border. Underneath the heading it will display whether or not the user is a free user or a premium member. If the user is free it will say "free member" with a red background, and if the user is premium it wil say "Premium Member" with a bright background. Also, the div will animate to expand twice to put attention to it.
+It's divided into three divs. All divs have border shadows and are dimmed version of blue, yellow and green. The heading is "Profile" with box-shadow and border. Underneath the heading it will display whether or not the user is a free user or a premium member. If the user is free it will say "free member" with a red background, and if the user is premium it will say "Premium Member" with a bright background. Also, the div will animate to expand twice to put attention to it.
 
 User information shows the first name, last name, and email attached to the user. The edit button will take the user to the edit-user page.
 
@@ -322,10 +322,10 @@ On mobile the secure checkout button is on op, which makes it easier for users t
 ## Checkout
 The checkout page is accessed when the user presses the "SECURE CHECKOUT" button in the shopping bag. This is where the user gives their credit card information and finishes up the order.
 Header read "payment" to make it clear what this page is about.
-Underneath are two columns, one to the right with user information. If the user has given their information in their profile already, the full name will be prefilled, and email will always be prefilled. However, the user can change this information as they like, the order does not need to have the profile's email and name, only the actualy user id will be connected to the order.
+Underneath are two columns, one to the right with user information. If the user has given their information in their profile already, the full name will be prefilled, and email will always be prefilled. However, the user can change this information as they like, the order does not need to have the profile's email and name, only the actual user id will be connected to the order.
 To the left of this is a short summary of what is in the shopping cart. The images are shown, the titles, the quantities, the subtotals, and the total.
 
-Underneath is a Stripe element, which is where the user gives their credit card information. For this project a credit card code of 424242... will work. When the user accesses this page a payment intent was made to stripe, and stripe is now ready to receive the payment. This is done by pressing the blue "Finish order" button at the bottom. Underneath the button is a notice in red writing that let's the user know how much the card will be charged. Lastly, in case the user wants to change anything, or cancel, there is a return button at the bottom left.
+Underneath is a Stripe element, which is where the user gives their credit card information. For this project a credit card code of 424242... will work. When the user accesses this page a payment intent was made to stripe, and stripe is now ready to receive the payment. This is done by pressing the blue "Finish order" button at the bottom. Underneath the button is a notice in red writing that lets the user know how much the card will be charged. Lastly, in case the user wants to change anything, or cancel, there is a return button at the bottom left.
 
 * ![Checkout laptop](/media/readme_pics/checkout_page_laptop.JPG)
 
@@ -367,25 +367,25 @@ The user is then given two options: "Restart character" - this takes the user ba
 The game features a number of locations the player can travel to and perform actions in.
 
 ## Ajax
-Ajax calls have been implemented on each page, except for the city and downtown. The ajax updates the backend without refreshing the page, and implements styling that corresponds to the actions that the backend has made. For example, an activity that requires energy will be updated in the backend and each ajax code has the information beforehand to animate and set the energy value on the html correctly. The JS files collect the variables via django template when the page loads (all the character, interviewer, or Item stats) and uses these variable to calculate how future actions should be animated and set on the HTML (several actions that may be executed by the player without any refresh).
+Ajax calls have been implemented on each page, except for the city and downtown. The ajax updates the backend without refreshing the page, and implements styling that corresponds to the actions that the backend has made. For example, an activity that requires energy will be updated in the backend and each ajax code has the information beforehand to animate and set the energy value on the html correctly. The JS files collect the variables via django template when the page loads (all the character, interviewer, or Item stats) and uses these variables to calculate how future actions should be animated and set on the HTML (several actions that may be executed by the player without any refresh).
 There are often several different ajax calls on a page, and ajax calls can trigger different overlays by referring to the number of the class (they are all given the class "overlay")
 
 Every time an ajax call is activated a black overlay is displayed. This covers the entire screen and shows an icon corresponding to the outcome of the action, followed by a short remark/fail-statement/success-statement/updates skills/current skill level.
 The overlay is there for about 2,5 to 4 second, depending on the task, and is implemented in order to give clear feedback to the player about what is happening.
 
-If the player does not have enough energy/money/exeeded any limit a message with a red background will be triggered. It is animated to scale up and down two times, and has a short message about what was wrong, for example "You need 60 energy"/"not enough money" etc.
+If the player does not have enough energy/money/exceeded any limit a message with a red background will be triggered. It is animated to scale up and down two times, and has a short message about what was wrong, for example "You need 60 energy"/"not enough money" etc.
 
 ## Common styling
 The background of each location is the same color as the bottom of the background-image. This gives the illusion that the pictures continue. Each background, except for the back-alley has a horizontal and mobile-friendly version. Backgrounds have been drawn to be able to repeat in the x-direction, thus giving the picture more flexibility.
 
-All actions are centered in the background-image, grey-blue colored, white text, and animates tetx-color and position when mouse hovers over them.
+All actions are centered in the background-image, grey-blue colored, white text, and animates text-color and position when mouse hovers over them.
 
 The back button is present on all pages, except for the city page. It is set to animate infinite in order to attract attention to it. I implemented this as I found that the button was not always striking enough to new players.
 
 All backgrounds are meant to be minimal. Details should be minimal, and colors should be varied and in general bright. However, colors have at times a greyish tone to them in certain areas to reflect the feeling of a city.
 
 ## Intro
-Very simple introduction page that gives a short little intro/mood-setter for them game. It briefly explain the back story as a person talking directly to you. It lists the objectives and links to the enter screen. The transitions are slow and animates using opacity. There is a next button that progresses, and also a skip button that links the plater to the enter screen.
+Very simple introduction page that gives a short little intro/mood-setter for them game. It briefly explains the back story as a person talking directly to you. It lists the objectives and links to the enter screen. The transitions are slow and animates using opacity. There is a next button that progresses, and also a skip button that links the plater to the enter screen.
 
 The intro screen is only linked to when the player is on day 1. I estimate the skip button to be needed for players trying again.
 
@@ -400,7 +400,7 @@ The background is the same as the city background - a city overview with clear w
 
 
 ## City
-This is the main navigation page. Players can naviate anywhere from here, for certain locations you need to go to downtown first.
+This is the main navigation page. Players can navigate anywhere from here, for certain locations you need to go to downtown first.
 Locations are listed with a black transparent background, and all of them have white text and a white icon next to them that correspond to the location. The background is an overview of a city in bright-colors. The sky is blue and the design is meant to be light-hearted. 
 
 No actions other than transportation are possible on this page.
@@ -411,8 +411,8 @@ On mobile the pictures scales down and the city line now only covers the bottom.
 * ![Game city mobile](/media/readme_pics/game_city_mobile.JPG)
 
 ## House
-This is where the game start you off, the player's house. Players have three options here: sleep, study, and practice.
-The background shows a bright room with a tv, a table, a plant, a book shelf, and a window with buldings in the background.
+This is where the game starts you off, the player's house. Players have three options here: sleep, study, and practice.
+The background shows a bright room with a tv, a table, a plant, a book shelf, and a window with buildings in the background.
 
 * ![Game house laptop](/media/readme_pics/game_house_laptop.JPG)
 * ![Game house mobile](/media/readme_pics/game_house_mobile.JPG)
@@ -474,7 +474,7 @@ There are four interviews. The all share the same design: white background, on t
 
 The different types of questions are listed further down below in the Game section where I go more into detail about game design and how ajax is implemented.
 
-Each interviews ends with either a success message, congratulating you on having passed it, or a message saying "Damn, this could have gone better".
+Each interview ends with either a success message, congratulating you on having passed it, or a message saying "Damn, this could have gone better".
 
 When a player presses the button to answer a skill question the answer buttons are disabled and animated to disappear. A speech bubble then appears with an answer taken from the JS file with all the questions and answers stored.
 
@@ -994,7 +994,7 @@ Premium membership is set as an object in the Product model. If users are alread
 When users buy the premium membership the view code accesses the profile and sets the paid status to True. This is done either via the viewcode or the webhook handler, in case either one should fail.
 
 ## One character
-I decided to only have the user be able to have one character at a time. As the game is reasonably short and with the oppotunity to reach the leaderboard it would seem too messy to deal with multiple characters.
+I decided to only have the user be able to have one character at a time. As the game is reasonably short and with the opportunity to reach the leaderboard it would seem too messy to deal with multiple characters.
 
 ## Free and Premium
 Users can freely play the game until level three. At level one the users can only upgrade stats, at level two they can participate in the first interview. If they succeed this interview they will be level three, and this is where the views will redirect them. From there they will not be able to continue. If they want they can restart the character and play the same, but they will not be able to use the game once their character reaches level 3. They will receive a django message once this barrier is met.
@@ -1018,7 +1018,7 @@ Login required is carried out with the @login required. Other restricted access 
 
 # E-commerce
 ## Business rationale
-The rational for creating this site is to allow a game designer to publish their work and generate renevue through single access purchases. The content is simple, and the premium access is therefore not set too high in terms of price. It is light-hearted in animation style and content and does not inspire high prices. If the users like the content they are able to purchase additional products related to the game, which is another source of income for the creator. The products offered are not high in maintenance as they are digital, does not need to be printed, and can be sent directly via email. The number of customers are expected to be low, so this setup of personaly handling orders can likely be easily sustained.
+The rational for creating this site is to allow a game designer to publish their work and generate revenue through single access purchases. The content is simple, and the premium access is therefore not set too high in terms of price. It is light-hearted in animation style and content and does not inspire high prices. If the users like the content they are able to purchase additional products related to the game, which is another source of income for the creator. The products offered are not high in maintenance as they are digital, does not need to be printed, and can be sent directly via email. The number of customers are expected to be low, so this setup of personally handling orders can likely be easily sustained.
 
 ## Business type
 The business is a B2C type that aims at non-businesses
@@ -1045,6 +1045,11 @@ Mailchimp is implemented in the footer, and any user can sign up for the newslet
 I have chosen to do the mock Facebook page via Balsamiq.
 
 * ![Facebook mock page Salary Struggle](/media/readme_pics/salary-struggle-facebook.png)
+
+## Privacy policy
+Link to privacy policy has been placed in the about page.
+The following page was used to generate it.
+https://www.privacypolicygenerator.info/
 
 
 # Game
@@ -1320,7 +1325,7 @@ If payment failed it will send a failed message to Stripe
 - When the walkthrough connected to Heroku he also loaded the product data (python3 manage.py loaddata products). I didn't do this, perhaps need to add products again after connecting.
 - set AWS bucket to list access for public - Amazon gives an error that says that they don't recommend this. Is this ok?
     - Read in comments on Slack that mentor said it's ok
-- Remember to upload all media files to AWS: S3 ==> bukcet ==> media ==> upload ==> grant public read access to these objects ==> next, next, upload
+- Remember to upload all media files to AWS: S3 ==> bucket ==> media ==> upload ==> grant public read access to these objects ==> next, next, upload
 - Try to fix the increment error in product details
     - Included a check to JS if url contained "bag", which would mean that it's on the shopping bag site. If not then no need to look for mobile form - got it from this post: https://stackoverflow.com/questions/4597050/how-to-check-if-the-url-contains-a-given-string
 - Users without characters can still enter the Grind, they just get the message, but still have then enter button. They can even enter, which brings them to the house. Trying to increase stats brings 404. Clicking the link to the city redirects them.
@@ -1361,16 +1366,4 @@ In any case, I on deployment player are redirected to the gameover.
 
 ## Allow non authenticated users to try the game
 Users may be more likely to try the game if not signup is required, and this could boost interaction.
-
-
-- images alt's added via template tags from the backend
-- Add that endurance is not added to fight and that max endurance is 24
-
-- Add HTML tests
-- No links to other websites with high quality
-- Explain why this type of marketing was used
-- Write introdution in readme
-
-
-
 
