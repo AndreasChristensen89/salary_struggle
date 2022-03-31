@@ -26,6 +26,12 @@ a:hover {
     color: white;
 }
 
+.agency-action-buttons {
+    font-size: 20pt;
+    background-color: #567887;
+    color: white;
+}
+
 .action-row {
     bottom: 20vw;
 }
@@ -493,6 +499,10 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+
+    .agency-action-buttons {
+        font-size: 14pt;
+    }
 
     .return-arrow {
         font-size: 10vw;

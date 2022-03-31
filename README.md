@@ -532,6 +532,8 @@ ALl JS files have been tested manually. I have gone through each file and extens
 The online tool JSHINT (https://jshint.com/) has been used to test all files.
 Warnings are displayed. However, the warning are related to ES Compatibility or “unused/undefined variables”. I'm aware of these and deem that these can be dismissed.
 
+At the time of deployment there are no errors in any of the JS files in all applications.
+
 ## Ux Testing
 Media queries have been done using bootstrap's class system, and additional. Chrome Developer Tools was used for testing all media queries for additional CSS.
 
@@ -984,6 +986,8 @@ Login and register are obviously there, and the about page gives users an idea o
 
 The shop is for registered users only, which I prefer due to that I want to keep the order history connected to a user. The shop is hinted in the about section. Profile page is only for registered users, as a user is able to upgrade to premium. Setup could be made so that users with no login could play the game, but this is for a future implementation. Following this, access to anything in the game required users to be logged in. Similarly, a case could be made that it would be better to allow users to try the game without a user, which is definitely something to consider for future implementations.
 
+Login required is carried out with the @login required. Other restricted access has been made via defensive programming in the views in the form of redirects.
+
 # E-commerce
 ## Business rationale
 The rational for creating this site is to allow a game designer to publish their work and generate renevue through single access purchases. The content is simple, and the premium access is therefore not set too high in terms of price. It is light-hearted in animation style and content and does not inspire high prices. If the users like the content they are able to purchase additional products related to the game, which is another source of income for the creator. The products offered are not high in maintenance as they are digital, does not need to be printed, and can be sent directly via email. The number of customers are expected to be low, so this setup of personaly handling orders can likely be easily sustained.
@@ -1369,6 +1373,7 @@ To do list:
 - Explain about contexts from shopping_bag - DONE
 - Mention leaderboard add has a flaw in that user can leave page and miss out on possibility of adding score. Users may not know the correct URL for accessing the post link - DONE
 - Explain login for which views - DONE
+- USER STORIES - DONE
 
 
 - images alt's added via template tags from the backend
@@ -1379,7 +1384,6 @@ To do list:
 - Test email works for purchases on deployed site
 - Add all products and items to deployed site
 - Explain why this type of marketing was used
-- USER STORIES
 
 
 NOTE:
