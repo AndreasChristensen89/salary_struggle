@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" contents="ie=edge">  <!-- allow support for older internet explorer versions, eliminate errors when validating HTML -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">  <!-- allow support for older internet explorer versions, eliminate errors when validating HTML -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Salary Struggle game and webshop">
@@ -186,16 +186,16 @@
                         <a class="nav-link" href="{% url 'home:about' %}">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Game Info
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
-                            <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
-                            <a class="dropdown-item" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
-                        </div>
-                    </li>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Game Info
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'codex:items' %}">Items</a>
+                                <a class="dropdown-item" href="{% url 'codex:interviewers' %}">Interviewers</a>
+                                <a class="dropdown-item" href="{% url 'leaderboard:leaderboard' %}">Leaderboard</a>
+                            </div>
+                        </li>
                     {% endif %}
                 </ul>
             </div>

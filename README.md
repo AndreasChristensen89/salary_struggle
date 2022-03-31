@@ -546,9 +546,10 @@ Media queries have been done using bootstrap's class system, and additional. Chr
 All links were tested. All external links and internal links work.
 
 ## Bugs discovered during testing:
+There is a slight issue with the shopping bag on laptop screen, where the content is scrollable on the x-axis.
 
 ## Unfixed Bugs:
-
+The UX bug on the shopping bag screen remains unresolved
 
 ## Validator Testing
 ## PEP8 validator for python:
@@ -585,7 +586,9 @@ widgets.py - 1 line too long. It does not affect my code.
 contexts.py - 1 line too long. It does not affect my code.
 views.py - 1 line too long. It does not affect my code.
 
-## W3 Markup Validation Service completed for all HTML pages with no errors.
+## HTML W3 Markup Validation Service
+HTML tests for all pages completed with no errors.
+It gave me a warning that adding type='text/javascript' on JavsScript files is unnecessary, however these are included at code institute and others, so I have decided to keep them.
 
 ### Jigsaw test CSS
 Completed with no errors for all css files.
@@ -709,6 +712,12 @@ picture of artist
 
 <a href='https://www.freepik.com/vectors/invitation'>Invitation vector created by freepik - www.freepik.com</a>
 Premium membership
+
+<a href='https://www.freepik.com/vectors/tree-clipart'>Tree clipart vector created by brgfx - www.freepik.com</a>
+Chinese herbs
+
+<a href='https://www.freepik.com/vectors/background'>Background vector created by macrovector - www.freepik.com</a>
+Artbook
 
 ## Text content
 Content was all formulated by myself, but for the menu I took inspiration from other game I have played in my youth.
@@ -1374,6 +1383,8 @@ To do list:
 - Mention leaderboard add has a flaw in that user can leave page and miss out on possibility of adding score. Users may not know the correct URL for accessing the post link - DONE
 - Explain login for which views - DONE
 - USER STORIES - DONE
+- Add all products and items to deployed site - DONE
+- Test email works for purchases on deployed site - DONE
 
 
 - images alt's added via template tags from the backend
@@ -1381,8 +1392,6 @@ To do list:
 - Add added specific img dimension in interviewer all and detail page for big boss due to image being wider
 - Add HTML tests
 - No links to other websites with high quality
-- Test email works for purchases on deployed site
-- Add all products and items to deployed site
 - Explain why this type of marketing was used
 
 
