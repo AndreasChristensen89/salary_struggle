@@ -1,4 +1,13 @@
 # Introduction
+The idea behind this project was to create first and foremost a fun game that is being rendered full stack, and secondly to have this game work on a business level. A webshop is connected to the application, and users can upgrade to gain full access to the game. Users don't even need to play the game to make use of the webshop, but the game is the clear driver behind it. Users would most likely not find any of the products interesting without an initial interest in the game.
+
+The game is light-hearted, but generally meant for mature audiences.
+
+On deployment products, items, and interviewers have already been generated, but this is ultimately up to the admin.
+
+
+# Table of contents
+
 
 # The Shop and its features
 ## Common styling
@@ -248,7 +257,7 @@ In order history, if no orders are placed, it will simply say "No order placed" 
 
 ### no character
 
-* ![Profile page no character laptop ](/media/readme_pics/profile_with_char_laptop.JPG)
+* ![Profile page no character laptop ](/media/readme_pics/profile_no_char_laptop.JPG)
 
 * ![Profile page no character mobile ](/media/readme_pics/profile_no_char_mobile.JPG)
 
@@ -736,6 +745,8 @@ Content was all formulated by myself, but for the menu I took inspiration from o
 * I looked up other booking system to get inspiration for how it could be set up.
 * Speech bubble in agency and interviews: https://codepen.io/rikschennink/pen/mjywQb
 * For Product model to generate a 16 character alphanumeric string, code taken from stackoverflow - https://stackoverflow.com/questions/2511222/efficiently-generate-a-16-character-alphanumeric-string
+* A massive thanks to my mentor during this project who guided me in the right direction. I was able to be inspired by his previous project which was also a game.
+* Code institute's walkthrough project for Boutique Ado was used to set up Stripe payment system and the shopping bag, as well as being a heavy inspiration for order models and their.
 
 ## Design
 For design of the different pages I didn't use other sources of information other than my previous projects.
@@ -791,6 +802,8 @@ For user stories I used Github's Projects -> User Stories. Kanban board. I creat
     * As a logged in user I can access the webshop so that I can see all the products available
 * User: make purchases
     * As a logged in user I can make purchases in the webshop so that I can buy premium membership and other items
+
+User stories are all completed and implemented
 
 # UX
 
@@ -1126,8 +1139,8 @@ Contains the part of the game related to interviews.
 Contains the views, templates, CSS, and JavaScript files for the interviews in the game.
 
 ### Leaderboard
-Application for the leaderboard, which displays best performances
-Contains the Leaderboard model, the view, and the template
+Application for the leaderboard, which displays best performances. Also contains the winning page and the gameover page. Winning page links to the leaderboard in case player made the top 10.
+Contains the Leaderboard model, the view, and the templates for all the pages.
 
 ### Premium
 Contains everything related to checkout, including payment, webhook handling, signals, and order creation
@@ -1206,7 +1219,7 @@ Fields
 
 
 ### 5. OrderItem - stores an object for each food category.
-Goes through all items and updates the total for the order model
+Goes through all items and updates the total for the order model. Is activated by Django signals to update the order.
 Fields:
 - Order: ForeignKey - connected to the order
 - Product - ForeignKey - connected to the product
@@ -1349,49 +1362,6 @@ In any case, I on deployment player are redirected to the gameover.
 ## Allow non authenticated users to try the game
 Users may be more likely to try the game if not signup is required, and this could boost interaction.
 
-To do list:
-- Include endurance in energy drawn - DONE
-- Make all items in shop digital so no address is needed - DONE
-- Make introduction to game - DONE
-- Add objectives in intro screen - DONE
-- Change purchase success - DONE
-- Change messages mobile - DONE
-- Remove grand total and only have total - DONE
-- Redesign Item & Interviewer pages - DONE
-- Redesign allauth pages - DONE intially, still resembles CI styling
-- Test Ajax calls - DONE
-- Make sure order is attached to user so other cannot access success page - DONE
-- Order history was accessible for others with the link - defensive programming DONE
-- Include ajax call at the of interview to avoid players refreshing to restart interview - DONE
-- Change MEDIA link for product with no picture - DONE
-- Create About page - DONE
-- Test new views - DONE
-- Finish leaderboard set limit top 10 - DONE
-- Redesign intro page - DONE
-- Implement action bar on all pages - DONE
-- Endurance max 20, fights always 60 energy - DONE
-- Clean grind code, doubles not used anymore - DONE
-- Finish final interview - DONE
-- Design more characters - NOT GOING TO
-- Make ending to game - good + fail - DONE
-- Create messages in game - needs z-index - DONE
-- In conversation overlay, penalty hide is removed a bit too early - DONE
-- Business + SEO criteria - DONE
-- Change checkout page resign for items - DONE
-- Add CSS tests - DONE
-- Python PEP8 tests - DONE
-- Mention if product is premium membership then different color applied - DONE
-- Mention skip button in intro - DONE
-- Clean up css game_base - DONE
-- Redesign product, item, and interviewer detail pages - DONE
-- Remove all print and console.log statements - DONE
-- Explain about contexts from shopping_bag - DONE
-- Mention leaderboard add has a flaw in that user can leave page and miss out on possibility of adding score. Users may not know the correct URL for accessing the post link - DONE
-- Explain login for which views - DONE
-- USER STORIES - DONE
-- Add all products and items to deployed site - DONE
-- Test email works for purchases on deployed site - DONE
-- Add added specific img dimension in interviewer all and detail page for big boss due to image being wider - DONE
 
 - images alt's added via template tags from the backend
 - Add that endurance is not added to fight and that max endurance is 24
