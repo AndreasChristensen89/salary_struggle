@@ -1,16 +1,16 @@
 // Adds eventlistener, adds function to hide intro by click
 document.addEventListener('DOMContentLoaded', function () {
     
-    $(".intro").animate({opacity: "1.0"}, "slow")
+    $(".intro").animate({opacity: "1.0"}, "slow");
 
     $("#next-comment").click(function(){
         if (!$(".intro").hasClass("hide")) {
             $(".intro").animate({opacity: "0"}, "slow");
             $(".intro").addClass("hide");
             $('.intro-interviewer').removeClass("hide");
-            $(".intro-interviewer").animate({opacity: "1.0"}, "slow")
+            $(".intro-interviewer").animate({opacity: "1.0"}, "slow");
             $('#interviewer').removeClass("hide");
-            $("#interviewer").animate({opacity: "1.0"}, "slow")
+            $("#interviewer").animate({opacity: "1.0"}, "slow");
         }
         else if (!$(".intro-interviewer").hasClass("hide")) {
             $(".intro-interviewer").addClass("hide");
@@ -64,7 +64,7 @@ function attemptSkill(event) {
     // disable answer buttons
     $(".skill-btn").prop("disabled", true);
     // set bubble text to answer and display it
-    $("#bubble").text($(`#answer-${skill}`).text())
+    $("#bubble").text($(`#answer-${skill}`).text());
     $("#bubble").removeClass("hide");
 
     // 40% chance of winning if "wild" is chosen
@@ -86,14 +86,9 @@ function attemptSkill(event) {
         // else get char and interviewer's skill level
         let charSkill = parseInt($(`#char-${skill}`).html());
         let intSkill = parseInt($(`#interw-${skill}`).html());
-        console.log(`Character ${skill} level: ${charSkill}`);
-        console.log(`Interviewer ${skill} level ${intSkill}`);
 
         // generate random number
         let randomNumber = Math.floor(Math.random() * intSkill) + 1;
-
-        console.log(`random number: ${randomNumber}`);
-        console.log("");
 
         setTimeout(() => {
             $("#bubble").animate({
@@ -116,7 +111,6 @@ function attemptSkill(event) {
         }, "medium");
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({
             opacity: 0
         }, "medium");
@@ -158,45 +152,42 @@ function buildQuestions() {
 function checkAnswer(event) {
 
     let answer = event.target.value;
-    console.log(answer);
         
     let correctAnswer = questionSet[questionCount].answer;
-    console.log(correctAnswer);
 
     if (correctAnswer == answer) {
-        $(event.target).addClass("bg-success")
+        $(event.target).addClass("bg-success");
         setImpress("+", 3);
         setTimeout(() => {
-            $(event.target).removeClass("bg-success")
+            $(event.target).removeClass("bg-success");
         }, 1000);
     } 
     else if (answer == "wild") 
     {
         if (calculateOutcome(4, 10)) {
-            $("#answer-wild").addClass("bg-success")
+            $("#answer-wild").addClass("bg-success");
             setImpress("+", 5);
             setTimeout(() => {
-                $("#answer-wild").removeClass("bg-success")
+                $("#answer-wild").removeClass("bg-success");
             }, 1000);
         } else {
             setImpress("-", 5);
-            $("#answer-wild").addClass("bg-danger")
+            $("#answer-wild").addClass("bg-danger");
             setTimeout(() => {
-                $("#answer-wild").removeClass("bg-danger")
+                $("#answer-wild").removeClass("bg-danger");
             }, 1000);
         }
     } else {
         setImpress("-", 3);
-        $(event.target).addClass("bg-danger")
+        $(event.target).addClass("bg-danger");
         setTimeout(() => {
-            $(event.target).removeClass("bg-danger")
+            $(event.target).removeClass("bg-danger");
         }, 1000);
     }
 
     setTimeout(() => {
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({opacity: 0}, "medium");
         $(".answer-btn").animate({opacity: 0}, "medium");
     }, 1500);
@@ -240,8 +231,6 @@ function setImpress(plusMinus, integer) {
 
 function calculateOutcome(charSkill, intSkill) {
     let randomNumber = Math.floor(Math.random() * intSkill) + 1;
-    console.log(`Randomnumber: ${randomNumber}`);
-    console.log(`Randomnumber <= 4: ${randomNumber <= 4}`);
 
     if (randomNumber <= charSkill) {
         return true;

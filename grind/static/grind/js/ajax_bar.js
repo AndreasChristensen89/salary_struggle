@@ -18,10 +18,10 @@ $("#drinkButton").click(function() {
             if (energy >= (40-endurance)) {
                 if (money >= 1000) {
                     $("#charm").text(charm+2);
-                    charmLvl = $("#charm").text();
+                    let charmLvl = $("#charm").text();
                     $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money-1000}`);
                     
-                    $("#charm-increase").text(`Charm level: ${charmLvl}`)
+                    $("#charm-increase").text(`Charm level: ${charmLvl}`);
 
                     $('.overview').fadeToggle(100);
                     $(".loading-overlay").eq(0).fadeToggle(100);
@@ -57,8 +57,6 @@ $("#drinkButton").click(function() {
 
 $("#converse").click(function() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
-    console.log(randomNumber);
-    console.log(randomNumber <= 2);
     
     $.ajax({
     type: "POST",
@@ -71,8 +69,8 @@ $("#converse").click(function() {
         if (energy >= (40-endurance)) {
             if (randomNumber <= 2) {
                 $("#charm").text(charm+2);
-                charmLvl = $("#charm").text();
-                $("#charm-increase").text(`Charm level: ${charmLvl}`)
+                let charmLvl = $("#charm").text();
+                $("#charm-increase").text(`Charm level: ${charmLvl}`);
 
                 charm = charm+2;
 

@@ -1,56 +1,6 @@
-As you may be aware, Django released v4 yesterday.
-However, we recommend that you do NOT use Django 4 for the walkthroughs or projects, for 2 important reasons:
-Django 3.2 is the LTS (Long Term Support) version, which means it is the longest supported version of Django available. Django 4.2 will not be LTS until at least April 2023
-The version of AllAuth that we use in our videos is incompatible with django 4.
-Please stick to Django 3.2 to avoid conflicts and confusion until further notice.
+# Introduction
 
-
-
-In a more recent version of allauth they have removed some files that this project relies on.
-To ensure you get all the files you need, please use the command pip3 install django-allauth==0.41.0 when installing django-allauth, instead of the command in the video (pip3 install django-allauth)
-Please ensure os is imported into settings.py
-The newest version of Django does not automatically import the os module at the top of the settings.py file as it does for the instructor in this video.
-Please check if this line of code is at the top of your settings.py file, it is not, please add it yourself:
-import os
-
-Please import the minified jQuery library
-While following this videos, please ensure that you import the minified version of jQuery into this project. The slim versions do not include all the features you need for this project
-
-cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* (/* mean to copy everything into this directory, so we will copy it into the following)
-cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/
-
-Delete openid and tests
-
-
-
-So far item display is taken directly from the Boutique Ado walkthrough.
-
-Add to items model
-permanent = models.BooleanField(default=False)
-
-Will be checked when day finishes to see if effects should be removed, and if secondary effects should be applied
-
-As per advice from mentor I installed pylint for django:
-pip3 install pylint-django
-
-Shopping bag has been made following the walkthrough project from CI
-
-shopping bag fix in the walkthrough:
-After this video was created, we discovered a bug in the code. In this video, we intend for the minus quantity button in the bag to be disabled when the quantity selected is 1. This works in the mobile view, but not in the desktop view. The reason for this is that the way the page is rendered there are two minus buttons with the same ID, it is just that one or the other is hidden using CSS, depending on the size of the screen.
-
-So as far as the JavaScript code is concerned, only the first button (the one in mobile view) has a valid ID, and the second one is ignored, causing the desktop minus button not to be disabled when the quantity selected is 1
-
-One intrepid tutor (thanks Scott!) has created a fix for this, which you can find in the final sourcecode for the complete project The details of exactly what Scott changed can be found in this commit record
-
-You do not need to implement this fix right now while you are doing the walkthrough project, but we do recommend you come back to this if you wish to implement similar functionality in your own final project
-
-Video is: The shopping bag: the shopping bag
-
-
-Installed mathfilter for subtracting endurance from energy needed
-
-
-# Shop Pages and features
+# The Shop and its features
 ## Common styling
 Headers have been given some box shadow as well as border.
 All divs have been given colors that are not too bright, as well as box shadows.
@@ -577,7 +527,10 @@ When testing the current database was not able to create testing databases, and 
 * Tests_views - 1 tests, passes. Tests for code 200 and templates used
 
 ## JS testing
-ALl JS files have been tested manually
+ALl JS files have been tested manually. I have gone through each file and extensively tested the outcome of each function on all screen sizes, different browsers, and different game scenarios.
+
+The online tool JSHINT (https://jshint.com/) has been used to test all files.
+Warnings are displayed. However, the warning are related to ES Compatibility or “unused/undefined variables”. I'm aware of these and deem that these can be dismissed.
 
 ## Ux Testing
 Media queries have been done using bootstrap's class system, and additional. Chrome Developer Tools was used for testing all media queries for additional CSS.
@@ -673,7 +626,7 @@ https://jigsaw.w3.org/css-validator/
 * Migrate changes to new database: python3 manage.py migrate
 
 ## AWS
-AWS is used for this project. An S3 bucket is created for this application, and content is automatically synchronised when deploying to Heroku. 
+AWS is used for this project. An S3 bucket is created for this application, and content is automatically synchronised when deploying to Heroku. Variables are set up in Heroku.
 
 ## Last settings
 * In Gitpod under settings.py:
@@ -717,6 +670,29 @@ Icons and script were taken from https://fontawesome.com/, as well as Google's f
 # Database
 Postgres is used in connection with Heroku for this project
 
+
+# Environment variables
+Amazon web services - these can be found when creating the S3 bucket in AWS
+* AWS_ACCESS_KEY_ID - used to set up Amazon Web services
+* AWS_SECRET_ACCESS_KEY - used to set up Amazin Web Services.
+
+Postgres
+* DATABASE_URL - connects to postgres in Heroku
+
+Email
+* EMAIL_HOST_PASS
+* EMAIL_HOST_USER - connects to the email I have create for this project
+
+Django
+* SECRET_KEY - is used to provide cryptographic signing.
+
+Stripe
+* STRIPE_PUBLIC_KEY - obtained from Stripe profile
+* STRIPE_SECRET_KEY - obtained from Stripe profile
+* STRIPE_WH_SECRET - signing secret from the Stripe webhook
+* USE_AWS - set up in settings.py to use AWS, setting static and media locations, bucket name, region, domain.
+
+
 # Credits
 ## Pictures
 Images were compressed using the webpage https://tinypng.com/
@@ -751,6 +727,54 @@ Drawings are my own, but they have taken inspiration from different backgrounds 
 
 # User stories
 For user stories I used Github's Projects -> User Stories. Kanban board. I created 18 stories and implemented them one by one. Some others were deleted, and some were changed along the way. The ones that are there now are:
+* Understand how to play
+    * As a site user I can easily find information about how to play the game so that I understand how to play
+* Game: clear feedback
+    * As a playing user I can clearly understand the feedback of my actions so that I understand what happened to my character
+* Setup profile
+    * As a site user I can register on the site so that I can have a profile
+* Leaderboard: see entries
+    * As a paying user I can view the leaderboard so that see the high scores of the top players
+* Use any device
+    * As a site user I can easily navigate the site on any viewport so that I can use the site on any device
+* Premium: always find offer on main sites
+    * As a free user I can access the update offer from all pages so that I can easily navigate to upgrade
+* Immediately understand purpose of site
+    * As a site user I can immediate understand the purpose of the site so that I can make a decision of whether or not to engage
+* Game: See final stats at the end
+    * As a paying user I can see my final stats at the end of the game so that I can see if I ended up on the leaderboard
+* See items and interviewers
+    * As a free user I can see a list of all items and characters so that I can get an overview of the content
+* Leaderboard: decide to post score or not
+    * As a paying user I can decide to post my high score so that I can compete with other players
+* Game: Not reload on character update
+    * As a playing user I can update my character without reloading the page so that the game runs smoother
+* Premium: continue past level 3:
+    * As a paying user I can continue past level 1 until the end so that I can enjoy the full game
+* Game: continue progress
+    * As a free user/paying user I can return to where I left off so that I can continue my saved progress
+* Premium: pay to upgrade
+    * As a free user I can pay to upgrade so that I have full access to the game
+* Auth: log in and out
+    * As a site user I can log in and out so that I can access my profile and play the game
+* Game: play again
+    * As a free user/paying user I can start a new game so that I can start/restart the game
+* Game: access grind
+    * As a free user/paying user I can access the grind to increase stats so that I can play the basic game
+* Free user: Play until level 3:
+    * As a free user I can play the game until level 2 so that I can decide if I would like to upgrade
+* Premium: Access to full game
+    * As a paying user I can proceed past level 1 so that I can play the full game
+* Auth: Recover password
+    * As a site user I can recover my password so that I can log in if I forget my password
+* Profile: access and edit
+    * As a site user I can access my profile so that I can see and edit my information
+* Premium: see upgraded status
+    * As a paying user I can see my status of Upgraded Member, instead of seeing upgrade offers so that I am sure that the payment went through and that I have full access
+* User: access to webshop
+    * As a logged in user I can access the webshop so that I can see all the products available
+* User: make purchases
+    * As a logged in user I can make purchases in the webshop so that I can buy premium membership and other items
 
 # UX
 
@@ -815,21 +839,7 @@ Agency success
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-User acceptance criteria
+# User acceptance criteria
 ## What are the goals for a first-time visitor?
 
 * Quickly understand that the page is about and make sense of the setup
@@ -929,15 +939,16 @@ else:
 Environmental variables are stored in Heroku.
 
 This sends live emails from a gmail I created for this project
-Password in stored in env.py
+Password in stored in Heroku
 variable is also added to Heroku config variables
-Email is sent when registering to confirm the email.
 
-- Email is sent when resetting password
-- Email is sent when a purchase has been completed
-- Email is sent when a message is sent on the contact pages
-- Host email is set as CC
-- Email may arrive in spam folder, so be sure to check that.
+Email is sent when:
+- registering to confirm the email.
+- resetting password
+- a purchase has been completed
+- a message is sent on the contact pages
+    - Host email is set as CC
+    - Email may arrive in spam folder, so be sure to check that.
 
 # Admin Access
 Admin credentials given on submission
@@ -957,6 +968,21 @@ I decided to only have the user be able to have one character at a time. As the 
 
 ## Free and Premium
 Users can freely play the game until level three. At level one the users can only upgrade stats, at level two they can participate in the first interview. If they succeed this interview they will be level three, and this is where the views will redirect them. From there they will not be able to continue. If they want they can restart the character and play the same, but they will not be able to use the game once their character reaches level 3. They will receive a django message once this barrier is met.
+
+## Context
+In contexts.py in the shopping_bag app I have made certain variables available throughout the site. For the shop the bag is always available in the session, as well as the total of all the items added. This allows the shopping cart icon to be updated every time an item is added.
+
+Adding to this the profile has also been made available. This is because I use the profile status (paid/free and active character/no character) to render correct content, and to implement defensive programming when e.g. trying to add the premium membership when already a premium member
+
+Also, the active character, if any, is available. This is used in the entire game, which very often needs to be updated. Therefore, ajax needs access to the character on every page.
+
+These variables are made available by adding them to the TEMPLATE variable in settings.py under the OPTIONS as a field called "builtins".
+
+## Login required and open sites
+Index, login, register, contact page, the about page, signup for newsletter, interviewers, and items are all open pages which anyone can access.
+Login and register are obviously there, and the about page gives users an idea of what they're signing up for, backed up by the contact page in case they have questions. The newsletter should be for everyone just by principle and for business reach. Items and interviewers are a fun peak into the game.
+
+The shop is for registered users only, which I prefer due to that I want to keep the order history connected to a user. The shop is hinted in the about section. Profile page is only for registered users, as a user is able to upgrade to premium. Setup could be made so that users with no login could play the game, but this is for a future implementation. Following this, access to anything in the game required users to be logged in. Similarly, a case could be made that it would be better to allow users to try the game without a user, which is definitely something to consider for future implementations.
 
 # E-commerce
 ## Business rationale
@@ -1053,35 +1079,48 @@ Each level of interview has a different impress level, which is the number of po
 Players are bound by the stats of their character in terms of choices. Each day is limited by the energy the character has, which can be extended with the use of items. Player is also limited in terms of money. I have chosen 10000 to be a starting point, so that the player has a little help, but not too much.
 
 # Django
+Following the advice of Code Institute I have not used Django v4, but 3.2. which is the longest supported version of Django available.
+The version of AllAuth that I have installed is incompatible with django 4, version 0.41.0
+
 ## Django Apps
 ### Salary_struggle - main
 ### Codex
 Contains the data in relation to the Items and Interviews found in the game
 
 Contains the Item and Interviewer models. Contains all the views and templates related to these which includes the pages for all items, all interviewers, as well as their detail pages.
+
 ### Grind
 Contains all the game data, excluding interviews.
 
 Contains all the views and templates for the game, excluding interviews. Views include all ajax requests, and the static folder includes all the JS files for progression, intro, and ajax.
-### Home
-Application for the index page and contact pages.
 
-Includes the home page, index, as well as the two contact pages; one for authenticated users and one for non-authenticated. Includes two forms for the two contact pages, templates for the views, and the three view functions
+### Home
+Application for the index page, contact pages, the about page, the 404 page, and the newsletter.
+
+Includes views for the the home page, index, the about page, as well as the two contact pages; one for authenticated users and one for non-authenticated. Includes two forms for the two contact pages, templates for the views, and the three view functions.
+
+The use of the 404 page has been specified in the main urls.py, which redirects it to the Home app.
+
 ### Interview
 Contains the part of the game related to interviews.
 
 Contains the views, templates, CSS, and JavaScript files for the interviews in the game.
+
 ### Leaderboard
 Application for the leaderboard, which displays best performances
 Contains the Leaderboard model, the view, and the template
+
 ### Premium
 Contains everything related to checkout, including payment, webhook handling, signals, and order creation
 
 Contains the Order model, and the OrderItem model that works together with the Order model. Contains signals file which calls the OrderItem model. Contains the checkout view, the checkout success view, and the cache checkout view. Contains the order form for placing orders.
+
 ### Profiles
 Contains everything related to profiles and the characters used in the game
+
 ### Shop
 Application for products in the shop, as well as their information.
+
 ### Shopping_bag
 Application that handles the shopping bag, adding, updating and removing. Makes shopping bag available across site.
 
@@ -1267,6 +1306,9 @@ If payment failed it will send a failed message to Stripe
 ## Mathfilter
 Mathfilter was installed in order to do calculation for the character in relation to ajax js updates.
 
+## Pylint:
+As per advice from my mentor I installed Pylint to automatically check code
+
 # Future features to implement
 ## Game settings
 Game settings needs to be adjusted as players find ways to exploit loopholes
@@ -1276,6 +1318,17 @@ The game is set up to include multiple interviewers for each level. New characte
 
 ## Additional Items
 There is no limit to how many items can be added, so additional items should be implemented. Also, certain items could be restricted to certain levels/stats levels. Others could be hidden, and others could be available only after having completed the game.
+
+## Leaderboard flaw
+There is currently a minor flaw in the leaderboard as user may miss out on the possibility of adding their score. If they accidentally leave the winning page/close the browser they will, with the current setup, need to navigate back to /leaderboard/winning_page/, which they may not know. This link could be made available on the profile page, if the character is level 6.
+
+## Gameover screen
+The content of the redirect page should be rendered differently if the user is redirected from the game. If a user with a character on day > 30 tries to enter the game, they are redirected to the gameover screen - in practice this may confuse them.
+Player do not have the link to play if they are level 6, but they can still enter if their day count surpass 30. This is done due to that I expect them to have seen the finish screen if they become level 6, so it would make sense to them, but they may not be paying attention to the day counter so if they reach day 31 and the play button is gone it may confuse them.
+In any case, I on deployment player are redirected to the gameover.
+
+## Allow non authenticated users to try the game
+Users may be more likely to try the game if not signup is required, and this could boost interaction.
 
 To do list:
 - Include endurance in energy drawn - DONE
@@ -1306,26 +1359,27 @@ To do list:
 - In conversation overlay, penalty hide is removed a bit too early - DONE
 - Business + SEO criteria - DONE
 - Change checkout page resign for items - DONE
+- Add CSS tests - DONE
+- Python PEP8 tests - DONE
+- Mention if product is premium membership then different color applied - DONE
+- Mention skip button in intro - DONE
+- Clean up css game_base - DONE
+- Redesign product, item, and interviewer detail pages - DONE
+- Remove all print and console.log statements - DONE
+- Explain about contexts from shopping_bag - DONE
+- Mention leaderboard add has a flaw in that user can leave page and miss out on possibility of adding score. Users may not know the correct URL for accessing the post link - DONE
+- Explain login for which views - DONE
 
 
-- Redesign product, item, and interviewer detail pages
+- images alt's added via template tags from the backend
 - Add that endurance is not added to fight and that max endurance is 24
-- Remove all print and console.log statements
 - Add added specific img dimension in interviewer all and detail page for big boss due to image being wider
 - Add HTML tests
-- Add CSS tests
-- Python PEP8 tests
-- Mention if product is premium membership then different color applied
-- Mention skip button in intro
-- Clean up css game_base
 - No links to other websites with high quality
-- images alt's added via template tags from the backend
-- Mention leaderboard add has a flaw in that user can leave page and miss out on possibility of adding score. Users may not know the correct URL for accessing the post link
 - Test email works for purchases on deployed site
-- All all products and items to deployed site
+- Add all products and items to deployed site
 - Explain why this type of marketing was used
-- Explain login for which views
-- Explain about contexts from shopping_bag
+- USER STORIES
 
 
 NOTE:

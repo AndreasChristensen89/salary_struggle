@@ -12,7 +12,7 @@ var endurance = parseInt($("#endurance").text());
 var coding = parseInt($("#coding").text());
 var day = parseInt($("#day").text());
 
-var energyPenalty = parseInt($("#energyPenalty").text())
+var energyPenalty = parseInt($("#energyPenalty").text());
 
 $("#sleep").click(function() {
     $.ajax({
@@ -25,7 +25,7 @@ $("#sleep").click(function() {
 
                 if (energyPenalty == 0) {
                     $("#energy-full").removeClass("d-none");
-                    $("#energy-full").text("Energy fully restored")
+                    $("#energy-full").text("Energy fully restored");
                 } else {
                     $("#energy-penalty").removeClass("d-none");
                     $("#energy-restored").removeClass("d-none");
@@ -54,8 +54,6 @@ $("#sleep").click(function() {
                     $("#energy-penalty").addClass("d-none");
                     $("#energy-restored").addClass("d-none");
                 }, 4000);
-                console.log(energyPenalty);
-                console.log($("#energyPenalty").text());
             } else {
                 $("#game-message").text("Already full energy");
                 $("#game-message-container").removeClass("d-none");
@@ -78,7 +76,7 @@ $("#homeCharm").click(function() {
             if (energy - (40-endurance) >= 0 ) {
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 $("#charm").text(charm+1);
-                charmLvl = $("#charm").text();
+                let charmLvl = $("#charm").text();
                 $("#charm-level").text(`Charm Level: ${charmLvl}`);
 
                 energy = energy-(40-endurance);
@@ -114,7 +112,7 @@ $("#homeStudy").click(function() {
             if (energy - (40-endurance) >= 0 ) {
                 $("#energy").html(`<i class="fas fa-bolt mx-1"></i> ${energy-(40-endurance)}`);
                 $("#coding").text(coding+1);
-                codeLvl = $("#coding").text();
+                let codeLvl = $("#coding").text();
                 $("#coding-level").text(`Coding Level: ${codeLvl}`);
 
                 coding += 1;

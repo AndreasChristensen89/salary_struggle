@@ -12,7 +12,6 @@ var money = parseInt($("#money").text());
 
 $("#fight").click(function() {
     let randomNumber = Math.floor(Math.random() * 10) + 1;
-    console.log(randomNumber);
     
     $.ajax({
     type: "POST",
@@ -97,7 +96,7 @@ $("#gamble").click(function() {
         if (money >= 1000) {
             if (randomNumber == 1) {
                 $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money + 1500}`);      
-                money = money + 1500
+                money = money + 1500;
 
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(2).fadeToggle(100);
@@ -108,7 +107,7 @@ $("#gamble").click(function() {
                 }, 3000);
             } else {
                 $("#money").html(`<i class="fas fa-yen-sign ml-1"></i> ${money - 1000}`); 
-                money = money - 1000
+                money = money - 1000;
 
                 $('.overview').fadeToggle(100);
                 $(".loading-overlay").eq(3).fadeToggle(100);

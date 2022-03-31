@@ -95,5 +95,5 @@ form.addEventListener('submit', function(ev) {   // when the user clicks the sub
     }).fail(function () {   // will be triggered if we get a 400 response
         // just reload the page, the error will be in django messages
         location.reload();
-    })
+    });
 });

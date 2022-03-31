@@ -65,7 +65,7 @@ $(".item-buy").click(function() {
 
                 // add text to overlay
                 $("#itemBought").text(`You bought the ${name}`);
-                $("#itemEffect").text(`${element} + ${increase}`)
+                $("#itemEffect").text(`${element} + ${increase}`);
 
                 // show overlay
                 $('.overview').fadeToggle(100);

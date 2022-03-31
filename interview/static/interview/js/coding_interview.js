@@ -1,16 +1,16 @@
 // Adds eventlistener, adds function to hide intro by click
 document.addEventListener('DOMContentLoaded', function () {
     
-    $(".intro").animate({opacity: "1.0"}, "slow")
+    $(".intro").animate({opacity: "1.0"}, "slow");
 
     $("#next-comment").click(function(){
         if (!$(".intro").hasClass("hide")) {
             $(".intro").animate({opacity: "0"}, "slow");
             $(".intro").addClass("hide");
             $('.intro-interviewer').removeClass("hide");
-            $(".intro-interviewer").animate({opacity: "1.0"}, "slow")
+            $(".intro-interviewer").animate({opacity: "1.0"}, "slow");
             $('#interviewer').removeClass("hide");
-            $("#interviewer").animate({opacity: "1.0"}, "slow")
+            $("#interviewer").animate({opacity: "1.0"}, "slow");
         }
         else if (!$(".intro-interviewer").hasClass("hide")) {
             $(".intro-interviewer").addClass("hide");
@@ -28,10 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-// Sends an ajax request to reset player's energy.
-// Done in order to prevent players from reloading windom an resetting interview
-// Energy is needed to start interview
 
 // get the CSRF token
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -74,7 +70,7 @@ function attemptSkill(event) {
     
     // set bubble text to answer and display it
     setTimeout(() => {
-        $("#bubble").text($(`#answer-${skill}`).text())
+        $("#bubble").text($(`#answer-${skill}`).text());
         $("#bubble-row").removeClass("hide");
         $("#bubble").removeClass("hide");
     }, 500);
@@ -82,14 +78,9 @@ function attemptSkill(event) {
     // else get char and interviewer's skill level
     let charSkill = parseInt($(`#char-${skill}`).html());
     let intSkill = parseInt($(`#interw-${skill}`).html());
-    console.log(`Character ${skill} level: ${charSkill}`);
-    console.log(`Interviewer ${skill} level ${intSkill}`);
 
     // generate random number
     let randomNumber = Math.floor(Math.random() * intSkill) + 1;
-
-    console.log(`random number: ${randomNumber}`);
-    console.log("");
 
     setTimeout(() => {
         $("#bubble").animate({
@@ -111,7 +102,6 @@ function attemptSkill(event) {
         }, "medium");
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({
             opacity: 0
         }, "medium");
@@ -132,7 +122,6 @@ function attemptSkill(event) {
 function buildQuestions() {
     $("#question").html(currentQuestion);
     questionSet = codingQuestions;
-    console.log(questionSet[questionCount].answer);
     // extract next question
     $("#question-text").html(questionSet[questionCount].question);
     $("#bubble-row").addClass("hide");
@@ -159,29 +148,26 @@ function checkAnswer(event) {
     $(".answer-btn").prop("disabled", true);
     
     let answer = event.target.value;
-    console.log(answer);
         
     let correctAnswer = questionSet[questionCount].answer;
-    console.log(correctAnswer);
 
     if (correctAnswer == answer) {
-        $(event.target).addClass("bg-success")
+        $(event.target).addClass("bg-success");
         setImpress("+", 3);
         setTimeout(() => {
-            $(event.target).removeClass("bg-success")
+            $(event.target).removeClass("bg-success");
         }, 1000);
     } else {
         setImpress("-", 3);
-        $(event.target).addClass("bg-danger")
+        $(event.target).addClass("bg-danger");
         setTimeout(() => {
-            $(event.target).removeClass("bg-danger")
+            $(event.target).removeClass("bg-danger");
         }, 1000);
     }
 
     setTimeout(() => {
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({opacity: 0}, "medium");
         $(".answer-btn").animate({opacity: 0}, "medium");
     }, 1500);
@@ -227,8 +213,6 @@ function setImpress(plusMinus, integer) {
 
 function calculateOutcome(charSkill, intSkill) {
     let randomNumber = Math.floor(Math.random() * intSkill) + 1;
-    console.log(`Randomnumber: ${randomNumber}`);
-    console.log(`Randomnumber <= 4: ${randomNumber <= 4}`);
 
     if (randomNumber <= charSkill) {
         return true;

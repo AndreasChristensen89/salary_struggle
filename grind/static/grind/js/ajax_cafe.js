@@ -10,8 +10,6 @@ var endurance = parseInt($("#endurance").text());
 
 $("#study").click(function() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
-    console.log(randomNumber);
-    console.log(randomNumber <= 2);
     
     $.ajax({
     type: "POST",
@@ -25,8 +23,8 @@ $("#study").click(function() {
             if (randomNumber <= 2) {
                 $("#coding").text(coding+2);
                 $("#intellect").text(intellect+2);
-                codingLvl = $("#coding").text();
-                intellectLvl = $("#intellect").text();
+                let codingLvl = $("#coding").text();
+                let intellectLvl = $("#intellect").text();
                 $("#coding-win-increase").html(`Coding: ${codingLvl}`);
                 $("#intellect-win-increase").html(`Intellect: ${intellectLvl}`);
                 
@@ -44,8 +42,8 @@ $("#study").click(function() {
             } else {
                 $("#intellect").text(intellect+1);
                 $("#coding").text(coding+1);
-                codingLvl = $("#coding").text();
-                intellectLvl = $("#intellect").text();
+                let codingLvl = $("#coding").text();
+                let intellectLvl = $("#intellect").text();
                 $("#coding-fail-increase").html(`Coding: ${codingLvl}`);
                 $("#intellect-fail-increase").html(`Intellect: ${intellectLvl}`);
                     

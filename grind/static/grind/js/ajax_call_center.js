@@ -8,10 +8,6 @@ var money = parseInt($("#money").text());
 
 // apply for a job ajax
 $("#apply").click(function() {
-    let randomNumber = Math.floor(Math.random() * 20) + 1;
-    console.log(randomNumber);
-    console.log(charm >= randomNumber);
-    
     $.ajax({
     type: "POST",
     url: "/grind/apply-job/",

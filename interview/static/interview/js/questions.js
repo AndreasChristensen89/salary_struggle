@@ -1,10 +1,3 @@
-// if there is an answer, the correct answer is written as the following:
-// a = intellect
-// b = charm
-// c = coding
-// d = wild
-// This is due to the questions with no answers being evaluated according to stats...
-// ... and buttons therefore have these values encoded
 
 const hrQuestions = [{
     question: "What's your greatest weakness?",

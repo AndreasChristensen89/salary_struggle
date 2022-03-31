@@ -1,15 +1,15 @@
 // Adds eventlistener, adds function to hide intro by click
 document.addEventListener('DOMContentLoaded', function () {
-    $(".intro").animate({opacity: "1.0"}, "slow")
+    $(".intro").animate({opacity: "1.0"}, "slow");
 
     $("#next-comment").click(function(){
         if (!$(".intro").hasClass("hide")) {
             $(".intro").animate({opacity: "0"}, "slow");
             $(".intro").addClass("hide");
             $('.intro-interviewer').removeClass("hide");
-            $(".intro-interviewer").animate({opacity: "1.0"}, "slow")
+            $(".intro-interviewer").animate({opacity: "1.0"}, "slow");
             $('#interviewer').removeClass("hide");
-            $("#interviewer").animate({opacity: "1.0"}, "slow")
+            $("#interviewer").animate({opacity: "1.0"}, "slow");
         }
         else if (!$(".intro-interviewer").hasClass("hide")) {
             $(".intro-interviewer").addClass("hide");
@@ -118,8 +118,6 @@ function passNumberAnswer() {
     let int1 = $("#question-text").html().slice(8, 9);
     let int2 = $("#question-text").html().slice(12);
     let rightAnswer = int1 * int2;
-    console.log(rightAnswer);
-    console.log($("#answer-text").html());
 
     if ($("#answer-text").text() == rightAnswer) {
         setImpress("+", 3);
@@ -149,11 +147,7 @@ function passCodeAnswer() {
     } else if (str.includes("--") || str.includes("++") || str.includes("**")) {
         button.addClass("bg-danger");
         setTimeout(() => { button.removeClass("bg-danger"); }, 1000);
-    } else {
-        console.log(stringCalculator(str));
-        console.log(correctAnswer.trim());
-        console.log(stringCalculator(str) == correctAnswer.trim());
-        
+    } else {        
         if (stringCalculator(str) == correctAnswer.trim()) {
             setImpress("+", 3);
         } else {
@@ -215,7 +209,7 @@ function checkAnswer(event) {
 
     $(".skill-btn").prop("disabled", true);
 
-    $("#bubble").text($(`#answer-${skill}`).text())
+    $("#bubble").text($(`#answer-${skill}`).text());
     $("#bubble-row").removeClass("hide");
     $("#bubble").removeClass("hide");
 
@@ -242,7 +236,6 @@ function checkAnswer(event) {
         $("#bubble").animate({opacity: 0}, "medium");
         currentQuestion++;
         questionCount++;
-        console.log(questionCount);
         $("#question-text").animate({opacity: 0}, "medium");
     }, 2500);
     setTimeout(() => {
