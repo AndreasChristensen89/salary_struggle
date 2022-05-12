@@ -34,7 +34,7 @@ $("#drinkButton").click(function() {
                         $(".loading-overlay").eq(0).fadeToggle(100);
                     }, 3000);
                 } else {
-                    $("#game-message").text('You need 1000 <i class="fas fa-yen-sign ml-1"></i>');
+                    $("#game-message").html('You need 1000 <i class="fas fa-yen-sign ml-1"></i>');
                     $("#game-message-container").removeClass("d-none");
 
                     setTimeout(() => { 

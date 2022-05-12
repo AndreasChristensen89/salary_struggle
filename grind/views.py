@@ -373,7 +373,7 @@ class BarDrink(UpdateView):
             c = ActiveCharacter.objects.get(user=self.request.user)
             # Update Active Character
             if c.energy >= 40-c.endurance and c.energy_penalty <= 80:
-                if c.money > 1000:
+                if c.money >= 1000:
                     c.charm = c.charm + 2
                     c.energy = c.energy - (40-c.endurance)
                     c.money = c.money-1000
